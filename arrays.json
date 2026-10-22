@@ -1,0 +1,1322 @@
+[
+  {
+    "id": "array-001",
+    "question": "Which declaration creates an int array with five elements?",
+    "options": [
+      "int a = new int[5];",
+      "int[] a = new int[5];",
+      "array int a[5];",
+      "int[5] a;"
+    ],
+    "answer": 1,
+    "explanation": "The standard declaration is int[] a = new int[5]."
+  },
+  {
+    "id": "array-002",
+    "question": "What is the default value of elements in a new int array?",
+    "options": [
+      "null",
+      "1",
+      "0",
+      "Undefined"
+    ],
+    "answer": 2,
+    "explanation": "Primitive int elements default to 0."
+  },
+  {
+    "id": "array-003",
+    "question": "What is the default value of elements in a new boolean array?",
+    "options": [
+      "true",
+      "false",
+      "null",
+      "0"
+    ],
+    "answer": 1,
+    "explanation": "boolean array elements default to false."
+  },
+  {
+    "id": "array-004",
+    "question": "What is the default value of elements in a new String array?",
+    "options": [
+      "\"\"",
+      "null",
+      "0",
+      "false"
+    ],
+    "answer": 1,
+    "explanation": "String references default to null, not an empty string."
+  },
+  {
+    "id": "array-005",
+    "question": "What does arr.length return?",
+    "options": [
+      "Last valid index",
+      "Number of elements",
+      "Number of bytes",
+      "A method result"
+    ],
+    "answer": 1,
+    "explanation": "length is a field, not a method."
+  },
+  {
+    "id": "array-006",
+    "question": "For int[] a = new int[6], what is the last valid index?",
+    "options": [
+      "6",
+      "5",
+      "4",
+      "0"
+    ],
+    "answer": 1,
+    "explanation": "Valid indices range from 0 to length - 1."
+  },
+  {
+    "id": "array-007",
+    "question": "What happens when arr[arr.length] is accessed?",
+    "options": [
+      "Returns last element",
+      "Wraps to index 0",
+      "Throws ArrayIndexOutOfBoundsException at runtime",
+      "Always fails to compile"
+    ],
+    "answer": 2,
+    "explanation": "arr.length is one past the last valid index."
+  },
+  {
+    "id": "array-008",
+    "question": "Which statement about Java array length is correct?",
+    "options": [
+      "It grows automatically",
+      "It is fixed after creation",
+      "Arrays start at index 1",
+      "Arrays store only primitives"
+    ],
+    "answer": 1,
+    "explanation": "Array length is fixed at creation."
+  },
+  {
+    "id": "array-009",
+    "question": "What is printed by int[] a={2,4,6}; System.out.println(a[1]);?",
+    "options": [
+      "2",
+      "4",
+      "6",
+      "1"
+    ],
+    "answer": 1,
+    "explanation": "Indexing starts at zero."
+  },
+  {
+    "id": "array-010",
+    "question": "Which is a valid array initializer?",
+    "options": [
+      "int[] a={1,2,3};",
+      "int a={1,2,3};",
+      "int[] a=(1,2,3);",
+      "int[] a=new int{3};"
+    ],
+    "answer": 0,
+    "explanation": "Braces initialize an array."
+  },
+  {
+    "id": "array-011",
+    "question": "How do you change the second element to 9?",
+    "options": [
+      "a[2]=9;",
+      "a[1]=9;",
+      "a.length=9;",
+      "a(1)=9;"
+    ],
+    "answer": 1,
+    "explanation": "The second element is at index 1."
+  },
+  {
+    "id": "array-012",
+    "question": "After int[] a=new int[3]; a[0]=7;, what is a[1]?",
+    "options": [
+      "7",
+      "null",
+      "0",
+      "Uninitialized"
+    ],
+    "answer": 2,
+    "explanation": "Other int elements remain at their default value, zero."
+  },
+  {
+    "id": "array-013",
+    "question": "What is printed? int[] a={3,5}; int[] b=a; b[0]=8; print a[0].",
+    "options": [
+      "3",
+      "5",
+      "8",
+      "Compile error"
+    ],
+    "answer": 2,
+    "explanation": "a and b reference the same array."
+  },
+  {
+    "id": "array-014",
+    "question": "What does a.clone() do for a one-dimensional int array?",
+    "options": [
+      "Same reference",
+      "Separate array with copied values",
+      "Empty array",
+      "Creates a List"
+    ],
+    "answer": 1,
+    "explanation": "Array clone creates a shallow copy; primitive values are copied."
+  },
+  {
+    "id": "array-015",
+    "question": "What is the difference between int[] b=a and int[] b=a.clone()?",
+    "options": [
+      "No difference",
+      "Assignment copies elements",
+      "Assignment copies reference; clone makes a new array",
+      "Both deep-copy everything"
+    ],
+    "answer": 2,
+    "explanation": "Assignment shares the array; clone creates a separate array."
+  },
+  {
+    "id": "array-016",
+    "question": "Which method prints a one-dimensional array readably?",
+    "options": [
+      "Arrays.print(a)",
+      "Arrays.toString(a)",
+      "System.array(a)",
+      "a.toList()"
+    ],
+    "answer": 1,
+    "explanation": "Use java.util.Arrays.toString."
+  },
+  {
+    "id": "array-017",
+    "question": "Which class provides sort, binarySearch, equals and fill methods?",
+    "options": [
+      "Collections",
+      "Arrays",
+      "ArrayList",
+      "System"
+    ],
+    "answer": 1,
+    "explanation": "java.util.Arrays provides static array utilities."
+  },
+  {
+    "id": "array-018",
+    "question": "Which import allows Arrays.sort(a) without a fully qualified name?",
+    "options": [
+      "java.lang.Arrays",
+      "java.util.Arrays",
+      "java.io.Arrays",
+      "No import needed"
+    ],
+    "answer": 1,
+    "explanation": "Arrays is in java.util."
+  },
+  {
+    "id": "array-019",
+    "question": "What does Arrays.sort(a) do?",
+    "options": [
+      "Returns new sorted array",
+      "Sorts a in place",
+      "Sorts first element only",
+      "Converts to Set"
+    ],
+    "answer": 1,
+    "explanation": "Arrays.sort modifies the supplied array."
+  },
+  {
+    "id": "array-020",
+    "question": "What should generally be true before binarySearch is used?",
+    "options": [
+      "No zero values",
+      "Array sorted in search order",
+      "Even length",
+      "String type"
+    ],
+    "answer": 1,
+    "explanation": "Binary search relies on sorted input."
+  },
+  {
+    "id": "array-021",
+    "question": "What does Arrays.equals(a,b) check?",
+    "options": [
+      "Same reference only",
+      "Same length and corresponding values",
+      "Same capacity only",
+      "Both sorted"
+    ],
+    "answer": 1,
+    "explanation": "Arrays.equals compares element values and length."
+  },
+  {
+    "id": "array-022",
+    "question": "What does a == b check for array references?",
+    "options": [
+      "Equal contents",
+      "Equal lengths",
+      "Same array object",
+      "Both sorted"
+    ],
+    "answer": 2,
+    "explanation": "== compares references, not array contents."
+  },
+  {
+    "id": "array-023",
+    "question": "What does Arrays.fill(a,4) do?",
+    "options": [
+      "Sets index 4 only",
+      "Sets all elements to 4",
+      "Adds four elements",
+      "Sorts the array"
+    ],
+    "answer": 1,
+    "explanation": "Arrays.fill sets each element in the specified range."
+  },
+  {
+    "id": "array-024",
+    "question": "What does Arrays.copyOf(a,5) do when a has length 3?",
+    "options": [
+      "Throws exception",
+      "Creates length-5 copy with default extra values",
+      "Resizes original",
+      "Returns same array"
+    ],
+    "answer": 1,
+    "explanation": "A new array is returned; extra int slots are zero."
+  },
+  {
+    "id": "array-025",
+    "question": "Which loop is best when both index and element are needed?",
+    "options": [
+      "Traditional indexed for loop",
+      "switch only",
+      "Constructor",
+      "Enhanced for only"
+    ],
+    "answer": 0,
+    "explanation": "A traditional for loop exposes the index."
+  },
+  {
+    "id": "array-026",
+    "question": "Which statement about enhanced for is true?",
+    "options": [
+      "Automatically gives index",
+      "Visits each element but does not directly expose index",
+      "Only works for int[]",
+      "Resizes arrays"
+    ],
+    "answer": 1,
+    "explanation": "Use indexed loops when index control is needed."
+  },
+  {
+    "id": "array-027",
+    "question": "What is printed? int[] a={1,2,3}; for(int x:a) x=0; print a[0].",
+    "options": [
+      "0",
+      "1",
+      "Compile error",
+      "null"
+    ],
+    "answer": 1,
+    "explanation": "x is a copy of each primitive value, not an array slot."
+  },
+  {
+    "id": "array-028",
+    "question": "How do you swap a[i] and a[j] safely?",
+    "options": [
+      "a[i]=a[j]; a[j]=a[i];",
+      "int t=a[i]; a[i]=a[j]; a[j]=t;",
+      "a[i]==a[j];",
+      "a.swap(i,j);"
+    ],
+    "answer": 1,
+    "explanation": "Use a temporary variable to preserve one value."
+  },
+  {
+    "id": "array-029",
+    "question": "What is the time complexity of valid array indexing?",
+    "options": [
+      "O(1)",
+      "O(log n)",
+      "O(n)",
+      "O(n²)"
+    ],
+    "answer": 0,
+    "explanation": "Array indexing is constant time."
+  },
+  {
+    "id": "array-030",
+    "question": "Worst-case time for linear search in an unsorted array?",
+    "options": [
+      "O(1)",
+      "O(log n)",
+      "O(n)",
+      "O(n²)"
+    ],
+    "answer": 2,
+    "explanation": "It may inspect every element."
+  },
+  {
+    "id": "array-031",
+    "question": "What is the general worst-case time complexity of sorting object arrays with Arrays.sort(Object[])?",
+    "options": [
+      "O(1)",
+      "O(log n)",
+      "O(n log n)",
+      "Always O(n²)"
+    ],
+    "answer": 2,
+    "explanation": "Object-array sorting has O(n log n) worst-case time."
+  },
+  {
+    "id": "array-032",
+    "question": "What is a two-dimensional Java array?",
+    "options": [
+      "A guaranteed rectangular matrix type",
+      "An array whose elements are array references",
+      "A primitive type",
+      "A collection forbidding null"
+    ],
+    "answer": 1,
+    "explanation": "Java multidimensional arrays are arrays of arrays."
+  },
+  {
+    "id": "array-033",
+    "question": "What is a[1][0] for int[][] a={{1,2},{3,4}}?",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "answer": 2,
+    "explanation": "Second row, first element is 3."
+  },
+  {
+    "id": "array-034",
+    "question": "What is a jagged array?",
+    "options": [
+      "Array with negative index",
+      "Rows can have different lengths",
+      "Always sorted array",
+      "Only duplicate references"
+    ],
+    "answer": 1,
+    "explanation": "Each row can be a different length."
+  },
+  {
+    "id": "array-035",
+    "question": "After int[][] a=new int[3][], what are a[0], a[1], and a[2] initially?",
+    "options": [
+      "Empty rows",
+      "null references",
+      "Arrays of length 3",
+      "Compile error"
+    ],
+    "answer": 1,
+    "explanation": "Only the outer array exists; row references default to null."
+  },
+  {
+    "id": "array-036",
+    "question": "What is a.length for int[][] a=new int[3][4]?",
+    "options": [
+      "4",
+      "7",
+      "3",
+      "12"
+    ],
+    "answer": 2,
+    "explanation": "The outer array has three rows."
+  },
+  {
+    "id": "array-037",
+    "question": "What is a[0].length for int[][] a=new int[3][4]?",
+    "options": [
+      "3",
+      "4",
+      "12",
+      "0"
+    ],
+    "answer": 1,
+    "explanation": "Each row has four elements."
+  },
+  {
+    "id": "array-038",
+    "question": "Which method prints nested arrays readably?",
+    "options": [
+      "Arrays.toString(a)",
+      "Arrays.deepToString(a)",
+      "System.deepPrint(a)",
+      "Collections.toString(a)"
+    ],
+    "answer": 1,
+    "explanation": "deepToString handles nested arrays."
+  },
+  {
+    "id": "array-039",
+    "question": "Which method compares nested arrays by nested contents?",
+    "options": [
+      "Arrays.deepEquals(a,b)",
+      "a==b only",
+      "Arrays.sort(a,b)",
+      "Arrays.fill(a,b)"
+    ],
+    "answer": 0,
+    "explanation": "deepEquals recursively compares nested array contents."
+  },
+  {
+    "id": "array-040",
+    "question": "What happens when an object array is cloned?",
+    "options": [
+      "Referenced objects are recursively cloned",
+      "Outer array copied, element references copied as-is",
+      "All elements become null",
+      "Same array object"
+    ],
+    "answer": 1,
+    "explanation": "Array cloning is shallow."
+  },
+  {
+    "id": "array-041",
+    "question": "What is printed? String[] s=new String[2]; print(s[0]==null).",
+    "options": [
+      "true",
+      "false",
+      "null",
+      "Compile error"
+    ],
+    "answer": 0,
+    "explanation": "Reference elements default to null."
+  },
+  {
+    "id": "array-042",
+    "question": "Can a Java array have length zero?",
+    "options": [
+      "No",
+      "Yes, new int[0] is valid",
+      "Only String arrays",
+      "Only null arrays"
+    ],
+    "answer": 1,
+    "explanation": "Zero-length arrays are valid objects."
+  },
+  {
+    "id": "array-043",
+    "question": "Difference between null array and empty array?",
+    "options": [
+      "Identical",
+      "Null points to no array; empty array is an object of length zero",
+      "Empty is always null",
+      "Null array length is zero"
+    ],
+    "answer": 1,
+    "explanation": "Accessing length on null throws NullPointerException."
+  },
+  {
+    "id": "array-044",
+    "question": "What happens? int[] a=null; print(a.length).",
+    "options": [
+      "Prints 0",
+      "Prints null",
+      "NullPointerException",
+      "ArrayIndexOutOfBoundsException"
+    ],
+    "answer": 2,
+    "explanation": "The reference is null."
+  },
+  {
+    "id": "array-045",
+    "question": "Which exception indicates an out-of-range array index?",
+    "options": [
+      "NullPointerException",
+      "ArrayIndexOutOfBoundsException",
+      "ClassCastException",
+      "IOException"
+    ],
+    "answer": 1,
+    "explanation": "It is thrown for an invalid executed index."
+  },
+  {
+    "id": "array-046",
+    "question": "Which generic array creation is prohibited?",
+    "options": [
+      "String[] s=new String[2]",
+      "Object[] o=new String[2]",
+      "List<String>[] x=new List<String>[10]",
+      "int[] a=new int[3]"
+    ],
+    "answer": 2,
+    "explanation": "Direct creation of arrays of non-reifiable parameterized types is prohibited."
+  },
+  {
+    "id": "array-047",
+    "question": "What does reference-array covariance allow?",
+    "options": [
+      "String[] assigned to Object[]",
+      "int[] assigned to long[]",
+      "Every array interchangeable",
+      "Automatic element conversion"
+    ],
+    "answer": 0,
+    "explanation": "String[] is a subtype of Object[]; primitive arrays are not covariant that way."
+  },
+  {
+    "id": "array-048",
+    "question": "What happens? Object[] a=new String[1]; a[0]=42;",
+    "options": [
+      "Integer converted to String",
+      "Stores 42",
+      "ArrayStoreException at runtime",
+      "ArrayIndexOutOfBoundsException"
+    ],
+    "answer": 2,
+    "explanation": "Runtime array type is String[], so an Integer cannot be stored."
+  },
+  {
+    "id": "array-049",
+    "question": "What does Student[] s=new Student[5] create?",
+    "options": [
+      "Five Student objects",
+      "An array of five Student references, initially null",
+      "One Student object",
+      "A Student object with five fields"
+    ],
+    "answer": 1,
+    "explanation": "Create each Student separately if needed."
+  },
+  {
+    "id": "array-050",
+    "question": "What does printing an array directly usually show?",
+    "options": [
+      "Always [1,2,3]",
+      "Concatenated values",
+      "Type-and-identity-style string, not contents",
+      "Compile error"
+    ],
+    "answer": 2,
+    "explanation": "Use Arrays.toString for readable one-dimensional contents."
+  },
+  {
+    "id": "array-051",
+    "question": "How can you reverse an array in place without another array?",
+    "options": [
+      "Swap from both ends inward",
+      "Copy into another array",
+      "Sort it",
+      "Replace each value with its index"
+    ],
+    "answer": 0,
+    "explanation": "Two pointers and swaps use constant extra space."
+  },
+  {
+    "id": "array-052",
+    "question": "Auxiliary space for two-pointer in-place reversal?",
+    "options": [
+      "O(n)",
+      "O(log n)",
+      "O(1)",
+      "O(n²)"
+    ],
+    "answer": 2,
+    "explanation": "Only a fixed number of extra variables is needed."
+  },
+  {
+    "id": "array-053",
+    "question": "How do two pointers find a target sum in a sorted array?",
+    "options": [
+      "Both start at zero and never move",
+      "Start at ends and move based on sum vs target",
+      "Always use nested loops",
+      "Sort after every comparison"
+    ],
+    "answer": 1,
+    "explanation": "The sorted order lets each pointer move inward; time is O(n)."
+  },
+  {
+    "id": "array-054",
+    "question": "What are prefix sums useful for?",
+    "options": [
+      "Making values unique",
+      "Efficient range-sum queries after preprocessing",
+      "Reversing arrays",
+      "Sorting automatically"
+    ],
+    "answer": 1,
+    "explanation": "Range sums can be found from differences of prefix sums."
+  },
+  {
+    "id": "array-055",
+    "question": "What determines the practical maximum Java array size?",
+    "options": [
+      "Always exactly Integer.MAX_VALUE",
+      "A universal language-defined constant",
+      "JVM implementation, memory and size constraints",
+      "No limit"
+    ],
+    "answer": 2,
+    "explanation": "There is no single guaranteed practical maximum across JVMs."
+  },
+  {
+    "id": "array-056",
+    "question": "How are arrays passed to Java methods?",
+    "options": [
+      "By reference in the parameter-passing sense",
+      "Array object automatically copied",
+      "Reference value passed by value",
+      "Arrays cannot be parameters"
+    ],
+    "answer": 2,
+    "explanation": "Java is pass-by-value; the copied value can be a reference to the same array."
+  },
+  {
+    "id": "array-057",
+    "question": "If a method assigns its array parameter to a new array, does the caller's variable change?",
+    "options": [
+      "Yes always",
+      "No, only the local parameter is reassigned",
+      "Only if static",
+      "Only for length 2"
+    ],
+    "answer": 1,
+    "explanation": "The parameter has a copy of the reference value."
+  },
+  {
+    "id": "array-058",
+    "question": "What does Arrays.asList(stringArray) return?",
+    "options": [
+      "Resizable ArrayList copy",
+      "Fixed-size list backed by the object array",
+      "Set",
+      "Sorted array"
+    ],
+    "answer": 1,
+    "explanation": "set is supported; adding/removing elements is not."
+  },
+  {
+    "id": "array-059",
+    "question": "Why can Arrays.asList(intArray) surprise you when intArray is int[]?",
+    "options": [
+      "int[] can be treated as one list element rather than a list of boxed ints",
+      "Integers cannot be in lists",
+      "It sorts the array",
+      "No difference"
+    ],
+    "answer": 0,
+    "explanation": "Primitive arrays are not Object[]; use IntStream or box values explicitly."
+  },
+  {
+    "id": "array-060",
+    "question": "What does Arrays.stream(intArray) return?",
+    "options": [
+      "IntStream",
+      "Stream<String>",
+      "A sorted array",
+      "A modified array"
+    ],
+    "answer": 0,
+    "explanation": "The primitive stream supports sum, average, filter and more."
+  },
+  {
+    "id": "array-061",
+    "question": "How do you sum an int[] a using streams?",
+    "options": [
+      "Arrays.stream(a).sum()",
+      "a.sum()",
+      "Arrays.sum(a).stream()",
+      "Stream.sum(a)"
+    ],
+    "answer": 0,
+    "explanation": "Arrays.stream(int[]) returns an IntStream with sum()."
+  },
+  {
+    "id": "array-062",
+    "question": "How does Arrays.sort(a) differ from stream sorted()?",
+    "options": [
+      "Both always mutate original",
+      "Arrays.sort mutates array; sorted() creates sorted stream elements",
+      "sorted only for primitive arrays",
+      "Arrays.sort returns a Stream"
+    ],
+    "answer": 1,
+    "explanation": "sorted is an intermediate stream operation; collecting determines the result destination."
+  },
+  {
+    "id": "array-063",
+    "question": "Time complexity to copy n array elements?",
+    "options": [
+      "O(1)",
+      "O(log n)",
+      "O(n)",
+      "O(n²)"
+    ],
+    "answer": 2,
+    "explanation": "Each element must be copied."
+  },
+  {
+    "id": "array-064",
+    "question": "What does Arrays.mismatch(a,b) return in supported Java versions?",
+    "options": [
+      "First differing index, or -1 if equal",
+      "Sorts both arrays",
+      "True if equal",
+      "Number of elements"
+    ],
+    "answer": 0,
+    "explanation": "mismatch was added in Java 9."
+  },
+  {
+    "id": "array-065",
+    "question": "How can you sort custom objects?",
+    "options": [
+      "Objects cannot be sorted",
+      "Use Comparator or Comparable",
+      "Only hashCode defines order",
+      "Convert to Set first"
+    ],
+    "answer": 1,
+    "explanation": "A suitable Comparator or natural ordering is needed."
+  },
+  {
+    "id": "array-066",
+    "question": "Why is i < arr.length safer than i <= arr.length in an indexed loop?",
+    "options": [
+      "It skips first element",
+      "<= eventually accesses the out-of-range index length",
+      "It sorts array",
+      "It grows length"
+    ],
+    "answer": 1,
+    "explanation": "The last valid index is length - 1."
+  },
+  {
+    "id": "array-067",
+    "question": "How should a jagged array be traversed?",
+    "options": [
+      "Use first row length for every row",
+      "Use each row's own length",
+      "Only one index",
+      "Assume rows never null"
+    ],
+    "answer": 1,
+    "explanation": "Use a[i].length per row and handle possible null rows."
+  },
+  {
+    "id": "array-068",
+    "question": "Which method copies an array range to a new array?",
+    "options": [
+      "Arrays.copyOfRange(arr,from,to)",
+      "arr.copyRange()",
+      "System.cloneRange(arr)",
+      "Arrays.range(arr)"
+    ],
+    "answer": 0,
+    "explanation": "copyOfRange creates a new array and uses an exclusive to index."
+  },
+  {
+    "id": "array-069",
+    "question": "Is the to index included in Arrays.copyOfRange(arr,from,to)?",
+    "options": [
+      "Yes",
+      "No, it is exclusive",
+      "Only for int[]",
+      "Ignored"
+    ],
+    "answer": 1,
+    "explanation": "The range includes from and excludes to."
+  },
+  {
+    "id": "array-070",
+    "question": "What does Arrays.compare(a,b) do in supported Java versions?",
+    "options": [
+      "Lexicographically compares arrays",
+      "Checks reference identity only",
+      "Reverses arrays",
+      "Returns length of a"
+    ],
+    "answer": 0,
+    "explanation": "It returns a negative, zero, or positive comparison result."
+  },
+  {
+    "id": "array-071",
+    "question": "What is printed? int[] a={1,2}; int[] b={1,2}; print(a==b).",
+    "options": [
+      "true",
+      "false",
+      "[1,2]",
+      "Compile error"
+    ],
+    "answer": 1,
+    "explanation": "Two array initializers create separate array objects, so their references differ."
+  },
+  {
+    "id": "array-072",
+    "question": "What is printed? int[] a={1,2}; int[] b=a; print(Arrays.equals(a,b)).",
+    "options": [
+      "true",
+      "false",
+      "2",
+      "Compile error"
+    ],
+    "answer": 0,
+    "explanation": "They refer to the same array, so their contents are equal."
+  },
+  {
+    "id": "array-073",
+    "question": "What happens if an array is declared as final int[] a={1,2}?",
+    "options": [
+      "Elements cannot change",
+      "The reference cannot be reassigned, but elements can change",
+      "Array becomes immutable",
+      "Length changes"
+    ],
+    "answer": 1,
+    "explanation": "final prevents reassignment of the reference; it does not make array contents immutable."
+  },
+  {
+    "id": "array-074",
+    "question": "Can an array store duplicate values?",
+    "options": [
+      "Never",
+      "Yes",
+      "Only String arrays",
+      "Only sorted arrays"
+    ],
+    "answer": 1,
+    "explanation": "Arrays allow duplicate values."
+  },
+  {
+    "id": "array-075",
+    "question": "Can a Java array store mixed primitive types directly in one primitive array?",
+    "options": [
+      "Yes, any primitive can be mixed",
+      "No, each primitive array has one component type",
+      "Only int and char",
+      "Only when sorted"
+    ],
+    "answer": 1,
+    "explanation": "An int[] stores ints; an Object[] can hold different reference types and boxed values."
+  },
+  {
+    "id": "array-076",
+    "question": "What does System.arraycopy do?",
+    "options": [
+      "Copies a range of elements between arrays",
+      "Sorts arrays",
+      "Deep clones every object",
+      "Resizes source array"
+    ],
+    "answer": 0,
+    "explanation": "System.arraycopy copies elements efficiently; object elements are copied as references."
+  },
+  {
+    "id": "array-077",
+    "question": "Does System.arraycopy deep-copy referenced objects?",
+    "options": [
+      "Yes, recursively",
+      "No, it copies reference values for object arrays",
+      "Only for String[]",
+      "It never copies object arrays"
+    ],
+    "answer": 1,
+    "explanation": "The copied references still point to the same referenced objects."
+  },
+  {
+    "id": "array-078",
+    "question": "What is the main difference between an array and ArrayList?",
+    "options": [
+      "Arrays have fixed length; ArrayList can grow and shrink",
+      "ArrayList supports only primitives",
+      "Arrays cannot hold objects",
+      "They are exactly the same"
+    ],
+    "answer": 0,
+    "explanation": "Arrays have fixed length; ArrayList is a resizable collection of references."
+  },
+  {
+    "id": "array-079",
+    "question": "Which is valid for an array's length?",
+    "options": [
+      "arr.length()",
+      "arr.length",
+      "arr.size()",
+      "length(arr)"
+    ],
+    "answer": 1,
+    "explanation": "Array length is a field. Collections such as List use size()."
+  },
+  {
+    "id": "array-080",
+    "question": "Can an array element be assigned null?",
+    "options": [
+      "Never",
+      "Only if its component type is a reference type",
+      "Every primitive array permits null",
+      "Only when array length is zero"
+    ],
+    "answer": 1,
+    "explanation": "Reference arrays can contain null; primitive arrays cannot store null as an element."
+  },
+  {
+    "id": "array-081",
+    "question": "What is the result of new int[2][3].length?",
+    "options": [
+      "2",
+      "3",
+      "5",
+      "6"
+    ],
+    "answer": 0,
+    "explanation": "The outer array has two row references."
+  },
+  {
+    "id": "array-082",
+    "question": "What is the result of new int[2][3][4][1].length?",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "24"
+    ],
+    "answer": 1,
+    "explanation": "length refers to the first dimension, which is 2."
+  },
+  {
+    "id": "array-083",
+    "question": "What is the main benefit of a prefix sum for many range queries?",
+    "options": [
+      "Each query can be O(1) after O(n) preprocessing",
+      "Each query becomes O(n²)",
+      "It sorts the array",
+      "It removes negative values"
+    ],
+    "answer": 0,
+    "explanation": "For inclusive range l..r, use prefix[r+1] - prefix[l] with a leading zero prefix."
+  },
+  {
+    "id": "deep-array-01",
+    "subtopic": "Arrays",
+    "question": "What does `Arrays.copyOf(values, values.length)` produce?",
+    "options": [
+      "A new array with copied element values",
+      "An alias to the same array",
+      "An immutable list",
+      "A sorted copy"
+    ],
+    "answer": 0,
+    "explanation": "copyOf creates a distinct array and copies the requested range of elements."
+  },
+  {
+    "id": "deep-array-02",
+    "subtopic": "Arrays",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Copy {\n    public static void main(String[] args) {\n        int[] a = {2, 4};\n        int[] b = java.util.Arrays.copyOf(a, a.length);\n        b[0] = 9;\n        System.out.println(a[0]);\n    }\n}",
+    "options": [
+      "2",
+      "4",
+      "9",
+      "Compilation error"
+    ],
+    "answer": 0,
+    "explanation": "The copied primitive array is distinct, so changing b does not change a."
+  },
+  {
+    "id": "deep-array-03",
+    "subtopic": "Arrays",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Search {\n    public static void main(String[] args) {\n        int[] a = {1, 3, 5, 7};\n        System.out.println(java.util.Arrays.binarySearch(a, 5));\n    }\n}",
+    "options": [
+      "2",
+      "3",
+      "5",
+      "-1"
+    ],
+    "answer": 0,
+    "explanation": "binarySearch returns the zero-based index of a found value; the input must be sorted."
+  },
+  {
+    "id": "deep-array-04",
+    "subtopic": "Arrays",
+    "question": "What must be true before using `Arrays.binarySearch` for a reliable result?",
+    "options": [
+      "The array must be sorted using compatible ordering",
+      "The array must contain no duplicates",
+      "The array must have an even length",
+      "The array must be an object array"
+    ],
+    "answer": 0,
+    "explanation": "Binary search assumes the array is sorted according to the same ordering used by the search."
+  },
+  {
+    "id": "deep-array-05",
+    "subtopic": "Arrays",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Rows {\n    public static void main(String[] args) {\n        int[][] a = new int[3][];\n        a[1] = new int[] {4, 5};\n        System.out.println(a[1][0] + a[1].length);\n    }\n}",
+    "options": [
+      "4",
+      "5",
+      "6",
+      "NullPointerException"
+    ],
+    "answer": 2,
+    "explanation": "The first value is 4 and that row has length 2, so the sum is 6."
+  },
+  {
+    "id": "deep-array-06",
+    "subtopic": "Arrays",
+    "question": "What happens?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class NullRow {\n    public static void main(String[] args) {\n        int[][] a = new int[2][];\n        System.out.println(a[0].length);\n    }\n}",
+    "options": [
+      "0",
+      "2",
+      "NullPointerException",
+      "Compilation error"
+    ],
+    "answer": 2,
+    "explanation": "The outer array is created, but its row references initially contain null."
+  },
+  {
+    "id": "deep-array-07",
+    "subtopic": "Arrays",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Varargs {\n    static int total(int... values) { return values.length; }\n    public static void main(String[] args) {\n        System.out.println(total(3, 5, 7));\n    }\n}",
+    "options": [
+      "0",
+      "2",
+      "3",
+      "Compilation error"
+    ],
+    "answer": 2,
+    "explanation": "A varargs parameter is received as an array containing the three arguments."
+  },
+  {
+    "id": "deep-array-08",
+    "subtopic": "Arrays",
+    "question": "Which interface is implemented by every Java array type?",
+    "options": [
+      "Cloneable",
+      "Comparable",
+      "Iterable",
+      "AutoCloseable"
+    ],
+    "answer": 0,
+    "explanation": "Java arrays implement Cloneable and Serializable; they are not Iterable by themselves."
+  },
+  {
+    "id": "deep-array-09",
+    "subtopic": "Arrays",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Sort {\n    public static void main(String[] args) {\n        int[] a = {9, 2, 5};\n        java.util.Arrays.sort(a);\n        System.out.println(a[0] + \"-\" + a[2]);\n    }\n}",
+    "options": [
+      "9-5",
+      "2-9",
+      "2-5",
+      "5-9"
+    ],
+    "answer": 1,
+    "explanation": "Arrays.sort sorts primitive values in ascending order: 2, 5, 9."
+  },
+  {
+    "id": "deep-array-10",
+    "subtopic": "Arrays",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class EqualsArray {\n    public static void main(String[] args) {\n        int[] a = {1, 2};\n        int[] b = {1, 2};\n        System.out.println(java.util.Arrays.equals(a, b));\n    }\n}",
+    "options": [
+      "true",
+      "false",
+      "Compilation error",
+      "null"
+    ],
+    "answer": 0,
+    "explanation": "Arrays.equals compares corresponding elements, unlike == which compares array references."
+  },
+  {
+    "id": "deep-array-11",
+    "subtopic": "Arrays",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class CloneArray {\n    public static void main(String[] args) {\n        int[] a = {3, 8};\n        int[] b = a.clone();\n        b[1] = 1;\n        System.out.println(a[1]);\n    }\n}",
+    "options": [
+      "1",
+      "3",
+      "8",
+      "Compilation error"
+    ],
+    "answer": 2,
+    "explanation": "Cloning a one-dimensional primitive array creates a distinct array with copied primitive values."
+  },
+  {
+    "id": "deep-array-12",
+    "subtopic": "Arrays",
+    "question": "What happens?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Store {\n    public static void main(String[] args) {\n        Number[] values = new Integer[1];\n        values[0] = 2.5;\n    }\n}",
+    "options": [
+      "Stores 2.5",
+      "ArrayStoreException at runtime",
+      "Compilation error",
+      "ClassCastException on assignment"
+    ],
+    "answer": 1,
+    "explanation": "Array covariance permits the assignment, but the runtime array type Integer[] rejects a Double value."
+  },
+  {
+    "id": "deep-array-13",
+    "subtopic": "Arrays",
+    "question": "Which limitation applies to an enhanced for loop over an array?",
+    "options": [
+      "It does not directly provide the current index",
+      "It cannot read primitive elements",
+      "It changes the array length",
+      "It visits only non-zero values"
+    ],
+    "answer": 0,
+    "explanation": "The enhanced for loop visits each element, but the index must be tracked separately when required."
+  },
+  {
+    "id": "deep-array-14",
+    "subtopic": "Arrays",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Empty {\n    public static void main(String[] args) {\n        int[] values = new int[0];\n        System.out.println(values.length);\n    }\n}",
+    "options": [
+      "0",
+      "-1",
+      "null",
+      "NegativeArraySizeException"
+    ],
+    "answer": 0,
+    "explanation": "A zero-length array is valid and its length is zero."
+  },
+  {
+    "id": "deep-array-15",
+    "subtopic": "Arrays",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Grid {\n    public static void main(String[] args) {\n        int[][] grid = {{1, 2, 3}, {4}};\n        System.out.println(grid.length + grid[0].length);\n    }\n}",
+    "options": [
+      "2",
+      "3",
+      "5",
+      "4"
+    ],
+    "answer": 2,
+    "explanation": "The outer array has two rows and the first row has length three; 2 + 3 is 5."
+  },
+  {
+    "id": "deep-array-16",
+    "subtopic": "Arrays",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Fill {\n    public static void main(String[] args) {\n        int[] a = new int[3];\n        java.util.Arrays.fill(a, 7);\n        System.out.println(a[0] + a[2]);\n    }\n}",
+    "options": [
+      "7",
+      "14",
+      "21",
+      "0"
+    ],
+    "answer": 1,
+    "explanation": "Arrays.fill assigns 7 to every element, so the selected elements sum to 14."
+  },
+  {
+    "id": "deep-array-17",
+    "subtopic": "Arrays",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class CopyGrow {\n    public static void main(String[] args) {\n        int[] a = {4, 6};\n        int[] b = java.util.Arrays.copyOf(a, 4);\n        System.out.println(b[2]);\n    }\n}",
+    "options": [
+      "0",
+      "4",
+      "6",
+      "ArrayIndexOutOfBoundsException"
+    ],
+    "answer": 0,
+    "explanation": "copyOf pads new positions with the default value of the element type, which is zero for int."
+  },
+  {
+    "id": "deep-array-18",
+    "subtopic": "Arrays",
+    "question": "What does `Arrays.deepEquals` add over `Arrays.equals` for nested arrays?",
+    "options": [
+      "It compares nested array contents recursively",
+      "It sorts nested arrays",
+      "It compares only outer lengths",
+      "It converts arrays to lists"
+    ],
+    "answer": 0,
+    "explanation": "deepEquals recursively compares nested array elements, while equals treats nested arrays as elements and compares their references."
+  },
+  {
+    "id": "pdf-array-001",
+    "subtopic": "Arrays",
+    "question": "What is printed after sorting the array?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class SortValues {\n    public static void main(String[] args) {\n        int[] values = {8, 3, 5};\n        java.util.Arrays.sort(values);\n        System.out.println(values[0] + values[2]);\n    }\n}",
+    "options": [
+      "8",
+      "11",
+      "13",
+      "16"
+    ],
+    "answer": 1,
+    "explanation": "After ascending sort the array is {3, 5, 8}; the first and last values sum to 11.",
+    "source": "Kodewala Academy Core Java & Advance Java notes, PDF page 79",
+    "sourceLabel": "From PDF notes · page 79"
+  },
+  {
+    "id": "pdf-array-002",
+    "subtopic": "Arrays",
+    "question": "Which option reverses this array in place?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "int[] values = {1, 2, 3, 4};\n// choose the loop body",
+    "options": [
+      "for (int i = 0; i < values.length / 2; i++) { int t = values[i]; values[i] = values[values.length - 1 - i]; values[values.length - 1 - i] = t; }",
+      "java.util.Arrays.sort(values);",
+      "values = values.clone();",
+      "values[0] = values[values.length];"
+    ],
+    "answer": 0,
+    "explanation": "Swap symmetric elements only through the midpoint to reverse the array in place.",
+    "source": "Kodewala Academy Core Java & Advance Java notes, PDF page 79",
+    "sourceLabel": "From PDF notes · page 79"
+  },
+  {
+    "id": "pdf-array-003",
+    "subtopic": "Arrays",
+    "question": "Which distinction between an array and an `ArrayList` is correct?",
+    "options": [
+      "An array has a fixed length; an ArrayList can change size",
+      "An ArrayList cannot store objects",
+      "An array uses a `size()` method",
+      "An ArrayList can store primitive values directly"
+    ],
+    "answer": 0,
+    "explanation": "Arrays have fixed length; ArrayList is a resizable collection of reference values (primitives use wrapper types).",
+    "source": "Kodewala Academy Core Java & Advance Java notes, PDF page 79",
+    "sourceLabel": "From PDF notes · page 79"
+  }
+]
