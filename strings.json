@@ -1,0 +1,424 @@
+[
+  {
+    "id": "strings-001",
+    "question": "Are Java String objects mutable?",
+    "options": [
+      "Yes",
+      "No",
+      "Only static strings",
+      "Only local strings"
+    ],
+    "answer": 1,
+    "explanation": "String is immutable. Operations that appear to modify a String return a new String instead."
+  },
+  {
+    "id": "strings-002",
+    "question": "Which method compares String contents?",
+    "options": [
+      "==",
+      "equals()",
+      "compareReference()",
+      "same()"
+    ],
+    "answer": 1,
+    "explanation": "equals() compares String contents. == compares references when used with objects."
+  },
+  {
+    "id": "strings-003",
+    "question": "What does text.length() return for a String?",
+    "options": [
+      "The last index",
+      "The number of characters represented by its UTF-16 code units",
+      "The number of words",
+      "The memory size in bytes"
+    ],
+    "answer": 1,
+    "explanation": "String.length() returns the number of UTF-16 code units, not necessarily the number of Unicode code points."
+  },
+  {
+    "id": "strings-004",
+    "question": "Which class is designed for building a mutable string?",
+    "options": [
+      "String",
+      "StringBuilder",
+      "Character",
+      "Arrays"
+    ],
+    "answer": 1,
+    "explanation": "StringBuilder allows you to append and modify a character sequence without creating a new String for each operation."
+  },
+  {
+    "id": "strings-005",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class StringPool {\n    public static void main(String[] args) {\n        String a = \"java\";\n        String b = \"java\";\n        System.out.println(a == b);\n    }\n}",
+    "options": [
+      "true",
+      "false",
+      "java",
+      "Compilation error"
+    ],
+    "answer": 0,
+    "explanation": "Identical string literals are interned, so these references point to the same pooled String object."
+  },
+  {
+    "id": "strings-006",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class StringEquals {\n    public static void main(String[] args) {\n        String a = new String(\"java\");\n        String b = new String(\"java\");\n        System.out.println(a == b);\n    }\n}",
+    "options": [
+      "true",
+      "false",
+      "java",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "Each new expression creates a distinct String object, so == compares different references."
+  },
+  {
+    "id": "strings-007",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class StringConcat {\n    public static void main(String[] args) {\n        String value = \"Java\";\n        value += \"Prep\";\n        System.out.println(value);\n    }\n}",
+    "options": [
+      "Java",
+      "Prep",
+      "JavaPrep",
+      "null"
+    ],
+    "answer": 2,
+    "explanation": "The concatenation creates a new String and the assignment updates value to refer to it."
+  },
+  {
+    "id": "strings-008",
+    "question": "What does `substring(2, 5)` include?",
+    "options": [
+      "Indexes 2 through 5",
+      "Indexes 2, 3, and 4",
+      "Indexes 1 through 5",
+      "Only index 5"
+    ],
+    "answer": 1,
+    "explanation": "The start index is inclusive and the end index is exclusive."
+  },
+  {
+    "id": "strings-009",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class StringLength {\n    public static void main(String[] args) {\n        System.out.println(\"A\\uD83D\\uDE00\".length());\n    }\n}",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "String.length counts UTF-16 code units; the supplementary emoji uses a surrogate pair, so the length is 2."
+  },
+  {
+    "id": "strings-010",
+    "question": "Which method compares two strings without considering letter case?",
+    "options": [
+      "equalsIgnoreCase()",
+      "sameText()",
+      "compareReference()",
+      "ignoreCase()"
+    ],
+    "answer": 0,
+    "explanation": "String.equalsIgnoreCase compares contents while ignoring case differences."
+  },
+  {
+    "id": "strings-011",
+    "question": "What does `indexOf` return when the requested text is absent?",
+    "options": [
+      "0",
+      "The string length",
+      "-1",
+      "null"
+    ],
+    "answer": 2,
+    "explanation": "String.indexOf returns -1 when it cannot find the requested character or substring."
+  },
+  {
+    "id": "strings-012",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class StripText {\n    public static void main(String[] args) {\n        System.out.println(\"  code  \".trim().length());\n    }\n}",
+    "options": [
+      "4",
+      "6",
+      "8",
+      "2"
+    ],
+    "answer": 0,
+    "explanation": "trim removes the two leading and two trailing spaces, leaving four characters."
+  },
+  {
+    "id": "strings-013",
+    "question": "What does String.split(\"\\\\.\") use as its delimiter?",
+    "options": [
+      "Any character",
+      "A literal period",
+      "A comma",
+      "Whitespace"
+    ],
+    "answer": 1,
+    "explanation": "split accepts a regular expression; an escaped dot matches a literal period."
+  },
+  {
+    "id": "strings-014",
+    "question": "What is the result of `String.join(\"-\", \"a\", \"b\", \"c\")`?",
+    "options": [
+      "abc",
+      "a-b-c",
+      "a, b, c",
+      "-abc"
+    ],
+    "answer": 1,
+    "explanation": "String.join places the supplied delimiter between each element."
+  },
+  {
+    "id": "strings-015",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class ReplaceText {\n    public static void main(String[] args) {\n        System.out.println(\"banana\".replace('a', 'o'));\n    }\n}",
+    "options": [
+      "banana",
+      "bonono",
+      "banono",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "replace(char, char) replaces every matching character, producing bonono."
+  },
+  {
+    "id": "strings-016",
+    "question": "Which statement about `String.valueOf(42)` is correct?",
+    "options": [
+      "It returns the String \"42\"",
+      "It returns a char array",
+      "It returns null",
+      "It changes the integer value"
+    ],
+    "answer": 0,
+    "explanation": "String.valueOf converts the primitive value to its textual representation."
+  },
+  {
+    "id": "strings-017",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class BuilderChain {\n    public static void main(String[] args) {\n        StringBuilder b = new StringBuilder(\"J\");\n        b.append(\"ava\").append(\"!\");\n        System.out.println(b);\n    }\n}",
+    "options": [
+      "J",
+      "Java",
+      "Java!",
+      "!Java"
+    ],
+    "answer": 2,
+    "explanation": "Each append mutates and returns the same StringBuilder, resulting in Java!."
+  },
+  {
+    "id": "strings-018",
+    "question": "What does `String.intern()` do?",
+    "options": [
+      "Returns the canonical pooled representation of the string",
+      "Makes the String mutable",
+      "Sorts the characters",
+      "Converts the string to lowercase"
+    ],
+    "answer": 0,
+    "explanation": "intern returns the canonical representation from the string pool, adding it when necessary."
+  },
+  {
+    "id": "strings-019",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class EmptyText {\n    public static void main(String[] args) {\n        System.out.println(\"\".isEmpty());\n    }\n}",
+    "options": [
+      "true",
+      "false",
+      "null",
+      "Compilation error"
+    ],
+    "answer": 0,
+    "explanation": "isEmpty returns true when the sequence length is zero."
+  },
+  {
+    "id": "strings-020",
+    "question": "What is the key distinction between `isEmpty()` and `isBlank()`?",
+    "options": [
+      "isBlank also returns true for whitespace-only text",
+      "isEmpty ignores null but isBlank throws",
+      "isBlank checks only the first character",
+      "They are identical for all strings"
+    ],
+    "answer": 0,
+    "explanation": "isEmpty checks for length zero; isBlank also treats a sequence of whitespace characters as blank."
+  },
+  {
+    "id": "deep-string-01",
+    "subtopic": "Common String methods",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Slice {\n    public static void main(String[] args) {\n        System.out.println(\"backend\".substring(0, 4));\n    }\n}",
+    "options": [
+      "back",
+      "backe",
+      "backend",
+      "IndexOutOfBoundsException"
+    ],
+    "answer": 0,
+    "explanation": "substring includes its start index and excludes its end index."
+  },
+  {
+    "id": "deep-string-02",
+    "subtopic": "Common String methods",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Split {\n    public static void main(String[] args) {\n        String[] parts = \"a,b,c\".split(\",\");\n        System.out.println(parts.length);\n    }\n}",
+    "options": [
+      "2",
+      "3",
+      "5",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "Splitting this string on commas produces three elements."
+  },
+  {
+    "id": "deep-string-03",
+    "subtopic": "Common String methods",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class IgnoreCase {\n    public static void main(String[] args) {\n        System.out.println(\"Java\".equalsIgnoreCase(\"JAVA\"));\n    }\n}",
+    "options": [
+      "true",
+      "false",
+      "JAVA",
+      "Compilation error"
+    ],
+    "answer": 0,
+    "explanation": "equalsIgnoreCase compares text without distinguishing letter case."
+  },
+  {
+    "id": "deep-string-04",
+    "subtopic": "Common String methods",
+    "question": "What does `String.indexOf(\"x\")` return when x is absent?",
+    "options": [
+      "0",
+      "-1",
+      "null",
+      "An exception"
+    ],
+    "answer": 1,
+    "explanation": "indexOf returns -1 when no matching character or substring is found."
+  },
+  {
+    "id": "deep-string-05",
+    "subtopic": "Common String methods",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Strip {\n    public static void main(String[] args) {\n        String value = \"  Java  \".strip();\n        System.out.println(value.length());\n    }\n}",
+    "options": [
+      "5",
+      "4",
+      "7",
+      "9"
+    ],
+    "answer": 1,
+    "explanation": "strip removes the two leading and two trailing spaces, leaving the four letters in Java."
+  },
+  {
+    "id": "deep-string-06",
+    "subtopic": "StringBuilder",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Chain {\n    public static void main(String[] args) {\n        StringBuilder b = new StringBuilder(\"ab\");\n        b.insert(1, \"X\").append(\"Y\");\n        System.out.println(b);\n    }\n}",
+    "options": [
+      "abXY",
+      "aXbY",
+      "XabY",
+      "aXYb"
+    ],
+    "answer": 1,
+    "explanation": "insert places X at index 1, then append adds Y to the end."
+  },
+  {
+    "id": "deep-string-07",
+    "subtopic": "StringBuilder",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class DeleteRange {\n    public static void main(String[] args) {\n        StringBuilder b = new StringBuilder(\"abcdef\");\n        b.delete(2, 5);\n        System.out.println(b);\n    }\n}",
+    "options": [
+      "abf",
+      "abef",
+      "cde",
+      "abcdef"
+    ],
+    "answer": 0,
+    "explanation": "delete removes characters from start inclusive to end exclusive: c, d, and e."
+  },
+  {
+    "id": "deep-string-08",
+    "subtopic": "StringBuffer and StringBuilder",
+    "question": "Which statement about `StringBuffer` is accurate?",
+    "options": [
+      "Its methods are synchronized",
+      "It is immutable",
+      "It is a primitive type",
+      "It cannot append text"
+    ],
+    "answer": 0,
+    "explanation": "StringBuffer synchronizes its methods; this does not make compound multi-call sequences automatically atomic."
+  },
+  {
+    "id": "pdf-string-001",
+    "subtopic": "Strings",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Pool {\n    public static void main(String[] args) {\n        String a = new String(\"Java\");\n        String b = a.intern();\n        System.out.println(a == b);\n    }\n}",
+    "options": [
+      "true",
+      "false",
+      "Java",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "intern returns the canonical pooled String reference, which is distinct from the object created with new here.",
+    "source": "Kodewala Academy Core Java & Advance Java notes, PDF page 89",
+    "sourceLabel": "From PDF notes · page 89"
+  },
+  {
+    "id": "pdf-string-002",
+    "subtopic": "Strings",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Compare {\n    public static void main(String[] args) {\n        String a = new String(\"Java\");\n        String b = new String(\"Java\");\n        System.out.println(a.equals(b) + \" \" + (a == b));\n    }\n}",
+    "options": [
+      "true true",
+      "false false",
+      "true false",
+      "false true"
+    ],
+    "answer": 2,
+    "explanation": "equals compares contents, while == compares the two distinct object references.",
+    "source": "Kodewala Academy Core Java & Advance Java notes, PDF page 89",
+    "sourceLabel": "From PDF notes · page 89"
+  }
+]

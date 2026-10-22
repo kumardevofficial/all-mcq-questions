@@ -1,0 +1,765 @@
+[
+  {
+    "id": "arrays-strings-01",
+    "subtopic": "Array declaration",
+    "question": "Which statement about a Java array is correct?",
+    "options": [
+      "Its size can grow automatically",
+      "Its length is fixed after creation",
+      "It can store values of unrelated primitive types",
+      "Its indexes start at 1"
+    ],
+    "answer": 1,
+    "explanation": "An array has a fixed length after it is created and uses zero-based indexes."
+  },
+  {
+    "id": "arrays-strings-02",
+    "subtopic": "Array traversal",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class ArrayWalk {\n    public static void main(String[] args) {\n        int[] values = {2, 4, 6};\n        System.out.println(values[0] + values[values.length - 1]);\n    }\n}",
+    "options": [
+      "6",
+      "8",
+      "10",
+      "ArrayIndexOutOfBoundsException"
+    ],
+    "answer": 1,
+    "explanation": "The first and last elements are 2 and 6, whose sum is 8."
+  },
+  {
+    "id": "arrays-strings-03",
+    "subtopic": "Jagged arrays",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Jagged {\n    public static void main(String[] args) {\n        int[][] grid = {{1, 2}, {3}};\n        System.out.println(grid[1].length);\n    }\n}",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "Compilation error"
+    ],
+    "answer": 0,
+    "explanation": "A two-dimensional Java array is an array of arrays, so rows can have different lengths."
+  },
+  {
+    "id": "arrays-strings-04",
+    "subtopic": "String immutability",
+    "question": "What does String immutability mean?",
+    "options": [
+      "A String variable cannot be reassigned",
+      "A String object's contents cannot be changed after creation",
+      "Strings cannot be compared",
+      "Strings are primitive values"
+    ],
+    "answer": 1,
+    "explanation": "Operations that appear to modify a String produce another String rather than changing the original object."
+  },
+  {
+    "id": "arrays-strings-05",
+    "subtopic": "String comparison",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class CompareText {\n    public static void main(String[] args) {\n        String a = new String(\"java\");\n        String b = new String(\"java\");\n        System.out.println(a.equals(b) + \" \" + (a == b));\n    }\n}",
+    "options": [
+      "true true",
+      "false false",
+      "true false",
+      "false true"
+    ],
+    "answer": 2,
+    "explanation": "equals compares String contents; == compares references, which are different here."
+  },
+  {
+    "id": "arrays-strings-06",
+    "subtopic": "StringBuilder",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class BuildText {\n    public static void main(String[] args) {\n        StringBuilder text = new StringBuilder(\"Java\");\n        text.append(\"Prep\");\n        System.out.println(text);\n    }\n}",
+    "options": [
+      "Java",
+      "Prep",
+      "JavaPrep",
+      "Compilation error"
+    ],
+    "answer": 2,
+    "explanation": "append mutates the StringBuilder and adds Prep to its existing contents."
+  },
+  {
+    "id": "arrays-strings-07",
+    "subtopic": "StringBuffer and StringBuilder",
+    "question": "What is the usual distinction between StringBuilder and StringBuffer?",
+    "options": [
+      "StringBuilder is synchronized by default; StringBuffer is not",
+      "StringBuffer methods are synchronized; StringBuilder is generally preferred for single-threaded use",
+      "They are immutable",
+      "StringBuilder stores only one character"
+    ],
+    "answer": 1,
+    "explanation": "StringBuffer synchronizes its methods; StringBuilder avoids that synchronization overhead in ordinary single-threaded use."
+  },
+  {
+    "id": "arrays-strings-08",
+    "subtopic": "Array references",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class ArrayAlias {\n    public static void main(String[] args) {\n        int[] first = {1, 2};\n        int[] second = first;\n        second[0] = 9;\n        System.out.println(first[0]);\n    }\n}",
+    "options": [
+      "1",
+      "2",
+      "9",
+      "Compilation error"
+    ],
+    "answer": 2,
+    "explanation": "Both variables refer to the same array object, so the change is visible through first."
+  },
+  {
+    "id": "arrays-strings-09",
+    "subtopic": "Binary search",
+    "question": "What precondition should be met before using Arrays.binarySearch on an array?",
+    "options": [
+      "The array should be sorted according to the searched ordering",
+      "The array must contain only strings",
+      "The array length must be even",
+      "The array must be reversed"
+    ],
+    "answer": 0,
+    "explanation": "Binary search assumes the array is sorted according to the relevant ordering."
+  },
+  {
+    "id": "arrays-strings-10",
+    "subtopic": "Enhanced for loop",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class EnhancedFor {\n    public static void main(String[] args) {\n        int[] numbers = {1, 2, 3};\n        for (int number : numbers) number *= 2;\n        System.out.println(numbers[0]);\n    }\n}",
+    "options": [
+      "1",
+      "2",
+      "6",
+      "Compilation error"
+    ],
+    "answer": 0,
+    "explanation": "The loop variable receives a copy of each primitive element; assigning to it does not update the array."
+  },
+  {
+    "id": "arrays-strings-11",
+    "subtopic": "StringBuilder",
+    "question": "When is StringBuilder usually preferable to repeated String concatenation in a loop?",
+    "options": [
+      "When many incremental changes are needed",
+      "When the text must be immutable",
+      "When no characters are stored",
+      "Only when using multiple threads"
+    ],
+    "answer": 0,
+    "explanation": "StringBuilder is mutable and avoids creating a new String for each intermediate concatenation."
+  },
+  {
+    "id": "arrays-strings-12",
+    "subtopic": "String substring",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class SliceText {\n    public static void main(String[] args) {\n        System.out.println(\"backend\".substring(3, 7));\n    }\n}",
+    "options": [
+      "back",
+      "kend",
+      "end",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "substring includes the start index and excludes the end index, selecting positions 3 through 6."
+  },
+  {
+    "id": "arrays-strings-13",
+    "subtopic": "Common String methods",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Normalize {\n    public static void main(String[] args) {\n        String input = \"  Java  \";\n        System.out.println(input.trim().toUpperCase());\n    }\n}",
+    "options": [
+      "  JAVA  ",
+      "JAVA",
+      "java",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "trim removes leading and trailing whitespace; toUpperCase returns an uppercase String."
+  },
+  {
+    "id": "exp-arrays-strings-14",
+    "subtopic": "Array declaration",
+    "question": "What does an array's `length` represent?",
+    "options": [
+      "The highest valid index",
+      "The number of elements allocated",
+      "The number of non-zero elements",
+      "The current capacity, which grows automatically"
+    ],
+    "answer": 1,
+    "explanation": "length is the fixed number of elements in the array; the final valid index is length - 1."
+  },
+  {
+    "id": "exp-arrays-strings-15",
+    "subtopic": "Array traversal",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class ReverseRead {\n    public static void main(String[] args) {\n        int[] values = {3, 5, 8};\n        for (int i = values.length - 1; i >= 0; i--) {\n            System.out.print(values[i]);\n        }\n    }\n}",
+    "options": [
+      "358",
+      "853",
+      "8 5 3",
+      "ArrayIndexOutOfBoundsException"
+    ],
+    "answer": 1,
+    "explanation": "The index begins at the final element and decreases to zero, printing 853."
+  },
+  {
+    "id": "exp-arrays-strings-16",
+    "subtopic": "String immutability",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class ImmutableText {\n    public static void main(String[] args) {\n        String text = \"Java\";\n        text.concat(\"Prep\");\n        System.out.println(text);\n    }\n}",
+    "options": [
+      "JavaPrep",
+      "Java",
+      "Prep",
+      "null"
+    ],
+    "answer": 1,
+    "explanation": "concat returns a new String; because the result is not assigned, text still refers to Java."
+  },
+  {
+    "id": "exp-arrays-strings-17",
+    "subtopic": "String comparison",
+    "question": "Which operation checks whether two String references point to equal character sequences?",
+    "options": [
+      "`==`",
+      "`equals`",
+      "`hashCode`",
+      "`compareTo` always returns a boolean"
+    ],
+    "answer": 1,
+    "explanation": "String.equals compares character content; == compares object references."
+  },
+  {
+    "id": "exp-arrays-strings-18",
+    "subtopic": "StringBuilder",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class InsertText {\n    public static void main(String[] args) {\n        StringBuilder text = new StringBuilder(\"Jva\");\n        text.insert(1, \"a\");\n        System.out.println(text);\n    }\n}",
+    "options": [
+      "Jvaa",
+      "Java",
+      "aJva",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "insert places the character at index 1, producing Java."
+  },
+  {
+    "id": "exp-arrays-strings-19",
+    "subtopic": "StringBuffer and StringBuilder",
+    "question": "Which statement is accurate?",
+    "options": [
+      "StringBuilder is synchronized and immutable",
+      "StringBuffer is mutable and synchronizes its methods",
+      "StringBuffer is a primitive type",
+      "StringBuilder cannot append numbers"
+    ],
+    "answer": 1,
+    "explanation": "Both are mutable character sequences; StringBuffer synchronizes its methods while StringBuilder generally does not."
+  },
+  {
+    "id": "exp-arrays-strings-20",
+    "subtopic": "Common String methods",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class NormalizeText {\n    public static void main(String[] args) {\n        String value = \" java prep \";\n        System.out.println(value.strip().substring(0, 4));\n    }\n}",
+    "options": [
+      "java",
+      "java prep",
+      " prep",
+      "Compilation error"
+    ],
+    "answer": 0,
+    "explanation": "strip removes surrounding whitespace. substring(0, 4) returns the first four characters: java."
+  },
+  {
+    "id": "chapter-common-string-methods-01",
+    "subtopic": "Common String methods",
+    "question": "Which statement about Common String methods is correct?",
+    "options": [
+      "String.length returns the number of UTF-16 code units.",
+      "String.length returns the number of bytes.",
+      "indexOf returns zero when text is absent.",
+      "substring includes its end index."
+    ],
+    "answer": 0,
+    "explanation": "String.length returns the number of UTF-16 code units."
+  },
+  {
+    "id": "chapter-common-string-methods-02",
+    "subtopic": "Common String methods",
+    "question": "Choose the accurate Java interview answer about Common String methods.",
+    "options": [
+      "String.length returns the number of bytes.",
+      "charAt uses a zero-based index.",
+      "indexOf returns zero when text is absent.",
+      "substring includes its end index."
+    ],
+    "answer": 1,
+    "explanation": "charAt uses a zero-based index."
+  },
+  {
+    "id": "chapter-common-string-methods-03",
+    "subtopic": "Common String methods",
+    "question": "A developer is asked about Common String methods. Which response is correct?",
+    "options": [
+      "String.length returns the number of bytes.",
+      "indexOf returns zero when text is absent.",
+      "indexOf returns -1 when the requested content is not found.",
+      "substring includes its end index."
+    ],
+    "answer": 2,
+    "explanation": "indexOf returns -1 when the requested content is not found."
+  },
+  {
+    "id": "chapter-common-string-methods-04",
+    "subtopic": "Common String methods",
+    "question": "Select the true statement concerning Common String methods.",
+    "options": [
+      "String.length returns the number of bytes.",
+      "indexOf returns zero when text is absent.",
+      "substring includes its end index.",
+      "substring includes its start index and excludes its end index."
+    ],
+    "answer": 3,
+    "explanation": "substring includes its start index and excludes its end index."
+  },
+  {
+    "id": "chapter-common-string-methods-05",
+    "subtopic": "Common String methods",
+    "question": "Which statement about Common String methods is correct?",
+    "options": [
+      "trim removes leading and trailing characters with code points at or below U+0020.",
+      "String.length returns the number of bytes.",
+      "indexOf returns zero when text is absent.",
+      "substring includes its end index."
+    ],
+    "answer": 0,
+    "explanation": "trim removes leading and trailing characters with code points at or below U+0020."
+  },
+  {
+    "id": "chapter-common-string-methods-06",
+    "subtopic": "Common String methods",
+    "question": "Choose the accurate Java interview answer about Common String methods.",
+    "options": [
+      "String.length returns the number of bytes.",
+      "strip uses Unicode-aware whitespace rules in modern Java.",
+      "indexOf returns zero when text is absent.",
+      "substring includes its end index."
+    ],
+    "answer": 1,
+    "explanation": "strip uses Unicode-aware whitespace rules in modern Java."
+  },
+  {
+    "id": "chapter-common-string-methods-07",
+    "subtopic": "Common String methods",
+    "question": "A developer is asked about Common String methods. Which response is correct?",
+    "options": [
+      "String.length returns the number of bytes.",
+      "indexOf returns zero when text is absent.",
+      "String.replace can replace matching characters or literal character sequences.",
+      "substring includes its end index."
+    ],
+    "answer": 2,
+    "explanation": "String.replace can replace matching characters or literal character sequences."
+  },
+  {
+    "id": "chapter-common-string-methods-08",
+    "subtopic": "Common String methods",
+    "question": "Select the true statement concerning Common String methods.",
+    "options": [
+      "String.length returns the number of bytes.",
+      "indexOf returns zero when text is absent.",
+      "substring includes its end index.",
+      "split accepts a regular expression as its delimiter."
+    ],
+    "answer": 3,
+    "explanation": "split accepts a regular expression as its delimiter."
+  },
+  {
+    "id": "chapter-stringbuffer-and-stringbuilder-01",
+    "subtopic": "StringBuffer and StringBuilder",
+    "question": "Which statement about StringBuffer and StringBuilder is correct?",
+    "options": [
+      "StringBuilder is a mutable character sequence.",
+      "StringBuilder is immutable.",
+      "StringBuffer is a primitive type.",
+      "append always creates a new StringBuffer object."
+    ],
+    "answer": 0,
+    "explanation": "StringBuilder is a mutable character sequence."
+  },
+  {
+    "id": "chapter-stringbuffer-and-stringbuilder-02",
+    "subtopic": "StringBuffer and StringBuilder",
+    "question": "Choose the accurate Java interview answer about StringBuffer and StringBuilder.",
+    "options": [
+      "StringBuilder is immutable.",
+      "StringBuffer synchronizes its methods.",
+      "StringBuffer is a primitive type.",
+      "append always creates a new StringBuffer object."
+    ],
+    "answer": 1,
+    "explanation": "StringBuffer synchronizes its methods."
+  },
+  {
+    "id": "chapter-stringbuffer-and-stringbuilder-03",
+    "subtopic": "StringBuffer and StringBuilder",
+    "question": "A developer is asked about StringBuffer and StringBuilder. Which response is correct?",
+    "options": [
+      "StringBuilder is immutable.",
+      "StringBuffer is a primitive type.",
+      "StringBuilder is generally preferred when synchronization is unnecessary.",
+      "append always creates a new StringBuffer object."
+    ],
+    "answer": 2,
+    "explanation": "StringBuilder is generally preferred when synchronization is unnecessary."
+  },
+  {
+    "id": "chapter-stringbuffer-and-stringbuilder-04",
+    "subtopic": "StringBuffer and StringBuilder",
+    "question": "Select the true statement concerning StringBuffer and StringBuilder.",
+    "options": [
+      "StringBuilder is immutable.",
+      "StringBuffer is a primitive type.",
+      "append always creates a new StringBuffer object.",
+      "Both classes provide append operations."
+    ],
+    "answer": 3,
+    "explanation": "Both classes provide append operations."
+  },
+  {
+    "id": "chapter-stringbuffer-and-stringbuilder-05",
+    "subtopic": "StringBuffer and StringBuilder",
+    "question": "Which statement about StringBuffer and StringBuilder is correct?",
+    "options": [
+      "insert can add content at a specified position.",
+      "StringBuilder is immutable.",
+      "StringBuffer is a primitive type.",
+      "append always creates a new StringBuffer object."
+    ],
+    "answer": 0,
+    "explanation": "insert can add content at a specified position."
+  },
+  {
+    "id": "chapter-stringbuffer-and-stringbuilder-06",
+    "subtopic": "StringBuffer and StringBuilder",
+    "question": "Choose the accurate Java interview answer about StringBuffer and StringBuilder.",
+    "options": [
+      "StringBuilder is immutable.",
+      "delete can remove a range of characters.",
+      "StringBuffer is a primitive type.",
+      "append always creates a new StringBuffer object."
+    ],
+    "answer": 1,
+    "explanation": "delete can remove a range of characters."
+  },
+  {
+    "id": "chapter-stringbuffer-and-stringbuilder-07",
+    "subtopic": "StringBuffer and StringBuilder",
+    "question": "A developer is asked about StringBuffer and StringBuilder. Which response is correct?",
+    "options": [
+      "StringBuilder is immutable.",
+      "StringBuffer is a primitive type.",
+      "toString creates a String representation of the current contents.",
+      "append always creates a new StringBuffer object."
+    ],
+    "answer": 2,
+    "explanation": "toString creates a String representation of the current contents."
+  },
+  {
+    "id": "chapter-stringbuffer-and-stringbuilder-08",
+    "subtopic": "StringBuffer and StringBuilder",
+    "question": "Select the true statement concerning StringBuffer and StringBuilder.",
+    "options": [
+      "StringBuilder is immutable.",
+      "StringBuffer is a primitive type.",
+      "append always creates a new StringBuffer object.",
+      "Their capacity can grow as characters are appended."
+    ],
+    "answer": 3,
+    "explanation": "Their capacity can grow as characters are appended."
+  },
+  {
+    "id": "chapter-stringbuilder-01",
+    "subtopic": "StringBuilder",
+    "question": "Which statement about StringBuilder is correct?",
+    "options": [
+      "StringBuilder.append mutates the builder and returns the same builder for chaining.",
+      "StringBuilder cannot append primitive values.",
+      "StringBuilder operations never mutate its contents.",
+      "StringBuilder is thread-safe by synchronizing every method."
+    ],
+    "answer": 0,
+    "explanation": "StringBuilder.append mutates the builder and returns the same builder for chaining."
+  },
+  {
+    "id": "chapter-stringbuilder-02",
+    "subtopic": "StringBuilder",
+    "question": "Choose the accurate Java interview answer about StringBuilder.",
+    "options": [
+      "StringBuilder cannot append primitive values.",
+      "StringBuilder is useful for repeated string construction in a single thread.",
+      "StringBuilder operations never mutate its contents.",
+      "StringBuilder is thread-safe by synchronizing every method."
+    ],
+    "answer": 1,
+    "explanation": "StringBuilder is useful for repeated string construction in a single thread."
+  },
+  {
+    "id": "chapter-stringbuilder-03",
+    "subtopic": "StringBuilder",
+    "question": "A developer is asked about StringBuilder. Which response is correct?",
+    "options": [
+      "StringBuilder cannot append primitive values.",
+      "StringBuilder operations never mutate its contents.",
+      "StringBuilder.insert adds content at a chosen index.",
+      "StringBuilder is thread-safe by synchronizing every method."
+    ],
+    "answer": 2,
+    "explanation": "StringBuilder.insert adds content at a chosen index."
+  },
+  {
+    "id": "chapter-stringbuilder-04",
+    "subtopic": "StringBuilder",
+    "question": "Select the true statement concerning StringBuilder.",
+    "options": [
+      "StringBuilder cannot append primitive values.",
+      "StringBuilder operations never mutate its contents.",
+      "StringBuilder is thread-safe by synchronizing every method.",
+      "StringBuilder.delete removes a range whose end index is exclusive."
+    ],
+    "answer": 3,
+    "explanation": "StringBuilder.delete removes a range whose end index is exclusive."
+  },
+  {
+    "id": "chapter-stringbuilder-05",
+    "subtopic": "StringBuilder",
+    "question": "Which statement about StringBuilder is correct?",
+    "options": [
+      "StringBuilder.reverse reverses the sequence in place.",
+      "StringBuilder cannot append primitive values.",
+      "StringBuilder operations never mutate its contents.",
+      "StringBuilder is thread-safe by synchronizing every method."
+    ],
+    "answer": 0,
+    "explanation": "StringBuilder.reverse reverses the sequence in place."
+  },
+  {
+    "id": "chapter-stringbuilder-06",
+    "subtopic": "StringBuilder",
+    "question": "Choose the accurate Java interview answer about StringBuilder.",
+    "options": [
+      "StringBuilder cannot append primitive values.",
+      "StringBuilder.toString returns an immutable String snapshot.",
+      "StringBuilder operations never mutate its contents.",
+      "StringBuilder is thread-safe by synchronizing every method."
+    ],
+    "answer": 1,
+    "explanation": "StringBuilder.toString returns an immutable String snapshot."
+  },
+  {
+    "id": "chapter-stringbuilder-07",
+    "subtopic": "StringBuilder",
+    "question": "A developer is asked about StringBuilder. Which response is correct?",
+    "options": [
+      "StringBuilder cannot append primitive values.",
+      "StringBuilder operations never mutate its contents.",
+      "A builder's length reports the number of characters currently stored as UTF-16 code units.",
+      "StringBuilder is thread-safe by synchronizing every method."
+    ],
+    "answer": 2,
+    "explanation": "A builder's length reports the number of characters currently stored as UTF-16 code units."
+  },
+  {
+    "id": "chapter-stringbuilder-08",
+    "subtopic": "StringBuilder",
+    "question": "Select the true statement concerning StringBuilder.",
+    "options": [
+      "StringBuilder cannot append primitive values.",
+      "StringBuilder operations never mutate its contents.",
+      "StringBuilder is thread-safe by synchronizing every method.",
+      "StringBuilder has a mutable capacity distinct from its current length."
+    ],
+    "answer": 3,
+    "explanation": "StringBuilder has a mutable capacity distinct from its current length."
+  },
+  {
+    "id": "deep-string-01",
+    "subtopic": "Common String methods",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Slice {\n    public static void main(String[] args) {\n        System.out.println(\"backend\".substring(0, 4));\n    }\n}",
+    "options": [
+      "back",
+      "backe",
+      "backend",
+      "IndexOutOfBoundsException"
+    ],
+    "answer": 0,
+    "explanation": "substring includes its start index and excludes its end index."
+  },
+  {
+    "id": "deep-string-02",
+    "subtopic": "Common String methods",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Split {\n    public static void main(String[] args) {\n        String[] parts = \"a,b,c\".split(\",\");\n        System.out.println(parts.length);\n    }\n}",
+    "options": [
+      "2",
+      "3",
+      "5",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "Splitting this string on commas produces three elements."
+  },
+  {
+    "id": "deep-string-03",
+    "subtopic": "Common String methods",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class IgnoreCase {\n    public static void main(String[] args) {\n        System.out.println(\"Java\".equalsIgnoreCase(\"JAVA\"));\n    }\n}",
+    "options": [
+      "true",
+      "false",
+      "JAVA",
+      "Compilation error"
+    ],
+    "answer": 0,
+    "explanation": "equalsIgnoreCase compares text without distinguishing letter case."
+  },
+  {
+    "id": "deep-string-04",
+    "subtopic": "Common String methods",
+    "question": "What does `String.indexOf(\"x\")` return when x is absent?",
+    "options": [
+      "0",
+      "-1",
+      "null",
+      "An exception"
+    ],
+    "answer": 1,
+    "explanation": "indexOf returns -1 when no matching character or substring is found."
+  },
+  {
+    "id": "deep-string-05",
+    "subtopic": "Common String methods",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Strip {\n    public static void main(String[] args) {\n        String value = \"  Java  \".strip();\n        System.out.println(value.length());\n    }\n}",
+    "options": [
+      "5",
+      "4",
+      "7",
+      "9"
+    ],
+    "answer": 1,
+    "explanation": "strip removes the two leading and two trailing spaces, leaving the four letters in Java."
+  },
+  {
+    "id": "deep-string-06",
+    "subtopic": "StringBuilder",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Chain {\n    public static void main(String[] args) {\n        StringBuilder b = new StringBuilder(\"ab\");\n        b.insert(1, \"X\").append(\"Y\");\n        System.out.println(b);\n    }\n}",
+    "options": [
+      "abXY",
+      "aXbY",
+      "XabY",
+      "aXYb"
+    ],
+    "answer": 1,
+    "explanation": "insert places X at index 1, then append adds Y to the end."
+  },
+  {
+    "id": "deep-string-07",
+    "subtopic": "StringBuilder",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class DeleteRange {\n    public static void main(String[] args) {\n        StringBuilder b = new StringBuilder(\"abcdef\");\n        b.delete(2, 5);\n        System.out.println(b);\n    }\n}",
+    "options": [
+      "abf",
+      "abef",
+      "cde",
+      "abcdef"
+    ],
+    "answer": 0,
+    "explanation": "delete removes characters from start inclusive to end exclusive: c, d, and e."
+  },
+  {
+    "id": "deep-string-08",
+    "subtopic": "StringBuffer and StringBuilder",
+    "question": "Which statement about `StringBuffer` is accurate?",
+    "options": [
+      "Its methods are synchronized",
+      "It is immutable",
+      "It is a primitive type",
+      "It cannot append text"
+    ],
+    "answer": 0,
+    "explanation": "StringBuffer synchronizes its methods; this does not make compound multi-call sequences automatically atomic."
+  },
+  {
+    "id": "pdf-buffer-001",
+    "subtopic": "StringBuffer and StringBuilder",
+    "question": "What happens when appending text would exceed a StringBuffer's current capacity?",
+    "options": [
+      "Its capacity grows enough to accommodate the new contents",
+      "The buffer silently drops the appended text",
+      "The buffer becomes immutable",
+      "The append always throws an exception"
+    ],
+    "answer": 0,
+    "explanation": "StringBuffer expands its capacity as needed; code should not rely on a particular growth amount.",
+    "source": "Kodewala Academy Core Java & Advance Java notes, PDF page 100",
+    "sourceLabel": "From PDF notes · page 100"
+  },
+  {
+    "id": "pdf-builder-001",
+    "subtopic": "StringBuilder",
+    "question": "What is the initial capacity of this builder?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "StringBuilder builder = new StringBuilder();\nSystem.out.println(builder.capacity());",
+    "options": [
+      "0",
+      "8",
+      "16",
+      "32"
+    ],
+    "answer": 2,
+    "explanation": "A no-argument StringBuilder starts with a capacity of 16 characters.",
+    "source": "Kodewala Academy Core Java & Advance Java notes, PDF page 102",
+    "sourceLabel": "From PDF notes · page 102"
+  }
+]

@@ -1,0 +1,1012 @@
+[
+  {
+    "id": "encapsulation-001",
+    "question": "What is the primary purpose of encapsulation in Java?",
+    "options": [
+      "To make every class abstract",
+      "To combine data and related methods while controlling access to internal state",
+      "To allow a class to extend multiple classes",
+      "To prevent objects from being created"
+    ],
+    "answer": 1,
+    "explanation": "Encapsulation groups data and behavior together and controls how callers interact with an object's state."
+  },
+  {
+    "id": "encapsulation-002",
+    "question": "Which design most directly supports data hiding?",
+    "options": [
+      "Declare all fields public",
+      "Declare fields private and expose controlled operations",
+      "Declare every method static",
+      "Make every field final without considering its type"
+    ],
+    "answer": 1,
+    "explanation": "Private fields prevent direct access from unrelated classes, while public methods can enforce rules."
+  },
+  {
+    "id": "encapsulation-003",
+    "question": "Which statement about getters and setters is correct?",
+    "options": [
+      "Every private field must have both",
+      "They are required by the Java compiler",
+      "They can provide controlled access, but not every field needs them",
+      "They automatically validate all values"
+    ],
+    "answer": 2,
+    "explanation": "Getters and setters are design choices. Expose only the operations callers actually need."
+  },
+  {
+    "id": "encapsulation-004",
+    "question": "Which field declaration best supports encapsulation for a bank account balance?",
+    "options": [
+      "public double balance;",
+      "protected double balance;",
+      "private double balance;",
+      "static double balance;"
+    ],
+    "answer": 2,
+    "explanation": "A private field prevents external code from directly changing the balance."
+  },
+  {
+    "id": "encapsulation-005",
+    "question": "A class has private int age. Which statement can directly access age from an unrelated class?",
+    "options": [
+      "person.age = 20;",
+      "System.out.println(person.age);",
+      "person.setAge(20); if a public setter exists",
+      "None of these can ever access age, even through methods"
+    ],
+    "answer": 2,
+    "explanation": "A public setter can provide controlled access. Direct field access from an unrelated class is prohibited."
+  },
+  {
+    "id": "encapsulation-006",
+    "question": "Is encapsulation achieved merely by making all fields private?",
+    "options": [
+      "Always",
+      "No; the public methods must also avoid exposing or corrupting internal state",
+      "Only when the class is abstract",
+      "Only when the class has no constructor"
+    ],
+    "answer": 1,
+    "explanation": "Private fields are a starting point. Public methods can still break encapsulation by exposing mutable internals or accepting invalid state."
+  },
+  {
+    "id": "encapsulation-007",
+    "question": "Which is the best design for a read-only customer ID assigned when an object is created?",
+    "options": [
+      "public int customerId;",
+      "private int customerId with no setter and initialization in the constructor",
+      "private int customerId with a public setter that accepts any value",
+      "protected static int customerId;"
+    ],
+    "answer": 1,
+    "explanation": "A private field initialized in the constructor and exposed, if needed, through a getter prevents ordinary callers from changing it later."
+  },
+  {
+    "id": "encapsulation-008",
+    "question": "What does a public setter that accepts every possible value risk?",
+    "options": [
+      "It makes the class automatically immutable",
+      "It can allow an object to enter an invalid state",
+      "It prevents object creation",
+      "It converts the field into a local variable"
+    ],
+    "answer": 1,
+    "explanation": "Setters should validate values whenever the class has rules about valid state."
+  },
+  {
+    "id": "encapsulation-009",
+    "question": "A class has private int marks and a public getMarks() method. What does the getter normally provide?",
+    "options": [
+      "A way to change marks",
+      "Read access to marks without allowing direct field access",
+      "A way to inherit private fields",
+      "A way to bypass all access modifiers"
+    ],
+    "answer": 1,
+    "explanation": "A getter returns a value or view of state; it does not inherently allow mutation."
+  },
+  {
+    "id": "encapsulation-010",
+    "question": "Which statement best distinguishes encapsulation from abstraction?",
+    "options": [
+      "They are exactly the same concept",
+      "Encapsulation controls access to internal state; abstraction exposes essential behavior while hiding unnecessary implementation details",
+      "Abstraction means private fields; encapsulation means abstract classes only",
+      "Encapsulation is possible only with interfaces"
+    ],
+    "answer": 1,
+    "explanation": "The concepts are related but different: encapsulation protects and controls state; abstraction focuses on what a user needs to know."
+  },
+  {
+    "id": "encapsulation-011",
+    "question": "What is the output? `class User { private int age = 20; public int getAge() { return age; } }` and `User u = new User(); System.out.println(u.getAge());`",
+    "options": [
+      "0",
+      "20",
+      "Compilation error",
+      "Runtime exception"
+    ],
+    "answer": 1,
+    "explanation": "The getter returns the initialized value 20."
+  },
+  {
+    "id": "encapsulation-012",
+    "question": "Given `class User { private int age = 20; }`, what happens when unrelated class code executes `User u = new User(); System.out.println(u.age);`?",
+    "options": [
+      "Prints 20",
+      "Prints 0",
+      "Compile-time access error",
+      "Runtime access error"
+    ],
+    "answer": 2,
+    "explanation": "A private field is accessible only within its declaring top-level class, subject to Java's nested-class rules."
+  },
+  {
+    "id": "encapsulation-013",
+    "question": "What is the output? `class Box { private int size = 5; public void setSize(int size) { size = size; } public int getSize() { return size; } }` followed by `Box b = new Box(); b.setSize(10); System.out.println(b.getSize());`",
+    "options": [
+      "5",
+      "10",
+      "0",
+      "Compilation error"
+    ],
+    "answer": 0,
+    "explanation": "The parameter shadows the field. `size = size` assigns the parameter to itself. Use `this.size = size`."
+  },
+  {
+    "id": "encapsulation-014",
+    "question": "What is the output? `class Box { private int size; public void setSize(int size) { this.size = size; } public int getSize() { return size; } }` followed by `Box b = new Box(); b.setSize(10); System.out.println(b.getSize());`",
+    "options": [
+      "0",
+      "10",
+      "Compilation error",
+      "null"
+    ],
+    "answer": 1,
+    "explanation": "`this.size` refers to the object's field, so the setter stores 10."
+  },
+  {
+    "id": "encapsulation-015",
+    "question": "What happens here? `class Account { private int balance; }` followed by `Account a = new Account(); a.balance = 500;` in an unrelated class.",
+    "options": [
+      "Balance becomes 500",
+      "Balance stays 0",
+      "Compilation fails due to private access",
+      "A NullPointerException occurs"
+    ],
+    "answer": 2,
+    "explanation": "The caller cannot assign to the private field directly."
+  },
+  {
+    "id": "encapsulation-016",
+    "question": "What is the output of this code?",
+    "codeLanguage": "java",
+    "codeFileName": "Counter.java",
+    "code": "class Counter {\n    private int count = 3;\n\n    public void setCount(int count) {\n        this.count = count;\n    }\n\n    public int getCount() {\n        return count;\n    }\n}\n\nCounter c = new Counter();\nc.setCount(c.getCount() + 2);\nSystem.out.println(c.getCount());",
+    "options": [
+      "3",
+      "2",
+      "5",
+      "Compilation error"
+    ],
+    "answer": 2,
+    "explanation": "The getter returns 3; the setter stores 3 + 2, which is 5."
+  },
+  {
+    "id": "encapsulation-017",
+    "question": "What is the output? `class Product { private int price = 100; public void setPrice(int price) { if (price > 0) this.price = price; } public int getPrice() { return price; } }` followed by `Product p = new Product(); p.setPrice(-20); System.out.println(p.getPrice());`",
+    "options": [
+      "-20",
+      "0",
+      "100",
+      "Compilation error"
+    ],
+    "answer": 2,
+    "explanation": "The validation condition is false, so the existing price remains 100."
+  },
+  {
+    "id": "encapsulation-018",
+    "question": "What is the output? `class Student { private int marks; public void setMarks(int marks) { if (marks >= 0 && marks <= 100) this.marks = marks; } public int getMarks() { return marks; } }` followed by `Student s = new Student(); s.setMarks(80); s.setMarks(150); System.out.println(s.getMarks());`",
+    "options": [
+      "150",
+      "80",
+      "0",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "80 is valid and stored. 150 is invalid and is ignored, so marks remains 80."
+  },
+  {
+    "id": "encapsulation-019",
+    "question": "What happens? `class Employee { private String name; public String getName() { return name; } }` followed by `Employee e = new Employee(); e.name = \"Ravi\";` in an unrelated class.",
+    "options": [
+      "The name is set to Ravi",
+      "The field remains null",
+      "Compilation fails due to private access",
+      "The getter automatically creates a name"
+    ],
+    "answer": 2,
+    "explanation": "The direct assignment is illegal outside the declaring class."
+  },
+  {
+    "id": "encapsulation-020",
+    "question": "What is the output? `class Employee { private String name; public void setName(String name) { this.name = name; } public String getName() { return name; } }` followed by `Employee e = new Employee(); e.setName(\"Ravi\"); System.out.println(e.getName());`",
+    "options": [
+      "null",
+      "Ravi",
+      "Employee",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "The setter assigns the supplied string to the object's field."
+  },
+  {
+    "id": "encapsulation-021",
+    "question": "Which implementation correctly validates that a person's age is non-negative?",
+    "options": [
+      "`public void setAge(int age) { this.age = age; }`",
+      "`public void setAge(int age) { if (age >= 0) this.age = age; }`",
+      "`public int age;`",
+      "`public void setAge() { age = -1; }`"
+    ],
+    "answer": 1,
+    "explanation": "The setter enforces the non-negative rule before changing the field. Throwing an exception for invalid input may be a clearer alternative."
+  },
+  {
+    "id": "encapsulation-022",
+    "question": "A bank account must never have a negative balance. Which design is strongest?",
+    "options": [
+      "Public balance field",
+      "Private balance field and a public setter accepting any double",
+      "Private balance field with deposit and withdrawal methods that validate operations",
+      "Protected balance field and no methods"
+    ],
+    "answer": 2,
+    "explanation": "Domain-specific methods can enforce transaction rules instead of allowing arbitrary balance replacement."
+  },
+  {
+    "id": "encapsulation-023",
+    "question": "Which method best models a deposit operation?",
+    "options": [
+      "`setBalance(double amount)` that replaces the balance",
+      "`deposit(double amount)` that accepts only positive amounts and adds them to the balance",
+      "`getBalance(double amount)` that modifies the balance",
+      "`public double balance`"
+    ],
+    "answer": 1,
+    "explanation": "A deposit represents a domain action and can validate its input while preserving the account's invariants."
+  },
+  {
+    "id": "encapsulation-024",
+    "question": "An inventory item has a quantity that must not become negative. Which approach best protects its invariant?",
+    "options": [
+      "Expose quantity publicly",
+      "Use a private quantity and validate add/remove operations",
+      "Use a getter that returns -1 every time",
+      "Make quantity static"
+    ],
+    "answer": 1,
+    "explanation": "Controlled operations ensure the quantity remains within the allowed range."
+  },
+  {
+    "id": "encapsulation-025",
+    "question": "A class has `private final String id;` and initializes it in its constructor. Which statement is correct?",
+    "options": [
+      "Any setter can change id later",
+      "The field can be assigned only once per object initialization path, subject to Java's final-field rules",
+      "The field becomes public",
+      "The class becomes abstract"
+    ],
+    "answer": 1,
+    "explanation": "A final instance field must be definitely assigned and cannot be reassigned after initialization."
+  },
+  {
+    "id": "encapsulation-026",
+    "question": "What is the best reason not to provide a setter for a password hash field?",
+    "options": [
+      "Setters are forbidden in Java",
+      "Callers should not be able to replace security-sensitive internal state arbitrarily",
+      "Private fields cannot have setters",
+      "A getter is always required instead"
+    ],
+    "answer": 1,
+    "explanation": "Sensitive state should be changed only through carefully designed operations, such as a controlled password-change workflow."
+  },
+  {
+    "id": "encapsulation-027",
+    "question": "A class exposes `public List<String> getNames() { return names; }`, where `names` is a private mutable list. What is the main risk?",
+    "options": [
+      "The list cannot be read",
+      "Callers may modify the internal list through the returned reference",
+      "The class cannot be instantiated",
+      "The list becomes immutable automatically"
+    ],
+    "answer": 1,
+    "explanation": "Returning the actual mutable collection exposes internal state despite the field being private."
+  },
+  {
+    "id": "encapsulation-028",
+    "question": "Which getter best protects a private mutable list from direct external modification?",
+    "options": [
+      "`return names;`",
+      "`return new ArrayList<>(names);`",
+      "`return null;`",
+      "`names = new ArrayList<>(); return names;`"
+    ],
+    "answer": 1,
+    "explanation": "Returning a defensive copy lets callers modify their copy without changing the object's internal list."
+  },
+  {
+    "id": "encapsulation-029",
+    "question": "A class stores a private `Date` field and returns that same Date from its getter. Why may this violate encapsulation?",
+    "options": [
+      "Date cannot be returned",
+      "The caller can mutate the returned Date and change the object's internal state",
+      "Private fields cannot store objects",
+      "The getter becomes static"
+    ],
+    "answer": 1,
+    "explanation": "A mutable object reference can expose internal state. Defensive copies or immutable date/time types are safer."
+  },
+  {
+    "id": "encapsulation-030",
+    "question": "What does `Collections.unmodifiableList(names)` generally provide?",
+    "options": [
+      "A deep copy of every object in the list",
+      "An unmodifiable view that prevents mutation through that view",
+      "A list that can never change through any reference",
+      "A sorted copy of the list"
+    ],
+    "answer": 1,
+    "explanation": "The view blocks mutations through that reference, but changes to the backing list can still be visible, and contained objects may remain mutable."
+  },
+  {
+    "id": "encapsulation-031",
+    "question": "What happens? `class A { private int x = 10; public int getX() { return x; } } class B extends A { public void change() { x = 20; } }`",
+    "options": [
+      "It compiles and changes x",
+      "It compiles but x stays 10",
+      "Compilation fails because B cannot directly access A's private field",
+      "It fails only at runtime"
+    ],
+    "answer": 2,
+    "explanation": "Private superclass fields are not directly accessible in the subclass. A protected or public operation may expose controlled access."
+  },
+  {
+    "id": "encapsulation-032",
+    "question": "A superclass has `private int score; public int getScore() { return score; }`. What is true in a subclass?",
+    "options": [
+      "The subclass can access `score` directly",
+      "The subclass can call the accessible inherited getter",
+      "The private field becomes public automatically",
+      "The getter cannot be inherited"
+    ],
+    "answer": 1,
+    "explanation": "The subclass can use the public getter, but it cannot directly access the superclass's private field."
+  },
+  {
+    "id": "encapsulation-033",
+    "question": "Which access modifier provides the narrowest ordinary access for a class field?",
+    "options": [
+      "public",
+      "protected",
+      "private",
+      "No modifier"
+    ],
+    "answer": 2,
+    "explanation": "Private members are accessible within their declaring top-level class, including its nested classes under Java's access rules."
+  },
+  {
+    "id": "encapsulation-034",
+    "question": "Can a private constructor contribute to encapsulation?",
+    "options": [
+      "No, constructors cannot have access modifiers",
+      "Yes, it can restrict object creation to controlled class mechanisms",
+      "Only if the class extends two classes",
+      "Only for abstract classes"
+    ],
+    "answer": 1,
+    "explanation": "Private constructors are useful for patterns such as controlled instance creation, factories, and utility classes."
+  },
+  {
+    "id": "encapsulation-035",
+    "question": "Which design is suitable when a class must allow only one instance created through `getInstance()`?",
+    "options": [
+      "Public constructor and public mutable instance field",
+      "Private constructor and a controlled static access method",
+      "All fields protected",
+      "No methods and a public constructor"
+    ],
+    "answer": 1,
+    "explanation": "A private constructor restricts direct construction and allows the class to control how its instance is obtained."
+  },
+  {
+    "id": "encapsulation-036",
+    "question": "What is the key benefit of validating constructor arguments?",
+    "options": [
+      "It allows private fields to be accessed directly",
+      "It helps prevent objects from being created in an invalid state",
+      "It removes the need for types",
+      "It automatically makes all methods thread-safe"
+    ],
+    "answer": 1,
+    "explanation": "Constructor validation establishes the object's initial invariants before it is used."
+  },
+  {
+    "id": "encapsulation-037",
+    "question": "A `Student` constructor accepts marks but does not validate them. Which statement is best?",
+    "options": [
+      "The object must be valid because a constructor ran",
+      "The constructor can still create an invalid object if it accepts invalid data",
+      "Java automatically clamps marks to 100",
+      "Private fields are automatically validated"
+    ],
+    "answer": 1,
+    "explanation": "Java does not automatically enforce business rules. The class must implement validation."
+  },
+  {
+    "id": "encapsulation-038",
+    "question": "Which statement about Java records is correct?",
+    "options": [
+      "Records automatically make every referenced object deeply immutable",
+      "Records provide generated accessors and final component fields, but mutable component objects may still be mutable",
+      "Records permit public reassignment of their component fields",
+      "Records cannot have constructors"
+    ],
+    "answer": 1,
+    "explanation": "Records are shallowly immutable by default. Defensive copying may still be needed for mutable components."
+  },
+  {
+    "id": "encapsulation-039",
+    "question": "A class has private fields and public methods, but one public method returns an internal mutable array directly. What is the best assessment?",
+    "options": [
+      "Encapsulation is perfect because fields are private",
+      "Encapsulation may be broken because callers can mutate the internal array",
+      "Arrays are immutable in Java",
+      "The code cannot compile"
+    ],
+    "answer": 1,
+    "explanation": "Private visibility alone is insufficient when a public method leaks a mutable reference. Return a defensive copy when appropriate."
+  },
+  {
+    "id": "encapsulation-040",
+    "question": "What is the most appropriate response when a setter receives an invalid value?",
+    "options": [
+      "Always silently accept it",
+      "Apply a clear policy: reject it, throw an appropriate exception, or explicitly ignore it if that is the documented contract",
+      "Change every field to public",
+      "Terminate the JVM with System.exit()"
+    ],
+    "answer": 1,
+    "explanation": "Validation policy should be explicit and consistent. Throwing IllegalArgumentException is often suitable for invalid method arguments."
+  },
+  {
+    "id": "encapsulation-041",
+    "question": "What is the output after adding 50 to the wallet?",
+    "codeLanguage": "java",
+    "code": "class Wallet {\n  private int amount = 100;\n\n  public void add(int amount) {\n    this.amount += amount;\n  }\n\n  public int getAmount() {\n    return amount;\n  }\n}\n\nWallet w = new Wallet();\nw.add(50);\nSystem.out.println(w.getAmount());",
+    "options": [
+      "100",
+      "50",
+      "150",
+      "Compilation error"
+    ],
+    "answer": 2,
+    "explanation": "The method adds 50 to the existing amount of 100, resulting in 150."
+  },
+  {
+    "id": "encapsulation-042",
+    "question": "What does the getter print after the setter receives a blank name?",
+    "codeLanguage": "java",
+    "code": "class User {\n  private String name = \"A\";\n\n  public void setName(String name) {\n    if (name != null && !name.isBlank()) {\n      this.name = name;\n    }\n  }\n\n  public String getName() {\n    return name;\n  }\n}\n\nUser u = new User();\nu.setName(\"  \");\nSystem.out.println(u.getName());",
+    "options": [
+      "A",
+      "An empty string",
+      "null",
+      "Compilation error"
+    ],
+    "answer": 0,
+    "explanation": "A string containing only whitespace is blank, so the setter does not update the field."
+  },
+  {
+    "id": "encapsulation-043",
+    "question": "What is printed after setting x to its current value?",
+    "codeLanguage": "java",
+    "code": "class A {\n  private int x = 10;\n\n  public void setX(int x) {\n    this.x = x;\n  }\n\n  public int getX() {\n    return x;\n  }\n}\n\nA a = new A();\na.setX(a.getX());\nSystem.out.println(a.getX());",
+    "options": [
+      "0",
+      "10",
+      "20",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "The setter stores the same value returned by the getter, so x remains 10."
+  },
+  {
+    "id": "encapsulation-044",
+    "question": "What is the final balance after these withdrawal attempts?",
+    "codeLanguage": "java",
+    "code": "class Account {\n  private int balance = 500;\n\n  public void withdraw(int amount) {\n    if (amount > 0 && amount <= balance) {\n      balance -= amount;\n    }\n  }\n\n  public int getBalance() {\n    return balance;\n  }\n}\n\nAccount a = new Account();\na.withdraw(200);\na.withdraw(400);\nSystem.out.println(a.getBalance());",
+    "options": [
+      "-100",
+      "300",
+      "500",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "The first withdrawal leaves 300. The second is rejected because 400 exceeds the remaining balance."
+  },
+  {
+    "id": "encapsulation-045",
+    "question": "What is printed after update changes its parameter?",
+    "codeLanguage": "java",
+    "code": "class Test {\n  private int value = 5;\n\n  public int getValue() {\n    return value;\n  }\n\n  public void update(int value) {\n    value = 99;\n  }\n}\n\nTest t = new Test();\nt.update(10);\nSystem.out.println(t.getValue());",
+    "options": [
+      "5",
+      "10",
+      "99",
+      "Compilation error"
+    ],
+    "answer": 0,
+    "explanation": "The method changes only its local parameter because it does not assign to this.value."
+  },
+  {
+    "id": "encapsulation-046",
+    "question": "What happens when unrelated code tries to read the private age field?",
+    "codeLanguage": "java",
+    "code": "class Person {\n  private int age;\n\n  public void setAge(int age) {\n    this.age = age;\n  }\n}\n\nPerson p = new Person();\nSystem.out.println(p.age);",
+    "options": [
+      "Prints 0",
+      "Prints null",
+      "Compile-time error",
+      "Runtime exception"
+    ],
+    "answer": 2,
+    "explanation": "The field is private, so unrelated code cannot access it directly."
+  },
+  {
+    "id": "encapsulation-047",
+    "level": "intermediate",
+    "question": "Which design best represents a read-only customer ID?",
+    "options": [
+      "Public ID field",
+      "Private final ID initialized in constructor with getter if needed",
+      "Private ID with unrestricted public setter",
+      "Static mutable ID shared by all customers"
+    ],
+    "answer": 1,
+    "explanation": "This design limits arbitrary changes after construction."
+  },
+  {
+    "id": "encapsulation-048",
+    "level": "intermediate",
+    "question": "Which method better models adding money to an account?",
+    "options": [
+      "`setBalance(amount)` replacing the whole balance",
+      "`deposit(amount)` validating a positive amount and adding it",
+      "`getBalance(amount)`",
+      "Public balance field"
+    ],
+    "answer": 1,
+    "explanation": "A domain operation expresses intent and preserves business rules."
+  },
+  {
+    "id": "encapsulation-049",
+    "level": "intermediate",
+    "question": "A password hash field is private. Which design is preferable for changing it?",
+    "options": [
+      "Public unrestricted setter available to every caller",
+      "A controlled password-change operation that validates and updates securely",
+      "Make the field public",
+      "Return the hash and let callers change it"
+    ],
+    "answer": 1,
+    "explanation": "Sensitive state should change through a controlled workflow, not arbitrary assignment."
+  },
+  {
+    "id": "encapsulation-050",
+    "level": "advanced",
+    "question": "What is the most accurate statement about encapsulation and immutable objects?",
+    "options": [
+      "Private fields guarantee deep immutability",
+      "Immutability requires preventing state changes and avoiding mutable-state leaks",
+      "Immutable objects must have setters",
+      "Immutable objects cannot have constructors"
+    ],
+    "answer": 1,
+    "explanation": "An immutable design controls construction and avoids exposing mutable internal state."
+  },
+  {
+    "id": "encapsulation-051",
+    "level": "advanced",
+    "question": "A class has stores the supplied list directly in its constructor. Is it fully protected from caller mutation?",
+    "options": [
+      "Yes, final makes the list immutable",
+      "No, final prevents reference reassignment but not list mutation",
+      "Yes, because String is immutable",
+      "It does not compile"
+    ],
+    "answer": 1,
+    "explanation": "The reference is final, but the list itself may still be mutable and shared.",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "private final List<String> names;"
+  },
+  {
+    "id": "encapsulation-052",
+    "level": "advanced",
+    "question": "Which constructor assignment best prevents later structural mutation through the caller's original list?",
+    "options": [
+      "`this.items = items;`",
+      "`this.items = new ArrayList<>(items);`",
+      "`this.items = null;`",
+      "`this.items = items.get(0);`"
+    ],
+    "answer": 1,
+    "explanation": "A defensive copy separates the stored collection structure from the caller's collection."
+  },
+  {
+    "id": "encapsulation-053",
+    "level": "advanced",
+    "question": "What extra concern exists if the list elements themselves are mutable objects?",
+    "options": [
+      "No concern ever",
+      "A shallow collection copy does not copy the elements; those objects can still be mutated",
+      "The list becomes static",
+      "Java disallows mutable elements"
+    ],
+    "answer": 1,
+    "explanation": "Defensive copying the collection is shallow unless the elements are also copied or immutable."
+  },
+  {
+    "id": "encapsulation-054",
+    "level": "advanced",
+    "question": "Which is the strongest design for a class that must remain valid after every operation?",
+    "options": [
+      "Public fields and caller discipline",
+      "Private state and operations that validate all state transitions",
+      "A getter for every field and no checks",
+      "Use static fields for every property"
+    ],
+    "answer": 1,
+    "explanation": "Encapsulation is strongest when all state-changing paths preserve class invariants."
+  },
+  {
+    "id": "encapsulation-055",
+    "level": "advanced",
+    "question": "What is the risk of a setter that checks `if (value > 0)` but accepts `Double.NaN`?",
+    "options": [
+      "NaN is greater than zero",
+      "The comparison is false, so this particular condition rejects NaN",
+      "NaN automatically becomes zero",
+      "Java throws automatically"
+    ],
+    "answer": 1,
+    "explanation": "Comparisons with NaN are false, so this guard rejects NaN; numeric validation should still explicitly define acceptable values."
+  },
+  {
+    "id": "encapsulation-056",
+    "level": "advanced",
+    "question": "For a money field stored as `double`, what is the important production-design concern?",
+    "options": [
+      "double is always exact for decimal money",
+      "Binary floating-point may not represent decimal fractions exactly; BigDecimal is often appropriate",
+      "double cannot be private",
+      "Money cannot be validated"
+    ],
+    "answer": 1,
+    "explanation": "For financial calculations requiring decimal precision, BigDecimal with deliberate rounding rules is commonly used."
+  },
+  {
+    "id": "encapsulation-057",
+    "level": "advanced",
+    "question": "A class exposes a mutable `Date` field only through a getter returning the same object. Why is that unsafe?",
+    "options": [
+      "Date cannot be returned",
+      "The caller can mutate the Date and change the object's internal state",
+      "Date becomes immutable",
+      "The getter is invalid Java"
+    ],
+    "answer": 1,
+    "explanation": "Mutable objects should be copied on input/output or replaced with suitable immutable types."
+  },
+  {
+    "id": "encapsulation-058",
+    "level": "advanced",
+    "question": "Which is true about Java records and encapsulation?",
+    "options": [
+      "Records deeply freeze all referenced objects",
+      "Records provide final component fields/accessors by default, but referenced mutable objects may still mutate",
+      "Records have public mutable fields",
+      "Records cannot define constructors"
+    ],
+    "answer": 1,
+    "explanation": "Records are shallowly immutable by default; defensive copying may be necessary."
+  },
+  {
+    "id": "encapsulation-059",
+    "level": "advanced",
+    "question": "Which statement about a private constructor is correct?",
+    "options": [
+      "Constructors cannot be private",
+      "It can restrict object creation to controlled class methods or factories",
+      "It automatically makes every field final",
+      "It prevents all methods from being called"
+    ],
+    "answer": 1,
+    "explanation": "Private constructors are useful for factory methods, utility classes, and singleton-style designs."
+  },
+  {
+    "id": "encapsulation-060",
+    "level": "advanced",
+    "question": "What is a typical singleton-style construction approach?",
+    "options": [
+      "Public constructor and public mutable instance field",
+      "Private constructor and controlled static access method",
+      "Protected constructor only in every case",
+      "No constructor and public fields"
+    ],
+    "answer": 1,
+    "explanation": "A private constructor restricts direct construction and lets the class control instance access."
+  },
+  {
+    "id": "encapsulation-061",
+    "level": "advanced",
+    "question": "A class has private fields, but its public method `replaceState(State s)` stores a caller-owned mutable object directly. What should be considered?",
+    "options": [
+      "No issue because fields are private",
+      "Copy or validate the supplied object, or use an immutable representation, to avoid shared mutable state",
+      "Make the field public",
+      "Remove all methods"
+    ],
+    "answer": 1,
+    "explanation": "Encapsulation includes managing object references and state ownership, not only field visibility."
+  },
+  {
+    "id": "encapsulation-062",
+    "level": "advanced",
+    "question": "Which claim about `private` access is correct?",
+    "options": [
+      "It prevents reflection under every circumstance",
+      "It restricts ordinary source-level access; reflection and module rules have separate considerations",
+      "It means the field is not stored in the object",
+      "It means the field is inherited as public"
+    ],
+    "answer": 1,
+    "explanation": "Private access is a language-level access rule; reflective access has separate constraints."
+  },
+  {
+    "id": "encapsulation-063",
+    "level": "advanced",
+    "question": "What happens if a public setter validates input but another public method mutates the same field without validation?",
+    "options": [
+      "The class remains safe because one setter validates",
+      "The other method may bypass the invariant and should also enforce the rule",
+      "Java automatically routes it through the setter",
+      "It cannot compile"
+    ],
+    "answer": 1,
+    "explanation": "Every mutation path must preserve the invariant."
+  },
+  {
+    "id": "encapsulation-064",
+    "level": "advanced",
+    "question": "Which choice is best when a property should be computed from other fields and never independently stored?",
+    "options": [
+      "Store a public duplicate field",
+      "Expose a getter that computes the value when needed",
+      "Add an unrestricted setter",
+      "Make it a random static field"
+    ],
+    "answer": 1,
+    "explanation": "Derived values often should be computed to avoid inconsistent duplicate state."
+  },
+  {
+    "id": "encapsulation-065",
+    "level": "advanced",
+    "question": "What is a potential problem with exposing both `setStartDate()` and `setEndDate()` independently when start must precede end?",
+    "options": [
+      "There is no problem ever",
+      "Callers may temporarily or permanently create an invalid date range unless each transition is designed carefully",
+      "Java automatically sorts dates",
+      "Both fields must be public"
+    ],
+    "answer": 1,
+    "explanation": "Related invariants may require validating each setter or offering one atomic operation that updates the range."
+  },
+  {
+    "id": "encapsulation-066",
+    "level": "advanced",
+    "question": "A setter silently ignores invalid values. What is the main API-design concern?",
+    "options": [
+      "It never compiles",
+      "Callers may not know the update failed; an exception or explicit result may communicate failure more clearly",
+      "It makes the class immutable",
+      "It makes the field public"
+    ],
+    "answer": 1,
+    "explanation": "The right policy depends on the API contract, but silent rejection can make errors difficult to detect."
+  },
+  {
+    "id": "encapsulation-067",
+    "level": "advanced",
+    "question": "What is the output? call setX(2), then setX(0), then print.",
+    "options": [
+      "0",
+      "1",
+      "2",
+      "Compilation error"
+    ],
+    "answer": 2,
+    "explanation": "The first call stores 2; the second is rejected and the field remains 2.",
+    "codeLanguage": "java",
+    "codeFileName": "A.java",
+    "code": "class A {\n    private int x=1;\n    public void setX(int n) {\n        if(n>0) x=n;\n    }\n    public int getX() {\n        return x;\n    }\n}"
+  },
+  {
+    "id": "encapsulation-068",
+    "level": "advanced",
+    "question": "Which design best supports testing a class's invariants?",
+    "options": [
+      "Make all fields public for test access",
+      "Expose meaningful observable behavior and validate state transitions through public operations",
+      "Disable validation in tests",
+      "Use reflection for every test"
+    ],
+    "answer": 1,
+    "explanation": "Tests should normally exercise the public contract and observable behavior rather than depend on private representation."
+  },
+  {
+    "id": "encapsulation-069",
+    "level": "advanced",
+    "question": "A `getItems()` method returns an unmodifiable view of a private list, but another method can add items internally. Can callers observe later additions through the previously returned view?",
+    "options": [
+      "Never",
+      "Yes, because an unmodifiable view can reflect changes to the backing list",
+      "Only if items are integers",
+      "It causes a compile error"
+    ],
+    "answer": 1,
+    "explanation": "Unmodifiable means callers cannot mutate through that view; it does not mean the backing collection cannot change."
+  },
+  {
+    "id": "encapsulation-070",
+    "level": "advanced",
+    "question": "Which is a correct assessment of encapsulation in a DTO with public fields?",
+    "options": [
+      "It always offers strong data hiding",
+      "It may intentionally favor simple data transfer over strict encapsulation; suitability depends on design needs",
+      "It cannot compile in Java",
+      "It is automatically immutable"
+    ],
+    "answer": 1,
+    "explanation": "Not every data carrier needs the same level of behavioral encapsulation, but public mutable fields expose state."
+  },
+  {
+    "id": "encapsulation-071",
+    "level": "advanced",
+    "question": "A class has a private list and returns `List.copyOf(list)`. If the list contains a mutable `StringBuilder`, what remains true?",
+    "options": [
+      "StringBuilder is copied deeply",
+      "The returned list is unmodifiable, but the StringBuilder element itself can still be mutable if the same reference is present",
+      "The whole object graph is immutable",
+      "List.copyOf always rejects mutable elements"
+    ],
+    "answer": 1,
+    "explanation": "List.copyOf protects list structure, not the mutability of contained objects."
+  },
+  {
+    "id": "encapsulation-072",
+    "level": "advanced",
+    "question": "Which is the best way to enforce a maximum withdrawal limit across multiple withdrawal methods?",
+    "options": [
+      "Repeat inconsistent checks wherever convenient",
+      "Centralize the rule in a shared validated operation used by every relevant path",
+      "Make the balance public",
+      "Trust callers to follow documentation"
+    ],
+    "answer": 1,
+    "explanation": "Centralizing invariant enforcement reduces the chance that one path bypasses a rule."
+  },
+  {
+    "id": "encapsulation-073",
+    "level": "advanced",
+    "question": "A class exposes `getPasswordHash()`. Even if the field is private, what is the concern?",
+    "options": [
+      "No concern because the getter is legal",
+      "The API may leak sensitive internal information; avoid exposing secrets unless there is a justified need",
+      "The class will not compile",
+      "The field becomes immutable"
+    ],
+    "answer": 1,
+    "explanation": "Encapsulation also includes deciding what information should be exposed at all."
+  },
+  {
+    "id": "encapsulation-074",
+    "level": "advanced",
+    "question": "What is the best explanation of an invariant?",
+    "options": [
+      "A variable name convention",
+      "A condition that should remain true for every valid object state",
+      "A method that must be static",
+      "A type of constructor"
+    ],
+    "answer": 1,
+    "explanation": "Examples include non-negative balances and a start date that precedes an end date."
+  },
+  {
+    "id": "encapsulation-075",
+    "level": "advanced",
+    "question": "What is the output? call add(50), print amount through getter.",
+    "options": [
+      "100",
+      "50",
+      "150",
+      "Compilation error"
+    ],
+    "answer": 2,
+    "explanation": "The method adds 50 to the existing 100.",
+    "codeLanguage": "java",
+    "codeFileName": "Wallet.java",
+    "code": "class Wallet {\n    private int amount=100;\n    public void add(int amount) {\n        this.amount += amount;\n    }\n    public int getAmount() {\n        return amount;\n    }\n}"
+  },
+  {
+    "id": "encapsulation-076",
+    "level": "advanced",
+    "question": "A class stores a list defensively in its constructor but returns the internal list directly from its getter. Is encapsulation fully protected?",
+    "options": [
+      "Yes, constructor copying is sufficient",
+      "No, callers can still mutate the internal list through the getter",
+      "Yes, because the field is private",
+      "The code cannot compile"
+    ],
+    "answer": 1,
+    "explanation": "Defensive copying is needed on output as well when mutable internals must not be exposed."
+  },
+  {
+    "id": "encapsulation-077",
+    "level": "advanced",
+    "question": "Which is the most accurate reason to prefer domain methods over unrestricted setters?",
+    "options": [
+      "Domain methods are always shorter",
+      "Domain methods can express intent and enforce business rules for state transitions",
+      "Setters cannot modify private fields",
+      "Domain methods eliminate all bugs"
+    ],
+    "answer": 1,
+    "explanation": "Methods such as withdraw or approve can enforce rules specific to the operation."
+  },
+  {
+    "id": "encapsulation-078",
+    "level": "advanced",
+    "question": "A class's public method returns a clone of an array, but accepts an array in its constructor and stores it directly. What is the remaining flaw?",
+    "options": [
+      "The getter is incorrect",
+      "The constructor still shares the caller's array, so input must also be defensively copied",
+      "Arrays cannot be private",
+      "Cloning is forbidden"
+    ],
+    "answer": 1,
+    "explanation": "Defensive copying should be considered both when mutable values enter and when they leave the object."
+  },
+  {
+    "id": "pdf-encap-001",
+    "subtopic": "Encapsulation",
+    "question": "Which design best protects an account balance from invalid updates?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Account {\n    private int balance;\n    public void deposit(int amount) {\n        if (amount > 0) balance += amount;\n    }\n    public int getBalance() { return balance; }\n}",
+    "options": [
+      "Keep state private and expose validated operations",
+      "Make balance public so callers can update it",
+      "Add an unrestricted setter for every field",
+      "Make balance static so all accounts share it"
+    ],
+    "answer": 0,
+    "explanation": "Private state with controlled operations lets the class enforce rules such as accepting only positive deposits.",
+    "source": "Kodewala Academy Core Java & Advance Java notes, PDF page 108",
+    "sourceLabel": "From PDF notes · page 108"
+  }
+]

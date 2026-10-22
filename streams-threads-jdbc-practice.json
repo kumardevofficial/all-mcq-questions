@@ -1,0 +1,768 @@
+[
+  {
+    "id": "backend-01",
+    "subtopic": "Stream laziness",
+    "question": "When does an intermediate Stream operation such as filter usually execute?",
+    "options": [
+      "Immediately when filter is called",
+      "When a terminal operation consumes the stream",
+      "Only when the stream is closed",
+      "During compilation"
+    ],
+    "answer": 1,
+    "explanation": "Intermediate operations are lazy; a terminal operation triggers traversal."
+  },
+  {
+    "id": "backend-02",
+    "subtopic": "Stream map and sum",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "import java.util.*;\nclass StreamSum {\n    public static void main(String[] args) {\n        int result = List.of(1, 2, 3).stream()\n            .mapToInt(n -> n * 2)\n            .sum();\n        System.out.println(result);\n    }\n}",
+    "options": [
+      "6",
+      "12",
+      "123",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "Each value is doubled and the resulting values 2, 4, and 6 sum to 12."
+  },
+  {
+    "id": "backend-03",
+    "subtopic": "Thread safety",
+    "question": "What does synchronizing access to a shared mutable field help provide?",
+    "options": [
+      "Mutual exclusion and visibility guarantees around the synchronized action",
+      "Automatic database transactions",
+      "A guarantee that no thread will ever block",
+      "A separate copy of the object per thread"
+    ],
+    "answer": 0,
+    "explanation": "Synchronization coordinates monitor access and establishes memory-visibility guarantees for synchronized actions."
+  },
+  {
+    "id": "backend-04",
+    "subtopic": "ExecutorService",
+    "question": "What does this code print after the submitted task completes?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "import java.util.concurrent.*;\nclass TaskRun {\n    public static void main(String[] args) throws Exception {\n        ExecutorService pool = Executors.newSingleThreadExecutor();\n        Future<Integer> result = pool.submit(() -> 2 + 3);\n        System.out.println(result.get());\n        pool.shutdown();\n    }\n}",
+    "options": [
+      "5",
+      "Future",
+      "0",
+      "Compilation error"
+    ],
+    "answer": 0,
+    "explanation": "The submitted callable returns 5, and Future.get waits for and retrieves that result."
+  },
+  {
+    "id": "backend-05",
+    "subtopic": "JDBC workflow",
+    "question": "Which sequence best describes a basic JDBC query workflow?",
+    "options": [
+      "Create ResultSet, connect, execute, close",
+      "Obtain a connection, create a statement, execute, process results, close resources",
+      "Compile SQL, create a thread, print",
+      "Open a file, serialize the connection, exit"
+    ],
+    "answer": 1,
+    "explanation": "JDBC work generally obtains a connection, executes a statement, processes results, and closes resources."
+  },
+  {
+    "id": "backend-06",
+    "subtopic": "PreparedStatement",
+    "question": "Why should a PreparedStatement be used with user-supplied values?",
+    "options": [
+      "It safely binds values as parameters and helps avoid SQL injection from string concatenation",
+      "It disables SQL",
+      "It makes every query asynchronous",
+      "It automatically commits every transaction"
+    ],
+    "answer": 0,
+    "explanation": "Bound parameters are treated as data rather than SQL syntax, helping prevent injection."
+  },
+  {
+    "id": "backend-07",
+    "subtopic": "JDBC transaction",
+    "question": "After disabling auto-commit, which call makes the transaction's changes permanent?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "Connection connection = dataSource.getConnection();\nconnection.setAutoCommit(false);\ntry {\n    updateAccount(connection);\n    writeAudit(connection);\n    connection.commit();\n} catch (SQLException ex) {\n    connection.rollback();\n}",
+    "options": [
+      "rollback()",
+      "commit()",
+      "setAutoCommit(false)",
+      "close()"
+    ],
+    "answer": 1,
+    "explanation": "commit finalizes the grouped database changes; rollback undoes them if the work fails."
+  },
+  {
+    "id": "backend-08",
+    "subtopic": "Stream filtering",
+    "question": "How many values are printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "import java.util.*;\nclass FilterValues {\n    public static void main(String[] args) {\n        List.of(1, 2, 3, 4).stream()\n            .filter(n -> n % 2 == 0)\n            .forEach(System.out::println);\n    }\n}",
+    "options": [
+      "1",
+      "2",
+      "4",
+      "No output"
+    ],
+    "answer": 2,
+    "explanation": "The filter retains the even values 2 and 4, so two values are printed."
+  },
+  {
+    "id": "backend-09",
+    "subtopic": "volatile",
+    "question": "What does volatile provide for a field shared between threads?",
+    "options": [
+      "Visibility and ordering guarantees for reads and writes, but not atomicity for compound updates",
+      "Atomic increment for every expression",
+      "Mutual exclusion for an entire method",
+      "A separate value per thread"
+    ],
+    "answer": 0,
+    "explanation": "volatile supports visibility and ordering but does not make compound operations such as count++ atomic."
+  },
+  {
+    "id": "backend-10",
+    "subtopic": "PreparedStatement parameters",
+    "question": "Which JDBC call binds the value to the first placeholder?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "String sql = \"select name from users where id = ?\";\nPreparedStatement statement = connection.prepareStatement(sql);\nstatement._____ (1, userId);",
+    "options": [
+      "setLong",
+      "executeQuery",
+      "commit",
+      "getString"
+    ],
+    "answer": 0,
+    "explanation": "A typed setter such as setLong binds the parameter value before the statement executes."
+  },
+  {
+    "id": "backend-11",
+    "subtopic": "ResultSet",
+    "question": "What does ResultSet.next() do?",
+    "options": [
+      "Moves the cursor to the next row and reports whether a row exists",
+      "Closes the connection",
+      "Commits the transaction",
+      "Creates a database table"
+    ],
+    "answer": 0,
+    "explanation": "next advances the cursor; it returns false after the last row."
+  },
+  {
+    "id": "backend-12",
+    "subtopic": "Resource cleanup",
+    "question": "Which construct is best suited to close a JDBC Connection and Statement reliably?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "try (Connection connection = dataSource.getConnection();\n     PreparedStatement statement = connection.prepareStatement(sql)) {\n    // execute work\n}",
+    "options": [
+      "try-with-resources",
+      "A busy-wait loop",
+      "System.gc()",
+      "A static initializer"
+    ],
+    "answer": 0,
+    "explanation": "JDBC resources implement AutoCloseable, so try-with-resources closes them even when an exception occurs."
+  },
+  {
+    "id": "exp-backend-09",
+    "subtopic": "Stream filtering",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "import java.util.*;\nclass FilterCount {\n    public static void main(String[] args) {\n        long count = List.of(1, 2, 3, 4).stream()\n            .filter(n -> n % 2 == 0).count();\n        System.out.println(count);\n    }\n}",
+    "options": [
+      "1",
+      "2",
+      "4",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "The predicate keeps 2 and 4, so count returns 2."
+  },
+  {
+    "id": "exp-backend-10",
+    "subtopic": "Stream laziness",
+    "question": "What happens if a stream pipeline has intermediate operations but no terminal operation?",
+    "options": [
+      "Intermediate operations usually are not evaluated",
+      "The stream always sorts itself",
+      "The source collection is copied immediately",
+      "The JVM throws an exception"
+    ],
+    "answer": 0,
+    "explanation": "Stream intermediate operations are lazy; traversal is triggered by a terminal operation."
+  },
+  {
+    "id": "exp-backend-11",
+    "subtopic": "Thread safety",
+    "question": "Why is `count++` not an atomic operation for multiple threads?",
+    "options": [
+      "It consists of a read, increment, and write that can interleave",
+      "The JVM turns every increment into a database transaction",
+      "int values cannot be shared",
+      "Threads cannot access fields"
+    ],
+    "answer": 0,
+    "explanation": "A compound increment can interleave between threads; use synchronization or an atomic counter when needed."
+  },
+  {
+    "id": "exp-backend-12",
+    "subtopic": "ExecutorService",
+    "question": "Which call should follow task submission when no more tasks will be accepted?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "import java.util.concurrent.*;\n\nclass PoolLifecycle {\n    public static void main(String[] args) {\n        ExecutorService pool = Executors.newFixedThreadPool(2);\n        pool.submit(() -> System.out.println(\"work\"));\n        // choose the lifecycle call\n    }\n}",
+    "options": [
+      "pool.shutdown()",
+      "pool.wait()",
+      "pool.closeAllThreads()",
+      "Thread.kill(pool)"
+    ],
+    "answer": 0,
+    "explanation": "shutdown stops accepting new tasks while allowing submitted tasks to complete."
+  },
+  {
+    "id": "exp-backend-13",
+    "subtopic": "volatile",
+    "question": "What does `volatile` guarantee for a field shared between threads?",
+    "options": [
+      "Visibility of writes and reads under the volatile memory rules",
+      "Atomicity for every compound operation on the field",
+      "Mutual exclusion across all methods",
+      "That the value is persisted to disk"
+    ],
+    "answer": 0,
+    "explanation": "Volatile provides visibility and ordering guarantees, but does not make compound updates such as count++ atomic."
+  },
+  {
+    "id": "exp-backend-14",
+    "subtopic": "JDBC workflow",
+    "question": "Which JDBC object represents an active connection to a database?",
+    "options": [
+      "ResultSet",
+      "Connection",
+      "RowMapper",
+      "PreparedParameter"
+    ],
+    "answer": 1,
+    "explanation": "A Connection represents a session with a specific database and is used to create statements and manage transactions."
+  },
+  {
+    "id": "exp-backend-15",
+    "subtopic": "PreparedStatement",
+    "question": "Which call binds the value to the first `?` placeholder?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "import java.sql.*;\n\nclass FindUser {\n    void find(Connection connection, int userId) throws SQLException {\n        String sql = \"select name from users where id = ?\";\n        PreparedStatement statement = connection.prepareStatement(sql);\n        // bind userId to the placeholder\n    }\n}",
+    "options": [
+      "statement.setInt(1, userId)",
+      "statement.append(userId)",
+      "statement.executeQuery(userId)",
+      "statement.setInt(0, userId)"
+    ],
+    "answer": 0,
+    "explanation": "PreparedStatement parameters are one-based; setInt(1, ...) binds the first placeholder."
+  },
+  {
+    "id": "exp-backend-16",
+    "subtopic": "JDBC transaction",
+    "question": "With auto-commit disabled, what should an application do after a transaction fails and must be abandoned?",
+    "options": [
+      "Call rollback",
+      "Call commit twice",
+      "Close the ResultSet only",
+      "Set the isolation level to NONE"
+    ],
+    "answer": 0,
+    "explanation": "rollback discards the transaction's uncommitted changes."
+  },
+  {
+    "id": "chapter-java-streams-01",
+    "subtopic": "Java Streams",
+    "question": "Which statement about Java Streams is correct?",
+    "options": [
+      "A stream pipeline usually consists of a source, intermediate operations, and a terminal operation.",
+      "A stream stores its elements like an ArrayList.",
+      "Every intermediate operation executes immediately.",
+      "A stream can be reused after a terminal operation."
+    ],
+    "answer": 0,
+    "explanation": "A stream pipeline usually consists of a source, intermediate operations, and a terminal operation."
+  },
+  {
+    "id": "chapter-java-streams-02",
+    "subtopic": "Java Streams",
+    "question": "Choose the accurate Java interview answer about Java Streams.",
+    "options": [
+      "A stream stores its elements like an ArrayList.",
+      "Intermediate operations such as filter are lazy.",
+      "Every intermediate operation executes immediately.",
+      "A stream can be reused after a terminal operation."
+    ],
+    "answer": 1,
+    "explanation": "Intermediate operations such as filter are lazy."
+  },
+  {
+    "id": "chapter-java-streams-03",
+    "subtopic": "Java Streams",
+    "question": "A developer is asked about Java Streams. Which response is correct?",
+    "options": [
+      "A stream stores its elements like an ArrayList.",
+      "Every intermediate operation executes immediately.",
+      "A terminal operation triggers traversal of the stream pipeline.",
+      "A stream can be reused after a terminal operation."
+    ],
+    "answer": 2,
+    "explanation": "A terminal operation triggers traversal of the stream pipeline."
+  },
+  {
+    "id": "chapter-java-streams-04",
+    "subtopic": "Java Streams",
+    "question": "Select the true statement concerning Java Streams.",
+    "options": [
+      "A stream stores its elements like an ArrayList.",
+      "Every intermediate operation executes immediately.",
+      "A stream can be reused after a terminal operation.",
+      "map transforms each stream element into another value."
+    ],
+    "answer": 3,
+    "explanation": "map transforms each stream element into another value."
+  },
+  {
+    "id": "chapter-java-streams-05",
+    "subtopic": "Java Streams",
+    "question": "Which statement about Java Streams is correct?",
+    "options": [
+      "filter retains elements that satisfy a predicate.",
+      "A stream stores its elements like an ArrayList.",
+      "Every intermediate operation executes immediately.",
+      "A stream can be reused after a terminal operation."
+    ],
+    "answer": 0,
+    "explanation": "filter retains elements that satisfy a predicate."
+  },
+  {
+    "id": "chapter-java-streams-06",
+    "subtopic": "Java Streams",
+    "question": "Choose the accurate Java interview answer about Java Streams.",
+    "options": [
+      "A stream stores its elements like an ArrayList.",
+      "A stream should generally not be operated on after a terminal operation consumes it.",
+      "Every intermediate operation executes immediately.",
+      "A stream can be reused after a terminal operation."
+    ],
+    "answer": 1,
+    "explanation": "A stream should generally not be operated on after a terminal operation consumes it."
+  },
+  {
+    "id": "chapter-java-streams-07",
+    "subtopic": "Java Streams",
+    "question": "A developer is asked about Java Streams. Which response is correct?",
+    "options": [
+      "A stream stores its elements like an ArrayList.",
+      "Every intermediate operation executes immediately.",
+      "Collectors can reduce stream elements into a collection or summary result.",
+      "A stream can be reused after a terminal operation."
+    ],
+    "answer": 2,
+    "explanation": "Collectors can reduce stream elements into a collection or summary result."
+  },
+  {
+    "id": "chapter-java-streams-08",
+    "subtopic": "Java Streams",
+    "question": "Select the true statement concerning Java Streams.",
+    "options": [
+      "A stream stores its elements like an ArrayList.",
+      "Every intermediate operation executes immediately.",
+      "A stream can be reused after a terminal operation.",
+      "Side effects in stream operations can make behavior harder to reason about."
+    ],
+    "answer": 3,
+    "explanation": "Side effects in stream operations can make behavior harder to reason about."
+  },
+  {
+    "id": "chapter-java-threads-01",
+    "subtopic": "Java Threads",
+    "question": "Which statement about Java Threads is correct?",
+    "options": [
+      "A Java thread represents an independent path of execution within a process.",
+      "A thread has a private copy of every static field.",
+      "volatile makes count++ atomic.",
+      "sleep releases every monitor held by the current thread."
+    ],
+    "answer": 0,
+    "explanation": "A Java thread represents an independent path of execution within a process."
+  },
+  {
+    "id": "chapter-java-threads-02",
+    "subtopic": "Java Threads",
+    "question": "Choose the accurate Java interview answer about Java Threads.",
+    "options": [
+      "A thread has a private copy of every static field.",
+      "Runnable can represent a task that a thread executes.",
+      "volatile makes count++ atomic.",
+      "sleep releases every monitor held by the current thread."
+    ],
+    "answer": 1,
+    "explanation": "Runnable can represent a task that a thread executes."
+  },
+  {
+    "id": "chapter-java-threads-03",
+    "subtopic": "Java Threads",
+    "question": "A developer is asked about Java Threads. Which response is correct?",
+    "options": [
+      "A thread has a private copy of every static field.",
+      "volatile makes count++ atomic.",
+      "Synchronization can provide mutual exclusion and memory-visibility guarantees.",
+      "sleep releases every monitor held by the current thread."
+    ],
+    "answer": 2,
+    "explanation": "Synchronization can provide mutual exclusion and memory-visibility guarantees."
+  },
+  {
+    "id": "chapter-java-threads-04",
+    "subtopic": "Java Threads",
+    "question": "Select the true statement concerning Java Threads.",
+    "options": [
+      "A thread has a private copy of every static field.",
+      "volatile makes count++ atomic.",
+      "sleep releases every monitor held by the current thread.",
+      "A race condition can occur when threads access shared mutable state without coordination."
+    ],
+    "answer": 3,
+    "explanation": "A race condition can occur when threads access shared mutable state without coordination."
+  },
+  {
+    "id": "chapter-java-threads-05",
+    "subtopic": "Java Threads",
+    "question": "Which statement about Java Threads is correct?",
+    "options": [
+      "volatile provides visibility guarantees but not atomicity for compound updates.",
+      "A thread has a private copy of every static field.",
+      "volatile makes count++ atomic.",
+      "sleep releases every monitor held by the current thread."
+    ],
+    "answer": 0,
+    "explanation": "volatile provides visibility guarantees but not atomicity for compound updates."
+  },
+  {
+    "id": "chapter-java-threads-06",
+    "subtopic": "Java Threads",
+    "question": "Choose the accurate Java interview answer about Java Threads.",
+    "options": [
+      "A thread has a private copy of every static field.",
+      "Thread.sleep pauses the current thread for a time interval.",
+      "volatile makes count++ atomic.",
+      "sleep releases every monitor held by the current thread."
+    ],
+    "answer": 1,
+    "explanation": "Thread.sleep pauses the current thread for a time interval."
+  },
+  {
+    "id": "chapter-java-threads-07",
+    "subtopic": "Java Threads",
+    "question": "A developer is asked about Java Threads. Which response is correct?",
+    "options": [
+      "A thread has a private copy of every static field.",
+      "volatile makes count++ atomic.",
+      "wait must be called while owning the object's monitor.",
+      "sleep releases every monitor held by the current thread."
+    ],
+    "answer": 2,
+    "explanation": "wait must be called while owning the object's monitor."
+  },
+  {
+    "id": "chapter-java-threads-08",
+    "subtopic": "Java Threads",
+    "question": "Select the true statement concerning Java Threads.",
+    "options": [
+      "A thread has a private copy of every static field.",
+      "volatile makes count++ atomic.",
+      "sleep releases every monitor held by the current thread.",
+      "ExecutorService can manage a pool and lifecycle of worker threads."
+    ],
+    "answer": 3,
+    "explanation": "ExecutorService can manage a pool and lifecycle of worker threads."
+  },
+  {
+    "id": "chapter-jdbc-01",
+    "subtopic": "JDBC",
+    "question": "Which statement about JDBC is correct?",
+    "options": [
+      "A JDBC Connection represents a session with a database.",
+      "A ResultSet opens the database connection.",
+      "PreparedStatement parameters are numbered from zero.",
+      "commit undoes changes in a transaction."
+    ],
+    "answer": 0,
+    "explanation": "A JDBC Connection represents a session with a database."
+  },
+  {
+    "id": "chapter-jdbc-02",
+    "subtopic": "JDBC",
+    "question": "Choose the accurate Java interview answer about JDBC.",
+    "options": [
+      "A ResultSet opens the database connection.",
+      "PreparedStatement supports parameter placeholders bound with setter methods.",
+      "PreparedStatement parameters are numbered from zero.",
+      "commit undoes changes in a transaction."
+    ],
+    "answer": 1,
+    "explanation": "PreparedStatement supports parameter placeholders bound with setter methods."
+  },
+  {
+    "id": "chapter-jdbc-03",
+    "subtopic": "JDBC",
+    "question": "A developer is asked about JDBC. Which response is correct?",
+    "options": [
+      "A ResultSet opens the database connection.",
+      "PreparedStatement parameters are numbered from zero.",
+      "PreparedStatement parameters are indexed starting at one.",
+      "commit undoes changes in a transaction."
+    ],
+    "answer": 2,
+    "explanation": "PreparedStatement parameters are indexed starting at one."
+  },
+  {
+    "id": "chapter-jdbc-04",
+    "subtopic": "JDBC",
+    "question": "Select the true statement concerning JDBC.",
+    "options": [
+      "A ResultSet opens the database connection.",
+      "PreparedStatement parameters are numbered from zero.",
+      "commit undoes changes in a transaction.",
+      "A ResultSet provides access to rows returned by a query."
+    ],
+    "answer": 3,
+    "explanation": "A ResultSet provides access to rows returned by a query."
+  },
+  {
+    "id": "chapter-jdbc-05",
+    "subtopic": "JDBC",
+    "question": "Which statement about JDBC is correct?",
+    "options": [
+      "A ResultSet cursor is advanced with next().",
+      "A ResultSet opens the database connection.",
+      "PreparedStatement parameters are numbered from zero.",
+      "commit undoes changes in a transaction."
+    ],
+    "answer": 0,
+    "explanation": "A ResultSet cursor is advanced with next()."
+  },
+  {
+    "id": "chapter-jdbc-06",
+    "subtopic": "JDBC",
+    "question": "Choose the accurate Java interview answer about JDBC.",
+    "options": [
+      "A ResultSet opens the database connection.",
+      "With auto-commit disabled, Connection.commit makes a transaction permanent.",
+      "PreparedStatement parameters are numbered from zero.",
+      "commit undoes changes in a transaction."
+    ],
+    "answer": 1,
+    "explanation": "With auto-commit disabled, Connection.commit makes a transaction permanent."
+  },
+  {
+    "id": "chapter-jdbc-07",
+    "subtopic": "JDBC",
+    "question": "A developer is asked about JDBC. Which response is correct?",
+    "options": [
+      "A ResultSet opens the database connection.",
+      "PreparedStatement parameters are numbered from zero.",
+      "Connection.rollback abandons uncommitted transaction changes.",
+      "commit undoes changes in a transaction."
+    ],
+    "answer": 2,
+    "explanation": "Connection.rollback abandons uncommitted transaction changes."
+  },
+  {
+    "id": "chapter-jdbc-08",
+    "subtopic": "JDBC",
+    "question": "Select the true statement concerning JDBC.",
+    "options": [
+      "A ResultSet opens the database connection.",
+      "PreparedStatement parameters are numbered from zero.",
+      "commit undoes changes in a transaction.",
+      "Try-with-resources can close JDBC resources automatically."
+    ],
+    "answer": 3,
+    "explanation": "Try-with-resources can close JDBC resources automatically."
+  },
+  {
+    "id": "deep-stream-01",
+    "subtopic": "Java Streams",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Pipeline {\n    public static void main(String[] args) {\n        long count = java.util.List.of(1, 2, 3, 4).stream()\n            .filter(n -> n % 2 == 0).count();\n        System.out.println(count);\n    }\n}",
+    "options": [
+      "1",
+      "2",
+      "4",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "filter keeps 2 and 4, and count returns two."
+  },
+  {
+    "id": "deep-stream-02",
+    "subtopic": "Java Streams",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class MapStream {\n    public static void main(String[] args) {\n        int sum = java.util.List.of(1, 2, 3).stream()\n            .mapToInt(n -> n * n).sum();\n        System.out.println(sum);\n    }\n}",
+    "options": [
+      "6",
+      "12",
+      "14",
+      "Compilation error"
+    ],
+    "answer": 2,
+    "explanation": "The squares are 1, 4, and 9; their sum is 14."
+  },
+  {
+    "id": "deep-stream-03",
+    "subtopic": "Java Streams",
+    "question": "What is a stream's terminal operation?",
+    "options": [
+      "An operation that initiates processing and produces a result or side effect",
+      "An operation that always sorts the source",
+      "A mutable collection",
+      "A thread pool"
+    ],
+    "answer": 0,
+    "explanation": "Terminal operations such as count, reduce, or forEach trigger execution of a lazy pipeline."
+  },
+  {
+    "id": "deep-thread-01",
+    "subtopic": "Java Threads",
+    "question": "What does `synchronized` on this instance method lock?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Counter {\n    synchronized void increment() { }\n}",
+    "options": [
+      "The current Counter instance monitor",
+      "The Counter class monitor",
+      "Every Counter instance",
+      "No monitor"
+    ],
+    "answer": 0,
+    "explanation": "A synchronized instance method acquires the monitor of its receiver object."
+  },
+  {
+    "id": "deep-thread-02",
+    "subtopic": "Java Threads",
+    "question": "Why is `count++` not made atomic by declaring count volatile?",
+    "options": [
+      "It is a read-modify-write compound operation",
+      "volatile is valid only for String",
+      "volatile makes updates private",
+      "The compiler removes increment"
+    ],
+    "answer": 0,
+    "explanation": "volatile gives visibility and ordering guarantees, but increment consists of multiple steps and needs atomic coordination."
+  },
+  {
+    "id": "deep-jdbc-01",
+    "subtopic": "JDBC",
+    "question": "Why is a `DataSource` often preferred over calling `DriverManager` throughout an application?",
+    "options": [
+      "It centralizes connection configuration and can provide pooling",
+      "It removes SQL exceptions",
+      "It automatically maps every table to an entity",
+      "It prevents transactions"
+    ],
+    "answer": 0,
+    "explanation": "A DataSource abstracts connection acquisition and can integrate with pooling and container-managed configuration."
+  },
+  {
+    "id": "deep-jdbc-02",
+    "subtopic": "JDBC",
+    "question": "Which order correctly reads query rows?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "try (var statement = connection.prepareStatement(\"select name from users\");\n     var result = statement.executeQuery()) {\n    while (result.next()) {\n        System.out.println(result.getString(\"name\"));\n    }\n}",
+    "options": [
+      "Call next() before reading each row",
+      "Call commit() before every getString",
+      "Call close() before next()",
+      "Use result.setString()"
+    ],
+    "answer": 0,
+    "explanation": "ResultSet.next advances the cursor; getters then retrieve columns from the current row."
+  },
+  {
+    "id": "deep-jdbc-03",
+    "subtopic": "JDBC",
+    "question": "With auto-commit disabled, what is the effect of this successful call?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "connection.setAutoCommit(false);\n// execute one or more updates\nconnection.commit();",
+    "options": [
+      "Makes the transaction's changes permanent",
+      "Rolls the changes back",
+      "Closes the connection",
+      "Starts a new connection"
+    ],
+    "answer": 0,
+    "explanation": "commit finalizes the transaction's pending changes."
+  },
+  {
+    "id": "pdf-jdbc-001",
+    "subtopic": "JDBC",
+    "question": "Which JDBC operation is normally used for a SELECT statement that returns rows?",
+    "options": [
+      "executeQuery()",
+      "executeUpdate()",
+      "commit()",
+      "setAutoCommit()"
+    ],
+    "answer": 0,
+    "explanation": "executeQuery returns a ResultSet for a query that produces rows.",
+    "source": "Kodewala Academy Core Java & Advance Java notes, PDF page 170",
+    "sourceLabel": "From PDF notes · page 170"
+  },
+  {
+    "id": "pdf-jdbc-002",
+    "subtopic": "JDBC",
+    "question": "Which JDBC operation is normally used for INSERT, UPDATE, or DELETE?",
+    "options": [
+      "executeQuery()",
+      "executeUpdate()",
+      "next()",
+      "getResultSet()"
+    ],
+    "answer": 1,
+    "explanation": "executeUpdate is used for data-changing statements and returns an update count.",
+    "source": "Kodewala Academy Core Java & Advance Java notes, PDF page 170",
+    "sourceLabel": "From PDF notes · page 170"
+  },
+  {
+    "id": "pdf-jdbc-003",
+    "subtopic": "JDBC",
+    "question": "What does disabling auto-commit require after successful updates if the application wants to keep them?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "connection.setAutoCommit(false);\nstatement.executeUpdate(sql);\nconnection.commit();",
+    "options": [
+      "Call commit()",
+      "Call rollback()",
+      "Close only the ResultSet",
+      "Call executeQuery()"
+    ],
+    "answer": 0,
+    "explanation": "With auto-commit disabled, commit finalizes the successful transaction; rollback would abandon its uncommitted changes.",
+    "source": "Kodewala Academy Core Java & Advance Java notes, PDF page 170",
+    "sourceLabel": "From PDF notes · page 170"
+  }
+]

@@ -1,0 +1,995 @@
+[
+  {
+    "id": "oop-01",
+    "subtopic": "Encapsulation",
+    "question": "Which design best protects an object's balance invariant?",
+    "options": [
+      "A public mutable balance field",
+      "A private balance with validated deposit and withdrawal methods",
+      "A private field with an unrestricted setter",
+      "A static balance shared by all accounts"
+    ],
+    "answer": 1,
+    "explanation": "Private state plus validated domain operations keeps state changes under the class's control."
+  },
+  {
+    "id": "oop-02",
+    "subtopic": "Constructor chaining",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Parent {\n    Parent() { System.out.print(\"P\"); }\n}\nclass Child extends Parent {\n    Child() { System.out.print(\"C\"); }\n    public static void main(String[] args) { new Child(); }\n}",
+    "options": [
+      "CP",
+      "PC",
+      "C",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "The superclass constructor runs before the subclass constructor."
+  },
+  {
+    "id": "oop-03",
+    "subtopic": "Dynamic dispatch",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Base { void show() { System.out.print(\"B\"); } }\nclass Derived extends Base {\n    @Override void show() { System.out.print(\"D\"); }\n    public static void main(String[] args) { Base value = new Derived(); value.show(); }\n}",
+    "options": [
+      "B",
+      "D",
+      "BD",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "Overridden instance-method selection uses the runtime object's class."
+  },
+  {
+    "id": "oop-04",
+    "subtopic": "Abstract classes and interfaces",
+    "question": "Which statement is valid?",
+    "options": [
+      "A class can extend multiple classes",
+      "An abstract class cannot have constructors",
+      "A class can implement multiple interfaces",
+      "An interface can be instantiated directly"
+    ],
+    "answer": 2,
+    "explanation": "Java classes have one direct superclass but may implement multiple interfaces."
+  },
+  {
+    "id": "oop-05",
+    "subtopic": "Overloading",
+    "question": "Which method is called?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Overloads {\n    static void show(Object value) { System.out.println(\"Object\"); }\n    static void show(String value) { System.out.println(\"String\"); }\n    public static void main(String[] args) { show(\"hi\"); }\n}",
+    "options": [
+      "Object",
+      "String",
+      "Both",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "Overload resolution selects the most specific applicable parameter type, String."
+  },
+  {
+    "id": "oop-06",
+    "subtopic": "Overriding",
+    "question": "Which condition is required for a valid override?",
+    "options": [
+      "The subclass method must have a narrower access level",
+      "The method must have the same name and compatible parameter list, with a compatible return type",
+      "The return type must always be void",
+      "The superclass method must be static"
+    ],
+    "answer": 1,
+    "explanation": "An overriding method follows Java's signature, return-type, and access rules; @Override helps catch mistakes."
+  },
+  {
+    "id": "oop-07",
+    "subtopic": "Composition",
+    "question": "When is composition often preferable to inheritance?",
+    "options": [
+      "When one type is a true specialized kind of another",
+      "When behavior should be assembled from collaborators without claiming an is-a relationship",
+      "Whenever a class has a constructor",
+      "When methods must be static"
+    ],
+    "answer": 1,
+    "explanation": "Composition models has-a relationships and can reduce tight coupling to a base-class hierarchy."
+  },
+  {
+    "id": "oop-08",
+    "subtopic": "Field hiding",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Parent { int value = 1; }\nclass Child extends Parent {\n    int value = 2;\n    public static void main(String[] args) {\n        Parent item = new Child();\n        System.out.println(item.value);\n    }\n}",
+    "options": [
+      "1",
+      "2",
+      "Compilation error",
+      "Runtime exception"
+    ],
+    "answer": 0,
+    "explanation": "Fields are resolved using the reference's declared type; field access is not polymorphic like method overriding."
+  },
+  {
+    "id": "oop-09",
+    "subtopic": "Constructor inheritance",
+    "question": "Are constructors inherited by subclasses?",
+    "options": [
+      "Yes, all public constructors are inherited",
+      "No, constructors are not inherited",
+      "Only default constructors are inherited",
+      "Only abstract constructors are inherited"
+    ],
+    "answer": 1,
+    "explanation": "A subclass declares its own constructors and can invoke a superclass constructor with super(...)."
+  },
+  {
+    "id": "oop-10",
+    "subtopic": "super constructor",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class ParentInit {\n    ParentInit(int n) { System.out.print(n); }\n}\nclass ChildInit extends ParentInit {\n    ChildInit() { super(7); System.out.print(8); }\n    public static void main(String[] args) { new ChildInit(); }\n}",
+    "options": [
+      "78",
+      "87",
+      "7",
+      "Compilation error"
+    ],
+    "answer": 0,
+    "explanation": "The explicit superclass constructor call runs first, then the child constructor body continues."
+  },
+  {
+    "id": "oop-11",
+    "subtopic": "Default interface methods",
+    "question": "What can a default interface method provide?",
+    "options": [
+      "An inherited implementation that implementing classes may use or override",
+      "A constructor for the interface",
+      "A private instance field",
+      "Multiple class inheritance"
+    ],
+    "answer": 0,
+    "explanation": "Default methods allow interfaces to provide behavior while preserving the ability for classes to override it."
+  },
+  {
+    "id": "oop-12",
+    "subtopic": "Covariant returns",
+    "question": "What is a covariant return type in an override?",
+    "options": [
+      "A narrower reference return type that is a subtype of the overridden method's return type",
+      "Any unrelated return type",
+      "A return type that changes on each call",
+      "A primitive return type replacing any class"
+    ],
+    "answer": 0,
+    "explanation": "Java permits an overriding method to return a subtype of the original reference return type."
+  },
+  {
+    "id": "oop-13",
+    "subtopic": "Abstraction",
+    "question": "What is the main purpose of abstraction in object-oriented design?",
+    "options": [
+      "Expose essential operations while hiding implementation details",
+      "Allow unrelated classes to share private fields",
+      "Make every method static",
+      "Prevent all object creation"
+    ],
+    "answer": 0,
+    "explanation": "Abstraction focuses on the contract and essential behavior a caller needs, while implementation details can vary."
+  },
+  {
+    "id": "exp-oop-14",
+    "subtopic": "Encapsulation",
+    "question": "Why should a class validate input in a setter or domain method?",
+    "options": [
+      "To preserve the object's invariants",
+      "To make every field static",
+      "To avoid creating constructors",
+      "To permit direct access to private fields"
+    ],
+    "answer": 0,
+    "explanation": "Controlled state changes allow a class to reject values that would violate its invariants."
+  },
+  {
+    "id": "exp-oop-15",
+    "subtopic": "Constructor chaining",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Chain {\n    Chain() { this(4); System.out.print(\"A\"); }\n    Chain(int value) { System.out.print(value); }\n    public static void main(String[] args) { new Chain(); }\n}",
+    "options": [
+      "A4",
+      "4A",
+      "4",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "The this(4) constructor invocation runs first, printing 4, then the no-argument constructor prints A."
+  },
+  {
+    "id": "exp-oop-16",
+    "subtopic": "Inheritance",
+    "question": "Which statement about Java class inheritance is correct?",
+    "options": [
+      "A class may extend two classes directly",
+      "A class can extend one class and implement multiple interfaces",
+      "Interfaces cannot extend other interfaces",
+      "A final class must be abstract"
+    ],
+    "answer": 1,
+    "explanation": "Java supports single class inheritance and allows a class to implement multiple interfaces."
+  },
+  {
+    "id": "exp-oop-17",
+    "subtopic": "Dynamic dispatch",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Animal { void speak() { System.out.print(\"animal\"); } }\nclass Dog extends Animal { @Override void speak() { System.out.print(\"dog\"); } }\nclass Demo { public static void main(String[] args) { Animal a = new Dog(); a.speak(); } }",
+    "options": [
+      "animal",
+      "dog",
+      "animaldog",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "Overridden instance methods dispatch according to the runtime class of the object."
+  },
+  {
+    "id": "exp-oop-18",
+    "subtopic": "Abstract classes and interfaces",
+    "question": "Which feature can an abstract class provide that an interface cannot provide as ordinary instance state?",
+    "options": [
+      "A constructor and instance fields",
+      "Abstract methods",
+      "Public constants",
+      "Default methods"
+    ],
+    "answer": 0,
+    "explanation": "An abstract class can have constructors and per-instance state; interface fields are implicitly public static final."
+  },
+  {
+    "id": "exp-oop-19",
+    "subtopic": "Overriding",
+    "question": "Which annotation asks the compiler to verify that a method really overrides an inherited method?",
+    "options": [
+      "@Inherited",
+      "@Override",
+      "@Overload",
+      "@FunctionalInterface"
+    ],
+    "answer": 1,
+    "explanation": "@Override makes the compiler report an error if the method does not override a superclass or interface method."
+  },
+  {
+    "id": "exp-oop-20",
+    "subtopic": "Default interface methods",
+    "question": "Which implementation is selected?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "interface A { default String name() { return \"A\"; } }\ninterface B { default String name() { return \"B\"; } }\nclass C implements A, B { public String name() { return A.super.name() + B.super.name(); } }\nclass Demo { public static void main(String[] args) { System.out.println(new C().name()); } }",
+    "options": [
+      "A",
+      "B",
+      "AB",
+      "Compilation error because C must resolve the conflict"
+    ],
+    "answer": 2,
+    "explanation": "C explicitly resolves the conflicting defaults and combines the results as AB."
+  },
+  {
+    "id": "chapter-constructors-01",
+    "subtopic": "Constructors",
+    "question": "Which statement about Constructors is correct?",
+    "options": [
+      "A constructor has the same name as its class and has no return type.",
+      "A constructor has a return type of void.",
+      "Constructors are inherited by subclasses.",
+      "A constructor can be declared static."
+    ],
+    "answer": 0,
+    "explanation": "A constructor has the same name as its class and has no return type."
+  },
+  {
+    "id": "chapter-constructors-02",
+    "subtopic": "Constructors",
+    "question": "Choose the accurate Java interview answer about Constructors.",
+    "options": [
+      "A constructor has a return type of void.",
+      "A constructor runs when an instance is created with new.",
+      "Constructors are inherited by subclasses.",
+      "A constructor can be declared static."
+    ],
+    "answer": 1,
+    "explanation": "A constructor runs when an instance is created with new."
+  },
+  {
+    "id": "chapter-constructors-03",
+    "subtopic": "Constructors",
+    "question": "A developer is asked about Constructors. Which response is correct?",
+    "options": [
+      "A constructor has a return type of void.",
+      "Constructors are inherited by subclasses.",
+      "A class receives a default no-argument constructor only when it declares no constructors.",
+      "A constructor can be declared static."
+    ],
+    "answer": 2,
+    "explanation": "A class receives a default no-argument constructor only when it declares no constructors."
+  },
+  {
+    "id": "chapter-constructors-04",
+    "subtopic": "Constructors",
+    "question": "Select the true statement concerning Constructors.",
+    "options": [
+      "A constructor has a return type of void.",
+      "Constructors are inherited by subclasses.",
+      "A constructor can be declared static.",
+      "A constructor can be overloaded with different parameter lists."
+    ],
+    "answer": 3,
+    "explanation": "A constructor can be overloaded with different parameter lists."
+  },
+  {
+    "id": "chapter-constructors-05",
+    "subtopic": "Constructors",
+    "question": "Which statement about Constructors is correct?",
+    "options": [
+      "A constructor can delegate to another constructor in the same class with this(...).",
+      "A constructor has a return type of void.",
+      "Constructors are inherited by subclasses.",
+      "A constructor can be declared static."
+    ],
+    "answer": 0,
+    "explanation": "A constructor can delegate to another constructor in the same class with this(...)."
+  },
+  {
+    "id": "chapter-constructors-06",
+    "subtopic": "Constructors",
+    "question": "Choose the accurate Java interview answer about Constructors.",
+    "options": [
+      "A constructor has a return type of void.",
+      "A superclass constructor is invoked before the subclass constructor body.",
+      "Constructors are inherited by subclasses.",
+      "A constructor can be declared static."
+    ],
+    "answer": 1,
+    "explanation": "A superclass constructor is invoked before the subclass constructor body."
+  },
+  {
+    "id": "chapter-constructors-07",
+    "subtopic": "Constructors",
+    "question": "A developer is asked about Constructors. Which response is correct?",
+    "options": [
+      "A constructor has a return type of void.",
+      "Constructors are inherited by subclasses.",
+      "A constructor may validate arguments before assigning fields.",
+      "A constructor can be declared static."
+    ],
+    "answer": 2,
+    "explanation": "A constructor may validate arguments before assigning fields."
+  },
+  {
+    "id": "chapter-constructors-08",
+    "subtopic": "Constructors",
+    "question": "Select the true statement concerning Constructors.",
+    "options": [
+      "A constructor has a return type of void.",
+      "Constructors are inherited by subclasses.",
+      "A constructor can be declared static.",
+      "Constructors are not inherited by subclasses."
+    ],
+    "answer": 3,
+    "explanation": "Constructors are not inherited by subclasses."
+  },
+  {
+    "id": "chapter-abstraction-01",
+    "subtopic": "Abstraction",
+    "question": "Which statement about Abstraction is correct?",
+    "options": [
+      "Abstraction exposes essential behavior while hiding implementation details.",
+      "Abstraction requires every field to be public.",
+      "An abstract class can be instantiated directly.",
+      "An interface can contain constructors."
+    ],
+    "answer": 0,
+    "explanation": "Abstraction exposes essential behavior while hiding implementation details."
+  },
+  {
+    "id": "chapter-abstraction-02",
+    "subtopic": "Abstraction",
+    "question": "Choose the accurate Java interview answer about Abstraction.",
+    "options": [
+      "Abstraction requires every field to be public.",
+      "An abstract class cannot be instantiated directly.",
+      "An abstract class can be instantiated directly.",
+      "An interface can contain constructors."
+    ],
+    "answer": 1,
+    "explanation": "An abstract class cannot be instantiated directly."
+  },
+  {
+    "id": "chapter-abstraction-03",
+    "subtopic": "Abstraction",
+    "question": "A developer is asked about Abstraction. Which response is correct?",
+    "options": [
+      "Abstraction requires every field to be public.",
+      "An abstract class can be instantiated directly.",
+      "An abstract class can contain both abstract and concrete methods.",
+      "An interface can contain constructors."
+    ],
+    "answer": 2,
+    "explanation": "An abstract class can contain both abstract and concrete methods."
+  },
+  {
+    "id": "chapter-abstraction-04",
+    "subtopic": "Abstraction",
+    "question": "Select the true statement concerning Abstraction.",
+    "options": [
+      "Abstraction requires every field to be public.",
+      "An abstract class can be instantiated directly.",
+      "An interface can contain constructors.",
+      "A concrete subclass must implement inherited abstract methods unless it is also abstract."
+    ],
+    "answer": 3,
+    "explanation": "A concrete subclass must implement inherited abstract methods unless it is also abstract."
+  },
+  {
+    "id": "chapter-abstraction-05",
+    "subtopic": "Abstraction",
+    "question": "Which statement about Abstraction is correct?",
+    "options": [
+      "An interface defines a contract that implementing classes must satisfy.",
+      "Abstraction requires every field to be public.",
+      "An abstract class can be instantiated directly.",
+      "An interface can contain constructors."
+    ],
+    "answer": 0,
+    "explanation": "An interface defines a contract that implementing classes must satisfy."
+  },
+  {
+    "id": "chapter-abstraction-06",
+    "subtopic": "Abstraction",
+    "question": "Choose the accurate Java interview answer about Abstraction.",
+    "options": [
+      "Abstraction requires every field to be public.",
+      "Abstract classes can have constructors used during subclass construction.",
+      "An abstract class can be instantiated directly.",
+      "An interface can contain constructors."
+    ],
+    "answer": 1,
+    "explanation": "Abstract classes can have constructors used during subclass construction."
+  },
+  {
+    "id": "chapter-abstraction-07",
+    "subtopic": "Abstraction",
+    "question": "A developer is asked about Abstraction. Which response is correct?",
+    "options": [
+      "Abstraction requires every field to be public.",
+      "An abstract class can be instantiated directly.",
+      "An abstract method has no method body.",
+      "An interface can contain constructors."
+    ],
+    "answer": 2,
+    "explanation": "An abstract method has no method body."
+  },
+  {
+    "id": "chapter-abstraction-08",
+    "subtopic": "Abstraction",
+    "question": "Select the true statement concerning Abstraction.",
+    "options": [
+      "Abstraction requires every field to be public.",
+      "An abstract class can be instantiated directly.",
+      "An interface can contain constructors.",
+      "Abstraction can reduce coupling between callers and implementation details."
+    ],
+    "answer": 3,
+    "explanation": "Abstraction can reduce coupling between callers and implementation details."
+  },
+  {
+    "id": "chapter-polymorphism-01",
+    "subtopic": "Polymorphism",
+    "question": "Which statement about Polymorphism is correct?",
+    "options": [
+      "An overridden instance method is selected using the runtime object's class.",
+      "An overridden method is selected by the reference's variable name.",
+      "Static methods use runtime dispatch.",
+      "Fields are dynamically dispatched like instance methods."
+    ],
+    "answer": 0,
+    "explanation": "An overridden instance method is selected using the runtime object's class."
+  },
+  {
+    "id": "chapter-polymorphism-02",
+    "subtopic": "Polymorphism",
+    "question": "Choose the accurate Java interview answer about Polymorphism.",
+    "options": [
+      "An overridden method is selected by the reference's variable name.",
+      "A superclass reference can refer to an instance of a subclass.",
+      "Static methods use runtime dispatch.",
+      "Fields are dynamically dispatched like instance methods."
+    ],
+    "answer": 1,
+    "explanation": "A superclass reference can refer to an instance of a subclass."
+  },
+  {
+    "id": "chapter-polymorphism-03",
+    "subtopic": "Polymorphism",
+    "question": "A developer is asked about Polymorphism. Which response is correct?",
+    "options": [
+      "An overridden method is selected by the reference's variable name.",
+      "Static methods use runtime dispatch.",
+      "Compile-time types limit which members may be accessed through a reference.",
+      "Fields are dynamically dispatched like instance methods."
+    ],
+    "answer": 2,
+    "explanation": "Compile-time types limit which members may be accessed through a reference."
+  },
+  {
+    "id": "chapter-polymorphism-04",
+    "subtopic": "Polymorphism",
+    "question": "Select the true statement concerning Polymorphism.",
+    "options": [
+      "An overridden method is selected by the reference's variable name.",
+      "Static methods use runtime dispatch.",
+      "Fields are dynamically dispatched like instance methods.",
+      "Fields are resolved using the declared reference type rather than runtime dispatch."
+    ],
+    "answer": 3,
+    "explanation": "Fields are resolved using the declared reference type rather than runtime dispatch."
+  },
+  {
+    "id": "chapter-polymorphism-05",
+    "subtopic": "Polymorphism",
+    "question": "Which statement about Polymorphism is correct?",
+    "options": [
+      "Overriding enables different subclasses to provide specialized behavior.",
+      "An overridden method is selected by the reference's variable name.",
+      "Static methods use runtime dispatch.",
+      "Fields are dynamically dispatched like instance methods."
+    ],
+    "answer": 0,
+    "explanation": "Overriding enables different subclasses to provide specialized behavior."
+  },
+  {
+    "id": "chapter-polymorphism-06",
+    "subtopic": "Polymorphism",
+    "question": "Choose the accurate Java interview answer about Polymorphism.",
+    "options": [
+      "An overridden method is selected by the reference's variable name.",
+      "A virtual method call can dispatch to an implementation in a subclass.",
+      "Static methods use runtime dispatch.",
+      "Fields are dynamically dispatched like instance methods."
+    ],
+    "answer": 1,
+    "explanation": "A virtual method call can dispatch to an implementation in a subclass."
+  },
+  {
+    "id": "chapter-polymorphism-07",
+    "subtopic": "Polymorphism",
+    "question": "A developer is asked about Polymorphism. Which response is correct?",
+    "options": [
+      "An overridden method is selected by the reference's variable name.",
+      "Static methods use runtime dispatch.",
+      "A downcast should be checked when the runtime type is uncertain.",
+      "Fields are dynamically dispatched like instance methods."
+    ],
+    "answer": 2,
+    "explanation": "A downcast should be checked when the runtime type is uncertain."
+  },
+  {
+    "id": "chapter-polymorphism-08",
+    "subtopic": "Polymorphism",
+    "question": "Select the true statement concerning Polymorphism.",
+    "options": [
+      "An overridden method is selected by the reference's variable name.",
+      "Static methods use runtime dispatch.",
+      "Fields are dynamically dispatched like instance methods.",
+      "The instanceof operator can test whether an object matches a type."
+    ],
+    "answer": 3,
+    "explanation": "The instanceof operator can test whether an object matches a type."
+  },
+  {
+    "id": "chapter-method-overloading-and-overriding-01",
+    "subtopic": "Method overloading and overriding",
+    "question": "Which statement about Method overloading and overriding is correct?",
+    "options": [
+      "Overloading uses the same method name with different parameter lists.",
+      "Overloading changes a superclass method at runtime.",
+      "Overriding can reduce public access to private.",
+      "Overloading is selected from the runtime object's class."
+    ],
+    "answer": 0,
+    "explanation": "Overloading uses the same method name with different parameter lists."
+  },
+  {
+    "id": "chapter-method-overloading-and-overriding-02",
+    "subtopic": "Method overloading and overriding",
+    "question": "Choose the accurate Java interview answer about Method overloading and overriding.",
+    "options": [
+      "Overloading changes a superclass method at runtime.",
+      "Overriding replaces an inherited instance-method implementation in a subclass.",
+      "Overriding can reduce public access to private.",
+      "Overloading is selected from the runtime object's class."
+    ],
+    "answer": 1,
+    "explanation": "Overriding replaces an inherited instance-method implementation in a subclass."
+  },
+  {
+    "id": "chapter-method-overloading-and-overriding-03",
+    "subtopic": "Method overloading and overriding",
+    "question": "A developer is asked about Method overloading and overriding. Which response is correct?",
+    "options": [
+      "Overloading changes a superclass method at runtime.",
+      "Overriding can reduce public access to private.",
+      "Overload selection is resolved at compile time from argument types.",
+      "Overloading is selected from the runtime object's class."
+    ],
+    "answer": 2,
+    "explanation": "Overload selection is resolved at compile time from argument types."
+  },
+  {
+    "id": "chapter-method-overloading-and-overriding-04",
+    "subtopic": "Method overloading and overriding",
+    "question": "Select the true statement concerning Method overloading and overriding.",
+    "options": [
+      "Overloading changes a superclass method at runtime.",
+      "Overriding can reduce public access to private.",
+      "Overloading is selected from the runtime object's class.",
+      "An overriding method cannot use a more restrictive access level."
+    ],
+    "answer": 3,
+    "explanation": "An overriding method cannot use a more restrictive access level."
+  },
+  {
+    "id": "chapter-method-overloading-and-overriding-05",
+    "subtopic": "Method overloading and overriding",
+    "question": "Which statement about Method overloading and overriding is correct?",
+    "options": [
+      "An overriding method may use a covariant reference return type.",
+      "Overloading changes a superclass method at runtime.",
+      "Overriding can reduce public access to private.",
+      "Overloading is selected from the runtime object's class."
+    ],
+    "answer": 0,
+    "explanation": "An overriding method may use a covariant reference return type."
+  },
+  {
+    "id": "chapter-method-overloading-and-overriding-06",
+    "subtopic": "Method overloading and overriding",
+    "question": "Choose the accurate Java interview answer about Method overloading and overriding.",
+    "options": [
+      "Overloading changes a superclass method at runtime.",
+      "The @Override annotation helps the compiler verify an override.",
+      "Overriding can reduce public access to private.",
+      "Overloading is selected from the runtime object's class."
+    ],
+    "answer": 1,
+    "explanation": "The @Override annotation helps the compiler verify an override."
+  },
+  {
+    "id": "chapter-method-overloading-and-overriding-07",
+    "subtopic": "Method overloading and overriding",
+    "question": "A developer is asked about Method overloading and overriding. Which response is correct?",
+    "options": [
+      "Overloading changes a superclass method at runtime.",
+      "Overriding can reduce public access to private.",
+      "A static method is hidden rather than overridden.",
+      "Overloading is selected from the runtime object's class."
+    ],
+    "answer": 2,
+    "explanation": "A static method is hidden rather than overridden."
+  },
+  {
+    "id": "chapter-method-overloading-and-overriding-08",
+    "subtopic": "Method overloading and overriding",
+    "question": "Select the true statement concerning Method overloading and overriding.",
+    "options": [
+      "Overloading changes a superclass method at runtime.",
+      "Overriding can reduce public access to private.",
+      "Overloading is selected from the runtime object's class.",
+      "A method cannot be overloaded only by changing its return type."
+    ],
+    "answer": 3,
+    "explanation": "A method cannot be overloaded only by changing its return type."
+  },
+  {
+    "id": "chapter-interfaces-and-types-of-interfaces-01",
+    "subtopic": "Interfaces and types of interfaces",
+    "question": "Which statement about Interfaces and types of interfaces is correct?",
+    "options": [
+      "A class can implement multiple interfaces.",
+      "An interface can be instantiated with new.",
+      "A class can implement only one interface.",
+      "An interface default method is a constructor."
+    ],
+    "answer": 0,
+    "explanation": "A class can implement multiple interfaces."
+  },
+  {
+    "id": "chapter-interfaces-and-types-of-interfaces-02",
+    "subtopic": "Interfaces and types of interfaces",
+    "question": "Choose the accurate Java interview answer about Interfaces and types of interfaces.",
+    "options": [
+      "An interface can be instantiated with new.",
+      "An interface can extend one or more interfaces.",
+      "A class can implement only one interface.",
+      "An interface default method is a constructor."
+    ],
+    "answer": 1,
+    "explanation": "An interface can extend one or more interfaces."
+  },
+  {
+    "id": "chapter-interfaces-and-types-of-interfaces-03",
+    "subtopic": "Interfaces and types of interfaces",
+    "question": "A developer is asked about Interfaces and types of interfaces. Which response is correct?",
+    "options": [
+      "An interface can be instantiated with new.",
+      "A class can implement only one interface.",
+      "A default interface method provides an implementation that implementing classes may inherit or override.",
+      "An interface default method is a constructor."
+    ],
+    "answer": 2,
+    "explanation": "A default interface method provides an implementation that implementing classes may inherit or override."
+  },
+  {
+    "id": "chapter-interfaces-and-types-of-interfaces-04",
+    "subtopic": "Interfaces and types of interfaces",
+    "question": "Select the true statement concerning Interfaces and types of interfaces.",
+    "options": [
+      "An interface can be instantiated with new.",
+      "A class can implement only one interface.",
+      "An interface default method is a constructor.",
+      "Interface fields are implicitly public, static, and final."
+    ],
+    "answer": 3,
+    "explanation": "Interface fields are implicitly public, static, and final."
+  },
+  {
+    "id": "chapter-interfaces-and-types-of-interfaces-05",
+    "subtopic": "Interfaces and types of interfaces",
+    "question": "Which statement about Interfaces and types of interfaces is correct?",
+    "options": [
+      "A functional interface has one abstract method for its functional contract.",
+      "An interface can be instantiated with new.",
+      "A class can implement only one interface.",
+      "An interface default method is a constructor."
+    ],
+    "answer": 0,
+    "explanation": "A functional interface has one abstract method for its functional contract."
+  },
+  {
+    "id": "chapter-interfaces-and-types-of-interfaces-06",
+    "subtopic": "Interfaces and types of interfaces",
+    "question": "Choose the accurate Java interview answer about Interfaces and types of interfaces.",
+    "options": [
+      "An interface can be instantiated with new.",
+      "A class implementing an interface must implement its abstract methods or remain abstract.",
+      "A class can implement only one interface.",
+      "An interface default method is a constructor."
+    ],
+    "answer": 1,
+    "explanation": "A class implementing an interface must implement its abstract methods or remain abstract."
+  },
+  {
+    "id": "chapter-interfaces-and-types-of-interfaces-07",
+    "subtopic": "Interfaces and types of interfaces",
+    "question": "A developer is asked about Interfaces and types of interfaces. Which response is correct?",
+    "options": [
+      "An interface can be instantiated with new.",
+      "A class can implement only one interface.",
+      "An interface can be used as the declared type of an object reference.",
+      "An interface default method is a constructor."
+    ],
+    "answer": 2,
+    "explanation": "An interface can be used as the declared type of an object reference."
+  },
+  {
+    "id": "chapter-interfaces-and-types-of-interfaces-08",
+    "subtopic": "Interfaces and types of interfaces",
+    "question": "Select the true statement concerning Interfaces and types of interfaces.",
+    "options": [
+      "An interface can be instantiated with new.",
+      "A class can implement only one interface.",
+      "An interface default method is a constructor.",
+      "A class may inherit conflicting default methods and need to resolve the conflict."
+    ],
+    "answer": 3,
+    "explanation": "A class may inherit conflicting default methods and need to resolve the conflict."
+  },
+  {
+    "id": "deep-ctor-01",
+    "subtopic": "Constructors",
+    "question": "If a class declares only `Box(int size)`, which is true about `new Box()`?",
+    "options": [
+      "It calls the declared constructor with zero",
+      "It compiles because a default constructor is added",
+      "It does not compile unless a no-argument constructor is declared",
+      "It creates a null Box"
+    ],
+    "answer": 2,
+    "explanation": "The compiler supplies a default constructor only when the class declares no constructor."
+  },
+  {
+    "id": "deep-ctor-02",
+    "subtopic": "Constructors",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Box {\n    int size;\n    Box() { this(4); }\n    Box(int size) { this.size = size; }\n    public static void main(String[] args) {\n        System.out.println(new Box().size);\n    }\n}",
+    "options": [
+      "0",
+      "1",
+      "4",
+      "Compilation error"
+    ],
+    "answer": 2,
+    "explanation": "The no-argument constructor delegates to Box(4), which initializes size to 4."
+  },
+  {
+    "id": "deep-poly-01",
+    "subtopic": "Polymorphism",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Parent { int value = 1; }\nclass Child extends Parent { int value = 2; }\nclass Demo {\n    public static void main(String[] args) {\n        Parent p = new Child();\n        System.out.println(p.value);\n    }\n}",
+    "options": [
+      "1",
+      "2",
+      "Compilation error",
+      "Runtime exception"
+    ],
+    "answer": 0,
+    "explanation": "Fields are hidden rather than dynamically dispatched; the field is selected using the reference's declared type."
+  },
+  {
+    "id": "deep-poly-02",
+    "subtopic": "Polymorphism",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Parent { static String name() { return \"P\"; } }\nclass Child extends Parent { static String name() { return \"C\"; } }\nclass Demo {\n    public static void main(String[] args) {\n        Parent p = new Child();\n        System.out.println(p.name());\n    }\n}",
+    "options": [
+      "P",
+      "C",
+      "PC",
+      "Compilation error"
+    ],
+    "answer": 0,
+    "explanation": "Static method selection is based on the declared reference type; static methods are hidden, not overridden."
+  },
+  {
+    "id": "deep-abs-01",
+    "subtopic": "Abstraction",
+    "question": "Which statement makes this class compile?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "abstract class Shape {\n    abstract double area();\n}\nclass Circle extends Shape {\n    // choose the required declaration\n}",
+    "options": [
+      "double area() { return 0; }",
+      "static double area() { return 0; }",
+      "void area() { }",
+      "No declaration is needed"
+    ],
+    "answer": 0,
+    "explanation": "A concrete subclass must implement the inherited abstract instance method with a compatible return type."
+  },
+  {
+    "id": "deep-interface-01",
+    "subtopic": "Interfaces and types of interfaces",
+    "question": "A functional interface may contain which combination?",
+    "options": [
+      "Exactly one abstract method for its functional contract, plus default or static methods",
+      "Only fields and no methods",
+      "Any number of unrelated abstract methods",
+      "A constructor and one abstract method"
+    ],
+    "answer": 0,
+    "explanation": "A functional interface has one abstract method for its function descriptor; default and static methods are allowed."
+  },
+  {
+    "id": "pdf-java-012",
+    "subtopic": "Method overloading and overriding",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Parent {\n    private void show() { System.out.print(\"P\"); }\n    void call() { show(); }\n}\nclass Child extends Parent {\n    void show() { System.out.print(\"C\"); }\n    public static void main(String[] args) { new Child().call(); }\n}",
+    "options": [
+      "P",
+      "C",
+      "PC",
+      "Compilation error"
+    ],
+    "answer": 0,
+    "explanation": "The private Parent method is not inherited or overridden; Parent.call invokes Parent's own private show.",
+    "source": "Kodewala Academy Core Java & Advance Java notes, PDF page 48",
+    "sourceLabel": "From PDF notes · page 48"
+  },
+  {
+    "id": "pdf-ctor-001",
+    "subtopic": "Constructors",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Order {\n    Order() { this(7); System.out.print(\"A\"); }\n    Order(int id) { System.out.print(id); }\n    public static void main(String[] args) { new Order(); }\n}",
+    "options": [
+      "A7",
+      "7A",
+      "7",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "The this(...) constructor call must run first; it prints 7 before the no-argument constructor prints A.",
+    "source": "Kodewala Academy Core Java & Advance Java notes, PDF page 115",
+    "sourceLabel": "From PDF notes · page 115"
+  },
+  {
+    "id": "pdf-ctor-002",
+    "subtopic": "Constructors",
+    "question": "A class declares a parameterized constructor but no no-argument constructor. What happens with `new Item()`?",
+    "options": [
+      "The compiler inserts a no-argument constructor anyway",
+      "It fails to compile unless a no-argument constructor is declared",
+      "It creates an uninitialized object",
+      "It calls the parameterized constructor with null"
+    ],
+    "answer": 1,
+    "explanation": "The compiler supplies a default constructor only if the class declares no constructors.",
+    "source": "Kodewala Academy Core Java & Advance Java notes, PDF page 115",
+    "sourceLabel": "From PDF notes · page 115"
+  },
+  {
+    "id": "pdf-abs-001",
+    "subtopic": "Abstraction",
+    "question": "Can an abstract class have a constructor even though it cannot be instantiated directly?",
+    "options": [
+      "Yes; it initializes the abstract superclass portion during subclass construction",
+      "No; abstract classes cannot declare constructors",
+      "Only if the constructor is static",
+      "Only if every method is abstract"
+    ],
+    "answer": 0,
+    "explanation": "Subclass construction invokes the superclass constructor to initialize inherited state.",
+    "source": "Kodewala Academy Core Java & Advance Java notes, PDF page 128",
+    "sourceLabel": "From PDF notes · page 128"
+  },
+  {
+    "id": "pdf-poly-001",
+    "subtopic": "Polymorphism",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Animal { void sound() { System.out.print(\"animal\"); } }\nclass Dog extends Animal { @Override void sound() { System.out.print(\"dog\"); } }\nclass Demo {\n    public static void main(String[] args) {\n        Animal a = new Dog();\n        a.sound();\n    }\n}",
+    "options": [
+      "animal",
+      "dog",
+      "animaldog",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "Overridden instance-method dispatch uses the runtime object's class, which is Dog.",
+    "source": "Kodewala Academy Core Java & Advance Java notes, PDF page 134",
+    "sourceLabel": "From PDF notes · page 134"
+  },
+  {
+    "id": "pdf-overload-001",
+    "subtopic": "Method overloading and overriding",
+    "question": "Why can't two methods be overloaded only by changing their return types?",
+    "options": [
+      "A call's argument list would not identify which method to invoke",
+      "Java methods cannot return values",
+      "Return types are not part of class files",
+      "Only constructors can return values"
+    ],
+    "answer": 0,
+    "explanation": "The compiler resolves overloads from the call's name and argument types, so return type alone is insufficient.",
+    "source": "Kodewala Academy Core Java & Advance Java notes, PDF page 139",
+    "sourceLabel": "From PDF notes · page 139"
+  }
+]

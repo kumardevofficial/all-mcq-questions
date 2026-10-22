@@ -1,0 +1,1414 @@
+[
+  {
+    "id": "fundamentals-01",
+    "subtopic": "JDK, JRE, and JVM",
+    "question": "Which statement best describes the JDK?",
+    "options": [
+      "It is only the JVM",
+      "It provides tools for developing Java programs and the runtime components needed to run them",
+      "It is a Java source file",
+      "It is a database driver"
+    ],
+    "answer": 1,
+    "explanation": "The JDK is the development kit and includes tools such as the compiler along with runtime components."
+  },
+  {
+    "id": "fundamentals-02",
+    "subtopic": "Compilation and bytecode",
+    "question": "Why can compiled Java bytecode run on different platforms?",
+    "options": [
+      "The source code is converted to platform-neutral bytecode interpreted or compiled by a platform-specific JVM",
+      "Java removes the operating system",
+      "Every platform uses the same CPU",
+      "The compiler translates bytecode directly to HTML"
+    ],
+    "answer": 0,
+    "explanation": "The JVM implementation is platform-specific while Java bytecode uses a portable format."
+  },
+  {
+    "id": "fundamentals-03",
+    "subtopic": "Primitive field defaults",
+    "question": "What does this program print?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Defaults {\n    int count;\n\n    public static void main(String[] args) {\n        System.out.println(new Defaults().count);\n    }\n}",
+    "options": [
+      "0",
+      "null",
+      "Compilation error",
+      "An uninitialized-variable error"
+    ],
+    "answer": 0,
+    "explanation": "Instance fields receive default values. Local variables do not receive automatic defaults."
+  },
+  {
+    "id": "fundamentals-04",
+    "subtopic": "Command-line arguments",
+    "question": "If the program is run as `java App red blue`, what does it print?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class App {\n    public static void main(String[] args) {\n        System.out.println(args[1]);\n    }\n}",
+    "options": [
+      "red",
+      "blue",
+      "args",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "The first command-line argument is at index 0 and the second is at index 1."
+  },
+  {
+    "id": "fundamentals-05",
+    "subtopic": "Identifiers",
+    "question": "Which name is not a valid Java identifier?",
+    "options": [
+      "_count",
+      "total2",
+      "class",
+      "$value"
+    ],
+    "answer": 2,
+    "explanation": "`class` is a reserved keyword and cannot be used as an identifier."
+  },
+  {
+    "id": "fundamentals-06",
+    "subtopic": "Primitive types",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class CharValue {\n    public static void main(String[] args) {\n        char letter = 'A';\n        System.out.println((int) letter);\n    }\n}",
+    "options": [
+      "A",
+      "65",
+      "1",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "Casting the char to int prints its numeric Unicode code unit, which is 65 for 'A'."
+  },
+  {
+    "id": "fundamentals-07",
+    "subtopic": "Static and instance variables",
+    "question": "Where does a static field belong?",
+    "options": [
+      "To each method call",
+      "To each object separately",
+      "To the class, with one shared field per class loading",
+      "Only to the main method"
+    ],
+    "answer": 2,
+    "explanation": "A static field is associated with the class rather than with each instance."
+  },
+  {
+    "id": "fundamentals-08",
+    "subtopic": "Operators and precedence",
+    "question": "What does this expression print?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Precedence {\n    public static void main(String[] args) {\n        System.out.println(2 + 3 * 4);\n    }\n}",
+    "options": [
+      "20",
+      "14",
+      "24",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "Multiplication has higher precedence than addition, so the expression is 2 + 12."
+  },
+  {
+    "id": "fundamentals-09",
+    "subtopic": "Widening conversions",
+    "question": "Which conversion is a widening primitive conversion?",
+    "options": [
+      "double to int",
+      "long to short",
+      "int to long",
+      "char to byte"
+    ],
+    "answer": 2,
+    "explanation": "An int value can be widened to long without an explicit cast."
+  },
+  {
+    "id": "fundamentals-10",
+    "subtopic": "Local variable initialization",
+    "question": "What happens when this method is compiled?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class LocalValue {\n    public static void main(String[] args) {\n        int count;\n        System.out.println(count);\n    }\n}",
+    "options": [
+      "It prints 0",
+      "It prints null",
+      "It fails because the local variable might not have been initialized",
+      "It throws an exception at runtime"
+    ],
+    "answer": 2,
+    "explanation": "Local variables must be definitely assigned before they are read."
+  },
+  {
+    "id": "fundamentals-11",
+    "subtopic": "Floating-point literals",
+    "question": "Which literal is a float rather than a double by default?",
+    "options": [
+      "1.0",
+      "1.0f",
+      "1",
+      "1L"
+    ],
+    "answer": 1,
+    "explanation": "A decimal floating-point literal is double by default; the f suffix makes it a float."
+  },
+  {
+    "id": "fundamentals-12",
+    "subtopic": "Short-circuit operators",
+    "question": "What does this print?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class ShortCircuit {\n    public static void main(String[] args) {\n        int value = 0;\n        boolean result = value != 0 && 10 / value > 1;\n        System.out.println(result);\n    }\n}",
+    "options": [
+      "true",
+      "false",
+      "ArithmeticException",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "Because the left operand is false, && does not evaluate the division on the right."
+  },
+  {
+    "id": "fundamentals-13",
+    "subtopic": "Introduction to Java",
+    "question": "What does Java's 'write once, run anywhere' idea rely on?",
+    "options": [
+      "All computers using identical hardware",
+      "Portable bytecode executed by a compatible JVM",
+      "Java source files being interpreted by browsers",
+      "Programs avoiding libraries"
+    ],
+    "answer": 1,
+    "explanation": "Java compilation produces bytecode that compatible JVM implementations can execute on different platforms."
+  },
+  {
+    "id": "fundamentals-14",
+    "subtopic": "Hello World and program entry point",
+    "question": "Which method is the conventional entry point for a standalone Java application?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "public static void main(String[] args) {\n    System.out.println(\"Hello, world!\");\n}",
+    "options": [
+      "public void start()",
+      "public static void main(String[] args)",
+      "private static int run()",
+      "static class Main"
+    ],
+    "answer": 1,
+    "explanation": "The standard launcher looks for a public static main method with a String array parameter (with supported variations in modern Java)."
+  },
+  {
+    "id": "fundamentals-15",
+    "subtopic": "Interactive user input",
+    "question": "Which class is commonly used in beginner console programs to read keyboard input?",
+    "options": [
+      "Scanner",
+      "StringBuilder",
+      "Arrays",
+      "Math"
+    ],
+    "answer": 0,
+    "explanation": "Scanner can read tokens and lines from System.in; callers should handle invalid input appropriately."
+  },
+  {
+    "id": "fundamentals-16",
+    "subtopic": "Variable scope",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Scope {\n    static int value = 4;\n    public static void main(String[] args) {\n        int value = 9;\n        System.out.println(value);\n    }\n}",
+    "options": [
+      "4",
+      "9",
+      "0",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "The local variable shadows the field inside main, so the local value 9 is printed."
+  },
+  {
+    "id": "exp-fundamentals-17",
+    "subtopic": "JDK, JRE, and JVM",
+    "question": "Which component translates Java source code into bytecode?",
+    "options": [
+      "The Java compiler",
+      "The garbage collector",
+      "The class loader",
+      "The JIT compiler only"
+    ],
+    "answer": 0,
+    "explanation": "The javac compiler translates source files into class files containing bytecode."
+  },
+  {
+    "id": "exp-fundamentals-18",
+    "subtopic": "Primitive types",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class NumericPromotion {\n    public static void main(String[] args) {\n        byte a = 10;\n        byte b = 20;\n        int result = a + b;\n        System.out.println(result);\n    }\n}",
+    "options": [
+      "30",
+      "1020",
+      "Compilation error because byte addition returns byte",
+      "0"
+    ],
+    "answer": 0,
+    "explanation": "Arithmetic on byte values promotes them to int, so the sum is 30."
+  },
+  {
+    "id": "exp-fundamentals-19",
+    "subtopic": "Identifiers",
+    "question": "Which identifier follows Java's conventional class naming style?",
+    "options": [
+      "customer_account",
+      "CustomerAccount",
+      "customerAccount",
+      "CUSTOMERACCOUNT"
+    ],
+    "answer": 1,
+    "explanation": "Class names conventionally use UpperCamelCase, such as CustomerAccount."
+  },
+  {
+    "id": "exp-fundamentals-20",
+    "subtopic": "Variable scope",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Shadowing {\n    int value = 4;\n    void print(int value) {\n        System.out.println(value + this.value);\n    }\n    public static void main(String[] args) {\n        new Shadowing().print(6);\n    }\n}",
+    "options": [
+      "4",
+      "6",
+      "10",
+      "Compilation error"
+    ],
+    "answer": 2,
+    "explanation": "The parameter is 6 and this.value refers to the instance field 4."
+  },
+  {
+    "id": "exp-fundamentals-21",
+    "subtopic": "Floating-point literals",
+    "question": "Which statement about floating-point arithmetic is generally correct?",
+    "options": [
+      "Every decimal fraction is represented exactly by double",
+      "Binary floating-point can approximate many decimal fractions",
+      "float has more precision than double",
+      "Floating-point values cannot be compared"
+    ],
+    "answer": 1,
+    "explanation": "Many decimal fractions have no finite binary representation, so floating-point calculations can involve rounding."
+  },
+  {
+    "id": "exp-fundamentals-22",
+    "subtopic": "Short-circuit operators",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class ShortCircuitOr {\n    public static void main(String[] args) {\n        int value = 5;\n        boolean result = value > 0 || 10 / 0 > 1;\n        System.out.println(result);\n    }\n}",
+    "options": [
+      "true",
+      "false",
+      "ArithmeticException",
+      "Compilation error"
+    ],
+    "answer": 0,
+    "explanation": "The left side of || is true, so Java skips the division on the right."
+  },
+  {
+    "id": "exp-fundamentals-23",
+    "subtopic": "Interactive user input",
+    "question": "After Scanner.nextInt(), why can a following nextLine() appear to return an empty string?",
+    "options": [
+      "nextInt consumes the entire input stream",
+      "nextInt leaves the line terminator for nextLine to consume",
+      "nextLine only reads integers",
+      "Scanner closes System.in automatically"
+    ],
+    "answer": 1,
+    "explanation": "nextInt reads the token but not the remaining newline; a subsequent nextLine consumes that newline."
+  },
+  {
+    "id": "chapter-introduction-to-java-01",
+    "subtopic": "Introduction to Java",
+    "question": "Which statement about Introduction to Java is correct?",
+    "options": [
+      "Java is a high-level, general-purpose programming language.",
+      "Java runs only as browser JavaScript.",
+      "Java requires identical hardware on every platform.",
+      "Java programs cannot use libraries."
+    ],
+    "answer": 0,
+    "explanation": "Java is a high-level, general-purpose programming language."
+  },
+  {
+    "id": "chapter-introduction-to-java-02",
+    "subtopic": "Introduction to Java",
+    "question": "Choose the accurate Java interview answer about Introduction to Java.",
+    "options": [
+      "Java runs only as browser JavaScript.",
+      "Java source is compiled into bytecode for a compatible JVM.",
+      "Java requires identical hardware on every platform.",
+      "Java programs cannot use libraries."
+    ],
+    "answer": 1,
+    "explanation": "Java source is compiled into bytecode for a compatible JVM."
+  },
+  {
+    "id": "chapter-introduction-to-java-03",
+    "subtopic": "Introduction to Java",
+    "question": "A developer is asked about Introduction to Java. Which response is correct?",
+    "options": [
+      "Java runs only as browser JavaScript.",
+      "Java requires identical hardware on every platform.",
+      "The JVM implementation is specific to its operating system and hardware platform.",
+      "Java programs cannot use libraries."
+    ],
+    "answer": 2,
+    "explanation": "The JVM implementation is specific to its operating system and hardware platform."
+  },
+  {
+    "id": "chapter-introduction-to-java-04",
+    "subtopic": "Introduction to Java",
+    "question": "Select the true statement concerning Introduction to Java.",
+    "options": [
+      "Java runs only as browser JavaScript.",
+      "Java requires identical hardware on every platform.",
+      "Java programs cannot use libraries.",
+      "Java supports object-oriented design through classes and objects."
+    ],
+    "answer": 3,
+    "explanation": "Java supports object-oriented design through classes and objects."
+  },
+  {
+    "id": "chapter-introduction-to-java-05",
+    "subtopic": "Introduction to Java",
+    "question": "Which statement about Introduction to Java is correct?",
+    "options": [
+      "Java also provides primitive types for values such as integers and booleans.",
+      "Java runs only as browser JavaScript.",
+      "Java requires identical hardware on every platform.",
+      "Java programs cannot use libraries."
+    ],
+    "answer": 0,
+    "explanation": "Java also provides primitive types for values such as integers and booleans."
+  },
+  {
+    "id": "chapter-introduction-to-java-06",
+    "subtopic": "Introduction to Java",
+    "question": "Choose the accurate Java interview answer about Introduction to Java.",
+    "options": [
+      "Java runs only as browser JavaScript.",
+      "The Java platform includes a standard library of reusable APIs.",
+      "Java requires identical hardware on every platform.",
+      "Java programs cannot use libraries."
+    ],
+    "answer": 1,
+    "explanation": "The Java platform includes a standard library of reusable APIs."
+  },
+  {
+    "id": "chapter-introduction-to-java-07",
+    "subtopic": "Introduction to Java",
+    "question": "A developer is asked about Introduction to Java. Which response is correct?",
+    "options": [
+      "Java runs only as browser JavaScript.",
+      "Java requires identical hardware on every platform.",
+      "The compiler can report syntax and type errors before a program runs.",
+      "Java programs cannot use libraries."
+    ],
+    "answer": 2,
+    "explanation": "The compiler can report syntax and type errors before a program runs."
+  },
+  {
+    "id": "chapter-introduction-to-java-08",
+    "subtopic": "Introduction to Java",
+    "question": "Select the true statement concerning Introduction to Java.",
+    "options": [
+      "Java runs only as browser JavaScript.",
+      "Java requires identical hardware on every platform.",
+      "Java programs cannot use libraries.",
+      "The runtime checks operations that can fail while the program executes."
+    ],
+    "answer": 3,
+    "explanation": "The runtime checks operations that can fail while the program executes."
+  },
+  {
+    "id": "chapter-introduction-to-java-09",
+    "subtopic": "Introduction to Java",
+    "question": "Which statement about Introduction to Java is correct?",
+    "options": [
+      "The garbage collector can reclaim objects that are no longer reachable.",
+      "Java runs only as browser JavaScript.",
+      "Java requires identical hardware on every platform.",
+      "Java programs cannot use libraries."
+    ],
+    "answer": 0,
+    "explanation": "The garbage collector can reclaim objects that are no longer reachable."
+  },
+  {
+    "id": "chapter-hello-world-and-program-entry-point-01",
+    "subtopic": "Hello World and program entry point",
+    "question": "Which statement about Hello World and program entry point is correct?",
+    "options": [
+      "The conventional application entry point is public static void main(String[] args).",
+      "A Java program starts in a method named startPage().",
+      "Every statement must end with a comma.",
+      "The JVM executes a source file as HTML."
+    ],
+    "answer": 0,
+    "explanation": "The conventional application entry point is public static void main(String[] args)."
+  },
+  {
+    "id": "chapter-hello-world-and-program-entry-point-02",
+    "subtopic": "Hello World and program entry point",
+    "question": "Choose the accurate Java interview answer about Hello World and program entry point.",
+    "options": [
+      "A Java program starts in a method named startPage().",
+      "A public top-level class is normally saved in a source file with the same name.",
+      "Every statement must end with a comma.",
+      "The JVM executes a source file as HTML."
+    ],
+    "answer": 1,
+    "explanation": "A public top-level class is normally saved in a source file with the same name."
+  },
+  {
+    "id": "chapter-hello-world-and-program-entry-point-03",
+    "subtopic": "Hello World and program entry point",
+    "question": "A developer is asked about Hello World and program entry point. Which response is correct?",
+    "options": [
+      "A Java program starts in a method named startPage().",
+      "Every statement must end with a comma.",
+      "The javac command compiles a .java source file.",
+      "The JVM executes a source file as HTML."
+    ],
+    "answer": 2,
+    "explanation": "The javac command compiles a .java source file."
+  },
+  {
+    "id": "chapter-hello-world-and-program-entry-point-04",
+    "subtopic": "Hello World and program entry point",
+    "question": "Select the true statement concerning Hello World and program entry point.",
+    "options": [
+      "A Java program starts in a method named startPage().",
+      "Every statement must end with a comma.",
+      "The JVM executes a source file as HTML.",
+      "The java launcher runs a class by its fully qualified class name."
+    ],
+    "answer": 3,
+    "explanation": "The java launcher runs a class by its fully qualified class name."
+  },
+  {
+    "id": "chapter-hello-world-and-program-entry-point-05",
+    "subtopic": "Hello World and program entry point",
+    "question": "Which statement about Hello World and program entry point is correct?",
+    "options": [
+      "System.out.println writes text followed by a line terminator.",
+      "A Java program starts in a method named startPage().",
+      "Every statement must end with a comma.",
+      "The JVM executes a source file as HTML."
+    ],
+    "answer": 0,
+    "explanation": "System.out.println writes text followed by a line terminator."
+  },
+  {
+    "id": "chapter-hello-world-and-program-entry-point-06",
+    "subtopic": "Hello World and program entry point",
+    "question": "Choose the accurate Java interview answer about Hello World and program entry point.",
+    "options": [
+      "A Java program starts in a method named startPage().",
+      "System.out.print writes text without adding a line terminator.",
+      "Every statement must end with a comma.",
+      "The JVM executes a source file as HTML."
+    ],
+    "answer": 1,
+    "explanation": "System.out.print writes text without adding a line terminator."
+  },
+  {
+    "id": "chapter-hello-world-and-program-entry-point-07",
+    "subtopic": "Hello World and program entry point",
+    "question": "A developer is asked about Hello World and program entry point. Which response is correct?",
+    "options": [
+      "A Java program starts in a method named startPage().",
+      "Every statement must end with a comma.",
+      "A Java statement such as a method call normally ends with a semicolon.",
+      "The JVM executes a source file as HTML."
+    ],
+    "answer": 2,
+    "explanation": "A Java statement such as a method call normally ends with a semicolon."
+  },
+  {
+    "id": "chapter-hello-world-and-program-entry-point-08",
+    "subtopic": "Hello World and program entry point",
+    "question": "Select the true statement concerning Hello World and program entry point.",
+    "options": [
+      "A Java program starts in a method named startPage().",
+      "Every statement must end with a comma.",
+      "The JVM executes a source file as HTML.",
+      "Braces delimit class and method bodies."
+    ],
+    "answer": 3,
+    "explanation": "Braces delimit class and method bodies."
+  },
+  {
+    "id": "chapter-hello-world-and-program-entry-point-09",
+    "subtopic": "Hello World and program entry point",
+    "question": "Which statement about Hello World and program entry point is correct?",
+    "options": [
+      "The args parameter receives command-line arguments as strings.",
+      "A Java program starts in a method named startPage().",
+      "Every statement must end with a comma.",
+      "The JVM executes a source file as HTML."
+    ],
+    "answer": 0,
+    "explanation": "The args parameter receives command-line arguments as strings."
+  },
+  {
+    "id": "chapter-jdk-jre-and-jvm-01",
+    "subtopic": "JDK, JRE, and JVM",
+    "question": "Which statement about JDK, JRE, and JVM is correct?",
+    "options": [
+      "The JDK provides development tools such as the Java compiler.",
+      "The JVM is the Java source editor.",
+      "The JRE is the Java compiler only.",
+      "The JDK contains no development tools."
+    ],
+    "answer": 0,
+    "explanation": "The JDK provides development tools such as the Java compiler."
+  },
+  {
+    "id": "chapter-jdk-jre-and-jvm-02",
+    "subtopic": "JDK, JRE, and JVM",
+    "question": "Choose the accurate Java interview answer about JDK, JRE, and JVM.",
+    "options": [
+      "The JVM is the Java source editor.",
+      "The JVM loads and executes Java bytecode.",
+      "The JRE is the Java compiler only.",
+      "The JDK contains no development tools."
+    ],
+    "answer": 1,
+    "explanation": "The JVM loads and executes Java bytecode."
+  },
+  {
+    "id": "chapter-jdk-jre-and-jvm-03",
+    "subtopic": "JDK, JRE, and JVM",
+    "question": "A developer is asked about JDK, JRE, and JVM. Which response is correct?",
+    "options": [
+      "The JVM is the Java source editor.",
+      "The JRE is the Java compiler only.",
+      "The Java compiler translates source code into class-file bytecode.",
+      "The JDK contains no development tools."
+    ],
+    "answer": 2,
+    "explanation": "The Java compiler translates source code into class-file bytecode."
+  },
+  {
+    "id": "chapter-jdk-jre-and-jvm-04",
+    "subtopic": "JDK, JRE, and JVM",
+    "question": "Select the true statement concerning JDK, JRE, and JVM.",
+    "options": [
+      "The JVM is the Java source editor.",
+      "The JRE is the Java compiler only.",
+      "The JDK contains no development tools.",
+      "A compatible JVM provides the runtime environment for bytecode."
+    ],
+    "answer": 3,
+    "explanation": "A compatible JVM provides the runtime environment for bytecode."
+  },
+  {
+    "id": "chapter-jdk-jre-and-jvm-05",
+    "subtopic": "JDK, JRE, and JVM",
+    "question": "Which statement about JDK, JRE, and JVM is correct?",
+    "options": [
+      "The JRE conceptually combines a JVM with the libraries needed to run applications.",
+      "The JVM is the Java source editor.",
+      "The JRE is the Java compiler only.",
+      "The JDK contains no development tools."
+    ],
+    "answer": 0,
+    "explanation": "The JRE conceptually combines a JVM with the libraries needed to run applications."
+  },
+  {
+    "id": "chapter-jdk-jre-and-jvm-06",
+    "subtopic": "JDK, JRE, and JVM",
+    "question": "Choose the accurate Java interview answer about JDK, JRE, and JVM.",
+    "options": [
+      "The JVM is the Java source editor.",
+      "Different operating systems use platform-specific JVM implementations.",
+      "The JRE is the Java compiler only.",
+      "The JDK contains no development tools."
+    ],
+    "answer": 1,
+    "explanation": "Different operating systems use platform-specific JVM implementations."
+  },
+  {
+    "id": "chapter-jdk-jre-and-jvm-07",
+    "subtopic": "JDK, JRE, and JVM",
+    "question": "A developer is asked about JDK, JRE, and JVM. Which response is correct?",
+    "options": [
+      "The JVM is the Java source editor.",
+      "The JRE is the Java compiler only.",
+      "The class loader locates and loads classes when they are needed.",
+      "The JDK contains no development tools."
+    ],
+    "answer": 2,
+    "explanation": "The class loader locates and loads classes when they are needed."
+  },
+  {
+    "id": "chapter-jdk-jre-and-jvm-08",
+    "subtopic": "JDK, JRE, and JVM",
+    "question": "Select the true statement concerning JDK, JRE, and JVM.",
+    "options": [
+      "The JVM is the Java source editor.",
+      "The JRE is the Java compiler only.",
+      "The JDK contains no development tools.",
+      "A just-in-time compiler can compile frequently executed bytecode to native instructions."
+    ],
+    "answer": 3,
+    "explanation": "A just-in-time compiler can compile frequently executed bytecode to native instructions."
+  },
+  {
+    "id": "chapter-command-line-arguments-01",
+    "subtopic": "Command-line arguments",
+    "question": "Which statement about Command-line arguments is correct?",
+    "options": [
+      "The main method receives command-line arguments in a String array.",
+      "Arguments are passed as integers automatically.",
+      "The first argument has index 1.",
+      "Arguments are stored in System.out."
+    ],
+    "answer": 0,
+    "explanation": "The main method receives command-line arguments in a String array."
+  },
+  {
+    "id": "chapter-command-line-arguments-02",
+    "subtopic": "Command-line arguments",
+    "question": "Choose the accurate Java interview answer about Command-line arguments.",
+    "options": [
+      "Arguments are passed as integers automatically.",
+      "The first command-line argument is stored at index zero.",
+      "The first argument has index 1.",
+      "Arguments are stored in System.out."
+    ],
+    "answer": 1,
+    "explanation": "The first command-line argument is stored at index zero."
+  },
+  {
+    "id": "chapter-command-line-arguments-03",
+    "subtopic": "Command-line arguments",
+    "question": "A developer is asked about Command-line arguments. Which response is correct?",
+    "options": [
+      "Arguments are passed as integers automatically.",
+      "The first argument has index 1.",
+      "The array length reports how many arguments were provided.",
+      "Arguments are stored in System.out."
+    ],
+    "answer": 2,
+    "explanation": "The array length reports how many arguments were provided."
+  },
+  {
+    "id": "chapter-command-line-arguments-04",
+    "subtopic": "Command-line arguments",
+    "question": "Select the true statement concerning Command-line arguments.",
+    "options": [
+      "Arguments are passed as integers automatically.",
+      "The first argument has index 1.",
+      "Arguments are stored in System.out.",
+      "A program can convert an argument to an integer with Integer.parseInt."
+    ],
+    "answer": 3,
+    "explanation": "A program can convert an argument to an integer with Integer.parseInt."
+  },
+  {
+    "id": "chapter-command-line-arguments-05",
+    "subtopic": "Command-line arguments",
+    "question": "Which statement about Command-line arguments is correct?",
+    "options": [
+      "An argument containing spaces generally needs shell quoting to remain one argument.",
+      "Arguments are passed as integers automatically.",
+      "The first argument has index 1.",
+      "Arguments are stored in System.out."
+    ],
+    "answer": 0,
+    "explanation": "An argument containing spaces generally needs shell quoting to remain one argument."
+  },
+  {
+    "id": "chapter-command-line-arguments-06",
+    "subtopic": "Command-line arguments",
+    "question": "Choose the accurate Java interview answer about Command-line arguments.",
+    "options": [
+      "Arguments are passed as integers automatically.",
+      "Accessing an index outside the argument array can throw ArrayIndexOutOfBoundsException.",
+      "The first argument has index 1.",
+      "Arguments are stored in System.out."
+    ],
+    "answer": 1,
+    "explanation": "Accessing an index outside the argument array can throw ArrayIndexOutOfBoundsException."
+  },
+  {
+    "id": "chapter-command-line-arguments-07",
+    "subtopic": "Command-line arguments",
+    "question": "A developer is asked about Command-line arguments. Which response is correct?",
+    "options": [
+      "Arguments are passed as integers automatically.",
+      "The first argument has index 1.",
+      "An empty argument array has length zero.",
+      "Arguments are stored in System.out."
+    ],
+    "answer": 2,
+    "explanation": "An empty argument array has length zero."
+  },
+  {
+    "id": "chapter-command-line-arguments-08",
+    "subtopic": "Command-line arguments",
+    "question": "Select the true statement concerning Command-line arguments.",
+    "options": [
+      "Arguments are passed as integers automatically.",
+      "The first argument has index 1.",
+      "Arguments are stored in System.out.",
+      "The launcher passes arguments after the class name to main."
+    ],
+    "answer": 3,
+    "explanation": "The launcher passes arguments after the class name to main."
+  },
+  {
+    "id": "chapter-command-line-arguments-09",
+    "subtopic": "Command-line arguments",
+    "question": "Which statement about Command-line arguments is correct?",
+    "options": [
+      "Command-line arguments are received as strings even when they look numeric.",
+      "Arguments are passed as integers automatically.",
+      "The first argument has index 1.",
+      "Arguments are stored in System.out."
+    ],
+    "answer": 0,
+    "explanation": "Command-line arguments are received as strings even when they look numeric."
+  },
+  {
+    "id": "chapter-identifiers-01",
+    "subtopic": "Identifiers",
+    "question": "Which statement about Identifiers is correct?",
+    "options": [
+      "An identifier may begin with a letter, underscore, or dollar sign.",
+      "A Java identifier may contain a hyphen.",
+      "A reserved keyword can be used as a variable name.",
+      "Identifiers are allowed to begin with a digit."
+    ],
+    "answer": 0,
+    "explanation": "An identifier may begin with a letter, underscore, or dollar sign."
+  },
+  {
+    "id": "chapter-identifiers-02",
+    "subtopic": "Identifiers",
+    "question": "Choose the accurate Java interview answer about Identifiers.",
+    "options": [
+      "A Java identifier may contain a hyphen.",
+      "A Java keyword such as class cannot be used as an identifier.",
+      "A reserved keyword can be used as a variable name.",
+      "Identifiers are allowed to begin with a digit."
+    ],
+    "answer": 1,
+    "explanation": "A Java keyword such as class cannot be used as an identifier."
+  },
+  {
+    "id": "chapter-identifiers-03",
+    "subtopic": "Identifiers",
+    "question": "A developer is asked about Identifiers. Which response is correct?",
+    "options": [
+      "A Java identifier may contain a hyphen.",
+      "A reserved keyword can be used as a variable name.",
+      "Digits may appear after the first character of an identifier.",
+      "Identifiers are allowed to begin with a digit."
+    ],
+    "answer": 2,
+    "explanation": "Digits may appear after the first character of an identifier."
+  },
+  {
+    "id": "chapter-identifiers-04",
+    "subtopic": "Identifiers",
+    "question": "Select the true statement concerning Identifiers.",
+    "options": [
+      "A Java identifier may contain a hyphen.",
+      "A reserved keyword can be used as a variable name.",
+      "Identifiers are allowed to begin with a digit.",
+      "Java identifiers are case-sensitive."
+    ],
+    "answer": 3,
+    "explanation": "Java identifiers are case-sensitive."
+  },
+  {
+    "id": "chapter-identifiers-05",
+    "subtopic": "Identifiers",
+    "question": "Which statement about Identifiers is correct?",
+    "options": [
+      "Whitespace cannot split one identifier into multiple parts.",
+      "A Java identifier may contain a hyphen.",
+      "A reserved keyword can be used as a variable name.",
+      "Identifiers are allowed to begin with a digit."
+    ],
+    "answer": 0,
+    "explanation": "Whitespace cannot split one identifier into multiple parts."
+  },
+  {
+    "id": "chapter-identifiers-06",
+    "subtopic": "Identifiers",
+    "question": "Choose the accurate Java interview answer about Identifiers.",
+    "options": [
+      "A Java identifier may contain a hyphen.",
+      "Meaningful names make code easier to understand and maintain.",
+      "A reserved keyword can be used as a variable name.",
+      "Identifiers are allowed to begin with a digit."
+    ],
+    "answer": 1,
+    "explanation": "Meaningful names make code easier to understand and maintain."
+  },
+  {
+    "id": "chapter-identifiers-07",
+    "subtopic": "Identifiers",
+    "question": "A developer is asked about Identifiers. Which response is correct?",
+    "options": [
+      "A Java identifier may contain a hyphen.",
+      "A reserved keyword can be used as a variable name.",
+      "A variable name and a class name may use different naming conventions.",
+      "Identifiers are allowed to begin with a digit."
+    ],
+    "answer": 2,
+    "explanation": "A variable name and a class name may use different naming conventions."
+  },
+  {
+    "id": "chapter-identifiers-08",
+    "subtopic": "Identifiers",
+    "question": "Select the true statement concerning Identifiers.",
+    "options": [
+      "A Java identifier may contain a hyphen.",
+      "A reserved keyword can be used as a variable name.",
+      "Identifiers are allowed to begin with a digit.",
+      "Unicode letters can be used in Java identifiers."
+    ],
+    "answer": 3,
+    "explanation": "Unicode letters can be used in Java identifiers."
+  },
+  {
+    "id": "chapter-primitive-types-01",
+    "subtopic": "Primitive types",
+    "question": "Which statement about Primitive types is correct?",
+    "options": [
+      "Java has eight primitive types: byte, short, int, long, float, double, char, and boolean.",
+      "String is a primitive type.",
+      "A boolean stores arbitrary text.",
+      "An int variable stores an object reference."
+    ],
+    "answer": 0,
+    "explanation": "Java has eight primitive types: byte, short, int, long, float, double, char, and boolean."
+  },
+  {
+    "id": "chapter-primitive-types-02",
+    "subtopic": "Primitive types",
+    "question": "Choose the accurate Java interview answer about Primitive types.",
+    "options": [
+      "String is a primitive type.",
+      "A char represents a UTF-16 code unit.",
+      "A boolean stores arbitrary text.",
+      "An int variable stores an object reference."
+    ],
+    "answer": 1,
+    "explanation": "A char represents a UTF-16 code unit."
+  },
+  {
+    "id": "chapter-primitive-types-03",
+    "subtopic": "Primitive types",
+    "question": "A developer is asked about Primitive types. Which response is correct?",
+    "options": [
+      "String is a primitive type.",
+      "A boolean stores arbitrary text.",
+      "A boolean value is either true or false.",
+      "An int variable stores an object reference."
+    ],
+    "answer": 2,
+    "explanation": "A boolean value is either true or false."
+  },
+  {
+    "id": "chapter-primitive-types-04",
+    "subtopic": "Primitive types",
+    "question": "Select the true statement concerning Primitive types.",
+    "options": [
+      "String is a primitive type.",
+      "A boolean stores arbitrary text.",
+      "An int variable stores an object reference.",
+      "An int is a signed 32-bit integer type."
+    ],
+    "answer": 3,
+    "explanation": "An int is a signed 32-bit integer type."
+  },
+  {
+    "id": "chapter-primitive-types-05",
+    "subtopic": "Primitive types",
+    "question": "Which statement about Primitive types is correct?",
+    "options": [
+      "A long literal can use the L suffix.",
+      "String is a primitive type.",
+      "A boolean stores arbitrary text.",
+      "An int variable stores an object reference."
+    ],
+    "answer": 0,
+    "explanation": "A long literal can use the L suffix."
+  },
+  {
+    "id": "chapter-primitive-types-06",
+    "subtopic": "Primitive types",
+    "question": "Choose the accurate Java interview answer about Primitive types.",
+    "options": [
+      "String is a primitive type.",
+      "A floating-point decimal literal is double by default unless suffixed with f or F.",
+      "A boolean stores arbitrary text.",
+      "An int variable stores an object reference."
+    ],
+    "answer": 1,
+    "explanation": "A floating-point decimal literal is double by default unless suffixed with f or F."
+  },
+  {
+    "id": "chapter-primitive-types-07",
+    "subtopic": "Primitive types",
+    "question": "A developer is asked about Primitive types. Which response is correct?",
+    "options": [
+      "String is a primitive type.",
+      "A boolean stores arbitrary text.",
+      "A reference type variable stores a reference rather than a primitive value.",
+      "An int variable stores an object reference."
+    ],
+    "answer": 2,
+    "explanation": "A reference type variable stores a reference rather than a primitive value."
+  },
+  {
+    "id": "chapter-primitive-types-08",
+    "subtopic": "Primitive types",
+    "question": "Select the true statement concerning Primitive types.",
+    "options": [
+      "String is a primitive type.",
+      "A boolean stores arbitrary text.",
+      "An int variable stores an object reference.",
+      "A reference field defaults to null when it receives no explicit initialization."
+    ],
+    "answer": 3,
+    "explanation": "A reference field defaults to null when it receives no explicit initialization."
+  },
+  {
+    "id": "chapter-static-and-instance-variables-01",
+    "subtopic": "Static and instance variables",
+    "question": "Which statement about Static and instance variables is correct?",
+    "options": [
+      "A static field belongs to the class and is shared by its instances.",
+      "Every object has a separate copy of every static field.",
+      "A local variable gets a default value of zero.",
+      "Instance fields exist only once for the whole class."
+    ],
+    "answer": 0,
+    "explanation": "A static field belongs to the class and is shared by its instances."
+  },
+  {
+    "id": "chapter-static-and-instance-variables-02",
+    "subtopic": "Static and instance variables",
+    "question": "Choose the accurate Java interview answer about Static and instance variables.",
+    "options": [
+      "Every object has a separate copy of every static field.",
+      "Each object has its own copy of each instance field.",
+      "A local variable gets a default value of zero.",
+      "Instance fields exist only once for the whole class."
+    ],
+    "answer": 1,
+    "explanation": "Each object has its own copy of each instance field."
+  },
+  {
+    "id": "chapter-static-and-instance-variables-03",
+    "subtopic": "Static and instance variables",
+    "question": "A developer is asked about Static and instance variables. Which response is correct?",
+    "options": [
+      "Every object has a separate copy of every static field.",
+      "A local variable gets a default value of zero.",
+      "Instance fields receive default values when not explicitly initialized.",
+      "Instance fields exist only once for the whole class."
+    ],
+    "answer": 2,
+    "explanation": "Instance fields receive default values when not explicitly initialized."
+  },
+  {
+    "id": "chapter-static-and-instance-variables-04",
+    "subtopic": "Static and instance variables",
+    "question": "Select the true statement concerning Static and instance variables.",
+    "options": [
+      "Every object has a separate copy of every static field.",
+      "A local variable gets a default value of zero.",
+      "Instance fields exist only once for the whole class.",
+      "A local variable must be definitely assigned before it is read."
+    ],
+    "answer": 3,
+    "explanation": "A local variable must be definitely assigned before it is read."
+  },
+  {
+    "id": "chapter-static-and-instance-variables-05",
+    "subtopic": "Static and instance variables",
+    "question": "Which statement about Static and instance variables is correct?",
+    "options": [
+      "A static method cannot directly use an instance field without an object reference.",
+      "Every object has a separate copy of every static field.",
+      "A local variable gets a default value of zero.",
+      "Instance fields exist only once for the whole class."
+    ],
+    "answer": 0,
+    "explanation": "A static method cannot directly use an instance field without an object reference."
+  },
+  {
+    "id": "chapter-static-and-instance-variables-06",
+    "subtopic": "Static and instance variables",
+    "question": "Choose the accurate Java interview answer about Static and instance variables.",
+    "options": [
+      "Every object has a separate copy of every static field.",
+      "Static field initializers run as the class is initialized.",
+      "A local variable gets a default value of zero.",
+      "Instance fields exist only once for the whole class."
+    ],
+    "answer": 1,
+    "explanation": "Static field initializers run as the class is initialized."
+  },
+  {
+    "id": "chapter-static-and-instance-variables-07",
+    "subtopic": "Static and instance variables",
+    "question": "A developer is asked about Static and instance variables. Which response is correct?",
+    "options": [
+      "Every object has a separate copy of every static field.",
+      "A local variable gets a default value of zero.",
+      "An instance initializer runs when an object is constructed.",
+      "Instance fields exist only once for the whole class."
+    ],
+    "answer": 2,
+    "explanation": "An instance initializer runs when an object is constructed."
+  },
+  {
+    "id": "chapter-static-and-instance-variables-08",
+    "subtopic": "Static and instance variables",
+    "question": "Select the true statement concerning Static and instance variables.",
+    "options": [
+      "Every object has a separate copy of every static field.",
+      "A local variable gets a default value of zero.",
+      "Instance fields exist only once for the whole class.",
+      "A local variable declared in a block is limited to that block's scope."
+    ],
+    "answer": 3,
+    "explanation": "A local variable declared in a block is limited to that block's scope."
+  },
+  {
+    "id": "chapter-interactive-user-input-01",
+    "subtopic": "Interactive user input",
+    "question": "Which statement about Interactive user input is correct?",
+    "options": [
+      "Scanner can read tokens from System.in.",
+      "Scanner reads only from files.",
+      "nextInt returns a String.",
+      "System.in is the standard output stream."
+    ],
+    "answer": 0,
+    "explanation": "Scanner can read tokens from System.in."
+  },
+  {
+    "id": "chapter-interactive-user-input-02",
+    "subtopic": "Interactive user input",
+    "question": "Choose the accurate Java interview answer about Interactive user input.",
+    "options": [
+      "Scanner reads only from files.",
+      "Scanner.nextInt parses and returns an integer token.",
+      "nextInt returns a String.",
+      "System.in is the standard output stream."
+    ],
+    "answer": 1,
+    "explanation": "Scanner.nextInt parses and returns an integer token."
+  },
+  {
+    "id": "chapter-interactive-user-input-03",
+    "subtopic": "Interactive user input",
+    "question": "A developer is asked about Interactive user input. Which response is correct?",
+    "options": [
+      "Scanner reads only from files.",
+      "nextInt returns a String.",
+      "Scanner.nextLine reads the remaining text on the current line.",
+      "System.in is the standard output stream."
+    ],
+    "answer": 2,
+    "explanation": "Scanner.nextLine reads the remaining text on the current line."
+  },
+  {
+    "id": "chapter-interactive-user-input-04",
+    "subtopic": "Interactive user input",
+    "question": "Select the true statement concerning Interactive user input.",
+    "options": [
+      "Scanner reads only from files.",
+      "nextInt returns a String.",
+      "System.in is the standard output stream.",
+      "A program should validate user input before relying on it."
+    ],
+    "answer": 3,
+    "explanation": "A program should validate user input before relying on it."
+  },
+  {
+    "id": "chapter-interactive-user-input-05",
+    "subtopic": "Interactive user input",
+    "question": "Which statement about Interactive user input is correct?",
+    "options": [
+      "Invalid integer input can cause InputMismatchException.",
+      "Scanner reads only from files.",
+      "nextInt returns a String.",
+      "System.in is the standard output stream."
+    ],
+    "answer": 0,
+    "explanation": "Invalid integer input can cause InputMismatchException."
+  },
+  {
+    "id": "chapter-interactive-user-input-06",
+    "subtopic": "Interactive user input",
+    "question": "Choose the accurate Java interview answer about Interactive user input.",
+    "options": [
+      "Scanner reads only from files.",
+      "System.in is the standard input stream.",
+      "nextInt returns a String.",
+      "System.in is the standard output stream."
+    ],
+    "answer": 1,
+    "explanation": "System.in is the standard input stream."
+  },
+  {
+    "id": "chapter-interactive-user-input-07",
+    "subtopic": "Interactive user input",
+    "question": "A developer is asked about Interactive user input. Which response is correct?",
+    "options": [
+      "Scanner reads only from files.",
+      "nextInt returns a String.",
+      "A Scanner created for System.in should generally not be closed while the application still needs standard input.",
+      "System.in is the standard output stream."
+    ],
+    "answer": 2,
+    "explanation": "A Scanner created for System.in should generally not be closed while the application still needs standard input."
+  },
+  {
+    "id": "chapter-interactive-user-input-08",
+    "subtopic": "Interactive user input",
+    "question": "Select the true statement concerning Interactive user input.",
+    "options": [
+      "Scanner reads only from files.",
+      "nextInt returns a String.",
+      "System.in is the standard output stream.",
+      "Reading a full line is useful when input may contain spaces."
+    ],
+    "answer": 3,
+    "explanation": "Reading a full line is useful when input may contain spaces."
+  },
+  {
+    "id": "deep-intro-01",
+    "subtopic": "Introduction to Java",
+    "question": "Which part of the Java platform translates or executes bytecode for a particular operating system?",
+    "options": [
+      "JVM implementation",
+      "Java source file",
+      "Javadoc",
+      "Package declaration"
+    ],
+    "answer": 0,
+    "explanation": "The JVM is implemented for the host platform and runs platform-independent class-file bytecode."
+  },
+  {
+    "id": "deep-hello-01",
+    "subtopic": "Hello World and program entry point",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Greeting {\n    public static void main(String[] args) {\n        System.out.print(\"Hello\");\n        System.out.println(\" Java\");\n    }\n}",
+    "options": [
+      "HelloJava",
+      "Hello Java",
+      "Hello\nJava",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "print does not add a line break; println prints the following text and then ends the line."
+  },
+  {
+    "id": "deep-args-01",
+    "subtopic": "Command-line arguments",
+    "question": "If launched with `java App red blue`, what is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class App {\n    public static void main(String[] args) {\n        System.out.println(args.length + \":\" + args[0]);\n    }\n}",
+    "options": [
+      "1:blue",
+      "2:red",
+      "2:blue",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "Two arguments are passed; index zero contains red."
+  },
+  {
+    "id": "deep-types-01",
+    "subtopic": "Primitive types",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Promotion {\n    public static void main(String[] args) {\n        byte x = 120;\n        byte y = 10;\n        System.out.println(x + y);\n    }\n}",
+    "options": [
+      "-126",
+      "130",
+      "Compilation error",
+      "12010"
+    ],
+    "answer": 1,
+    "explanation": "Binary numeric promotion converts byte operands to int before addition."
+  },
+  {
+    "id": "deep-vars-01",
+    "subtopic": "Static and instance variables",
+    "question": "A static counter is incremented by each of three objects. How many counter fields exist?",
+    "options": [
+      "One per object",
+      "One per method",
+      "One per class initialization",
+      "One per thread"
+    ],
+    "answer": 2,
+    "explanation": "A static field belongs to the class, so all instances share it."
+  },
+  {
+    "id": "pdf-java-001",
+    "subtopic": "Compilation and bytecode",
+    "question": "A Java class is compiled on Windows and then run on Linux with a compatible Java runtime. Why can this work without recompiling the source?",
+    "options": [
+      "The class file contains platform-neutral bytecode executed by the Linux JVM",
+      "Java class files contain Windows machine code that Linux translates",
+      "The browser converts source code to Linux commands",
+      "The JDK removes operating-system differences"
+    ],
+    "answer": 0,
+    "explanation": "The compiler produces bytecode, and each target platform provides a compatible JVM implementation.",
+    "source": "Kodewala Academy Core Java & Advance Java notes, PDF page 4",
+    "sourceLabel": "From PDF notes · page 4"
+  },
+  {
+    "id": "pdf-java-002",
+    "subtopic": "Hello World and program entry point",
+    "question": "Why is the conventional `main` entry point static?",
+    "options": [
+      "The launcher can invoke it without first constructing an instance of the application class",
+      "Static methods run on a separate operating system",
+      "The method must share local variables with every class",
+      "The JVM permits only static methods"
+    ],
+    "answer": 0,
+    "explanation": "The launcher needs a known entry point it can call before an application object exists.",
+    "source": "Kodewala Academy Core Java & Advance Java notes, PDF page 8",
+    "sourceLabel": "From PDF notes · page 8"
+  },
+  {
+    "id": "pdf-java-003",
+    "subtopic": "Hello World and program entry point",
+    "question": "Which command pair compiles `HelloWorld.java` and then launches its class?",
+    "options": [
+      "`java HelloWorld.java`, then `javac HelloWorld`",
+      "`javac HelloWorld.java`, then `java HelloWorld`",
+      "`compile HelloWorld`, then `run HelloWorld.class`",
+      "`javap HelloWorld.java`, then `java HelloWorld.class`"
+    ],
+    "answer": 1,
+    "explanation": "javac compiles the source file; java launches the class by its class name.",
+    "source": "Kodewala Academy Core Java & Advance Java notes, PDF page 8",
+    "sourceLabel": "From PDF notes · page 8"
+  },
+  {
+    "id": "pdf-java-004",
+    "subtopic": "Command-line arguments",
+    "question": "What does this program print when started with no arguments?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class App {\n    public static void main(String[] args) {\n        if (args.length == 0) {\n            System.out.println(\"Please enter the input\");\n        } else {\n            System.out.println(args[0]);\n        }\n    }\n}",
+    "options": [
+      "Please enter the input",
+      "null",
+      "ArrayIndexOutOfBoundsException",
+      "Compilation error"
+    ],
+    "answer": 0,
+    "explanation": "Checking the argument count before reading args[0] handles the missing-input case safely.",
+    "source": "Kodewala Academy Core Java & Advance Java notes, PDF page 12",
+    "sourceLabel": "From PDF notes · page 12"
+  },
+  {
+    "id": "pdf-java-005",
+    "subtopic": "Primitive types",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Range {\n    public static void main(String[] args) {\n        int max = Integer.MAX_VALUE;\n        System.out.println(max + 1);\n    }\n}",
+    "options": [
+      "2147483648",
+      "-2147483648",
+      "Compilation error",
+      "0"
+    ],
+    "answer": 1,
+    "explanation": "int arithmetic overflows its signed 32-bit range and wraps to the minimum int value.",
+    "source": "Kodewala Academy Core Java & Advance Java notes, PDF page 20",
+    "sourceLabel": "From PDF notes · page 20"
+  },
+  {
+    "id": "pdf-java-006",
+    "subtopic": "Static and instance variables",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Defaults {\n    String name;\n    public static void main(String[] args) {\n        System.out.println(new Defaults().name);\n    }\n}",
+    "options": [
+      "An empty string",
+      "null",
+      "Compilation error",
+      "The text `name`"
+    ],
+    "answer": 1,
+    "explanation": "An uninitialized reference field receives the default value null.",
+    "source": "Kodewala Academy Core Java & Advance Java notes, PDF page 22",
+    "sourceLabel": "From PDF notes · page 22"
+  },
+  {
+    "id": "pdf-java-007",
+    "subtopic": "Static and instance variables",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Visit {\n    static int total;\n    int own;\n    Visit() { total++; own++; }\n    public static void main(String[] args) {\n        Visit a = new Visit();\n        Visit b = new Visit();\n        System.out.println(total + \" \" + a.own + \" \" + b.own);\n    }\n}",
+    "options": [
+      "2 1 1",
+      "2 2 2",
+      "1 1 1",
+      "Compilation error"
+    ],
+    "answer": 0,
+    "explanation": "Both objects increment the shared static field, while each has its own instance field.",
+    "source": "Kodewala Academy Core Java & Advance Java notes, PDF page 27",
+    "sourceLabel": "From PDF notes · page 27"
+  },
+  {
+    "id": "pdf-java-010",
+    "subtopic": "Interactive user input",
+    "question": "Which check prevents invalid text from being passed directly to `nextInt()`?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "java.util.Scanner scanner = new java.util.Scanner(System.in);\nif (scanner.hasNextInt()) {\n    int age = scanner.nextInt();\n}",
+    "options": [
+      "`hasNextInt()` checks whether the next token can be read as an int",
+      "`nextInt()` converts any text to zero",
+      "`hasNextInt()` removes the input token",
+      "`Scanner` catches all invalid input automatically"
+    ],
+    "answer": 0,
+    "explanation": "Scanner.hasNextInt lets the program validate the next token before parsing it.",
+    "source": "Kodewala Academy Core Java & Advance Java notes, PDF page 35",
+    "sourceLabel": "From PDF notes · page 35"
+  }
+]

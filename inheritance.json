@@ -1,0 +1,1856 @@
+[
+  {
+    "id": "inheritance-001",
+    "question": "A payment app has CardPayment and UpiPayment with different payment processing. What inheritance design best shares a contract?",
+    "options": [
+      "One class with type-based if/else only",
+      "Abstract Payment with shared contract and overridden processing",
+      "CardPayment extends UpiPayment",
+      "Duplicate all code"
+    ],
+    "answer": 1,
+    "explanation": "A common abstraction provides a contract; subclasses specialize behavior. An interface may also be appropriate."
+  },
+  {
+    "id": "inheritance-002",
+    "question": "A Dog extends Animal. Animal has a public name field. Can Dog access name?",
+    "options": [
+      "Never",
+      "Yes, public inherited members are accessible",
+      "Only with super.name",
+      "Only if Animal is final"
+    ],
+    "answer": 1,
+    "explanation": "Public fields are inherited and accessible, though encapsulated fields are usually preferable."
+  },
+  {
+    "id": "inheritance-003",
+    "question": "Class A extends B and B extends A. What happens?",
+    "options": [
+      "Valid multiple inheritance",
+      "Runtime failure only",
+      "Compile-time cyclic inheritance error",
+      "A silently extends Object"
+    ],
+    "answer": 2,
+    "explanation": "Java prohibits a class hierarchy that indirectly inherits from itself."
+  },
+  {
+    "id": "inheritance-004",
+    "question": "PdfReport and CsvReport share generateHeader() but format bodies differently. Best design?",
+    "options": [
+      "Abstract Report with shared header and abstract exportBody()",
+      "CsvReport extends PdfReport",
+      "Only static methods",
+      "Duplicate header code"
+    ],
+    "answer": 0,
+    "explanation": "An abstract superclass fits shared implementation plus subclass-specific steps."
+  },
+  {
+    "id": "inheritance-005",
+    "question": "A subclass defines the same instance method signature with a compatible return type. This is:",
+    "options": [
+      "Overloading",
+      "Overriding",
+      "Constructor chaining",
+      "Field hiding"
+    ],
+    "answer": 1,
+    "explanation": "Overriding replaces inherited instance-method behavior for runtime dispatch."
+  },
+  {
+    "id": "inheritance-006",
+    "question": "A public parent method is overridden as protected. Result?",
+    "options": [
+      "Allowed",
+      "Compilation error: visibility reduced",
+      "It becomes overload",
+      "Only abstract methods fail"
+    ],
+    "answer": 1,
+    "explanation": "An override cannot reduce accessibility."
+  },
+  {
+    "id": "inheritance-007",
+    "question": "Parent returns Number; Child override returns Integer. Valid?",
+    "options": [
+      "No",
+      "Yes, covariant return type",
+      "Only for static methods",
+      "Only if Number is final"
+    ],
+    "answer": 1,
+    "explanation": "An override may return a subtype of the parent's reference return type."
+  },
+  {
+    "id": "inheritance-008",
+    "question": "Parent method throws IOException; child override throws FileNotFoundException. Valid?",
+    "options": [
+      "No checked exceptions allowed",
+      "Yes, narrower checked exception",
+      "Only if private",
+      "Only if static"
+    ],
+    "answer": 1,
+    "explanation": "Overrides may declare fewer or narrower checked exceptions."
+  },
+  {
+    "id": "inheritance-009",
+    "question": "A private parent method has the same signature as a child method. Is it overridden?",
+    "options": [
+      "Yes",
+      "No, private methods are not inherited/overridden",
+      "Only without @Override",
+      "Only in abstract classes"
+    ],
+    "answer": 1,
+    "explanation": "The child declaration is a separate method, not an override of the private method."
+  },
+  {
+    "id": "inheritance-010",
+    "question": "Parent and Child both declare the same static method signature. This is:",
+    "options": [
+      "Runtime overriding",
+      "Static method hiding",
+      "Constructor overriding",
+      "Always illegal"
+    ],
+    "answer": 1,
+    "explanation": "Static methods are hidden, not dynamically overridden."
+  },
+  {
+    "id": "inheritance-011",
+    "question": "A child overrides a final parent method. Result?",
+    "options": [
+      "Child method wins",
+      "Compilation error",
+      "Automatic overload",
+      "Allowed in same package"
+    ],
+    "answer": 1,
+    "explanation": "Final instance methods cannot be overridden."
+  },
+  {
+    "id": "inheritance-012",
+    "question": "What does declaring a class final mean?",
+    "options": [
+      "No constructors",
+      "Cannot be subclassed",
+      "Cannot implement interfaces",
+      "Objects are automatically immutable"
+    ],
+    "answer": 1,
+    "explanation": "A final class cannot be extended; it is not automatically immutable."
+  },
+  {
+    "id": "inheritance-013",
+    "question": "A class with no extends clause implicitly extends:",
+    "options": [
+      "Cloneable",
+      "Serializable",
+      "Object",
+      "Class"
+    ],
+    "answer": 2,
+    "explanation": "Object is the root superclass of Java classes."
+  },
+  {
+    "id": "inheritance-014",
+    "question": "Can a Java class extend both Phone and Camera?",
+    "options": [
+      "Yes",
+      "Only two classes maximum",
+      "No, only one class can be extended",
+      "Only if both are abstract"
+    ],
+    "answer": 2,
+    "explanation": "Java has single class inheritance but supports multiple interfaces."
+  },
+  {
+    "id": "inheritance-015",
+    "question": "Can a class extend Vehicle and implement Insurable and Trackable?",
+    "options": [
+      "No",
+      "Yes, one superclass and multiple interfaces",
+      "Only if Vehicle is an interface",
+      "Interfaces must come first"
+    ],
+    "answer": 1,
+    "explanation": "The syntax is extends one class, then implements one or more interfaces."
+  },
+  {
+    "id": "inheritance-016",
+    "question": "Where must an explicit super(10) call appear in a constructor?",
+    "options": [
+      "Anywhere",
+      "First statement",
+      "After field assignments",
+      "Only in static block"
+    ],
+    "answer": 1,
+    "explanation": "A constructor invocation using this(...) or super(...) must be first."
+  },
+  {
+    "id": "inheritance-017",
+    "question": "Parent has only Parent(String), and Child() omits super(...). Result?",
+    "options": [
+      "Java passes null automatically",
+      "Compile error because Parent() is unavailable",
+      "Parent constructor is skipped",
+      "Runtime exception"
+    ],
+    "answer": 1,
+    "explanation": "The compiler inserts super(); it cannot infer arguments for a parameterized constructor."
+  },
+  {
+    "id": "inheritance-018",
+    "question": "A Child constructor calls this(5). Can it also explicitly call super() afterward?",
+    "options": [
+      "Yes",
+      "No, one constructor can explicitly call this(...) or super(...), not both",
+      "Only if super is last",
+      "Only for abstract classes"
+    ],
+    "answer": 1,
+    "explanation": "The delegated constructor eventually chains to a superclass constructor."
+  },
+  {
+    "id": "inheritance-019",
+    "question": "Parent constructor prints P; Child constructor prints C. Creating Child prints:",
+    "options": [
+      "C then P",
+      "P then C",
+      "Only C",
+      "Random order"
+    ],
+    "answer": 1,
+    "explanation": "Superclass construction happens before the subclass constructor body."
+  },
+  {
+    "id": "inheritance-020",
+    "question": "Parent and Child have field initializers and constructors. Broad order?",
+    "options": [
+      "Child initializers then parent",
+      "Superclass initialization/constructor before subclass initialization/constructor",
+      "All constructors before initializers",
+      "Only constructors run"
+    ],
+    "answer": 1,
+    "explanation": "Initialization proceeds from superclass to subclass."
+  },
+  {
+    "id": "inheritance-021",
+    "question": "Parent and Child both declare public field id. Parent p = new Child(); p.id accesses:",
+    "options": [
+      "Always Child.id",
+      "Parent.id, based on reference type",
+      "Both combined",
+      "Compilation fails"
+    ],
+    "answer": 1,
+    "explanation": "Fields are hidden, not overridden; field selection is compile-time."
+  },
+  {
+    "id": "inheritance-022",
+    "question": "Parent p = new Child(); p.show() where Child overrides show(). Which runs?",
+    "options": [
+      "Parent.show always",
+      "Child.show",
+      "Both automatically",
+      "Random"
+    ],
+    "answer": 1,
+    "explanation": "Overridden instance methods dispatch according to the runtime object."
+  },
+  {
+    "id": "inheritance-023",
+    "question": "Parent p = new Child(); p.childOnly() exists only in Child. Result?",
+    "options": [
+      "Runs because object is Child",
+      "Compile error: Parent reference has no such member",
+      "Runs if public",
+      "Runtime cast error at compile time"
+    ],
+    "answer": 1,
+    "explanation": "Available members are checked against the reference's declared type."
+  },
+  {
+    "id": "inheritance-024",
+    "question": "Casting Parent p = new Child() to Child is safe when:",
+    "options": [
+      "Always",
+      "The actual object is Child or a subtype",
+      "Parent is final",
+      "Method is static"
+    ],
+    "answer": 1,
+    "explanation": "A downcast succeeds only if the runtime object is compatible."
+  },
+  {
+    "id": "inheritance-025",
+    "question": "Parent p = new Parent(); Child c = (Child)p. Result?",
+    "options": [
+      "Always succeeds",
+      "ClassCastException at runtime",
+      "Always compile error",
+      "c is null"
+    ],
+    "answer": 1,
+    "explanation": "The object is actually Parent, not Child."
+  },
+  {
+    "id": "inheritance-026",
+    "question": "A method accepts Parent and calls an overridden method on a Child argument. Which implementation runs?",
+    "options": [
+      "Always Parent's",
+      "Child's implementation",
+      "Both parent first",
+      "Cannot call it"
+    ],
+    "answer": 1,
+    "explanation": "Polymorphism dispatches to the actual object's override."
+  },
+  {
+    "id": "inheritance-027",
+    "question": "How can Child call the superclass implementation of an overridden method?",
+    "options": [
+      "this.method()",
+      "super.method()",
+      "new Parent().method() only",
+      "Parent.super.method()"
+    ],
+    "answer": 1,
+    "explanation": "super.method() explicitly invokes the direct superclass implementation."
+  },
+  {
+    "id": "inheritance-028",
+    "question": "Inside Child.show(), calling this.show() to call the parent version causes:",
+    "options": [
+      "Parent.show()",
+      "Recursive Child.show() calls",
+      "Same as super.show()",
+      "Object.show()"
+    ],
+    "answer": 1,
+    "explanation": "this uses normal dynamic dispatch and calls the child's override again."
+  },
+  {
+    "id": "inheritance-029",
+    "question": "A subclass in another package accesses a protected superclass member. Which is true?",
+    "options": [
+      "Protected is always public",
+      "Subclass access is allowed under cross-package protected rules",
+      "Protected is never inherited",
+      "Only static protected members work"
+    ],
+    "answer": 1,
+    "explanation": "Cross-package protected access is limited by subclass access rules."
+  },
+  {
+    "id": "inheritance-030",
+    "question": "Parent has a package-private method; Child in another package defines same signature. Does it override?",
+    "options": [
+      "Yes",
+      "No, the parent method is not accessible/inherited across package boundary",
+      "Only if public",
+      "Only if abstract"
+    ],
+    "answer": 1,
+    "explanation": "Package-private methods are accessible only within their package."
+  },
+  {
+    "id": "inheritance-031",
+    "question": "A child method has same name but different parameter types from parent. This is:",
+    "options": [
+      "Overriding",
+      "Overloading",
+      "Field hiding",
+      "Abstract implementation"
+    ],
+    "answer": 1,
+    "explanation": "Overloading uses a different parameter list."
+  },
+  {
+    "id": "inheritance-032",
+    "question": "An abstract class has abstract turnOn(); concrete Fan extends it but doesn't implement it. Result?",
+    "options": [
+      "Compiles",
+      "Compile error unless Fan is abstract",
+      "No-op inherited",
+      "Compiler generates body"
+    ],
+    "answer": 1,
+    "explanation": "Concrete subclasses must implement inherited abstract methods."
+  },
+  {
+    "id": "inheritance-033",
+    "question": "Can an abstract class have a constructor and instance fields?",
+    "options": [
+      "No",
+      "Yes, they initialize the superclass part of subclass objects",
+      "Only if methods are static",
+      "Only if public"
+    ],
+    "answer": 1,
+    "explanation": "Abstract classes cannot be instantiated directly, but their constructors still run."
+  },
+  {
+    "id": "inheritance-034",
+    "question": "Can a class be abstract with no abstract methods?",
+    "options": [
+      "No",
+      "Yes",
+      "Only if final",
+      "Only if implements interface"
+    ],
+    "answer": 1,
+    "explanation": "A class can be abstract to prevent direct instantiation or represent a base concept."
+  },
+  {
+    "id": "inheritance-035",
+    "question": "Can a final class declare an abstract method?",
+    "options": [
+      "Yes",
+      "No, it cannot be subclassed to implement it",
+      "Only with private constructor",
+      "Only static"
+    ],
+    "answer": 1,
+    "explanation": "Final prevents subclasses from supplying abstract method implementations."
+  },
+  {
+    "id": "inheritance-036",
+    "question": "Penguin extends Bird, but Bird promises fly() and penguins cannot fly. Design lesson?",
+    "options": [
+      "Inheritance always best",
+      "Hierarchy may violate substitutability; separate flying capability",
+      "Return null from fly()",
+      "Use multiple class inheritance"
+    ],
+    "answer": 1,
+    "explanation": "Subtypes should honor base-type expectations; model capabilities separately when needed."
+  },
+  {
+    "id": "inheritance-037",
+    "question": "Square extends mutable Rectangle but independent width/height changes break square rules. Principle at risk?",
+    "options": [
+      "DRY",
+      "Liskov Substitution Principle",
+      "Singleton",
+      "Serialization"
+    ],
+    "answer": 1,
+    "explanation": "A subtype must preserve the behavioral contract of its base type."
+  },
+  {
+    "id": "inheritance-038",
+    "question": "ElectricCar extends Car and adds batteryCapacity. Which statement is best?",
+    "options": [
+      "ElectricCar has no Car behavior",
+      "It specializes Car and can add state/behavior",
+      "Car gains batteryCapacity",
+      "It can access every private Car field"
+    ],
+    "answer": 1,
+    "explanation": "A subclass specializes its superclass but cannot directly access private fields."
+  },
+  {
+    "id": "inheritance-039",
+    "question": "Parent has private balance and public getBalance(). Child needs balance. Best approach?",
+    "options": [
+      "Access private field directly",
+      "Use an accessible API such as getBalance()",
+      "Use super.balance",
+      "Make a local variable"
+    ],
+    "answer": 1,
+    "explanation": "Private state should be accessed through the designed API."
+  },
+  {
+    "id": "inheritance-040",
+    "question": "Child declares a field with the same name as a private parent field. Are they one field?",
+    "options": [
+      "Yes",
+      "No, they are distinct fields",
+      "Parent field is deleted",
+      "Compilation always fails"
+    ],
+    "answer": 1,
+    "explanation": "Field hiding does not merge or remove the private superclass field."
+  },
+  {
+    "id": "inheritance-041",
+    "question": "Parent constructor calls an overridable method that reads a child field initialized to 10. Risk?",
+    "options": [
+      "Child override can run before child field initialization",
+      "Child method never runs",
+      "Child fields initialize first",
+      "Compilation error"
+    ],
+    "answer": 0,
+    "explanation": "Dynamic dispatch can invoke subclass behavior before subclass initialization completes."
+  },
+  {
+    "id": "inheritance-042",
+    "question": "Why is calling an abstract/overridable method from a superclass constructor risky?",
+    "options": [
+      "Abstract methods cannot be implemented",
+      "Subclass code may run on partially initialized state",
+      "Always syntax error",
+      "Constructors cannot call methods"
+    ],
+    "answer": 1,
+    "explanation": "The subclass portion may not be initialized when the override runs."
+  },
+  {
+    "id": "inheritance-043",
+    "question": "Parent has only a private constructor. Can an ordinary external subclass call it?",
+    "options": [
+      "Yes, constructors are inherited",
+      "No, subclass cannot invoke inaccessible private constructor",
+      "Yes, via super()",
+      "Only if abstract"
+    ],
+    "answer": 1,
+    "explanation": "A subclass must call an accessible superclass constructor."
+  },
+  {
+    "id": "inheritance-044",
+    "question": "If no constructor is declared, Java supplies:",
+    "options": [
+      "No constructor",
+      "A default no-argument constructor invoking super()",
+      "A copy constructor",
+      "A private constructor"
+    ],
+    "answer": 1,
+    "explanation": "The compiler provides a no-argument constructor only when none is declared."
+  },
+  {
+    "id": "inheritance-045",
+    "question": "Parent has Parent(int); Child declares no constructor. What happens?",
+    "options": [
+      "Child(int) generated",
+      "Default Child() calls missing Parent() and compilation fails",
+      "Child cannot extend Parent",
+      "Java passes zero"
+    ],
+    "answer": 1,
+    "explanation": "The generated default constructor invokes super() without arguments."
+  },
+  {
+    "id": "inheritance-046",
+    "question": "Can Java use super.super.show() to call a grandparent method?",
+    "options": [
+      "Yes",
+      "No, super.super syntax does not exist",
+      "Only abstract classes",
+      "Only static methods"
+    ],
+    "answer": 1,
+    "explanation": "Java only provides super access to the direct superclass implementation."
+  },
+  {
+    "id": "inheritance-047",
+    "question": "A correct override is written without @Override. What happens?",
+    "options": [
+      "Compile error",
+      "It still overrides; annotation is optional",
+      "It becomes static",
+      "Parent method is hidden"
+    ],
+    "answer": 1,
+    "explanation": "@Override is optional but useful for catching signature mistakes."
+  },
+  {
+    "id": "inheritance-048",
+    "question": "A method marked @Override does not actually override anything. Result?",
+    "options": [
+      "Compiles silently",
+      "Compilation error",
+      "Becomes abstract",
+      "Parent method generated"
+    ],
+    "answer": 1,
+    "explanation": "The annotation asks the compiler to verify an override or interface implementation."
+  },
+  {
+    "id": "inheritance-049",
+    "question": "Parent has process(Object); Child has process(String). Parent p = new Child(); p.process(\"hi\") selects:",
+    "options": [
+      "Child.process(String)",
+      "Parent-visible process(Object)",
+      "Both",
+      "No method"
+    ],
+    "answer": 1,
+    "explanation": "Overload resolution is compile-time based on the declared reference type."
+  },
+  {
+    "id": "inheritance-050",
+    "question": "Parent process(Object) and Child overrides it plus overloads process(String). Parent p = new Child(); p.process(\"hi\") runs:",
+    "options": [
+      "Child.process(String)",
+      "Child's override of process(Object)",
+      "Parent process(Object) always",
+      "Compile error"
+    ],
+    "answer": 1,
+    "explanation": "The Parent type selects process(Object), then dynamic dispatch invokes Child's override of that signature."
+  },
+  {
+    "id": "inheritance-051",
+    "question": "Parent static log(); Child instance log() with same signature. Result?",
+    "options": [
+      "Valid override",
+      "Compilation error due to static/instance conflict",
+      "Both run",
+      "Child ignored"
+    ],
+    "answer": 1,
+    "explanation": "Static and instance methods cannot replace each other with the same signature."
+  },
+  {
+    "id": "inheritance-052",
+    "question": "Parent instance run(); Child static run() with same signature. Result?",
+    "options": [
+      "Valid static hiding",
+      "Compilation error",
+      "Constructor",
+      "Allowed if Parent abstract"
+    ],
+    "answer": 1,
+    "explanation": "An instance method cannot be overridden by a static method."
+  },
+  {
+    "id": "inheritance-053",
+    "question": "Parent returns List<Number>; Child override returns List<Integer>. Valid covariance?",
+    "options": [
+      "Yes, Integer extends Number",
+      "No, List<Integer> is not a subtype of List<Number>",
+      "Only final",
+      "Only raw types"
+    ],
+    "answer": 1,
+    "explanation": "Generic types are invariant; covariance does not apply through List's type argument."
+  },
+  {
+    "id": "inheritance-054",
+    "question": "Must a child override preserve synchronized modifier from parent?",
+    "options": [
+      "Yes",
+      "No, synchronized is not part of override signature",
+      "Only abstract methods",
+      "Only across packages"
+    ],
+    "answer": 1,
+    "explanation": "The modifier is not required for a valid override, though thread-safety semantics still matter."
+  },
+  {
+    "id": "inheritance-055",
+    "question": "Parent implements Serializable. Does Child inherit that interface relationship?",
+    "options": [
+      "No",
+      "Yes",
+      "Only with serialVersionUID",
+      "Only if abstract"
+    ],
+    "answer": 1,
+    "explanation": "A subclass inherits the implemented-interface relationship through its superclass."
+  },
+  {
+    "id": "inheritance-056",
+    "question": "Does Cloneable guarantee safe deep cloning?",
+    "options": [
+      "Yes",
+      "No, Object.clone is shallow and cloning still needs appropriate implementation/access",
+      "Cloneable is a class",
+      "Constructors run during clone"
+    ],
+    "answer": 1,
+    "explanation": "Cloneable is a marker interface; Object.clone does not perform a deep copy or call constructors."
+  },
+  {
+    "id": "inheritance-057",
+    "question": "Do subclasses inherit constructors?",
+    "options": [
+      "Yes",
+      "No, constructors are not inherited or overridden",
+      "Only public constructors",
+      "Only default constructors"
+    ],
+    "answer": 1,
+    "explanation": "A subclass defines its own constructors and chains to superclass constructors."
+  },
+  {
+    "id": "inheritance-058",
+    "question": "A developer uses inheritance only to reuse one helper method. Better option to consider?",
+    "options": [
+      "Composition/delegation",
+      "Extend more classes",
+      "Make all methods static",
+      "Duplicate everything"
+    ],
+    "answer": 0,
+    "explanation": "Composition can reuse behavior without forcing an incorrect is-a relationship."
+  },
+  {
+    "id": "inheritance-059",
+    "question": "Car has an Engine. Should Car extend Engine?",
+    "options": [
+      "Yes",
+      "No, has-a is usually composition",
+      "Yes if Engine has methods",
+      "Only if abstract"
+    ],
+    "answer": 1,
+    "explanation": "Inheritance models is-a; a car has an engine."
+  },
+  {
+    "id": "inheritance-060",
+    "question": "A subclass changes a parent method's behavior so clients relying on the base contract fail. Concern?",
+    "options": [
+      "Only overloading",
+      "Liskov Substitution Principle",
+      "Constructor chaining",
+      "Static hiding"
+    ],
+    "answer": 1,
+    "explanation": "A subtype should preserve base-type behavioral expectations."
+  },
+  {
+    "id": "inheritance-061",
+    "question": "Parent has final public method; child needs different behavior. Best response?",
+    "options": [
+      "Override anyway",
+      "Use another extension point, composition, or redesign",
+      "Change only return type",
+      "Make child abstract"
+    ],
+    "answer": 1,
+    "explanation": "Final prevents overriding; customization must use another design route."
+  },
+  {
+    "id": "inheritance-062",
+    "question": "Parent class has public static count; Child accesses count without redeclaring. Which is true?",
+    "options": [
+      "Static fields are not inherited",
+      "Can access it through Child, but it belongs to declaring class",
+      "Each object gets separate count",
+      "It becomes instance field"
+    ],
+    "answer": 1,
+    "explanation": "Static fields belong to the class that declares them, even when accessed through a subclass name."
+  },
+  {
+    "id": "inheritance-063",
+    "question": "Child redeclares a static field with same name as parent. This is:",
+    "options": [
+      "Overriding",
+      "Field hiding",
+      "Overloading",
+      "Dynamic dispatch"
+    ],
+    "answer": 1,
+    "explanation": "Fields are hidden, not overridden."
+  },
+  {
+    "id": "inheritance-064",
+    "question": "Parent implements Runnable with public run(). Must Child implement run() again?",
+    "options": [
+      "Always",
+      "No, it inherits the implementation unless it overrides",
+      "Only if Parent final",
+      "Only if Child public"
+    ],
+    "answer": 1,
+    "explanation": "Implemented interface methods and the interface relationship are inherited."
+  },
+  {
+    "id": "inheritance-065",
+    "question": "A superclass constructor throws IOException. Child constructor does not catch or declare it. Result?",
+    "options": [
+      "Constructors ignore exceptions",
+      "Compile error unless handled or declared",
+      "Runtime only",
+      "Exception inherited automatically"
+    ],
+    "answer": 1,
+    "explanation": "Checked exceptions from invoked constructors must be handled or declared."
+  },
+  {
+    "id": "inheritance-066",
+    "question": "Parent defines toString() but Child doesn't override it. Child inherits:",
+    "options": [
+      "No method",
+      "The inherited implementation from its superclass/Object",
+      "A compile error",
+      "Only fields"
+    ],
+    "answer": 1,
+    "explanation": "Object methods are inherited unless overridden."
+  },
+  {
+    "id": "inheritance-067",
+    "question": "Manager extends Employee, Employee extends Person. Manager's direct superclass is:",
+    "options": [
+      "Person",
+      "Employee",
+      "Object only",
+      "Both"
+    ],
+    "answer": 1,
+    "explanation": "Employee is the immediate superclass; Person is indirect."
+  },
+  {
+    "id": "inheritance-068",
+    "question": "Parent protected field rate; child is in another package. Can it always access rate through arbitrary Parent p?",
+    "options": [
+      "Yes, protected is public",
+      "No, cross-package protected access has receiver restrictions",
+      "Only static",
+      "Only if p null"
+    ],
+    "answer": 1,
+    "explanation": "Protected access across packages is constrained by subclass access rules."
+  },
+  {
+    "id": "inheritance-069",
+    "question": "How can a class combine behavior from two unrelated classes in Java?",
+    "options": [
+      "Extend both",
+      "Use composition and/or multiple interfaces",
+      "Use super.super",
+      "Make both final"
+    ],
+    "answer": 1,
+    "explanation": "Java disallows multiple class inheritance; interfaces and composition are alternatives."
+  },
+  {
+    "id": "inheritance-070",
+    "question": "A base type Notification has send(); Email and SMS override it. A list of Notification references calls send(). Benefit?",
+    "options": [
+      "Every item must be cast",
+      "Polymorphic dispatch without type-specific client code",
+      "Only first subclass works",
+      "No contract needed"
+    ],
+    "answer": 1,
+    "explanation": "Client code can operate on the common type while runtime objects supply behavior."
+  },
+  {
+    "id": "inheritance-071",
+    "question": "An Animal parameter refers to Dog, but code accesses Dog-only field through Animal. Why error?",
+    "options": [
+      "Parameters cannot be subtypes",
+      "Compile-time type controls directly accessible members",
+      "Fields copied to Animal",
+      "No polymorphism"
+    ],
+    "answer": 1,
+    "explanation": "Use an appropriate abstraction or a checked cast for subtype-specific behavior."
+  },
+  {
+    "id": "inheritance-072",
+    "question": "Parent method is public; Child declares same signature private. Result?",
+    "options": [
+      "Valid override",
+      "Compilation error because visibility is reduced",
+      "Always overload",
+      "Parent method deleted"
+    ],
+    "answer": 1,
+    "explanation": "An override cannot narrow public access."
+  },
+  {
+    "id": "inheritance-073",
+    "question": "Parent method has no checked throws; child override adds SQLException. Result?",
+    "options": [
+      "Allowed",
+      "Compile error: adds checked exception",
+      "Runtime-only rule",
+      "Overload"
+    ],
+    "answer": 1,
+    "explanation": "An override cannot add broader/new checked exceptions not allowed by the parent declaration."
+  },
+  {
+    "id": "inheritance-074",
+    "question": "Parent returns Object; Child override returns String. This is:",
+    "options": [
+      "Overloading",
+      "Covariant return overriding",
+      "Static hiding",
+      "Field hiding"
+    ],
+    "answer": 1,
+    "explanation": "String is a subtype of Object."
+  },
+  {
+    "id": "inheritance-075",
+    "question": "Which feature restricts inheritance to a declared set of subclasses?",
+    "options": [
+      "Sealed class",
+      "Transient field",
+      "Synchronized constructor",
+      "Volatile method"
+    ],
+    "answer": 0,
+    "explanation": "Sealed classes let developers control which classes may extend or implement a type."
+  },
+  {
+    "id": "inheritance-076",
+    "question": "A class needs behavior from two unrelated types such as Payable and Auditable. Prefer:",
+    "options": [
+      "Multiple class inheritance",
+      "Implement both interfaces",
+      "Extend one and copy the other",
+      "Make fields public"
+    ],
+    "answer": 1,
+    "explanation": "Interfaces model cross-cutting capabilities without multiple class inheritance."
+  },
+  {
+    "id": "inheritance-077",
+    "question": "Two unrelated interfaces provide the same default method. What should implementing class generally do?",
+    "options": [
+      "Java chooses randomly",
+      "Override the conflicting default method",
+      "Extend both as classes",
+      "Delete one at runtime"
+    ],
+    "answer": 1,
+    "explanation": "An explicit override resolves conflicting default methods."
+  },
+  {
+    "id": "inheritance-078",
+    "question": "Parent has a protected method matching a public interface method. Does it satisfy the interface contract?",
+    "options": [
+      "Yes",
+      "No, interface implementation must be public",
+      "Only if abstract",
+      "Only if sealed"
+    ],
+    "answer": 1,
+    "explanation": "A public interface method requires a public implementation."
+  },
+  {
+    "id": "inheritance-079",
+    "question": "Parent equals uses getClass() while Child adds state and inherits equals. What should be reviewed?",
+    "options": [
+      "Nothing",
+      "Equality symmetry/consistency across superclass and subclass",
+      "Inheritance stops",
+      "hashCode becomes final"
+    ],
+    "answer": 1,
+    "explanation": "Equality across inheritance can violate symmetry or consistency if subclass state is not handled carefully."
+  },
+  {
+    "id": "inheritance-080",
+    "question": "Which change is most likely to break third-party subclasses?",
+    "options": [
+      "Add private helper",
+      "Change/remove a protected extension method signature",
+      "Add documentation",
+      "Add unrelated private field"
+    ],
+    "answer": 1,
+    "explanation": "Protected extension points form part of the subclass-facing API."
+  },
+  {
+    "id": "inheritance-081",
+    "question": "A superclass method calls an overridable method; Child overrides it. Even if caller uses super.parentMethod(), can the nested call dispatch to Child?",
+    "options": [
+      "No, super disables all dispatch",
+      "Yes, nested virtual calls can still dispatch to Child",
+      "Only static methods",
+      "Child becomes Parent"
+    ],
+    "answer": 1,
+    "explanation": "super selects the initial implementation; other virtual calls still use normal dynamic dispatch."
+  },
+  {
+    "id": "inheritance-082",
+    "question": "A common base type Report has render(); HtmlReport and JsonReport override it. Why accept Report in a client method?",
+    "options": [
+      "It needs switch for every type",
+      "New compatible subclasses can work without changing client code",
+      "Only HTML works",
+      "Report must be final"
+    ],
+    "answer": 1,
+    "explanation": "Programming to an abstraction improves extensibility."
+  },
+  {
+    "id": "inheritance-083",
+    "question": "Parent has an abstract method; Child is abstract and leaves it unimplemented. Valid?",
+    "options": [
+      "No",
+      "Yes",
+      "Only if parent has no constructor",
+      "Only static"
+    ],
+    "answer": 1,
+    "explanation": "An abstract subclass may defer implementation to a concrete descendant."
+  },
+  {
+    "id": "inheritance-084",
+    "question": "A child override declares a broader unchecked RuntimeException. Is it banned by checked exception rules?",
+    "options": [
+      "Yes, all exceptions must narrow",
+      "No, checked-exception restrictions do not apply the same way to unchecked exceptions",
+      "Only public methods",
+      "Only abstract methods"
+    ],
+    "answer": 1,
+    "explanation": "The overriding throws-clause restriction concerns checked exceptions."
+  },
+  {
+    "id": "inheritance-085",
+    "question": "Parent method declares Exception; Child override declares IOException. Valid?",
+    "options": [
+      "No",
+      "Yes, IOException is narrower",
+      "Only if unchecked",
+      "Only static"
+    ],
+    "answer": 1,
+    "explanation": "An override may declare a narrower checked exception."
+  },
+  {
+    "id": "inheritance-086",
+    "question": "A child constructor uses this.field. Does this refer to the eventual child object?",
+    "options": [
+      "No, only parent portion",
+      "Yes, the current object being initialized",
+      "Only static fields",
+      "Only in static methods"
+    ],
+    "answer": 1,
+    "explanation": "this refers to the current object, even while superclass construction is in progress."
+  },
+  {
+    "id": "inheritance-087",
+    "question": "A protected superclass constructor is commonly used to:",
+    "options": [
+      "Allow all public construction",
+      "Permit subclasses and same-package construction while limiting unrelated callers",
+      "Prevent subclassing",
+      "Enable multiple inheritance"
+    ],
+    "answer": 1,
+    "explanation": "Protected constructor visibility can support controlled subclass construction."
+  },
+  {
+    "id": "inheritance-088",
+    "question": "A base class defines an algorithm skeleton and subclasses override steps. Pattern?",
+    "options": [
+      "Template Method",
+      "Singleton",
+      "Observer",
+      "Adapter only"
+    ],
+    "answer": 0,
+    "explanation": "Template Method keeps the algorithm structure in the base class and delegates variable steps."
+  },
+  {
+    "id": "inheritance-089",
+    "question": "A superclass uses instanceof checks for each subclass to choose behavior. What may be a better design?",
+    "options": [
+      "More instanceof checks",
+      "Polymorphic methods or a better abstraction",
+      "Make methods private",
+      "Use more packages"
+    ],
+    "answer": 1,
+    "explanation": "Repeated type checks can indicate behavior belongs in overridden methods or interfaces."
+  },
+  {
+    "id": "inheritance-090",
+    "question": "A mutable protected field lets subclasses violate base invariants. Better practice?",
+    "options": [
+      "Make all fields public",
+      "Encapsulate state behind controlled methods",
+      "Remove constructors",
+      "Make all methods static"
+    ],
+    "answer": 1,
+    "explanation": "Encapsulation reduces coupling and protects superclass invariants."
+  },
+  {
+    "id": "inheritance-091",
+    "question": "A subtype compiles but violates documented base behavior. What is true?",
+    "options": [
+      "Compiler catches all semantic violations",
+      "It can still be a design bug despite compiling",
+      "It automatically becomes overload",
+      "Objects cannot be created"
+    ],
+    "answer": 1,
+    "explanation": "The compiler checks type rules, not whether the override honors behavioral expectations."
+  },
+  {
+    "id": "inheritance-092",
+    "question": "A class is final. Can another class extend it?",
+    "options": [
+      "Yes",
+      "No",
+      "Only in same package",
+      "Only if abstract"
+    ],
+    "answer": 1,
+    "explanation": "Final classes cannot be subclassed."
+  },
+  {
+    "id": "inheritance-093",
+    "question": "A Child overrides Parent.f(int); Parent reference calls f(1). Which runs?",
+    "options": [
+      "Parent.f always",
+      "Child.f(int)",
+      "Child.f(long)",
+      "Both"
+    ],
+    "answer": 1,
+    "explanation": "Compile-time overload selection chooses f(int); runtime dispatch invokes Child's override."
+  },
+  {
+    "id": "inheritance-094",
+    "question": "Parent f(Number); Child f(Integer). Is it an override?",
+    "options": [
+      "Yes",
+      "No, it is an overload",
+      "Covariant parameters",
+      "Static hiding"
+    ],
+    "answer": 1,
+    "explanation": "Parameter types must match for overriding; covariance applies to return types."
+  },
+  {
+    "id": "inheritance-095",
+    "question": "A superclass has a concrete method matching an interface default method. Which normally takes precedence?",
+    "options": [
+      "Interface default",
+      "Superclass method",
+      "Random",
+      "Compilation always fails"
+    ],
+    "answer": 1,
+    "explanation": "Class implementations take precedence over interface default methods."
+  },
+  {
+    "id": "inheritance-096",
+    "question": "A parent concrete public method already implements an interface method. Must Child implement it again?",
+    "options": [
+      "Yes",
+      "No, the inherited compatible method can satisfy the interface",
+      "Only if Parent abstract",
+      "Only if one interface method"
+    ],
+    "answer": 1,
+    "explanation": "An inherited public implementation can satisfy an interface contract."
+  },
+  {
+    "id": "inheritance-097",
+    "question": "Changing only a method return type creates an overload?",
+    "options": [
+      "Yes",
+      "No, parameters must differ to overload",
+      "Only if primitive",
+      "Only static"
+    ],
+    "answer": 1,
+    "explanation": "Return type alone does not distinguish an overload."
+  },
+  {
+    "id": "inheritance-098",
+    "question": "Parent and Child have instance initializer blocks. Which runs first?",
+    "options": [
+      "Child then Parent",
+      "Parent initializers/constructor before Child initializers/constructor",
+      "All constructors then all blocks",
+      "Child constructor first"
+    ],
+    "answer": 1,
+    "explanation": "Superclass initialization precedes subclass initialization."
+  },
+  {
+    "id": "inheritance-099",
+    "question": "Child explicitly calls super(10), but Parent has no matching constructor. Result?",
+    "options": [
+      "Falls back to super()",
+      "Compile error",
+      "Argument ignored",
+      "Runtime only"
+    ],
+    "answer": 1,
+    "explanation": "Explicit superclass constructor arguments must match an accessible constructor."
+  },
+  {
+    "id": "inheritance-100",
+    "question": "When overriding generic methods, why check type erasure?",
+    "options": [
+      "Only names matter",
+      "Different declarations can clash after erasure or fail to override as intended",
+      "Constructors become public",
+      "It affects field hiding only"
+    ],
+    "answer": 1,
+    "explanation": "Generic method signatures and erasure can create name clashes or override mismatches."
+  },
+  {
+    "id": "inheritance-101",
+    "question": "A child in another package overrides protected connect() as public. Valid?",
+    "options": [
+      "No",
+      "Yes, overriding is allowed and access is widened",
+      "Only static",
+      "Only final parent"
+    ],
+    "answer": 1,
+    "explanation": "Protected methods can be overridden across packages; widening visibility is legal."
+  },
+  {
+    "id": "inheritance-102",
+    "question": "A wrapper needs one operation from a library class. Better than extending the whole class?",
+    "options": [
+      "Composition with a narrow wrapper API",
+      "Extend more library classes",
+      "Protected fields",
+      "Duplicate all code"
+    ],
+    "answer": 0,
+    "explanation": "Composition reduces coupling and exposes only the operations needed."
+  },
+  {
+    "id": "inheritance-103",
+    "question": "A subclass return type appears covariant but generic types are incompatible. What should be checked?",
+    "options": [
+      "Assume it works",
+      "Return-type substitutability and generic invariance/erasure rules",
+      "Only constructor access",
+      "Only field names"
+    ],
+    "answer": 1,
+    "explanation": "Covariant returns still require a valid subtype-compatible return type."
+  },
+  {
+    "id": "inheritance-104",
+    "question": "Which principle says subtypes should preserve base-type expectations?",
+    "options": [
+      "Liskov Substitution Principle",
+      "Singleton",
+      "DRY only",
+      "Factory"
+    ],
+    "answer": 0,
+    "explanation": "LSP is about behavioral substitutability."
+  },
+  {
+    "id": "inheritance-105",
+    "question": "A parent has package-private constructor; subclass is in another package. Check:",
+    "options": [
+      "Class name",
+      "Whether an accessible superclass constructor exists",
+      "Static fields",
+      "Serializable"
+    ],
+    "answer": 1,
+    "explanation": "The subclass must be able to invoke an accessible superclass constructor."
+  },
+  {
+    "id": "inheritance-106",
+    "question": "A class extends a superclass and implements an interface whose method is protected in the superclass. Does protected satisfy public interface method?",
+    "options": [
+      "Yes",
+      "No, implementation must be public",
+      "Only if abstract",
+      "Only if sealed"
+    ],
+    "answer": 1,
+    "explanation": "Interface methods are public; an implementation cannot be less accessible."
+  },
+  {
+    "id": "inheritance-107",
+    "question": "A subclass overrides equals but not hashCode. Risk?",
+    "options": [
+      "Inheritance stops",
+      "Equal objects can have different hashes and behave incorrectly in hash collections",
+      "All objects equal",
+      "Compile error"
+    ],
+    "answer": 1,
+    "explanation": "The equals/hashCode contract requires equal objects to have equal hash codes."
+  },
+  {
+    "id": "inheritance-108",
+    "question": "Parent has static block; Child has static block. Initialization order?",
+    "options": [
+      "Child first",
+      "Parent before Child",
+      "Alternating",
+      "Every object"
+    ],
+    "answer": 1,
+    "explanation": "Superclass class initialization occurs before subclass class initialization."
+  },
+  {
+    "id": "inheritance-109",
+    "question": "A superclass constructor calls a method overridden by Child. Best design practice?",
+    "options": [
+      "Always do this",
+      "Avoid calling overridable methods from constructors",
+      "Make all fields public",
+      "Use super.super"
+    ],
+    "answer": 1,
+    "explanation": "Avoiding overridable calls during construction prevents partially initialized subclass state from being used."
+  },
+  {
+    "id": "inheritance-110",
+    "question": "A hierarchy models Employee -> Manager, while Approver and Auditor are capabilities. Flexible approach?",
+    "options": [
+      "More superclass levels for roles",
+      "Interfaces for capabilities, class hierarchy for is-a",
+      "Public fields",
+      "Multiple class inheritance"
+    ],
+    "answer": 1,
+    "explanation": "Interfaces model roles that cross class hierarchies."
+  },
+  {
+    "id": "inheritance-111",
+    "question": "A Parent reference points to Child and calls equals(Object), overridden in Child. Which runs?",
+    "options": [
+      "Parent always",
+      "Child override",
+      "Both",
+      "Compile-time runtime mix"
+    ],
+    "answer": 1,
+    "explanation": "Instance method overriding uses runtime dispatch."
+  },
+  {
+    "id": "inheritance-112",
+    "question": "A child constructor is private while parent constructor is public. Can external callers construct Child directly?",
+    "options": [
+      "Yes, constructors are inherited",
+      "No, Child's private constructor restricts direct construction",
+      "Parent visibility controls it",
+      "Only super()"
+    ],
+    "answer": 1,
+    "explanation": "Subclass constructor accessibility is independent of superclass constructor visibility."
+  },
+  {
+    "id": "inheritance-113",
+    "question": "A base class is intended for third-party extension. Good practice?",
+    "options": [
+      "Call overrides from constructors freely",
+      "Document extension points and protect invariants",
+      "Make all fields public",
+      "Allow any mutation"
+    ],
+    "answer": 1,
+    "explanation": "Clear contracts and safe extension points reduce fragile inheritance designs."
+  },
+  {
+    "id": "inheritance-114",
+    "question": "A subclass constructor runs, but its parent has only a constructor that takes an argument. What must the subclass do?",
+    "options": [
+      "Nothing; the parent constructor is inherited",
+      "Call an accessible parent constructor explicitly with super(argument)",
+      "Call this() and skip the parent",
+      "The compiler creates a no-argument parent constructor"
+    ],
+    "answer": 1,
+    "explanation": "If the parent has no accessible no-argument constructor, the subclass must explicitly invoke an accessible parent constructor."
+  },
+  {
+    "id": "inheritance-115",
+    "question": "A subclass declares a method with the same name but a different parameter list from an inherited method. This is usually:",
+    "options": [
+      "Overloading",
+      "Overriding",
+      "Hiding a field",
+      "Constructor chaining"
+    ],
+    "answer": 0,
+    "explanation": "A different parameter list creates an overload; overriding requires a compatible method signature."
+  },
+  {
+    "id": "inheritance-116",
+    "question": "Parent and Child both declare an instance field named value. Through a Parent reference holding a Child object, which field does ref.value access?",
+    "options": [
+      "Child.value, by runtime dispatch",
+      "Parent.value, based on the reference's declared type",
+      "Both fields",
+      "The code does not compile"
+    ],
+    "answer": 1,
+    "explanation": "Fields are hidden rather than overridden, and field access is resolved using the reference's compile-time type."
+  },
+  {
+    "id": "inheritance-117",
+    "question": "A Parent variable refers to a Child object, and both classes define an overridden instance method run(). Which implementation runs?",
+    "options": [
+      "Parent.run() always",
+      "Child.run() at runtime",
+      "Both implementations automatically",
+      "The call is ambiguous"
+    ],
+    "answer": 1,
+    "explanation": "Overridden instance methods use dynamic dispatch based on the actual object's class."
+  },
+  {
+    "id": "inheritance-118",
+    "question": "Which statement about constructors and inheritance is correct?",
+    "options": [
+      "Subclass constructors are inherited",
+      "Constructors are not inherited by subclasses",
+      "Only public constructors are inherited",
+      "Constructors are overridden like methods"
+    ],
+    "answer": 1,
+    "explanation": "A subclass declares its own constructors; a parent constructor is invoked through constructor chaining."
+  },
+  {
+    "id": "inheritance-119",
+    "question": "When does Java provide a default no-argument constructor for a class?",
+    "options": [
+      "Whenever the class has no fields",
+      "Only when no constructor is declared in that class",
+      "Whenever its parent has a no-argument constructor",
+      "For every abstract class"
+    ],
+    "answer": 1,
+    "explanation": "The compiler supplies a default no-argument constructor only when the class declares no constructors."
+  },
+  {
+    "id": "inheritance-120",
+    "question": "Can an abstract class declare a constructor?",
+    "options": [
+      "No, abstract classes cannot be constructed",
+      "Yes, subclasses can invoke it during construction",
+      "Only if it is private",
+      "Only when the class has no fields"
+    ],
+    "answer": 1,
+    "explanation": "An abstract class cannot be instantiated directly, but its constructor initializes the superclass portion of subclass objects."
+  },
+  {
+    "id": "inheritance-121",
+    "question": "Must every abstract class contain at least one abstract method?",
+    "options": [
+      "Yes",
+      "No, it may be abstract without abstract methods",
+      "Only if it has a constructor",
+      "Only when it implements an interface"
+    ],
+    "answer": 1,
+    "explanation": "A class may be declared abstract to prevent direct instantiation even if all its methods have implementations."
+  },
+  {
+    "id": "inheritance-122",
+    "question": "A concrete subclass extends an abstract class that has an unimplemented abstract method. What must happen?",
+    "options": [
+      "The subclass must implement the method or remain abstract",
+      "The method is ignored",
+      "The superclass becomes concrete",
+      "The compiler generates an empty method"
+    ],
+    "answer": 0,
+    "explanation": "A concrete class must provide implementations for inherited abstract methods unless an intermediate superclass already does so."
+  },
+  {
+    "id": "inheritance-123",
+    "question": "What happens when code tries to instantiate an abstract class directly with new?",
+    "options": [
+      "It succeeds if the class has a constructor",
+      "It fails to compile",
+      "It creates an anonymous subclass automatically",
+      "It fails only at runtime"
+    ],
+    "answer": 1,
+    "explanation": "Abstract classes cannot be instantiated directly; a concrete subclass must be instantiated instead."
+  },
+  {
+    "id": "inheritance-124",
+    "question": "Where must an explicit super(...) constructor invocation appear in a Java constructor?",
+    "options": [
+      "As the first statement",
+      "As the last statement",
+      "Anywhere after field assignments",
+      "Only inside a try block"
+    ],
+    "answer": 0,
+    "explanation": "An explicit superclass constructor invocation must be the first statement in the constructor."
+  },
+  {
+    "id": "inheritance-125",
+    "question": "What does this(...) at the start of a constructor do?",
+    "options": [
+      "Calls a constructor in the same class",
+      "Calls a method in the parent",
+      "Skips all other constructors",
+      "Creates a second object"
+    ],
+    "answer": 0,
+    "explanation": "A this(...) constructor invocation delegates to another constructor in the same class."
+  },
+  {
+    "id": "inheritance-126",
+    "question": "Can one constructor explicitly call both this(...) and super(...)?",
+    "options": [
+      "Yes, in either order",
+      "No; either invocation must be first, and this(...) delegates onward",
+      "Yes, if the parent is abstract",
+      "Only when both constructors are private"
+    ],
+    "answer": 1,
+    "explanation": "A constructor can have only one explicit constructor invocation as its first statement; a delegated this(...) constructor eventually invokes a superclass constructor."
+  },
+  {
+    "id": "inheritance-127",
+    "question": "A child declares a method with the same signature as a private parent method. Is the parent method overridden?",
+    "options": [
+      "Yes, all same-signature methods override",
+      "No, private methods are not inherited for overriding",
+      "Only if the child uses super",
+      "Only when both methods are static"
+    ],
+    "answer": 1,
+    "explanation": "A private superclass method is not inherited, so the child's method is a separate declaration rather than an override."
+  },
+  {
+    "id": "inheritance-128",
+    "question": "A parent method is declared final. What happens if a child tries to override it?",
+    "options": [
+      "The child override wins",
+      "The code fails to compile",
+      "The method becomes overloaded",
+      "It works only for abstract children"
+    ],
+    "answer": 1,
+    "explanation": "A final instance method cannot be overridden by a subclass."
+  },
+  {
+    "id": "inheritance-129",
+    "question": "A class is declared final. What does this prevent?",
+    "options": [
+      "Creating instances",
+      "Subclassing the class",
+      "Calling its methods",
+      "Implementing interfaces elsewhere"
+    ],
+    "answer": 1,
+    "explanation": "A final class cannot be extended by another class."
+  },
+  {
+    "id": "inheritance-130",
+    "question": "A public parent method is overridden as protected in a child. What is the result?",
+    "options": [
+      "Valid override",
+      "Compile-time error because visibility was reduced",
+      "The methods are unrelated overloads",
+      "The parent method becomes protected"
+    ],
+    "answer": 1,
+    "explanation": "An overriding method cannot provide weaker access than the method it overrides."
+  },
+  {
+    "id": "inheritance-131",
+    "question": "A protected parent method is overridden as public in a child. Is this allowed?",
+    "options": [
+      "Yes, access may be widened",
+      "No, access must match exactly",
+      "Only if the parent is abstract",
+      "Only for static methods"
+    ],
+    "answer": 0,
+    "explanation": "An override may keep the same access level or widen it, but may not reduce it."
+  },
+  {
+    "id": "inheritance-132",
+    "question": "A subclass declares a static method with the same signature as an accessible static parent method. This is:",
+    "options": [
+      "Overriding",
+      "Method hiding",
+      "Constructor chaining",
+      "Illegal in every case"
+    ],
+    "answer": 1,
+    "explanation": "Static methods are hidden by subclass declarations; they are not dynamically overridden."
+  },
+  {
+    "id": "inheritance-133",
+    "question": "How is a static method call selected when parent and child each hide the same static method?",
+    "options": [
+      "By the object's runtime class",
+      "By the reference or class name used at compile time",
+      "Randomly",
+      "Both methods always run"
+    ],
+    "answer": 1,
+    "explanation": "Static method selection is based on the compile-time type of the qualifying reference or class name."
+  },
+  {
+    "id": "inheritance-134",
+    "question": "A parent method returns Number and the child override returns Integer. What is this valid return relationship called?",
+    "options": [
+      "Contravariant return",
+      "Covariant return",
+      "Overloading",
+      "Field hiding"
+    ],
+    "answer": 1,
+    "explanation": "An overriding method may return a subtype of the parent's reference return type; this is a covariant return."
+  },
+  {
+    "id": "inheritance-135",
+    "question": "A parent method returns int and a child declares the same signature returning long. Is this a valid override?",
+    "options": [
+      "Yes, because long is wider",
+      "No, primitive return types cannot be changed in an override",
+      "Yes, if the child is final",
+      "Only when the method is static"
+    ],
+    "answer": 1,
+    "explanation": "Covariant returns apply to reference types; an override must keep the same primitive return type."
+  },
+  {
+    "id": "inheritance-136",
+    "question": "A parent method declares IOException. Its child override declares FileNotFoundException. Is this allowed?",
+    "options": [
+      "Yes, it is a narrower checked exception",
+      "No checked exceptions are allowed in overrides",
+      "Only if the parent is final",
+      "Only if the child method is private"
+    ],
+    "answer": 0,
+    "explanation": "An overriding method may declare a narrower checked exception than the parent method."
+  },
+  {
+    "id": "inheritance-137",
+    "question": "A parent method declares IOException. Its child override adds SQLException. What happens?",
+    "options": [
+      "It is allowed because both are checked",
+      "It fails because the override adds a broader or unrelated checked exception",
+      "It becomes an overload",
+      "The exception is ignored"
+    ],
+    "answer": 1,
+    "explanation": "An override cannot add a new checked exception that is not covered by the parent method's throws clause."
+  },
+  {
+    "id": "inheritance-138",
+    "question": "May an overriding method throw an unchecked RuntimeException that the parent method does not declare?",
+    "options": [
+      "Yes",
+      "No, all exceptions must be declared by the parent",
+      "Only if the parent is abstract",
+      "Only if the child method is static"
+    ],
+    "answer": 0,
+    "explanation": "The checked-exception restriction does not prevent an override from throwing unchecked exceptions."
+  },
+  {
+    "id": "inheritance-139",
+    "question": "When Java chooses between overloaded methods, what primarily determines the overload at the call site?",
+    "options": [
+      "The runtime class alone",
+      "The compile-time argument types and available overloads",
+      "The object's field values",
+      "The method body selected by overriding"
+    ],
+    "answer": 1,
+    "explanation": "Overload resolution happens at compile time using argument types; an override of the selected signature may then dispatch at runtime."
+  },
+  {
+    "id": "inheritance-140",
+    "question": "Inside a child override, what does super.process() call?",
+    "options": [
+      "The child override recursively",
+      "The superclass implementation of process()",
+      "Every implementation in the hierarchy",
+      "A static method named process() only"
+    ],
+    "answer": 1,
+    "explanation": "The super reference can invoke the superclass implementation that the child override replaces."
+  },
+  {
+    "id": "inheritance-141",
+    "question": "Parent and Child both declare an instance field name. A Parent reference points to a Child object. Which declaration controls ref.name?",
+    "options": [
+      "The Child declaration at runtime",
+      "The Parent declaration based on the reference type",
+      "The most recently initialized field",
+      "The call is ambiguous"
+    ],
+    "answer": 1,
+    "explanation": "Field access is resolved from the compile-time reference type, unlike overridden instance-method calls."
+  },
+  {
+    "id": "inheritance-142",
+    "question": "Inside Child, how can code explicitly refer to an accessible field named value declared in Parent when Child also declares value?",
+    "options": [
+      "parent.value",
+      "super.value",
+      "this.parent.value",
+      "base.value"
+    ],
+    "answer": 1,
+    "explanation": "super.value refers to the accessible superclass field hidden by the child field."
+  },
+  {
+    "id": "inheritance-143",
+    "question": "A subclass in a different package extends a class with a protected method. Where can the subclass access that method directly?",
+    "options": [
+      "Only from code in the superclass package",
+      "From subclass code, subject to Java's protected access rules",
+      "From any unrelated class in any package",
+      "Nowhere; protected is package-private only"
+    ],
+    "answer": 1,
+    "explanation": "Protected members are accessible to subclasses outside the package under the language's protected-access rules."
+  },
+  {
+    "id": "inheritance-144",
+    "question": "A subclass is in a different package from its parent. The parent has a package-private method. Can the subclass access it as an inherited method?",
+    "options": [
+      "Yes, every superclass method is inherited everywhere",
+      "No, package-private access is limited to the declaring package",
+      "Only with super.method()",
+      "Only if the parent is abstract"
+    ],
+    "answer": 1,
+    "explanation": "A package-private member is not accessible to subclass code in a different package."
+  },
+  {
+    "id": "inheritance-145",
+    "question": "A class declares only a constructor that takes a String. Can code call new Child() with no arguments?",
+    "options": [
+      "Yes, Java always supplies a no-argument constructor",
+      "No, no default constructor is generated after any constructor is declared",
+      "Yes, if Child extends Object",
+      "Only when String is null"
+    ],
+    "answer": 1,
+    "explanation": "Once a class declares any constructor, the compiler does not generate a default no-argument constructor."
+  },
+  {
+    "id": "inheritance-146",
+    "question": "If a Java class does not explicitly extend another class, what class does it directly extend?",
+    "options": [
+      "Base",
+      "Object",
+      "ClassLoader",
+      "Serializable"
+    ],
+    "answer": 1,
+    "explanation": "Every Java class without an explicit superclass directly extends java.lang.Object."
+  },
+  {
+    "id": "inheritance-147",
+    "question": "Which inheritance combination is allowed for a Java class?",
+    "options": [
+      "Extend two classes",
+      "Extend one class and implement multiple interfaces",
+      "Extend multiple classes only if abstract",
+      "Implement only one interface"
+    ],
+    "answer": 1,
+    "explanation": "Java allows single class inheritance and implementation of multiple interfaces."
+  },
+  {
+    "id": "inheritance-148",
+    "question": "Two unrelated interfaces provide the same default method, and a class implements both. What must the class do?",
+    "options": [
+      "Nothing; Java chooses one at random",
+      "Override the conflicting method to resolve the ambiguity",
+      "Remove one interface at runtime",
+      "Make the method static"
+    ],
+    "answer": 1,
+    "explanation": "The class must provide an override to resolve conflicting inherited default implementations."
+  },
+  {
+    "id": "inheritance-149",
+    "question": "Which declaration is invalid for an abstract method?",
+    "options": [
+      "public abstract void run();",
+      "protected abstract int size();",
+      "private abstract void reset();",
+      "abstract String name();"
+    ],
+    "answer": 2,
+    "explanation": "An abstract method must be overridable by a subclass, so it cannot be private."
+  },
+  {
+    "id": "inheritance-150",
+    "question": "What does the @Override annotation help the compiler do?",
+    "options": [
+      "Generate the parent method automatically",
+      "Check that the method actually overrides an inherited method",
+      "Make the method final",
+      "Change a static method into an instance method"
+    ],
+    "answer": 1,
+    "explanation": "@Override asks the compiler to verify the override; it is optional but catches signature mistakes."
+  },
+  {
+    "id": "inheritance-151",
+    "question": "If Child extends Parent, what is the result of childObject instanceof Parent?",
+    "options": [
+      "False because the object's class is Child",
+      "True because a Child object is also a Parent",
+      "It never compiles",
+      "It is true only for abstract parents"
+    ],
+    "answer": 1,
+    "explanation": "An instance of a subclass is also an instance of its superclass."
+  },
+  {
+    "id": "inheritance-152",
+    "question": "A Parent reference may refer to either Parent or Child. What happens when it is cast to Child?",
+    "options": [
+      "It always succeeds",
+      "It succeeds only if the referenced object is actually a Child; otherwise a ClassCastException occurs",
+      "It changes the object's class",
+      "It always fails at compile time"
+    ],
+    "answer": 1,
+    "explanation": "A downcast is checked at runtime and succeeds only when the object is compatible with Child."
+  },
+  {
+    "id": "inheritance-153",
+    "question": "When is inheritance generally a good design choice?",
+    "options": [
+      "Whenever two classes share any code",
+      "When the subtype truly satisfies the parent contract and can be used in its place",
+      "Whenever one class needs to access another class's fields",
+      "When avoiding all interfaces"
+    ],
+    "answer": 1,
+    "explanation": "Inheritance is appropriate when the subtype preserves the superclass contract and behaves as a valid substitute."
+  },
+  {
+    "id": "pdf-inherit-001",
+    "subtopic": "Inheritance",
+    "question": "What does this print?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Parent { int value = 1; }\nclass Child extends Parent { int value = 2; }\nclass Demo {\n    public static void main(String[] args) {\n        Parent p = new Child();\n        System.out.println(p.value + \" \" + ((Child) p).value);\n    }\n}",
+    "options": [
+      "1 1",
+      "2 2",
+      "1 2",
+      "Compilation error"
+    ],
+    "answer": 2,
+    "explanation": "Fields are hidden, not dynamically dispatched. The reference type selects p.value; the cast selects Child.value.",
+    "source": "Kodewala Academy Core Java & Advance Java notes, PDF page 123",
+    "sourceLabel": "From PDF notes · page 123"
+  }
+]

@@ -1,0 +1,1258 @@
+[
+  {
+    "id": "spring-01",
+    "subtopic": "IoC and dependency injection",
+    "question": "What does dependency injection primarily do?",
+    "options": [
+      "Lets a container supply an object's dependencies",
+      "Replaces Java constructors",
+      "Compiles Java source at runtime",
+      "Stores every bean in a database"
+    ],
+    "answer": 0,
+    "explanation": "Dependency injection inverts construction responsibility so collaborators can be provided by a container or caller."
+  },
+  {
+    "id": "spring-02",
+    "subtopic": "Constructor injection",
+    "question": "Which constructor best expresses a required service dependency?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "@Service\nclass OrderService {\n    private final PaymentGateway gateway;\n\n    OrderService(PaymentGateway gateway) {\n        this.gateway = gateway;\n    }\n}",
+    "options": [
+      "A constructor receiving PaymentGateway",
+      "A static field initialized from a global variable",
+      "A public mutable field",
+      "No dependency declaration"
+    ],
+    "answer": 0,
+    "explanation": "Constructor injection makes the required dependency explicit and allows the field to remain final."
+  },
+  {
+    "id": "spring-03",
+    "subtopic": "Bean scope",
+    "question": "What does Spring's default singleton scope mean?",
+    "options": [
+      "One instance per JVM across every application",
+      "One instance for a bean definition per Spring IoC container",
+      "One instance per HTTP request",
+      "A new instance for every method call"
+    ],
+    "answer": 1,
+    "explanation": "Singleton scope is per bean definition and per container, not a JVM-wide singleton."
+  },
+  {
+    "id": "spring-04",
+    "subtopic": "Spring MVC",
+    "question": "In a typical Spring MVC request, which component routes requests to controller methods?",
+    "options": [
+      "DispatcherServlet",
+      "EntityManager",
+      "ApplicationRunner",
+      "JdbcTemplate"
+    ],
+    "answer": 0,
+    "explanation": "DispatcherServlet is the front controller that dispatches requests to mapped handlers."
+  },
+  {
+    "id": "spring-05",
+    "subtopic": "Request validation",
+    "question": "Which annotation commonly triggers validation of a request-body object with Jakarta Bean Validation constraints?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "@PostMapping(\"/users\")\nUser create(@Valid @RequestBody CreateUserRequest request) {\n    return service.create(request);\n}",
+    "options": [
+      "@Valid",
+      "@Primary",
+      "@Bean",
+      "@Transactional"
+    ],
+    "answer": 0,
+    "explanation": "Spring MVC applies validation to a request-body command object when it is annotated with @Valid or @Validated."
+  },
+  {
+    "id": "spring-06",
+    "subtopic": "AOP proxies",
+    "question": "What is a common limitation of proxy-based Spring AOP?",
+    "options": [
+      "A call from one method to another on the same object may bypass the proxy",
+      "It cannot advise public methods",
+      "It requires every class to be an interface",
+      "It changes Java method signatures"
+    ],
+    "answer": 0,
+    "explanation": "Self-invocation does not pass through the external proxy, so proxy advice may not run for that call."
+  },
+  {
+    "id": "spring-07",
+    "subtopic": "Spring Boot auto-configuration",
+    "question": "What does @SpringBootApplication include for a typical Boot application?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "@SpringBootApplication\nclass Application {\n    public static void main(String[] args) {\n        SpringApplication.run(Application.class, args);\n    }\n}",
+    "options": [
+      "Component scanning, auto-configuration, and configuration support",
+      "Only JDBC transaction management",
+      "A REST controller for every class",
+      "A database schema generator in all cases"
+    ],
+    "answer": 0,
+    "explanation": "The annotation combines configuration support with component scanning and auto-configuration."
+  },
+  {
+    "id": "spring-08",
+    "subtopic": "Caching",
+    "question": "What should a cache key represent for a method result?",
+    "options": [
+      "The inputs that determine the result, scoped appropriately",
+      "Only the current timestamp",
+      "The method's line number",
+      "The JVM process ID"
+    ],
+    "answer": 0,
+    "explanation": "A cache key must distinguish calls whose result may differ; omitting relevant inputs can return stale or incorrect values."
+  },
+  {
+    "id": "spring-09",
+    "subtopic": "@Bean and @Configuration",
+    "question": "What does a @Bean method usually do in a configuration class?",
+    "options": [
+      "Declares an object for the Spring container to manage",
+      "Creates a new database table on every call",
+      "Marks a Java field as public",
+      "Starts a Kafka broker"
+    ],
+    "answer": 0,
+    "explanation": "A @Bean method contributes its returned object to the application context."
+  },
+  {
+    "id": "spring-10",
+    "subtopic": "Spring REST mapping",
+    "question": "Which annotation maps a method to HTTP GET requests for `/orders`?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "@RestController\nclass OrderController {\n    @GetMapping(\"/orders\")\n    List<Order> list() { return service.findAll(); }\n}",
+    "options": [
+      "@GetMapping",
+      "@Entity",
+      "@Bean",
+      "@EnableCaching"
+    ],
+    "answer": 0,
+    "explanation": "@GetMapping is a composed request-mapping annotation for HTTP GET."
+  },
+  {
+    "id": "spring-11",
+    "subtopic": "Transactional proxy",
+    "question": "Why might @Transactional not apply to a self-invoked method in proxy mode?",
+    "options": [
+      "The internal call bypasses the Spring proxy",
+      "The method name is too short",
+      "Transactions work only on constructors",
+      "The application must use XML"
+    ],
+    "answer": 0,
+    "explanation": "Proxy-based transaction advice is applied when the call crosses the proxy; a self-call stays on the target object."
+  },
+  {
+    "id": "spring-12",
+    "subtopic": "Profiles",
+    "question": "What is a Spring profile commonly used for?",
+    "options": [
+      "Selecting environment-specific bean definitions or configuration",
+      "Changing Java primitive sizes",
+      "Guaranteeing exactly-once messaging",
+      "Replacing dependency injection"
+    ],
+    "answer": 0,
+    "explanation": "Profiles let applications activate configuration and beans for particular environments or deployment situations."
+  },
+  {
+    "id": "spring-13",
+    "subtopic": "Spring Data",
+    "question": "What is a common benefit of Spring Data repository abstractions?",
+    "options": [
+      "They can reduce repetitive data-access code behind repository interfaces",
+      "They replace the database engine",
+      "They guarantee all queries are optimal",
+      "They remove transaction concerns"
+    ],
+    "answer": 0,
+    "explanation": "Spring Data offers repository abstractions and query derivation to reduce boilerplate, while query performance still needs review."
+  },
+  {
+    "id": "spring-14",
+    "subtopic": "Spring Security",
+    "question": "Which term describes verifying who a user is?",
+    "options": [
+      "Authorization",
+      "Authentication",
+      "Serialization",
+      "Caching"
+    ],
+    "answer": 1,
+    "explanation": "Authentication establishes a principal's identity; authorization determines what that principal may access."
+  },
+  {
+    "id": "spring-15",
+    "subtopic": "Caching",
+    "question": "Why should cache eviction or refresh policy be designed with cached data?",
+    "options": [
+      "Cached values can become stale after the underlying data changes",
+      "Caches never expire entries",
+      "Caching always persists data to SQL",
+      "Eviction controls Java access modifiers"
+    ],
+    "answer": 0,
+    "explanation": "A cache needs an invalidation or expiration strategy so reads do not serve outdated values indefinitely."
+  },
+  {
+    "id": "exp-spring-09",
+    "subtopic": "IoC and dependency injection",
+    "question": "What is inversion of control in a Spring application?",
+    "options": [
+      "The container manages object creation and wiring rather than application code constructing every dependency",
+      "The database calls every Java method",
+      "Controllers manually create the application context per request",
+      "Beans cannot depend on other beans"
+    ],
+    "answer": 0,
+    "explanation": "The container takes responsibility for creating and wiring managed objects (beans)."
+  },
+  {
+    "id": "exp-spring-10",
+    "subtopic": "Constructor injection",
+    "question": "Why is constructor injection a good default for required dependencies?",
+    "options": [
+      "It makes required dependencies explicit and supports immutable fields",
+      "It prevents unit testing",
+      "It automatically makes every bean prototype scoped",
+      "It removes the need for interfaces"
+    ],
+    "answer": 0,
+    "explanation": "Constructor injection exposes required collaborators and allows final fields, helping ensure a valid object is constructed."
+  },
+  {
+    "id": "exp-spring-11",
+    "subtopic": "Bean scope",
+    "question": "How many instances does a singleton-scoped bean normally have per Spring IoC container?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "@Component\nclass ClockService { }\n// default bean scope",
+    "options": [
+      "One shared instance per container",
+      "One new instance for every method call",
+      "One instance for the entire internet",
+      "No instance is created"
+    ],
+    "answer": 0,
+    "explanation": "Spring's singleton scope is one bean instance per bean definition per IoC container."
+  },
+  {
+    "id": "exp-spring-12",
+    "subtopic": "Spring MVC",
+    "question": "What is the primary role of DispatcherServlet in Spring MVC?",
+    "options": [
+      "Front controller that dispatches requests to mapped handlers",
+      "JPA entity manager",
+      "Embedded database",
+      "Bean validation constraint"
+    ],
+    "answer": 0,
+    "explanation": "DispatcherServlet is the front controller that coordinates request mapping and handler execution."
+  },
+  {
+    "id": "exp-spring-13",
+    "subtopic": "Spring Data",
+    "question": "Which repository method name describes looking up a user by its email property?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "interface UserRepository extends JpaRepository<User, Long> {\n    // choose the derived query method\n}",
+    "options": [
+      "findByEmail(String email)",
+      "selectUserEmail(String email)",
+      "getTableWhereEmail(String email)",
+      "queryEmailColumn(String email)"
+    ],
+    "answer": 0,
+    "explanation": "Spring Data derives a query from supported repository method names such as findByEmail."
+  },
+  {
+    "id": "exp-spring-14",
+    "subtopic": "Spring Security",
+    "question": "In the usual Spring Security filter-chain flow, when is authorization evaluated?",
+    "options": [
+      "After the request has passed through authentication mechanisms in the security chain",
+      "Before any request reaches the servlet container",
+      "Only when a JPA entity is saved",
+      "Only after the response is sent"
+    ],
+    "answer": 0,
+    "explanation": "The security filter chain processes authentication and authorization before controller handling proceeds."
+  },
+  {
+    "id": "exp-spring-15",
+    "subtopic": "AOP proxies",
+    "question": "Why might a `@Transactional` method call from another method on the same bean bypass proxy advice in proxy mode?",
+    "options": [
+      "The self-invocation does not pass through the Spring proxy",
+      "Transactions only work on static methods",
+      "The method must be declared in an XML file",
+      "The JVM removes all annotations at runtime"
+    ],
+    "answer": 0,
+    "explanation": "Proxy-based advice applies to calls that enter through the proxy; an internal self-call invokes the target directly."
+  },
+  {
+    "id": "exp-spring-16",
+    "subtopic": "Request validation",
+    "question": "Where should a controller commonly inspect binding errors when using `@Valid`?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "@PostMapping(\"/users\")\nUser create(@Valid @RequestBody CreateUserRequest request, BindingResult result) {\n    if (result.hasErrors()) {\n        throw new IllegalArgumentException(\"Invalid request\");\n    }\n    return userService.create(request);\n}",
+    "options": [
+      "In the BindingResult immediately after the validated argument",
+      "Only in the entity constructor",
+      "Inside application.properties",
+      "In a Kafka listener"
+    ],
+    "answer": 0,
+    "explanation": "Spring MVC associates BindingResult with the immediately preceding validated argument."
+  },
+  {
+    "id": "exp-spring-17",
+    "subtopic": "Caching",
+    "question": "What does a cache eviction operation do?",
+    "options": [
+      "Removes a selected entry so a later lookup can recompute or reload it",
+      "Persists every cache value to a database",
+      "Makes a method synchronized",
+      "Creates a new Spring profile"
+    ],
+    "answer": 0,
+    "explanation": "Eviction invalidates a cache entry, commonly after data changes."
+  },
+  {
+    "id": "exp-spring-18",
+    "subtopic": "Spring Boot auto-configuration",
+    "question": "What is a common way to prevent a specific Boot auto-configuration from applying?",
+    "options": [
+      "Exclude that auto-configuration class",
+      "Rename every bean to `auto`",
+      "Disable component scanning permanently",
+      "Add a second main method"
+    ],
+    "answer": 0,
+    "explanation": "Spring Boot lets applications exclude selected auto-configuration classes when defaults are unsuitable."
+  },
+  {
+    "id": "chapter-spring-core-01",
+    "subtopic": "Spring Core",
+    "question": "Which statement about Spring Core is correct?",
+    "options": [
+      "Inversion of control lets the Spring container create and wire managed objects.",
+      "The Spring container only manages static methods.",
+      "Constructor injection hides mandatory dependencies.",
+      "A singleton bean is always thread-safe."
+    ],
+    "answer": 0,
+    "explanation": "Inversion of control lets the Spring container create and wire managed objects."
+  },
+  {
+    "id": "chapter-spring-core-02",
+    "subtopic": "Spring Core",
+    "question": "Choose the accurate Java interview answer about Spring Core.",
+    "options": [
+      "The Spring container only manages static methods.",
+      "Dependency injection supplies a bean's collaborators from outside the bean.",
+      "Constructor injection hides mandatory dependencies.",
+      "A singleton bean is always thread-safe."
+    ],
+    "answer": 1,
+    "explanation": "Dependency injection supplies a bean's collaborators from outside the bean."
+  },
+  {
+    "id": "chapter-spring-core-03",
+    "subtopic": "Spring Core",
+    "question": "A developer is asked about Spring Core. Which response is correct?",
+    "options": [
+      "The Spring container only manages static methods.",
+      "Constructor injection hides mandatory dependencies.",
+      "Constructor injection makes required dependencies explicit.",
+      "A singleton bean is always thread-safe."
+    ],
+    "answer": 2,
+    "explanation": "Constructor injection makes required dependencies explicit."
+  },
+  {
+    "id": "chapter-spring-core-04",
+    "subtopic": "Spring Core",
+    "question": "Select the true statement concerning Spring Core.",
+    "options": [
+      "The Spring container only manages static methods.",
+      "Constructor injection hides mandatory dependencies.",
+      "A singleton bean is always thread-safe.",
+      "A Spring singleton is one instance per bean definition per IoC container."
+    ],
+    "answer": 3,
+    "explanation": "A Spring singleton is one instance per bean definition per IoC container."
+  },
+  {
+    "id": "chapter-spring-core-05",
+    "subtopic": "Spring Core",
+    "question": "Which statement about Spring Core is correct?",
+    "options": [
+      "Singleton scope does not make mutable bean state automatically thread-safe.",
+      "The Spring container only manages static methods.",
+      "Constructor injection hides mandatory dependencies.",
+      "A singleton bean is always thread-safe."
+    ],
+    "answer": 0,
+    "explanation": "Singleton scope does not make mutable bean state automatically thread-safe."
+  },
+  {
+    "id": "chapter-spring-core-06",
+    "subtopic": "Spring Core",
+    "question": "Choose the accurate Java interview answer about Spring Core.",
+    "options": [
+      "The Spring container only manages static methods.",
+      "A @Bean method registers its returned object with the application context.",
+      "Constructor injection hides mandatory dependencies.",
+      "A singleton bean is always thread-safe."
+    ],
+    "answer": 1,
+    "explanation": "A @Bean method registers its returned object with the application context."
+  },
+  {
+    "id": "chapter-spring-core-07",
+    "subtopic": "Spring Core",
+    "question": "A developer is asked about Spring Core. Which response is correct?",
+    "options": [
+      "The Spring container only manages static methods.",
+      "Constructor injection hides mandatory dependencies.",
+      "Component scanning can discover classes annotated as Spring components.",
+      "A singleton bean is always thread-safe."
+    ],
+    "answer": 2,
+    "explanation": "Component scanning can discover classes annotated as Spring components."
+  },
+  {
+    "id": "chapter-spring-core-08",
+    "subtopic": "Spring Core",
+    "question": "Select the true statement concerning Spring Core.",
+    "options": [
+      "The Spring container only manages static methods.",
+      "Constructor injection hides mandatory dependencies.",
+      "A singleton bean is always thread-safe.",
+      "Profiles can select environment-specific bean definitions or configuration."
+    ],
+    "answer": 3,
+    "explanation": "Profiles can select environment-specific bean definitions or configuration."
+  },
+  {
+    "id": "chapter-spring-data-01",
+    "subtopic": "Spring Data",
+    "question": "Which statement about Spring Data is correct?",
+    "options": [
+      "Spring Data repositories reduce boilerplate for common persistence operations.",
+      "A repository interface must implement every CRUD method manually.",
+      "JPA is a database server.",
+      "A derived query method is executed by the Java compiler."
+    ],
+    "answer": 0,
+    "explanation": "Spring Data repositories reduce boilerplate for common persistence operations."
+  },
+  {
+    "id": "chapter-spring-data-02",
+    "subtopic": "Spring Data",
+    "question": "Choose the accurate Java interview answer about Spring Data.",
+    "options": [
+      "A repository interface must implement every CRUD method manually.",
+      "A repository interface can derive queries from supported method names.",
+      "JPA is a database server.",
+      "A derived query method is executed by the Java compiler."
+    ],
+    "answer": 1,
+    "explanation": "A repository interface can derive queries from supported method names."
+  },
+  {
+    "id": "chapter-spring-data-03",
+    "subtopic": "Spring Data",
+    "question": "A developer is asked about Spring Data. Which response is correct?",
+    "options": [
+      "A repository interface must implement every CRUD method manually.",
+      "JPA is a database server.",
+      "@Query can declare a custom JPQL or native SQL query.",
+      "A derived query method is executed by the Java compiler."
+    ],
+    "answer": 2,
+    "explanation": "@Query can declare a custom JPQL or native SQL query."
+  },
+  {
+    "id": "chapter-spring-data-04",
+    "subtopic": "Spring Data",
+    "question": "Select the true statement concerning Spring Data.",
+    "options": [
+      "A repository interface must implement every CRUD method manually.",
+      "JPA is a database server.",
+      "A derived query method is executed by the Java compiler.",
+      "An entity maps a Java type to persistent data through a persistence provider."
+    ],
+    "answer": 3,
+    "explanation": "An entity maps a Java type to persistent data through a persistence provider."
+  },
+  {
+    "id": "chapter-spring-data-05",
+    "subtopic": "Spring Data",
+    "question": "Which statement about Spring Data is correct?",
+    "options": [
+      "JPA defines persistence APIs while Hibernate is one implementation.",
+      "A repository interface must implement every CRUD method manually.",
+      "JPA is a database server.",
+      "A derived query method is executed by the Java compiler."
+    ],
+    "answer": 0,
+    "explanation": "JPA defines persistence APIs while Hibernate is one implementation."
+  },
+  {
+    "id": "chapter-spring-data-06",
+    "subtopic": "Spring Data",
+    "question": "Choose the accurate Java interview answer about Spring Data.",
+    "options": [
+      "A repository interface must implement every CRUD method manually.",
+      "Pagination support can request a subset of query results.",
+      "JPA is a database server.",
+      "A derived query method is executed by the Java compiler."
+    ],
+    "answer": 1,
+    "explanation": "Pagination support can request a subset of query results."
+  },
+  {
+    "id": "chapter-spring-data-07",
+    "subtopic": "Spring Data",
+    "question": "A developer is asked about Spring Data. Which response is correct?",
+    "options": [
+      "A repository interface must implement every CRUD method manually.",
+      "JPA is a database server.",
+      "Optimistic locking can detect conflicting updates with a version property.",
+      "A derived query method is executed by the Java compiler."
+    ],
+    "answer": 2,
+    "explanation": "Optimistic locking can detect conflicting updates with a version property."
+  },
+  {
+    "id": "chapter-spring-data-08",
+    "subtopic": "Spring Data",
+    "question": "Select the true statement concerning Spring Data.",
+    "options": [
+      "A repository interface must implement every CRUD method manually.",
+      "JPA is a database server.",
+      "A derived query method is executed by the Java compiler.",
+      "Transaction boundaries should be chosen around the unit of work."
+    ],
+    "answer": 3,
+    "explanation": "Transaction boundaries should be chosen around the unit of work."
+  },
+  {
+    "id": "chapter-spring-mvc-01",
+    "subtopic": "Spring MVC",
+    "question": "Which statement about Spring MVC is correct?",
+    "options": [
+      "DispatcherServlet acts as the front controller in Spring MVC.",
+      "DispatcherServlet is a database driver.",
+      "@PathVariable binds a request body.",
+      "GET should be used to modify server state in every case."
+    ],
+    "answer": 0,
+    "explanation": "DispatcherServlet acts as the front controller in Spring MVC."
+  },
+  {
+    "id": "chapter-spring-mvc-02",
+    "subtopic": "Spring MVC",
+    "question": "Choose the accurate Java interview answer about Spring MVC.",
+    "options": [
+      "DispatcherServlet is a database driver.",
+      "@GetMapping maps a handler to HTTP GET requests.",
+      "@PathVariable binds a request body.",
+      "GET should be used to modify server state in every case."
+    ],
+    "answer": 1,
+    "explanation": "@GetMapping maps a handler to HTTP GET requests."
+  },
+  {
+    "id": "chapter-spring-mvc-03",
+    "subtopic": "Spring MVC",
+    "question": "A developer is asked about Spring MVC. Which response is correct?",
+    "options": [
+      "DispatcherServlet is a database driver.",
+      "@PathVariable binds a request body.",
+      "@PostMapping maps a handler to HTTP POST requests.",
+      "GET should be used to modify server state in every case."
+    ],
+    "answer": 2,
+    "explanation": "@PostMapping maps a handler to HTTP POST requests."
+  },
+  {
+    "id": "chapter-spring-mvc-04",
+    "subtopic": "Spring MVC",
+    "question": "Select the true statement concerning Spring MVC.",
+    "options": [
+      "DispatcherServlet is a database driver.",
+      "@PathVariable binds a request body.",
+      "GET should be used to modify server state in every case.",
+      "@PathVariable binds a value from the URI path to a method argument."
+    ],
+    "answer": 3,
+    "explanation": "@PathVariable binds a value from the URI path to a method argument."
+  },
+  {
+    "id": "chapter-spring-mvc-05",
+    "subtopic": "Spring MVC",
+    "question": "Which statement about Spring MVC is correct?",
+    "options": [
+      "@RequestParam binds a request parameter to a handler argument.",
+      "DispatcherServlet is a database driver.",
+      "@PathVariable binds a request body.",
+      "GET should be used to modify server state in every case."
+    ],
+    "answer": 0,
+    "explanation": "@RequestParam binds a request parameter to a handler argument."
+  },
+  {
+    "id": "chapter-spring-mvc-06",
+    "subtopic": "Spring MVC",
+    "question": "Choose the accurate Java interview answer about Spring MVC.",
+    "options": [
+      "DispatcherServlet is a database driver.",
+      "@RequestBody reads the request body and converts it to an object.",
+      "@PathVariable binds a request body.",
+      "GET should be used to modify server state in every case."
+    ],
+    "answer": 1,
+    "explanation": "@RequestBody reads the request body and converts it to an object."
+  },
+  {
+    "id": "chapter-spring-mvc-07",
+    "subtopic": "Spring MVC",
+    "question": "A developer is asked about Spring MVC. Which response is correct?",
+    "options": [
+      "DispatcherServlet is a database driver.",
+      "@PathVariable binds a request body.",
+      "@RestController combines controller behavior with response-body serialization.",
+      "GET should be used to modify server state in every case."
+    ],
+    "answer": 2,
+    "explanation": "@RestController combines controller behavior with response-body serialization."
+  },
+  {
+    "id": "chapter-spring-mvc-08",
+    "subtopic": "Spring MVC",
+    "question": "Select the true statement concerning Spring MVC.",
+    "options": [
+      "DispatcherServlet is a database driver.",
+      "@PathVariable binds a request body.",
+      "GET should be used to modify server state in every case.",
+      "Controller advice can handle exceptions across multiple controllers."
+    ],
+    "answer": 3,
+    "explanation": "Controller advice can handle exceptions across multiple controllers."
+  },
+  {
+    "id": "chapter-spring-security-01",
+    "subtopic": "Spring Security",
+    "question": "Which statement about Spring Security is correct?",
+    "options": [
+      "Authentication establishes the identity associated with a request.",
+      "Authorization determines the user's password hash.",
+      "Security filters run only after the response is sent.",
+      "JWT is encrypted by default."
+    ],
+    "answer": 0,
+    "explanation": "Authentication establishes the identity associated with a request."
+  },
+  {
+    "id": "chapter-spring-security-02",
+    "subtopic": "Spring Security",
+    "question": "Choose the accurate Java interview answer about Spring Security.",
+    "options": [
+      "Authorization determines the user's password hash.",
+      "Authorization determines whether an authenticated principal may perform an action.",
+      "Security filters run only after the response is sent.",
+      "JWT is encrypted by default."
+    ],
+    "answer": 1,
+    "explanation": "Authorization determines whether an authenticated principal may perform an action."
+  },
+  {
+    "id": "chapter-spring-security-03",
+    "subtopic": "Spring Security",
+    "question": "A developer is asked about Spring Security. Which response is correct?",
+    "options": [
+      "Authorization determines the user's password hash.",
+      "Security filters run only after the response is sent.",
+      "Spring Security commonly processes requests through a filter chain.",
+      "JWT is encrypted by default."
+    ],
+    "answer": 2,
+    "explanation": "Spring Security commonly processes requests through a filter chain."
+  },
+  {
+    "id": "chapter-spring-security-04",
+    "subtopic": "Spring Security",
+    "question": "Select the true statement concerning Spring Security.",
+    "options": [
+      "Authorization determines the user's password hash.",
+      "Security filters run only after the response is sent.",
+      "JWT is encrypted by default.",
+      "Password storage should use a one-way password hashing function."
+    ],
+    "answer": 3,
+    "explanation": "Password storage should use a one-way password hashing function."
+  },
+  {
+    "id": "chapter-spring-security-05",
+    "subtopic": "Spring Security",
+    "question": "Which statement about Spring Security is correct?",
+    "options": [
+      "A JWT is commonly signed; signing alone does not encrypt its contents.",
+      "Authorization determines the user's password hash.",
+      "Security filters run only after the response is sent.",
+      "JWT is encrypted by default."
+    ],
+    "answer": 0,
+    "explanation": "A JWT is commonly signed; signing alone does not encrypt its contents."
+  },
+  {
+    "id": "chapter-spring-security-06",
+    "subtopic": "Spring Security",
+    "question": "Choose the accurate Java interview answer about Spring Security.",
+    "options": [
+      "Authorization determines the user's password hash.",
+      "Role checks can restrict access to endpoints or methods.",
+      "Security filters run only after the response is sent.",
+      "JWT is encrypted by default."
+    ],
+    "answer": 1,
+    "explanation": "Role checks can restrict access to endpoints or methods."
+  },
+  {
+    "id": "chapter-spring-security-07",
+    "subtopic": "Spring Security",
+    "question": "A developer is asked about Spring Security. Which response is correct?",
+    "options": [
+      "Authorization determines the user's password hash.",
+      "Security filters run only after the response is sent.",
+      "CSRF protection is relevant to browser requests authenticated by ambient credentials.",
+      "JWT is encrypted by default."
+    ],
+    "answer": 2,
+    "explanation": "CSRF protection is relevant to browser requests authenticated by ambient credentials."
+  },
+  {
+    "id": "chapter-spring-security-08",
+    "subtopic": "Spring Security",
+    "question": "Select the true statement concerning Spring Security.",
+    "options": [
+      "Authorization determines the user's password hash.",
+      "Security filters run only after the response is sent.",
+      "JWT is encrypted by default.",
+      "OAuth 2.0 is an authorization framework, not a password hashing algorithm."
+    ],
+    "answer": 3,
+    "explanation": "OAuth 2.0 is an authorization framework, not a password hashing algorithm."
+  },
+  {
+    "id": "chapter-aop-proxies-01",
+    "subtopic": "AOP proxies",
+    "question": "Which statement about AOP proxies is correct?",
+    "options": [
+      "Spring AOP modularizes cross-cutting concerns such as logging or transactions.",
+      "AOP can only be used for database schemas.",
+      "Proxy-based advice always intercepts self-invocation.",
+      "An advice runs only when the application starts."
+    ],
+    "answer": 0,
+    "explanation": "Spring AOP modularizes cross-cutting concerns such as logging or transactions."
+  },
+  {
+    "id": "chapter-aop-proxies-02",
+    "subtopic": "AOP proxies",
+    "question": "Choose the accurate Java interview answer about AOP proxies.",
+    "options": [
+      "AOP can only be used for database schemas.",
+      "A proxy can apply advice around calls that pass through it.",
+      "Proxy-based advice always intercepts self-invocation.",
+      "An advice runs only when the application starts."
+    ],
+    "answer": 1,
+    "explanation": "A proxy can apply advice around calls that pass through it."
+  },
+  {
+    "id": "chapter-aop-proxies-03",
+    "subtopic": "AOP proxies",
+    "question": "A developer is asked about AOP proxies. Which response is correct?",
+    "options": [
+      "AOP can only be used for database schemas.",
+      "Proxy-based advice always intercepts self-invocation.",
+      "Self-invocation can bypass proxy-based advice because it calls the target directly.",
+      "An advice runs only when the application starts."
+    ],
+    "answer": 2,
+    "explanation": "Self-invocation can bypass proxy-based advice because it calls the target directly."
+  },
+  {
+    "id": "chapter-aop-proxies-04",
+    "subtopic": "AOP proxies",
+    "question": "Select the true statement concerning AOP proxies.",
+    "options": [
+      "AOP can only be used for database schemas.",
+      "Proxy-based advice always intercepts self-invocation.",
+      "An advice runs only when the application starts.",
+      "An aspect combines pointcuts and advice."
+    ],
+    "answer": 3,
+    "explanation": "An aspect combines pointcuts and advice."
+  },
+  {
+    "id": "chapter-aop-proxies-05",
+    "subtopic": "AOP proxies",
+    "question": "Which statement about AOP proxies is correct?",
+    "options": [
+      "A pointcut selects join points where advice should apply.",
+      "AOP can only be used for database schemas.",
+      "Proxy-based advice always intercepts self-invocation.",
+      "An advice runs only when the application starts."
+    ],
+    "answer": 0,
+    "explanation": "A pointcut selects join points where advice should apply."
+  },
+  {
+    "id": "chapter-aop-proxies-06",
+    "subtopic": "AOP proxies",
+    "question": "Choose the accurate Java interview answer about AOP proxies.",
+    "options": [
+      "AOP can only be used for database schemas.",
+      "Around advice can control whether and when the underlying method proceeds.",
+      "Proxy-based advice always intercepts self-invocation.",
+      "An advice runs only when the application starts."
+    ],
+    "answer": 1,
+    "explanation": "Around advice can control whether and when the underlying method proceeds."
+  },
+  {
+    "id": "chapter-aop-proxies-07",
+    "subtopic": "AOP proxies",
+    "question": "A developer is asked about AOP proxies. Which response is correct?",
+    "options": [
+      "AOP can only be used for database schemas.",
+      "Proxy-based advice always intercepts self-invocation.",
+      "Spring's common proxy-based AOP targets method execution join points.",
+      "An advice runs only when the application starts."
+    ],
+    "answer": 2,
+    "explanation": "Spring's common proxy-based AOP targets method execution join points."
+  },
+  {
+    "id": "chapter-aop-proxies-08",
+    "subtopic": "AOP proxies",
+    "question": "Select the true statement concerning AOP proxies.",
+    "options": [
+      "AOP can only be used for database schemas.",
+      "Proxy-based advice always intercepts self-invocation.",
+      "An advice runs only when the application starts.",
+      "AOP can support consistent transaction and security behavior."
+    ],
+    "answer": 3,
+    "explanation": "AOP can support consistent transaction and security behavior."
+  },
+  {
+    "id": "chapter-request-validation-01",
+    "subtopic": "Request validation",
+    "question": "Which statement about Request validation is correct?",
+    "options": [
+      "Bean Validation constraints describe rules such as non-null or size limits.",
+      "@Valid makes every field valid without constraints.",
+      "BindingResult is unrelated to validation errors.",
+      "Validation must happen only in the database."
+    ],
+    "answer": 0,
+    "explanation": "Bean Validation constraints describe rules such as non-null or size limits."
+  },
+  {
+    "id": "chapter-request-validation-02",
+    "subtopic": "Request validation",
+    "question": "Choose the accurate Java interview answer about Request validation.",
+    "options": [
+      "@Valid makes every field valid without constraints.",
+      "@Valid can trigger validation of a request object in Spring MVC.",
+      "BindingResult is unrelated to validation errors.",
+      "Validation must happen only in the database."
+    ],
+    "answer": 1,
+    "explanation": "@Valid can trigger validation of a request object in Spring MVC."
+  },
+  {
+    "id": "chapter-request-validation-03",
+    "subtopic": "Request validation",
+    "question": "A developer is asked about Request validation. Which response is correct?",
+    "options": [
+      "@Valid makes every field valid without constraints.",
+      "BindingResult is unrelated to validation errors.",
+      "BindingResult can hold validation errors for a validated argument.",
+      "Validation must happen only in the database."
+    ],
+    "answer": 2,
+    "explanation": "BindingResult can hold validation errors for a validated argument."
+  },
+  {
+    "id": "chapter-request-validation-04",
+    "subtopic": "Request validation",
+    "question": "Select the true statement concerning Request validation.",
+    "options": [
+      "@Valid makes every field valid without constraints.",
+      "BindingResult is unrelated to validation errors.",
+      "Validation must happen only in the database.",
+      "A BindingResult parameter should immediately follow its validated argument when handling errors locally."
+    ],
+    "answer": 3,
+    "explanation": "A BindingResult parameter should immediately follow its validated argument when handling errors locally."
+  },
+  {
+    "id": "chapter-request-validation-05",
+    "subtopic": "Request validation",
+    "question": "Which statement about Request validation is correct?",
+    "options": [
+      "Validation should reject invalid input before business processing uses it.",
+      "@Valid makes every field valid without constraints.",
+      "BindingResult is unrelated to validation errors.",
+      "Validation must happen only in the database."
+    ],
+    "answer": 0,
+    "explanation": "Validation should reject invalid input before business processing uses it."
+  },
+  {
+    "id": "chapter-request-validation-06",
+    "subtopic": "Request validation",
+    "question": "Choose the accurate Java interview answer about Request validation.",
+    "options": [
+      "@Valid makes every field valid without constraints.",
+      "Nested objects can be cascaded for validation with @Valid.",
+      "BindingResult is unrelated to validation errors.",
+      "Validation must happen only in the database."
+    ],
+    "answer": 1,
+    "explanation": "Nested objects can be cascaded for validation with @Valid."
+  },
+  {
+    "id": "chapter-request-validation-07",
+    "subtopic": "Request validation",
+    "question": "A developer is asked about Request validation. Which response is correct?",
+    "options": [
+      "@Valid makes every field valid without constraints.",
+      "BindingResult is unrelated to validation errors.",
+      "A constraint violation can be converted into a client error response.",
+      "Validation must happen only in the database."
+    ],
+    "answer": 2,
+    "explanation": "A constraint violation can be converted into a client error response."
+  },
+  {
+    "id": "chapter-request-validation-08",
+    "subtopic": "Request validation",
+    "question": "Select the true statement concerning Request validation.",
+    "options": [
+      "@Valid makes every field valid without constraints.",
+      "BindingResult is unrelated to validation errors.",
+      "Validation must happen only in the database.",
+      "Validation complements rather than replaces domain-level invariants."
+    ],
+    "answer": 3,
+    "explanation": "Validation complements rather than replaces domain-level invariants."
+  },
+  {
+    "id": "chapter-caching-01",
+    "subtopic": "Caching",
+    "question": "Which statement about Caching is correct?",
+    "options": [
+      "Caching can avoid repeating expensive work for the same inputs.",
+      "@Cacheable always caches exceptions.",
+      "Cache keys should ignore method inputs.",
+      "Eviction permanently deletes the database row."
+    ],
+    "answer": 0,
+    "explanation": "Caching can avoid repeating expensive work for the same inputs."
+  },
+  {
+    "id": "chapter-caching-02",
+    "subtopic": "Caching",
+    "question": "Choose the accurate Java interview answer about Caching.",
+    "options": [
+      "@Cacheable always caches exceptions.",
+      "A cache key should include the inputs that affect the result.",
+      "Cache keys should ignore method inputs.",
+      "Eviction permanently deletes the database row."
+    ],
+    "answer": 1,
+    "explanation": "A cache key should include the inputs that affect the result."
+  },
+  {
+    "id": "chapter-caching-03",
+    "subtopic": "Caching",
+    "question": "A developer is asked about Caching. Which response is correct?",
+    "options": [
+      "@Cacheable always caches exceptions.",
+      "Cache keys should ignore method inputs.",
+      "@Cacheable can return a cached result without invoking the target method.",
+      "Eviction permanently deletes the database row."
+    ],
+    "answer": 2,
+    "explanation": "@Cacheable can return a cached result without invoking the target method."
+  },
+  {
+    "id": "chapter-caching-04",
+    "subtopic": "Caching",
+    "question": "Select the true statement concerning Caching.",
+    "options": [
+      "@Cacheable always caches exceptions.",
+      "Cache keys should ignore method inputs.",
+      "Eviction permanently deletes the database row.",
+      "@CacheEvict removes an entry from a cache."
+    ],
+    "answer": 3,
+    "explanation": "@CacheEvict removes an entry from a cache."
+  },
+  {
+    "id": "chapter-caching-05",
+    "subtopic": "Caching",
+    "question": "Which statement about Caching is correct?",
+    "options": [
+      "@CachePut invokes the method and updates the cache with its result.",
+      "@Cacheable always caches exceptions.",
+      "Cache keys should ignore method inputs.",
+      "Eviction permanently deletes the database row."
+    ],
+    "answer": 0,
+    "explanation": "@CachePut invokes the method and updates the cache with its result."
+  },
+  {
+    "id": "chapter-caching-06",
+    "subtopic": "Caching",
+    "question": "Choose the accurate Java interview answer about Caching.",
+    "options": [
+      "@Cacheable always caches exceptions.",
+      "Stale data can result when cache invalidation is incomplete.",
+      "Cache keys should ignore method inputs.",
+      "Eviction permanently deletes the database row."
+    ],
+    "answer": 1,
+    "explanation": "Stale data can result when cache invalidation is incomplete."
+  },
+  {
+    "id": "chapter-caching-07",
+    "subtopic": "Caching",
+    "question": "A developer is asked about Caching. Which response is correct?",
+    "options": [
+      "@Cacheable always caches exceptions.",
+      "Cache keys should ignore method inputs.",
+      "Cache behavior may be applied through Spring's proxy infrastructure.",
+      "Eviction permanently deletes the database row."
+    ],
+    "answer": 2,
+    "explanation": "Cache behavior may be applied through Spring's proxy infrastructure."
+  },
+  {
+    "id": "chapter-caching-08",
+    "subtopic": "Caching",
+    "question": "Select the true statement concerning Caching.",
+    "options": [
+      "@Cacheable always caches exceptions.",
+      "Cache keys should ignore method inputs.",
+      "Eviction permanently deletes the database row.",
+      "Caching is most useful when a valid cache hit can save meaningful work."
+    ],
+    "answer": 3,
+    "explanation": "Caching is most useful when a valid cache hit can save meaningful work."
+  },
+  {
+    "id": "chapter-spring-boot-auto-configuration-01",
+    "subtopic": "Spring Boot auto-configuration",
+    "question": "Which statement about Spring Boot auto-configuration is correct?",
+    "options": [
+      "Spring Boot auto-configuration considers classes present on the classpath.",
+      "Auto-configuration ignores the classpath.",
+      "Spring Boot requires XML for every bean.",
+      "Every auto-configuration can never be excluded."
+    ],
+    "answer": 0,
+    "explanation": "Spring Boot auto-configuration considers classes present on the classpath."
+  },
+  {
+    "id": "chapter-spring-boot-auto-configuration-02",
+    "subtopic": "Spring Boot auto-configuration",
+    "question": "Choose the accurate Java interview answer about Spring Boot auto-configuration.",
+    "options": [
+      "Auto-configuration ignores the classpath.",
+      "Conditional annotations let configuration apply only when specified conditions match.",
+      "Spring Boot requires XML for every bean.",
+      "Every auto-configuration can never be excluded."
+    ],
+    "answer": 1,
+    "explanation": "Conditional annotations let configuration apply only when specified conditions match."
+  },
+  {
+    "id": "chapter-spring-boot-auto-configuration-03",
+    "subtopic": "Spring Boot auto-configuration",
+    "question": "A developer is asked about Spring Boot auto-configuration. Which response is correct?",
+    "options": [
+      "Auto-configuration ignores the classpath.",
+      "Spring Boot requires XML for every bean.",
+      "A user-defined bean can cause some default auto-configuration to back off.",
+      "Every auto-configuration can never be excluded."
+    ],
+    "answer": 2,
+    "explanation": "A user-defined bean can cause some default auto-configuration to back off."
+  },
+  {
+    "id": "chapter-spring-boot-auto-configuration-04",
+    "subtopic": "Spring Boot auto-configuration",
+    "question": "Select the true statement concerning Spring Boot auto-configuration.",
+    "options": [
+      "Auto-configuration ignores the classpath.",
+      "Spring Boot requires XML for every bean.",
+      "Every auto-configuration can never be excluded.",
+      "@SpringBootApplication includes configuration and component-scanning behavior."
+    ],
+    "answer": 3,
+    "explanation": "@SpringBootApplication includes configuration and component-scanning behavior."
+  },
+  {
+    "id": "chapter-spring-boot-auto-configuration-05",
+    "subtopic": "Spring Boot auto-configuration",
+    "question": "Which statement about Spring Boot auto-configuration is correct?",
+    "options": [
+      "Auto-configuration is designed to provide useful defaults that can be overridden.",
+      "Auto-configuration ignores the classpath.",
+      "Spring Boot requires XML for every bean.",
+      "Every auto-configuration can never be excluded."
+    ],
+    "answer": 0,
+    "explanation": "Auto-configuration is designed to provide useful defaults that can be overridden."
+  },
+  {
+    "id": "chapter-spring-boot-auto-configuration-06",
+    "subtopic": "Spring Boot auto-configuration",
+    "question": "Choose the accurate Java interview answer about Spring Boot auto-configuration.",
+    "options": [
+      "Auto-configuration ignores the classpath.",
+      "Selected auto-configuration classes can be excluded when needed.",
+      "Spring Boot requires XML for every bean.",
+      "Every auto-configuration can never be excluded."
+    ],
+    "answer": 1,
+    "explanation": "Selected auto-configuration classes can be excluded when needed."
+  },
+  {
+    "id": "chapter-spring-boot-auto-configuration-07",
+    "subtopic": "Spring Boot auto-configuration",
+    "question": "A developer is asked about Spring Boot auto-configuration. Which response is correct?",
+    "options": [
+      "Auto-configuration ignores the classpath.",
+      "Spring Boot requires XML for every bean.",
+      "Spring Boot starters group dependencies for common application features.",
+      "Every auto-configuration can never be excluded."
+    ],
+    "answer": 2,
+    "explanation": "Spring Boot starters group dependencies for common application features."
+  },
+  {
+    "id": "chapter-spring-boot-auto-configuration-08",
+    "subtopic": "Spring Boot auto-configuration",
+    "question": "Select the true statement concerning Spring Boot auto-configuration.",
+    "options": [
+      "Auto-configuration ignores the classpath.",
+      "Spring Boot requires XML for every bean.",
+      "Every auto-configuration can never be excluded.",
+      "Externalized configuration can be supplied through properties or YAML files."
+    ],
+    "answer": 3,
+    "explanation": "Externalized configuration can be supplied through properties or YAML files."
+  },
+  {
+    "id": "deep-spring-01",
+    "subtopic": "Spring Core",
+    "question": "Which injection style best communicates a required dependency and supports a final field?",
+    "options": [
+      "Constructor injection",
+      "Field injection",
+      "Static injection",
+      "Lookup from a global singleton"
+    ],
+    "answer": 0,
+    "explanation": "Constructor injection makes mandatory collaborators explicit and allows immutable final fields."
+  },
+  {
+    "id": "deep-springdata-01",
+    "subtopic": "Spring Data",
+    "question": "What is a key benefit of repository interfaces in Spring Data?",
+    "options": [
+      "They provide common persistence operations and can derive queries from method names",
+      "They replace the database",
+      "They make transactions unnecessary",
+      "They validate HTTP input automatically"
+    ],
+    "answer": 0,
+    "explanation": "Spring Data generates repository implementations and supports derived or explicitly declared queries."
+  },
+  {
+    "id": "deep-springmvc-01",
+    "subtopic": "Spring MVC",
+    "question": "Which annotation binds a query parameter such as `?page=2` to a controller argument?",
+    "options": [
+      "@RequestParam",
+      "@PathVariable",
+      "@RequestBody",
+      "@Bean"
+    ],
+    "answer": 0,
+    "explanation": "@RequestParam binds query or form parameters to a handler method argument."
+  },
+  {
+    "id": "deep-security-01",
+    "subtopic": "Spring Security",
+    "question": "Why must authorization be checked even after a request is authenticated?",
+    "options": [
+      "Authentication identifies the caller; authorization checks whether the caller may perform the action",
+      "Authentication already verifies every business permission",
+      "Authorization hashes the password",
+      "Authorization is only for anonymous users"
+    ],
+    "answer": 0,
+    "explanation": "Identity and permission are separate checks: a known user may still lack access to a resource."
+  },
+  {
+    "id": "deep-boot-01",
+    "subtopic": "Spring Boot auto-configuration",
+    "question": "What is the purpose of conditional auto-configuration?",
+    "options": [
+      "Apply defaults when relevant classes, properties, or beans are present",
+      "Force every application to use one database",
+      "Disable user-defined configuration",
+      "Compile Java source to bytecode"
+    ],
+    "answer": 0,
+    "explanation": "Conditional configuration backs off or applies according to the runtime environment and existing beans."
+  },
+  {
+    "id": "deep-cache-01",
+    "subtopic": "Caching",
+    "question": "When is a cache entry most likely to cause a correctness bug?",
+    "options": [
+      "When it is not invalidated or keyed by all inputs that affect the result",
+      "When its value is immutable",
+      "When it has a bounded size",
+      "When it is read by a single caller"
+    ],
+    "answer": 0,
+    "explanation": "Incorrect keys or stale entries can return results that no longer match the underlying state or request."
+  }
+]

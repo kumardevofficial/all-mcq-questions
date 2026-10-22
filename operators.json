@@ -1,0 +1,302 @@
+[
+  {
+    "id": "operators-001",
+    "question": "What is the result of 10 / 3 when both operands are int?",
+    "options": [
+      "3.33",
+      "3",
+      "4",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "Integer division discards the fractional part, so 10 / 3 evaluates to 3."
+  },
+  {
+    "id": "operators-002",
+    "question": "What does the == operator compare for two int variables?",
+    "options": [
+      "Their memory locations",
+      "Their numeric values",
+      "Their variable names",
+      "Their data types only"
+    ],
+    "answer": 1,
+    "explanation": "For primitive int values, == checks whether the numeric values are equal."
+  },
+  {
+    "id": "operators-003",
+    "question": "What is the value of 7 % 3?",
+    "options": [
+      "1",
+      "2",
+      "2.33",
+      "0"
+    ],
+    "answer": 0,
+    "explanation": "The remainder of 7 divided by 3 is 1."
+  },
+  {
+    "id": "operators-004",
+    "question": "Which operator represents logical AND?",
+    "options": [
+      "&",
+      "||",
+      "&&",
+      "!"
+    ],
+    "answer": 2,
+    "explanation": "&& is conditional logical AND. It short-circuits when the left operand is false."
+  },
+  {
+    "id": "operators-005",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Precedence {\n    public static void main(String[] args) {\n        System.out.println(2 + 3 * 4);\n    }\n}",
+    "options": [
+      "20",
+      "14",
+      "24",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "Multiplication has higher precedence than addition, so the expression is 2 + 12."
+  },
+  {
+    "id": "operators-006",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Parentheses {\n    public static void main(String[] args) {\n        System.out.println((2 + 3) * 4);\n    }\n}",
+    "options": [
+      "14",
+      "20",
+      "24",
+      "9"
+    ],
+    "answer": 1,
+    "explanation": "Parentheses evaluate 2 + 3 first, then the result is multiplied by 4."
+  },
+  {
+    "id": "operators-007",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Remainder {\n    public static void main(String[] args) {\n        System.out.println(-7 % 3);\n    }\n}",
+    "options": [
+      "-1",
+      "1",
+      "-2",
+      "2"
+    ],
+    "answer": 0,
+    "explanation": "For integer remainder, the result has the sign of the dividend; -7 % 3 is -1."
+  },
+  {
+    "id": "operators-008",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class PostIncrement {\n    public static void main(String[] args) {\n        int n = 4;\n        int old = n++;\n        System.out.println(old + \" \" + n);\n    }\n}",
+    "options": [
+      "4 4",
+      "4 5",
+      "5 5",
+      "5 4"
+    ],
+    "answer": 1,
+    "explanation": "Post-increment yields the old value for the expression, then increments n."
+  },
+  {
+    "id": "operators-009",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class PreIncrement {\n    public static void main(String[] args) {\n        int n = 4;\n        int next = ++n;\n        System.out.println(next + \" \" + n);\n    }\n}",
+    "options": [
+      "4 5",
+      "5 5",
+      "5 4",
+      "4 4"
+    ],
+    "answer": 1,
+    "explanation": "Pre-increment increments n first, then produces the new value."
+  },
+  {
+    "id": "operators-010",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class ShortCircuitAnd {\n    public static void main(String[] args) {\n        int n = 0;\n        System.out.println(n != 0 && 10 / n > 1);\n    }\n}",
+    "options": [
+      "true",
+      "false",
+      "ArithmeticException",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "The left operand is false, so && skips evaluating the division on the right."
+  },
+  {
+    "id": "operators-011",
+    "question": "Which operator evaluates both boolean operands without short-circuiting?",
+    "options": [
+      "&&",
+      "||",
+      "&",
+      "!"
+    ],
+    "answer": 2,
+    "explanation": "For boolean operands, & evaluates both sides; && short-circuits when the left side is false."
+  },
+  {
+    "id": "operators-012",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Conditional {\n    public static void main(String[] args) {\n        int age = 20;\n        String result = age >= 18 ? \"adult\" : \"minor\";\n        System.out.println(result);\n    }\n}",
+    "options": [
+      "adult",
+      "minor",
+      "true",
+      "Compilation error"
+    ],
+    "answer": 0,
+    "explanation": "The condition is true, so the conditional expression yields adult."
+  },
+  {
+    "id": "operators-013",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class CompoundAssignment {\n    public static void main(String[] args) {\n        short value = 5;\n        value += 2;\n        System.out.println(value);\n    }\n}",
+    "options": [
+      "5",
+      "7",
+      "Compilation error because += returns int",
+      "2"
+    ],
+    "answer": 1,
+    "explanation": "Compound assignment includes an implicit narrowing conversion to the left-hand variable's type."
+  },
+  {
+    "id": "operators-014",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Equality {\n    public static void main(String[] args) {\n        int a = 3;\n        int b = 3;\n        System.out.println(a == b);\n    }\n}",
+    "options": [
+      "true",
+      "false",
+      "3",
+      "Compilation error"
+    ],
+    "answer": 0,
+    "explanation": "For primitive ints, == compares numeric values, which are equal here."
+  },
+  {
+    "id": "operators-015",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class BitwiseAnd {\n    public static void main(String[] args) {\n        System.out.println(6 & 3);\n    }\n}",
+    "options": [
+      "2",
+      "7",
+      "5",
+      "0"
+    ],
+    "answer": 0,
+    "explanation": "6 is 110 and 3 is 011 in binary; their bitwise AND is 010, which is 2."
+  },
+  {
+    "id": "operators-016",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class LeftShift {\n    public static void main(String[] args) {\n        System.out.println(3 << 2);\n    }\n}",
+    "options": [
+      "6",
+      "12",
+      "5",
+      "8"
+    ],
+    "answer": 1,
+    "explanation": "Shifting the binary representation 0011 left by two places gives 1100, or 12."
+  },
+  {
+    "id": "operators-017",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class NumericPromotion {\n    public static void main(String[] args) {\n        byte a = 2;\n        byte b = 3;\n        int sum = a + b;\n        System.out.println(sum);\n    }\n}",
+    "options": [
+      "5",
+      "23",
+      "Compilation error assigning int to sum",
+      "0"
+    ],
+    "answer": 0,
+    "explanation": "Binary numeric promotion converts byte operands to int before addition; sum is declared int."
+  },
+  {
+    "id": "operators-018",
+    "question": "Which expression safely checks that `text` is not null before calling `isEmpty()`?",
+    "options": [
+      "text.isEmpty() && text != null",
+      "text != null && !text.isEmpty()",
+      "text == null && !text.isEmpty()",
+      "!text.isEmpty() || text == null"
+    ],
+    "answer": 1,
+    "explanation": "&& short-circuits left to right; the method call occurs only after the null check succeeds."
+  },
+  {
+    "id": "operators-019",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class BooleanLogic {\n    public static void main(String[] args) {\n        System.out.println(true ^ true);\n    }\n}",
+    "options": [
+      "true",
+      "false",
+      "1",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "Boolean XOR is true only when exactly one operand is true; equal operands yield false."
+  },
+  {
+    "id": "operators-020",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class IntegerDivision {\n    public static void main(String[] args) {\n        System.out.println(7 / 2);\n    }\n}",
+    "options": [
+      "3",
+      "3.5",
+      "4",
+      "Compilation error"
+    ],
+    "answer": 0,
+    "explanation": "Both operands are integers, so division truncates the fractional part and yields 3."
+  },
+  {
+    "id": "pdf-java-009",
+    "subtopic": "Operators",
+    "question": "What is printed, and why is division not evaluated?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class ShortCircuit {\n    public static void main(String[] args) {\n        boolean result = false && (10 / 0 > 1);\n        System.out.println(result);\n    }\n}",
+    "options": [
+      "false; `&&` skips the right side when the left side is false",
+      "true; both sides are ignored",
+      "ArithmeticException; both sides always run",
+      "Compilation error because `&&` cannot use booleans"
+    ],
+    "answer": 0,
+    "explanation": "The left operand of && is false, so short-circuit evaluation skips the expression that would divide by zero.",
+    "source": "Kodewala Academy Core Java & Advance Java notes, PDF page 33",
+    "sourceLabel": "From PDF notes · page 33"
+  }
+]

@@ -1,0 +1,1376 @@
+[
+  {
+    "id": "control-01",
+    "subtopic": "Method signatures",
+    "question": "Which elements form a Java method signature for overload resolution?",
+    "options": [
+      "Method name and parameter types",
+      "Return type only",
+      "Access modifier and return type",
+      "Method body"
+    ],
+    "answer": 0,
+    "explanation": "A method signature consists of the method name and parameter types; return type alone cannot distinguish overloads."
+  },
+  {
+    "id": "control-02",
+    "subtopic": "Access modifiers",
+    "question": "Which access level is generally the most restrictive for a class member?",
+    "options": [
+      "public",
+      "protected",
+      "package-private",
+      "private"
+    ],
+    "answer": 3,
+    "explanation": "A private member is ordinarily accessible only within its declaring top-level class and its nested types."
+  },
+  {
+    "id": "control-03",
+    "subtopic": "Static methods",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Calls {\n    static void show() { System.out.print(\"S\"); }\n    void showInstance() { System.out.print(\"I\"); }\n\n    public static void main(String[] args) {\n        Calls.show();\n        new Calls().showInstance();\n    }\n}",
+    "options": [
+      "SI",
+      "IS",
+      "S",
+      "Compilation error"
+    ],
+    "answer": 0,
+    "explanation": "The class-qualified static call prints S, then the instance call prints I."
+  },
+  {
+    "id": "control-04",
+    "subtopic": "If and else-if",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Decision {\n    public static void main(String[] args) {\n        int n = 0;\n        if (n > 0) System.out.print(\"positive\");\n        else if (n == 0) System.out.print(\"zero\");\n        else System.out.print(\"negative\");\n    }\n}",
+    "options": [
+      "positive",
+      "zero",
+      "negative",
+      "No output"
+    ],
+    "answer": 1,
+    "explanation": "The first condition is false and the else-if condition is true."
+  },
+  {
+    "id": "control-05",
+    "subtopic": "For loops",
+    "question": "What is the final value of `sum`?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class SumLoop {\n    public static void main(String[] args) {\n        int sum = 0;\n        for (int i = 1; i < 4; i++) sum += i;\n        System.out.println(sum);\n    }\n}",
+    "options": [
+      "3",
+      "6",
+      "10",
+      "4"
+    ],
+    "answer": 1,
+    "explanation": "The loop adds 1 + 2 + 3."
+  },
+  {
+    "id": "control-06",
+    "subtopic": "While loops",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class WhileLoop {\n    public static void main(String[] args) {\n        int n = 3;\n        while (n > 0) {\n            System.out.print(n);\n            n--;\n        }\n    }\n}",
+    "options": [
+      "123",
+      "321",
+      "333",
+      "An infinite loop"
+    ],
+    "answer": 1,
+    "explanation": "The loop prints 3, 2, then 1 while decrementing n."
+  },
+  {
+    "id": "control-07",
+    "subtopic": "Break and continue",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Branching {\n    public static void main(String[] args) {\n        for (int i = 1; i <= 5; i++) {\n            if (i == 2) continue;\n            if (i == 4) break;\n            System.out.print(i);\n        }\n    }\n}",
+    "options": [
+      "123",
+      "135",
+      "13",
+      "124"
+    ],
+    "answer": 2,
+    "explanation": "continue skips 2 and break ends the loop when i reaches 4."
+  },
+  {
+    "id": "control-08",
+    "subtopic": "Switch statements",
+    "question": "In a traditional switch statement, what can happen if a case has no break or other terminating statement?",
+    "options": [
+      "Execution falls through into following case labels",
+      "The switch becomes an if statement",
+      "The program always fails to compile",
+      "The case is skipped"
+    ],
+    "answer": 0,
+    "explanation": "Traditional switch cases can fall through; arrow-form switch rules avoid that fall-through behavior."
+  },
+  {
+    "id": "control-09",
+    "subtopic": "Overloading",
+    "question": "Can Java overload methods using only different return types?",
+    "options": [
+      "Yes, always",
+      "No, the parameter list must differ",
+      "Only for static methods",
+      "Only when one method is private"
+    ],
+    "answer": 1,
+    "explanation": "Return type alone is not part of the method signature used to distinguish overloads."
+  },
+  {
+    "id": "control-10",
+    "subtopic": "Do-while loop",
+    "question": "How many times does the loop body execute?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class DoOnce {\n    public static void main(String[] args) {\n        int n = 0;\n        do { n++; } while (n < 0);\n        System.out.println(n);\n    }\n}",
+    "options": [
+      "0",
+      "1",
+      "Infinite times",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "A do-while loop evaluates its condition after the body, so the body runs once."
+  },
+  {
+    "id": "control-11",
+    "subtopic": "Variable scope",
+    "question": "Where is a local variable declared inside a for-loop initializer accessible?",
+    "options": [
+      "Throughout the JVM",
+      "Only within the loop statement and its body",
+      "In every method of the class",
+      "In subclasses only"
+    ],
+    "answer": 1,
+    "explanation": "The loop variable's scope is limited to the for statement and its body."
+  },
+  {
+    "id": "control-12",
+    "subtopic": "Switch break",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class SwitchBreak {\n    public static void main(String[] args) {\n        int n = 1;\n        switch (n) {\n            case 1: System.out.print(\"A\"); break;\n            case 2: System.out.print(\"B\");\n            default: System.out.print(\"C\");\n        }\n    }\n}",
+    "options": [
+      "A",
+      "AC",
+      "ABC",
+      "C"
+    ],
+    "answer": 0,
+    "explanation": "The break after case 1 exits the switch before later labels execute."
+  },
+  {
+    "id": "control-13",
+    "subtopic": "Calling methods",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class MethodCall {\n    static int add(int left, int right) {\n        return left + right;\n    }\n    public static void main(String[] args) {\n        System.out.println(add(2, 5));\n    }\n}",
+    "options": [
+      "2",
+      "5",
+      "7",
+      "Compilation error"
+    ],
+    "answer": 2,
+    "explanation": "The call passes 2 and 5 to add, which returns their sum."
+  },
+  {
+    "id": "exp-control-14",
+    "subtopic": "Method signatures",
+    "question": "Which change creates a valid overload of `send`?",
+    "options": [
+      "Changing only its return type",
+      "Changing its parameter types or parameter count",
+      "Changing only its access modifier",
+      "Changing only its method body"
+    ],
+    "answer": 1,
+    "explanation": "Overloads must differ in their parameter list; return type and access level alone do not distinguish them."
+  },
+  {
+    "id": "exp-control-15",
+    "subtopic": "Calling methods",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class ReturnValue {\n    static int increment(int value) {\n        return value + 1;\n    }\n    public static void main(String[] args) {\n        int value = 2;\n        increment(value);\n        System.out.println(value);\n    }\n}",
+    "options": [
+      "2",
+      "3",
+      "0",
+      "Compilation error"
+    ],
+    "answer": 0,
+    "explanation": "Java passes the primitive value to the method; the return value is ignored and the caller's variable remains 2."
+  },
+  {
+    "id": "exp-control-16",
+    "subtopic": "Access modifiers",
+    "question": "A member has no explicit access modifier. Which access does it have?",
+    "options": [
+      "public",
+      "protected",
+      "private",
+      "Package-private"
+    ],
+    "answer": 3,
+    "explanation": "With no access modifier, a class member is accessible within its package, subject to other language rules."
+  },
+  {
+    "id": "exp-control-17",
+    "subtopic": "If and else-if",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class OrderedConditions {\n    public static void main(String[] args) {\n        int score = 85;\n        if (score >= 60) System.out.print(\"pass\");\n        else if (score >= 80) System.out.print(\"distinction\");\n    }\n}",
+    "options": [
+      "distinction",
+      "pass",
+      "passdistinction",
+      "No output"
+    ],
+    "answer": 1,
+    "explanation": "The first true branch runs; the later else-if is not evaluated."
+  },
+  {
+    "id": "exp-control-18",
+    "subtopic": "For loops",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class LoopCount {\n    public static void main(String[] args) {\n        int count = 0;\n        for (int i = 0; i < 5; i += 2) count++;\n        System.out.println(count);\n    }\n}",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "answer": 1,
+    "explanation": "The loop runs with i equal to 0, 2, and 4: three iterations."
+  },
+  {
+    "id": "exp-control-19",
+    "subtopic": "Switch statements",
+    "question": "What does this print?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class ArrowSwitch {\n    public static void main(String[] args) {\n        int day = 6;\n        String kind = switch (day) {\n            case 6, 7 -> \"weekend\";\n            default -> \"weekday\";\n        };\n        System.out.println(kind);\n    }\n}",
+    "options": [
+      "weekday",
+      "weekend",
+      "6",
+      "Compilation error in modern Java"
+    ],
+    "answer": 1,
+    "explanation": "The switch expression groups labels 6 and 7 and evaluates to weekend."
+  },
+  {
+    "id": "exp-control-20",
+    "subtopic": "Break and continue",
+    "question": "In a nested loop, an unlabeled `break` exits which loop?",
+    "options": [
+      "Every loop in the method",
+      "The nearest enclosing loop or switch",
+      "The outermost loop",
+      "The current method"
+    ],
+    "answer": 1,
+    "explanation": "An unlabeled break transfers control out of the nearest enclosing loop or switch statement."
+  },
+  {
+    "id": "chapter-method-signatures-01",
+    "subtopic": "Method signatures",
+    "question": "Which statement about Method signatures is correct?",
+    "options": [
+      "A method signature consists of its name and parameter types.",
+      "Return type alone creates an overload.",
+      "Parameter names distinguish overloads.",
+      "Access modifiers are part of a method signature."
+    ],
+    "answer": 0,
+    "explanation": "A method signature consists of its name and parameter types."
+  },
+  {
+    "id": "chapter-method-signatures-02",
+    "subtopic": "Method signatures",
+    "question": "Choose the accurate Java interview answer about Method signatures.",
+    "options": [
+      "Return type alone creates an overload.",
+      "Changing only a method's return type does not create a valid overload.",
+      "Parameter names distinguish overloads.",
+      "Access modifiers are part of a method signature."
+    ],
+    "answer": 1,
+    "explanation": "Changing only a method's return type does not create a valid overload."
+  },
+  {
+    "id": "chapter-method-signatures-03",
+    "subtopic": "Method signatures",
+    "question": "A developer is asked about Method signatures. Which response is correct?",
+    "options": [
+      "Return type alone creates an overload.",
+      "Parameter names distinguish overloads.",
+      "Methods can be overloaded by changing the number of parameters.",
+      "Access modifiers are part of a method signature."
+    ],
+    "answer": 2,
+    "explanation": "Methods can be overloaded by changing the number of parameters."
+  },
+  {
+    "id": "chapter-method-signatures-04",
+    "subtopic": "Method signatures",
+    "question": "Select the true statement concerning Method signatures.",
+    "options": [
+      "Return type alone creates an overload.",
+      "Parameter names distinguish overloads.",
+      "Access modifiers are part of a method signature.",
+      "Methods can be overloaded by changing parameter types."
+    ],
+    "answer": 3,
+    "explanation": "Methods can be overloaded by changing parameter types."
+  },
+  {
+    "id": "chapter-method-signatures-05",
+    "subtopic": "Method signatures",
+    "question": "Which statement about Method signatures is correct?",
+    "options": [
+      "Overload resolution is determined at compile time.",
+      "Return type alone creates an overload.",
+      "Parameter names distinguish overloads.",
+      "Access modifiers are part of a method signature."
+    ],
+    "answer": 0,
+    "explanation": "Overload resolution is determined at compile time."
+  },
+  {
+    "id": "chapter-method-signatures-06",
+    "subtopic": "Method signatures",
+    "question": "Choose the accurate Java interview answer about Method signatures.",
+    "options": [
+      "Return type alone creates an overload.",
+      "A varargs parameter is treated as an array parameter for signature purposes.",
+      "Parameter names distinguish overloads.",
+      "Access modifiers are part of a method signature."
+    ],
+    "answer": 1,
+    "explanation": "A varargs parameter is treated as an array parameter for signature purposes."
+  },
+  {
+    "id": "chapter-method-signatures-07",
+    "subtopic": "Method signatures",
+    "question": "A developer is asked about Method signatures. Which response is correct?",
+    "options": [
+      "Return type alone creates an overload.",
+      "Parameter names distinguish overloads.",
+      "Two methods cannot be overloaded solely by changing parameter names.",
+      "Access modifiers are part of a method signature."
+    ],
+    "answer": 2,
+    "explanation": "Two methods cannot be overloaded solely by changing parameter names."
+  },
+  {
+    "id": "chapter-method-signatures-08",
+    "subtopic": "Method signatures",
+    "question": "Select the true statement concerning Method signatures.",
+    "options": [
+      "Return type alone creates an overload.",
+      "Parameter names distinguish overloads.",
+      "Access modifiers are part of a method signature.",
+      "A method declaration specifies a return type or uses void."
+    ],
+    "answer": 3,
+    "explanation": "A method declaration specifies a return type or uses void."
+  },
+  {
+    "id": "chapter-access-modifiers-01",
+    "subtopic": "Access modifiers",
+    "question": "Which statement about Access modifiers is correct?",
+    "options": [
+      "A private member is accessible within its declaring class and its nested types.",
+      "private grants access to every package.",
+      "public members are limited to the declaring class.",
+      "package-private means accessible from any package."
+    ],
+    "answer": 0,
+    "explanation": "A private member is accessible within its declaring class and its nested types."
+  },
+  {
+    "id": "chapter-access-modifiers-02",
+    "subtopic": "Access modifiers",
+    "question": "Choose the accurate Java interview answer about Access modifiers.",
+    "options": [
+      "private grants access to every package.",
+      "A public member can be accessed wherever its declaring type is accessible.",
+      "public members are limited to the declaring class.",
+      "package-private means accessible from any package."
+    ],
+    "answer": 1,
+    "explanation": "A public member can be accessed wherever its declaring type is accessible."
+  },
+  {
+    "id": "chapter-access-modifiers-03",
+    "subtopic": "Access modifiers",
+    "question": "A developer is asked about Access modifiers. Which response is correct?",
+    "options": [
+      "private grants access to every package.",
+      "public members are limited to the declaring class.",
+      "A protected member is available in its package and to subclasses under Java's access rules.",
+      "package-private means accessible from any package."
+    ],
+    "answer": 2,
+    "explanation": "A protected member is available in its package and to subclasses under Java's access rules."
+  },
+  {
+    "id": "chapter-access-modifiers-04",
+    "subtopic": "Access modifiers",
+    "question": "Select the true statement concerning Access modifiers.",
+    "options": [
+      "private grants access to every package.",
+      "public members are limited to the declaring class.",
+      "package-private means accessible from any package.",
+      "A member with no modifier has package-private access."
+    ],
+    "answer": 3,
+    "explanation": "A member with no modifier has package-private access."
+  },
+  {
+    "id": "chapter-access-modifiers-05",
+    "subtopic": "Access modifiers",
+    "question": "Which statement about Access modifiers is correct?",
+    "options": [
+      "Top-level classes can be public or package-private.",
+      "private grants access to every package.",
+      "public members are limited to the declaring class.",
+      "package-private means accessible from any package."
+    ],
+    "answer": 0,
+    "explanation": "Top-level classes can be public or package-private."
+  },
+  {
+    "id": "chapter-access-modifiers-06",
+    "subtopic": "Access modifiers",
+    "question": "Choose the accurate Java interview answer about Access modifiers.",
+    "options": [
+      "private grants access to every package.",
+      "Access modifiers help define a class's public API.",
+      "public members are limited to the declaring class.",
+      "package-private means accessible from any package."
+    ],
+    "answer": 1,
+    "explanation": "Access modifiers help define a class's public API."
+  },
+  {
+    "id": "chapter-access-modifiers-07",
+    "subtopic": "Access modifiers",
+    "question": "A developer is asked about Access modifiers. Which response is correct?",
+    "options": [
+      "private grants access to every package.",
+      "public members are limited to the declaring class.",
+      "A private field can be exposed through controlled methods.",
+      "package-private means accessible from any package."
+    ],
+    "answer": 2,
+    "explanation": "A private field can be exposed through controlled methods."
+  },
+  {
+    "id": "chapter-access-modifiers-08",
+    "subtopic": "Access modifiers",
+    "question": "Select the true statement concerning Access modifiers.",
+    "options": [
+      "private grants access to every package.",
+      "public members are limited to the declaring class.",
+      "package-private means accessible from any package.",
+      "A subclass in another package does not get unrestricted access to every protected member through any reference."
+    ],
+    "answer": 3,
+    "explanation": "A subclass in another package does not get unrestricted access to every protected member through any reference."
+  },
+  {
+    "id": "chapter-calling-methods-01",
+    "subtopic": "Calling methods",
+    "question": "Which statement about Calling methods is correct?",
+    "options": [
+      "An instance method is invoked on an object reference.",
+      "An instance method must always be called with a class name.",
+      "A returned value is automatically stored in a variable.",
+      "Calling a method copies object state back to the caller."
+    ],
+    "answer": 0,
+    "explanation": "An instance method is invoked on an object reference."
+  },
+  {
+    "id": "chapter-calling-methods-02",
+    "subtopic": "Calling methods",
+    "question": "Choose the accurate Java interview answer about Calling methods.",
+    "options": [
+      "An instance method must always be called with a class name.",
+      "A static method can be invoked using its class name.",
+      "A returned value is automatically stored in a variable.",
+      "Calling a method copies object state back to the caller."
+    ],
+    "answer": 1,
+    "explanation": "A static method can be invoked using its class name."
+  },
+  {
+    "id": "chapter-calling-methods-03",
+    "subtopic": "Calling methods",
+    "question": "A developer is asked about Calling methods. Which response is correct?",
+    "options": [
+      "An instance method must always be called with a class name.",
+      "A returned value is automatically stored in a variable.",
+      "Arguments are evaluated before a method invocation begins.",
+      "Calling a method copies object state back to the caller."
+    ],
+    "answer": 2,
+    "explanation": "Arguments are evaluated before a method invocation begins."
+  },
+  {
+    "id": "chapter-calling-methods-04",
+    "subtopic": "Calling methods",
+    "question": "Select the true statement concerning Calling methods.",
+    "options": [
+      "An instance method must always be called with a class name.",
+      "A returned value is automatically stored in a variable.",
+      "Calling a method copies object state back to the caller.",
+      "A return statement transfers a value to the caller when the method has a return type."
+    ],
+    "answer": 3,
+    "explanation": "A return statement transfers a value to the caller when the method has a return type."
+  },
+  {
+    "id": "chapter-calling-methods-05",
+    "subtopic": "Calling methods",
+    "question": "Which statement about Calling methods is correct?",
+    "options": [
+      "A void method does not return a value to its caller.",
+      "An instance method must always be called with a class name.",
+      "A returned value is automatically stored in a variable.",
+      "Calling a method copies object state back to the caller."
+    ],
+    "answer": 0,
+    "explanation": "A void method does not return a value to its caller."
+  },
+  {
+    "id": "chapter-calling-methods-06",
+    "subtopic": "Calling methods",
+    "question": "Choose the accurate Java interview answer about Calling methods.",
+    "options": [
+      "An instance method must always be called with a class name.",
+      "Java passes argument values by value, including object reference values.",
+      "A returned value is automatically stored in a variable.",
+      "Calling a method copies object state back to the caller."
+    ],
+    "answer": 1,
+    "explanation": "Java passes argument values by value, including object reference values."
+  },
+  {
+    "id": "chapter-calling-methods-07",
+    "subtopic": "Calling methods",
+    "question": "A developer is asked about Calling methods. Which response is correct?",
+    "options": [
+      "An instance method must always be called with a class name.",
+      "A returned value is automatically stored in a variable.",
+      "A method can call another method in the same class directly when access permits.",
+      "Calling a method copies object state back to the caller."
+    ],
+    "answer": 2,
+    "explanation": "A method can call another method in the same class directly when access permits."
+  },
+  {
+    "id": "chapter-calling-methods-08",
+    "subtopic": "Calling methods",
+    "question": "Select the true statement concerning Calling methods.",
+    "options": [
+      "An instance method must always be called with a class name.",
+      "A returned value is automatically stored in a variable.",
+      "Calling a method copies object state back to the caller.",
+      "A method's local variables are created for its invocation."
+    ],
+    "answer": 3,
+    "explanation": "A method's local variables are created for its invocation."
+  },
+  {
+    "id": "chapter-static-methods-01",
+    "subtopic": "Static methods",
+    "question": "Which statement about Static methods is correct?",
+    "options": [
+      "A static method belongs to the class rather than to one object.",
+      "Static methods have an implicit this reference.",
+      "Static methods can directly access each instance field.",
+      "Static methods belong to each individual object."
+    ],
+    "answer": 0,
+    "explanation": "A static method belongs to the class rather than to one object."
+  },
+  {
+    "id": "chapter-static-methods-02",
+    "subtopic": "Static methods",
+    "question": "Choose the accurate Java interview answer about Static methods.",
+    "options": [
+      "Static methods have an implicit this reference.",
+      "A static method has no implicit this reference.",
+      "Static methods can directly access each instance field.",
+      "Static methods belong to each individual object."
+    ],
+    "answer": 1,
+    "explanation": "A static method has no implicit this reference."
+  },
+  {
+    "id": "chapter-static-methods-03",
+    "subtopic": "Static methods",
+    "question": "A developer is asked about Static methods. Which response is correct?",
+    "options": [
+      "Static methods have an implicit this reference.",
+      "Static methods can directly access each instance field.",
+      "A static method can directly access static members of its class.",
+      "Static methods belong to each individual object."
+    ],
+    "answer": 2,
+    "explanation": "A static method can directly access static members of its class."
+  },
+  {
+    "id": "chapter-static-methods-04",
+    "subtopic": "Static methods",
+    "question": "Select the true statement concerning Static methods.",
+    "options": [
+      "Static methods have an implicit this reference.",
+      "Static methods can directly access each instance field.",
+      "Static methods belong to each individual object.",
+      "An instance field requires an object reference when accessed by static code."
+    ],
+    "answer": 3,
+    "explanation": "An instance field requires an object reference when accessed by static code."
+  },
+  {
+    "id": "chapter-static-methods-05",
+    "subtopic": "Static methods",
+    "question": "Which statement about Static methods is correct?",
+    "options": [
+      "A static method can be called without constructing an instance.",
+      "Static methods have an implicit this reference.",
+      "Static methods can directly access each instance field.",
+      "Static methods belong to each individual object."
+    ],
+    "answer": 0,
+    "explanation": "A static method can be called without constructing an instance."
+  },
+  {
+    "id": "chapter-static-methods-06",
+    "subtopic": "Static methods",
+    "question": "Choose the accurate Java interview answer about Static methods.",
+    "options": [
+      "Static methods have an implicit this reference.",
+      "Static methods are hidden rather than overridden when a subclass declares a matching static method.",
+      "Static methods can directly access each instance field.",
+      "Static methods belong to each individual object."
+    ],
+    "answer": 1,
+    "explanation": "Static methods are hidden rather than overridden when a subclass declares a matching static method."
+  },
+  {
+    "id": "chapter-static-methods-07",
+    "subtopic": "Static methods",
+    "question": "A developer is asked about Static methods. Which response is correct?",
+    "options": [
+      "Static methods have an implicit this reference.",
+      "Static methods can directly access each instance field.",
+      "Static methods are useful for operations that do not depend on per-object state.",
+      "Static methods belong to each individual object."
+    ],
+    "answer": 2,
+    "explanation": "Static methods are useful for operations that do not depend on per-object state."
+  },
+  {
+    "id": "chapter-static-methods-08",
+    "subtopic": "Static methods",
+    "question": "Select the true statement concerning Static methods.",
+    "options": [
+      "Static methods have an implicit this reference.",
+      "Static methods can directly access each instance field.",
+      "Static methods belong to each individual object.",
+      "A static method can receive an object as a parameter and use its instance methods."
+    ],
+    "answer": 3,
+    "explanation": "A static method can receive an object as a parameter and use its instance methods."
+  },
+  {
+    "id": "chapter-static-methods-09",
+    "subtopic": "Static methods",
+    "question": "Which statement about Static methods is correct?",
+    "options": [
+      "The main method is static so the launcher can invoke it without first creating an application object.",
+      "Static methods have an implicit this reference.",
+      "Static methods can directly access each instance field.",
+      "Static methods belong to each individual object."
+    ],
+    "answer": 0,
+    "explanation": "The main method is static so the launcher can invoke it without first creating an application object."
+  },
+  {
+    "id": "chapter-if-and-else-if-01",
+    "subtopic": "If and else-if",
+    "question": "Which statement about If and else-if is correct?",
+    "options": [
+      "An if body runs when its boolean condition evaluates to true.",
+      "Every else-if branch runs after the first match.",
+      "An else clause must always be present.",
+      "Conditions are evaluated from bottom to top."
+    ],
+    "answer": 0,
+    "explanation": "An if body runs when its boolean condition evaluates to true."
+  },
+  {
+    "id": "chapter-if-and-else-if-02",
+    "subtopic": "If and else-if",
+    "question": "Choose the accurate Java interview answer about If and else-if.",
+    "options": [
+      "Every else-if branch runs after the first match.",
+      "An else-if condition is checked only when earlier conditions in the chain were false.",
+      "An else clause must always be present.",
+      "Conditions are evaluated from bottom to top."
+    ],
+    "answer": 1,
+    "explanation": "An else-if condition is checked only when earlier conditions in the chain were false."
+  },
+  {
+    "id": "chapter-if-and-else-if-03",
+    "subtopic": "If and else-if",
+    "question": "A developer is asked about If and else-if. Which response is correct?",
+    "options": [
+      "Every else-if branch runs after the first match.",
+      "An else clause must always be present.",
+      "At most one branch in an if/else-if/else chain executes.",
+      "Conditions are evaluated from bottom to top."
+    ],
+    "answer": 2,
+    "explanation": "At most one branch in an if/else-if/else chain executes."
+  },
+  {
+    "id": "chapter-if-and-else-if-04",
+    "subtopic": "If and else-if",
+    "question": "Select the true statement concerning If and else-if.",
+    "options": [
+      "Every else-if branch runs after the first match.",
+      "An else clause must always be present.",
+      "Conditions are evaluated from bottom to top.",
+      "Braces can make the scope and branch body explicit."
+    ],
+    "answer": 3,
+    "explanation": "Braces can make the scope and branch body explicit."
+  },
+  {
+    "id": "chapter-if-and-else-if-05",
+    "subtopic": "If and else-if",
+    "question": "Which statement about If and else-if is correct?",
+    "options": [
+      "The condition of an if statement must have boolean type.",
+      "Every else-if branch runs after the first match.",
+      "An else clause must always be present.",
+      "Conditions are evaluated from bottom to top."
+    ],
+    "answer": 0,
+    "explanation": "The condition of an if statement must have boolean type."
+  },
+  {
+    "id": "chapter-if-and-else-if-06",
+    "subtopic": "If and else-if",
+    "question": "Choose the accurate Java interview answer about If and else-if.",
+    "options": [
+      "Every else-if branch runs after the first match.",
+      "An else clause is optional.",
+      "An else clause must always be present.",
+      "Conditions are evaluated from bottom to top."
+    ],
+    "answer": 1,
+    "explanation": "An else clause is optional."
+  },
+  {
+    "id": "chapter-if-and-else-if-07",
+    "subtopic": "If and else-if",
+    "question": "A developer is asked about If and else-if. Which response is correct?",
+    "options": [
+      "Every else-if branch runs after the first match.",
+      "An else clause must always be present.",
+      "A nested if statement can appear inside another branch.",
+      "Conditions are evaluated from bottom to top."
+    ],
+    "answer": 2,
+    "explanation": "A nested if statement can appear inside another branch."
+  },
+  {
+    "id": "chapter-if-and-else-if-08",
+    "subtopic": "If and else-if",
+    "question": "Select the true statement concerning If and else-if.",
+    "options": [
+      "Every else-if branch runs after the first match.",
+      "An else clause must always be present.",
+      "Conditions are evaluated from bottom to top.",
+      "Using mutually exclusive ranges can make decision logic easier to reason about."
+    ],
+    "answer": 3,
+    "explanation": "Using mutually exclusive ranges can make decision logic easier to reason about."
+  },
+  {
+    "id": "chapter-for-loops-01",
+    "subtopic": "For loops",
+    "question": "Which statement about For loops is correct?",
+    "options": [
+      "A traditional for loop evaluates its condition before each iteration.",
+      "A for-loop update runs before its body.",
+      "A for loop must always run exactly once.",
+      "The loop condition is evaluated only after the body."
+    ],
+    "answer": 0,
+    "explanation": "A traditional for loop evaluates its condition before each iteration."
+  },
+  {
+    "id": "chapter-for-loops-02",
+    "subtopic": "For loops",
+    "question": "Choose the accurate Java interview answer about For loops.",
+    "options": [
+      "A for-loop update runs before its body.",
+      "The initializer of a for loop executes once before the first condition check.",
+      "A for loop must always run exactly once.",
+      "The loop condition is evaluated only after the body."
+    ],
+    "answer": 1,
+    "explanation": "The initializer of a for loop executes once before the first condition check."
+  },
+  {
+    "id": "chapter-for-loops-03",
+    "subtopic": "For loops",
+    "question": "A developer is asked about For loops. Which response is correct?",
+    "options": [
+      "A for-loop update runs before its body.",
+      "A for loop must always run exactly once.",
+      "The update expression runs after the loop body completes.",
+      "The loop condition is evaluated only after the body."
+    ],
+    "answer": 2,
+    "explanation": "The update expression runs after the loop body completes."
+  },
+  {
+    "id": "chapter-for-loops-04",
+    "subtopic": "For loops",
+    "question": "Select the true statement concerning For loops.",
+    "options": [
+      "A for-loop update runs before its body.",
+      "A for loop must always run exactly once.",
+      "The loop condition is evaluated only after the body.",
+      "A loop variable declared in the initializer is scoped to the loop."
+    ],
+    "answer": 3,
+    "explanation": "A loop variable declared in the initializer is scoped to the loop."
+  },
+  {
+    "id": "chapter-for-loops-05",
+    "subtopic": "For loops",
+    "question": "Which statement about For loops is correct?",
+    "options": [
+      "A for loop may execute zero times when its initial condition is false.",
+      "A for-loop update runs before its body.",
+      "A for loop must always run exactly once.",
+      "The loop condition is evaluated only after the body."
+    ],
+    "answer": 0,
+    "explanation": "A for loop may execute zero times when its initial condition is false."
+  },
+  {
+    "id": "chapter-for-loops-06",
+    "subtopic": "For loops",
+    "question": "Choose the accurate Java interview answer about For loops.",
+    "options": [
+      "A for-loop update runs before its body.",
+      "A loop can traverse an array using indexes from zero to length minus one.",
+      "A for loop must always run exactly once.",
+      "The loop condition is evaluated only after the body."
+    ],
+    "answer": 1,
+    "explanation": "A loop can traverse an array using indexes from zero to length minus one."
+  },
+  {
+    "id": "chapter-for-loops-07",
+    "subtopic": "For loops",
+    "question": "A developer is asked about For loops. Which response is correct?",
+    "options": [
+      "A for-loop update runs before its body.",
+      "A for loop must always run exactly once.",
+      "An enhanced for loop visits each element of an array or Iterable.",
+      "The loop condition is evaluated only after the body."
+    ],
+    "answer": 2,
+    "explanation": "An enhanced for loop visits each element of an array or Iterable."
+  },
+  {
+    "id": "chapter-for-loops-08",
+    "subtopic": "For loops",
+    "question": "Select the true statement concerning For loops.",
+    "options": [
+      "A for-loop update runs before its body.",
+      "A for loop must always run exactly once.",
+      "The loop condition is evaluated only after the body.",
+      "A nested loop executes its inner body for each applicable outer iteration."
+    ],
+    "answer": 3,
+    "explanation": "A nested loop executes its inner body for each applicable outer iteration."
+  },
+  {
+    "id": "chapter-while-loops-01",
+    "subtopic": "While loops",
+    "question": "Which statement about While loops is correct?",
+    "options": [
+      "A while loop checks its condition before each iteration.",
+      "A while condition is checked only after its body.",
+      "A while loop always runs at least once.",
+      "A while loop cannot use a boolean condition."
+    ],
+    "answer": 0,
+    "explanation": "A while loop checks its condition before each iteration."
+  },
+  {
+    "id": "chapter-while-loops-02",
+    "subtopic": "While loops",
+    "question": "Choose the accurate Java interview answer about While loops.",
+    "options": [
+      "A while condition is checked only after its body.",
+      "A while loop can execute zero times when the initial condition is false.",
+      "A while loop always runs at least once.",
+      "A while loop cannot use a boolean condition."
+    ],
+    "answer": 1,
+    "explanation": "A while loop can execute zero times when the initial condition is false."
+  },
+  {
+    "id": "chapter-while-loops-03",
+    "subtopic": "While loops",
+    "question": "A developer is asked about While loops. Which response is correct?",
+    "options": [
+      "A while condition is checked only after its body.",
+      "A while loop always runs at least once.",
+      "A do-while loop checks its condition after running its body once.",
+      "A while loop cannot use a boolean condition."
+    ],
+    "answer": 2,
+    "explanation": "A do-while loop checks its condition after running its body once."
+  },
+  {
+    "id": "chapter-while-loops-04",
+    "subtopic": "While loops",
+    "question": "Select the true statement concerning While loops.",
+    "options": [
+      "A while condition is checked only after its body.",
+      "A while loop always runs at least once.",
+      "A while loop cannot use a boolean condition.",
+      "The loop body should update state when needed to eventually end the loop."
+    ],
+    "answer": 3,
+    "explanation": "The loop body should update state when needed to eventually end the loop."
+  },
+  {
+    "id": "chapter-while-loops-05",
+    "subtopic": "While loops",
+    "question": "Which statement about While loops is correct?",
+    "options": [
+      "A boolean expression controls whether a while loop continues.",
+      "A while condition is checked only after its body.",
+      "A while loop always runs at least once.",
+      "A while loop cannot use a boolean condition."
+    ],
+    "answer": 0,
+    "explanation": "A boolean expression controls whether a while loop continues."
+  },
+  {
+    "id": "chapter-while-loops-06",
+    "subtopic": "While loops",
+    "question": "Choose the accurate Java interview answer about While loops.",
+    "options": [
+      "A while condition is checked only after its body.",
+      "An infinite loop can result if the condition never becomes false and no transfer exits it.",
+      "A while loop always runs at least once.",
+      "A while loop cannot use a boolean condition."
+    ],
+    "answer": 1,
+    "explanation": "An infinite loop can result if the condition never becomes false and no transfer exits it."
+  },
+  {
+    "id": "chapter-while-loops-07",
+    "subtopic": "While loops",
+    "question": "A developer is asked about While loops. Which response is correct?",
+    "options": [
+      "A while condition is checked only after its body.",
+      "A while loop always runs at least once.",
+      "A while loop is useful when the number of iterations is not known in advance.",
+      "A while loop cannot use a boolean condition."
+    ],
+    "answer": 2,
+    "explanation": "A while loop is useful when the number of iterations is not known in advance."
+  },
+  {
+    "id": "chapter-while-loops-08",
+    "subtopic": "While loops",
+    "question": "Select the true statement concerning While loops.",
+    "options": [
+      "A while condition is checked only after its body.",
+      "A while loop always runs at least once.",
+      "A while loop cannot use a boolean condition.",
+      "break exits the nearest enclosing loop."
+    ],
+    "answer": 3,
+    "explanation": "break exits the nearest enclosing loop."
+  },
+  {
+    "id": "chapter-switch-statements-01",
+    "subtopic": "Switch statements",
+    "question": "Which statement about Switch statements is correct?",
+    "options": [
+      "A traditional switch can fall through when execution reaches another case without a terminating statement.",
+      "Every switch case must have a unique variable scope across braces.",
+      "A switch can never use String values.",
+      "Traditional switch cases always stop automatically."
+    ],
+    "answer": 0,
+    "explanation": "A traditional switch can fall through when execution reaches another case without a terminating statement."
+  },
+  {
+    "id": "chapter-switch-statements-02",
+    "subtopic": "Switch statements",
+    "question": "Choose the accurate Java interview answer about Switch statements.",
+    "options": [
+      "Every switch case must have a unique variable scope across braces.",
+      "A break statement can exit a traditional switch statement.",
+      "A switch can never use String values.",
+      "Traditional switch cases always stop automatically."
+    ],
+    "answer": 1,
+    "explanation": "A break statement can exit a traditional switch statement."
+  },
+  {
+    "id": "chapter-switch-statements-03",
+    "subtopic": "Switch statements",
+    "question": "A developer is asked about Switch statements. Which response is correct?",
+    "options": [
+      "Every switch case must have a unique variable scope across braces.",
+      "A switch can never use String values.",
+      "A switch expression can produce a value.",
+      "Traditional switch cases always stop automatically."
+    ],
+    "answer": 2,
+    "explanation": "A switch expression can produce a value."
+  },
+  {
+    "id": "chapter-switch-statements-04",
+    "subtopic": "Switch statements",
+    "question": "Select the true statement concerning Switch statements.",
+    "options": [
+      "Every switch case must have a unique variable scope across braces.",
+      "A switch can never use String values.",
+      "Traditional switch cases always stop automatically.",
+      "Arrow-form switch rules do not fall through to the next rule."
+    ],
+    "answer": 3,
+    "explanation": "Arrow-form switch rules do not fall through to the next rule."
+  },
+  {
+    "id": "chapter-switch-statements-05",
+    "subtopic": "Switch statements",
+    "question": "Which statement about Switch statements is correct?",
+    "options": [
+      "Several case labels can share one switch branch.",
+      "Every switch case must have a unique variable scope across braces.",
+      "A switch can never use String values.",
+      "Traditional switch cases always stop automatically."
+    ],
+    "answer": 0,
+    "explanation": "Several case labels can share one switch branch."
+  },
+  {
+    "id": "chapter-switch-statements-06",
+    "subtopic": "Switch statements",
+    "question": "Choose the accurate Java interview answer about Switch statements.",
+    "options": [
+      "Every switch case must have a unique variable scope across braces.",
+      "A default label handles values not matched by another label.",
+      "A switch can never use String values.",
+      "Traditional switch cases always stop automatically."
+    ],
+    "answer": 1,
+    "explanation": "A default label handles values not matched by another label."
+  },
+  {
+    "id": "chapter-switch-statements-07",
+    "subtopic": "Switch statements",
+    "question": "A developer is asked about Switch statements. Which response is correct?",
+    "options": [
+      "Every switch case must have a unique variable scope across braces.",
+      "A switch can never use String values.",
+      "Modern Java switch statements support String selectors.",
+      "Traditional switch cases always stop automatically."
+    ],
+    "answer": 2,
+    "explanation": "Modern Java switch statements support String selectors."
+  },
+  {
+    "id": "chapter-switch-statements-08",
+    "subtopic": "Switch statements",
+    "question": "Select the true statement concerning Switch statements.",
+    "options": [
+      "Every switch case must have a unique variable scope across braces.",
+      "A switch can never use String values.",
+      "Traditional switch cases always stop automatically.",
+      "The selector and case labels must be compatible types."
+    ],
+    "answer": 3,
+    "explanation": "The selector and case labels must be compatible types."
+  },
+  {
+    "id": "chapter-break-and-continue-01",
+    "subtopic": "Break and continue",
+    "question": "Which statement about Break and continue is correct?",
+    "options": [
+      "An unlabeled break exits the nearest enclosing loop or switch.",
+      "continue exits the method.",
+      "An unlabeled break exits every nested loop.",
+      "break restarts the current loop iteration."
+    ],
+    "answer": 0,
+    "explanation": "An unlabeled break exits the nearest enclosing loop or switch."
+  },
+  {
+    "id": "chapter-break-and-continue-02",
+    "subtopic": "Break and continue",
+    "question": "Choose the accurate Java interview answer about Break and continue.",
+    "options": [
+      "continue exits the method.",
+      "continue skips the rest of the current loop body and proceeds to the next iteration.",
+      "An unlabeled break exits every nested loop.",
+      "break restarts the current loop iteration."
+    ],
+    "answer": 1,
+    "explanation": "continue skips the rest of the current loop body and proceeds to the next iteration."
+  },
+  {
+    "id": "chapter-break-and-continue-03",
+    "subtopic": "Break and continue",
+    "question": "A developer is asked about Break and continue. Which response is correct?",
+    "options": [
+      "continue exits the method.",
+      "An unlabeled break exits every nested loop.",
+      "A labeled break can exit a labeled enclosing statement.",
+      "break restarts the current loop iteration."
+    ],
+    "answer": 2,
+    "explanation": "A labeled break can exit a labeled enclosing statement."
+  },
+  {
+    "id": "chapter-break-and-continue-04",
+    "subtopic": "Break and continue",
+    "question": "Select the true statement concerning Break and continue.",
+    "options": [
+      "continue exits the method.",
+      "An unlabeled break exits every nested loop.",
+      "break restarts the current loop iteration.",
+      "A labeled continue proceeds with the next iteration of its labeled loop."
+    ],
+    "answer": 3,
+    "explanation": "A labeled continue proceeds with the next iteration of its labeled loop."
+  },
+  {
+    "id": "chapter-break-and-continue-05",
+    "subtopic": "Break and continue",
+    "question": "Which statement about Break and continue is correct?",
+    "options": [
+      "A break statement is valid in a loop or switch context.",
+      "continue exits the method.",
+      "An unlabeled break exits every nested loop.",
+      "break restarts the current loop iteration."
+    ],
+    "answer": 0,
+    "explanation": "A break statement is valid in a loop or switch context."
+  },
+  {
+    "id": "chapter-break-and-continue-06",
+    "subtopic": "Break and continue",
+    "question": "Choose the accurate Java interview answer about Break and continue.",
+    "options": [
+      "continue exits the method.",
+      "continue does not terminate the loop permanently.",
+      "An unlabeled break exits every nested loop.",
+      "break restarts the current loop iteration."
+    ],
+    "answer": 1,
+    "explanation": "continue does not terminate the loop permanently."
+  },
+  {
+    "id": "chapter-break-and-continue-07",
+    "subtopic": "Break and continue",
+    "question": "A developer is asked about Break and continue. Which response is correct?",
+    "options": [
+      "continue exits the method.",
+      "An unlabeled break exits every nested loop.",
+      "Statements after an unconditional break in the same block may be unreachable.",
+      "break restarts the current loop iteration."
+    ],
+    "answer": 2,
+    "explanation": "Statements after an unconditional break in the same block may be unreachable."
+  },
+  {
+    "id": "chapter-break-and-continue-08",
+    "subtopic": "Break and continue",
+    "question": "Select the true statement concerning Break and continue.",
+    "options": [
+      "continue exits the method.",
+      "An unlabeled break exits every nested loop.",
+      "break restarts the current loop iteration.",
+      "A loop condition is checked again after continue in a while loop."
+    ],
+    "answer": 3,
+    "explanation": "A loop condition is checked again after continue in a while loop."
+  },
+  {
+    "id": "deep-if-01",
+    "subtopic": "If and else-if",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Grade {\n    public static void main(String[] args) {\n        int score = 80;\n        if (score > 80) System.out.print(\"A\");\n        else if (score >= 80) System.out.print(\"B\");\n        else System.out.print(\"C\");\n    }\n}",
+    "options": [
+      "A",
+      "B",
+      "C",
+      "Nothing"
+    ],
+    "answer": 1,
+    "explanation": "The first condition is false and the second condition is true."
+  },
+  {
+    "id": "deep-loop-01",
+    "subtopic": "For loops",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Loop {\n    public static void main(String[] args) {\n        for (int i = 0; i < 5; i += 2) System.out.print(i);\n    }\n}",
+    "options": [
+      "01234",
+      "024",
+      "135",
+      "246"
+    ],
+    "answer": 1,
+    "explanation": "The loop values are 0, 2, and 4."
+  },
+  {
+    "id": "deep-switch-01",
+    "subtopic": "Switch statements",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Choice {\n    public static void main(String[] args) {\n        int n = 2;\n        switch (n) {\n            case 1: System.out.print(\"A\"); break;\n            case 2: System.out.print(\"B\");\n            case 3: System.out.print(\"C\"); break;\n            default: System.out.print(\"D\");\n        }\n    }\n}",
+    "options": [
+      "B",
+      "BC",
+      "BCD",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "Traditional switch execution falls through from case 2 into case 3 because there is no break after B."
+  },
+  {
+    "id": "pdf-java-011",
+    "subtopic": "Method signatures",
+    "question": "Which pair forms the part of a Java method declaration used to distinguish overloads?",
+    "options": [
+      "Method name and parameter types",
+      "Return type and method body",
+      "Access modifier and return type",
+      "Parameter names only"
+    ],
+    "answer": 0,
+    "explanation": "Overload signatures use the method name and parameter types; return type alone cannot distinguish methods.",
+    "source": "Kodewala Academy Core Java & Advance Java notes, PDF page 42",
+    "sourceLabel": "From PDF notes · page 42"
+  },
+  {
+    "id": "pdf-java-013",
+    "subtopic": "Access modifiers",
+    "question": "A subclass in another package needs access to a superclass member. Which access level is intended to allow subclass access under Java's protected-access rules?",
+    "options": [
+      "protected",
+      "private",
+      "package-private only",
+      "No modifier can ever allow it"
+    ],
+    "answer": 0,
+    "explanation": "Protected members are accessible in the declaring package and to subclasses subject to Java's qualifying-reference rules.",
+    "source": "Kodewala Academy Core Java & Advance Java notes, PDF page 48",
+    "sourceLabel": "From PDF notes · page 48"
+  },
+  {
+    "id": "pdf-java-014",
+    "subtopic": "Static methods",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Settings {\n    static String region() { return \"global\"; }\n    String user() { return \"specific\"; }\n    public static void main(String[] args) {\n        System.out.print(Settings.region() + \" \" + new Settings().user());\n    }\n}",
+    "options": [
+      "global specific",
+      "specific global",
+      "global global",
+      "Compilation error"
+    ],
+    "answer": 0,
+    "explanation": "Class-level behavior can be called statically; instance behavior is invoked on an object.",
+    "source": "Kodewala Academy Core Java & Advance Java notes, PDF page 53",
+    "sourceLabel": "From PDF notes · page 53"
+  },
+  {
+    "id": "pdf-java-015",
+    "subtopic": "Static methods",
+    "question": "Can a Java static method override an instance method with the same signature?",
+    "options": [
+      "No; static methods cannot override instance methods",
+      "Yes; every matching name is dynamically dispatched",
+      "Only when both methods return void",
+      "Only when the subclass is final"
+    ],
+    "answer": 0,
+    "explanation": "Static and instance methods do not form a valid override pair; static methods are class-associated.",
+    "source": "Kodewala Academy Core Java & Advance Java notes, PDF page 53",
+    "sourceLabel": "From PDF notes · page 53"
+  },
+  {
+    "id": "pdf-java-016",
+    "subtopic": "For loops",
+    "question": "How many values are printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Count {\n    public static void main(String[] args) {\n        int n = 1;\n        while (n <= 5) {\n            System.out.print(n);\n            n++;\n        }\n    }\n}",
+    "options": [
+      "4",
+      "5",
+      "6",
+      "The loop never ends"
+    ],
+    "answer": 1,
+    "explanation": "The condition is true for n values 1 through 5, so five values are printed.",
+    "source": "Kodewala Academy Core Java & Advance Java notes, PDF page 65",
+    "sourceLabel": "From PDF notes · page 65"
+  }
+]

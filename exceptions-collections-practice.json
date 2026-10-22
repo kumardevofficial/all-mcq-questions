@@ -1,0 +1,652 @@
+[
+  {
+    "id": "collections-01",
+    "subtopic": "Checked and unchecked exceptions",
+    "question": "Which statement about checked exceptions is correct?",
+    "options": [
+      "They must be caught or declared by methods that may throw them",
+      "They occur only in the JVM",
+      "They are subclasses of Error",
+      "They cannot be custom-defined"
+    ],
+    "answer": 0,
+    "explanation": "Checked exceptions are subject to compile-time catch-or-declare checking."
+  },
+  {
+    "id": "collections-02",
+    "subtopic": "Exception flow",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class FinallyFlow {\n    public static void main(String[] args) {\n        try {\n            System.out.print(\"A\");\n        } finally {\n            System.out.print(\"B\");\n        }\n    }\n}",
+    "options": [
+      "A",
+      "B",
+      "AB",
+      "Compilation error"
+    ],
+    "answer": 2,
+    "explanation": "The try body prints A and the finally block runs afterward and prints B."
+  },
+  {
+    "id": "collections-03",
+    "subtopic": "Custom exceptions",
+    "question": "What should a custom checked exception typically extend?",
+    "options": [
+      "Runtime",
+      "Exception",
+      "Error",
+      "Object directly"
+    ],
+    "answer": 1,
+    "explanation": "A checked custom exception extends Exception without extending RuntimeException."
+  },
+  {
+    "id": "collections-04",
+    "subtopic": "List mutation",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "import java.util.*;\nclass ListChange {\n    public static void main(String[] args) {\n        List<Integer> values = new ArrayList<>(List.of(1, 2));\n        values.add(3);\n        System.out.println(values.size());\n    }\n}",
+    "options": [
+      "2",
+      "3",
+      "UnsupportedOperationException",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "The ArrayList is mutable; adding the third element makes its size 3."
+  },
+  {
+    "id": "collections-05",
+    "subtopic": "Set and Map",
+    "question": "What property does a Set generally provide?",
+    "options": [
+      "It stores only key-value pairs",
+      "It prevents duplicate elements according to its equality rules",
+      "It always preserves insertion order",
+      "It sorts every element"
+    ],
+    "answer": 1,
+    "explanation": "Set models unique elements; ordering depends on the particular implementation."
+  },
+  {
+    "id": "collections-06",
+    "subtopic": "equals and hashCode",
+    "question": "What contract should a class follow when overriding equals?",
+    "options": [
+      "Equal objects must have equal hash codes",
+      "Unequal objects must always have different hash codes",
+      "hashCode must return the object's memory address",
+      "equals must compare every field"
+    ],
+    "answer": 0,
+    "explanation": "The equals/hashCode contract requires equal objects to produce equal hash codes."
+  },
+  {
+    "id": "collections-07",
+    "subtopic": "Map lookup",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "import java.util.*;\nclass MapRead {\n    public static void main(String[] args) {\n        Map<String, Integer> counts = new HashMap<>();\n        counts.put(\"java\", 2);\n        counts.put(\"java\", 5);\n        System.out.println(counts.size() + \" \" + counts.get(\"java\"));\n    }\n}",
+    "options": [
+      "2 2",
+      "1 5",
+      "2 5",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "Putting the same key replaces its previous value, leaving one mapping with value 5."
+  },
+  {
+    "id": "collections-08",
+    "subtopic": "Choosing a collection",
+    "question": "Which collection is a natural choice for FIFO processing?",
+    "options": [
+      "Stack",
+      "Queue",
+      "Set",
+      "Map"
+    ],
+    "answer": 1,
+    "explanation": "A queue represents elements waiting to be processed, commonly in first-in-first-out order."
+  },
+  {
+    "id": "collections-09",
+    "subtopic": "Try-with-resources",
+    "question": "What interface must a resource used in try-with-resources implement?",
+    "options": [
+      "Runnable",
+      "AutoCloseable",
+      "Serializable",
+      "Comparable"
+    ],
+    "answer": 1,
+    "explanation": "Try-with-resources automatically closes resources that implement AutoCloseable."
+  },
+  {
+    "id": "collections-10",
+    "subtopic": "Generics invariance",
+    "question": "Does this assignment compile?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "List<Integer> integers = new ArrayList<>();\nList<Number> numbers = integers;",
+    "options": [
+      "Yes, because Integer extends Number",
+      "No, generic types are invariant",
+      "Only with a cast",
+      "Only at runtime"
+    ],
+    "answer": 1,
+    "explanation": "List<Integer> is not a subtype of List<Number>; bounded wildcards express certain safe relationships."
+  },
+  {
+    "id": "collections-11",
+    "subtopic": "Wildcard bounds",
+    "question": "Which parameter type accepts a list of Integer values for reading them as Number values?",
+    "options": [
+      "List<? extends Number>",
+      "List<? super Integer> only",
+      "List<Object> only",
+      "List<Number[]>"
+    ],
+    "answer": 0,
+    "explanation": "An extends wildcard lets a method read elements as Number from lists whose element type is a Number subtype."
+  },
+  {
+    "id": "collections-12",
+    "subtopic": "TreeSet ordering",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "import java.util.*;\nclass UniqueSorted {\n    public static void main(String[] args) {\n        Set<Integer> values = new TreeSet<>(List.of(3, 1, 3, 2));\n        System.out.println(values);\n    }\n}",
+    "options": [
+      "[3, 1, 3, 2]",
+      "[1, 2, 3]",
+      "[3, 2, 1]",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "TreeSet stores unique elements and iterates them in their natural sorted order."
+  },
+  {
+    "id": "exp-collections-09",
+    "subtopic": "Exception flow",
+    "question": "If a matching catch block handles an exception, what happens to statements after that catch block?",
+    "options": [
+      "They continue normally after the try-catch statement",
+      "They are skipped until the method returns",
+      "They execute only if finally is absent",
+      "The JVM restarts the method"
+    ],
+    "answer": 0,
+    "explanation": "After a matching catch completes, execution continues with the statement following the try-catch construct."
+  },
+  {
+    "id": "exp-collections-10",
+    "subtopic": "Try-with-resources",
+    "question": "When is the resource closed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class ResourceDemo {\n    public static void main(String[] args) throws Exception {\n        try (var reader = new java.io.StringReader(\"ok\")) {\n            System.out.print((char) reader.read());\n        }\n    }\n}",
+    "options": [
+      "Before the try body",
+      "At the end of the try-with-resources statement",
+      "Only when the JVM exits",
+      "It is never closed"
+    ],
+    "answer": 1,
+    "explanation": "Resources declared in try-with-resources are closed automatically when the statement completes."
+  },
+  {
+    "id": "exp-collections-11",
+    "subtopic": "Custom exceptions",
+    "question": "Which exception is unchecked?",
+    "options": [
+      "A direct subclass of Exception that is not a RuntimeException",
+      "A subclass of RuntimeException",
+      "Every IOException",
+      "Every SQLException"
+    ],
+    "answer": 1,
+    "explanation": "RuntimeException and its subclasses are unchecked; other Exception subclasses are generally checked."
+  },
+  {
+    "id": "exp-collections-12",
+    "subtopic": "List mutation",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "import java.util.*;\nclass RemoveValue {\n    public static void main(String[] args) {\n        List<Integer> values = new ArrayList<>(List.of(1, 2, 3));\n        values.remove(Integer.valueOf(2));\n        System.out.println(values);\n    }\n}",
+    "options": [
+      "[1, 3]",
+      "[1, 2]",
+      "[2, 3]",
+      "IndexOutOfBoundsException"
+    ],
+    "answer": 0,
+    "explanation": "Passing Integer.valueOf(2) selects remove(Object), removing the element whose value is 2."
+  },
+  {
+    "id": "exp-collections-13",
+    "subtopic": "Set and Map",
+    "question": "Which collection interface stores unique keys associated with values?",
+    "options": [
+      "List",
+      "Queue",
+      "Map",
+      "Deque"
+    ],
+    "answer": 2,
+    "explanation": "Map models key-value associations and permits at most one mapping per key."
+  },
+  {
+    "id": "exp-collections-14",
+    "subtopic": "Generics invariance",
+    "question": "Given `Integer extends Number`, which assignment is valid without a wildcard?",
+    "options": [
+      "List<Number> n = new ArrayList<Integer>()",
+      "List<Integer> i = new ArrayList<Number>()",
+      "List<? extends Number> n = new ArrayList<Integer>()",
+      "List<Object> o = new ArrayList<String>()"
+    ],
+    "answer": 2,
+    "explanation": "Generic types are invariant, but List<Integer> can be viewed through List<? extends Number>."
+  },
+  {
+    "id": "exp-collections-15",
+    "subtopic": "Map lookup",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "import java.util.*;\nclass Frequency {\n    public static void main(String[] args) {\n        Map<String, Integer> counts = new HashMap<>();\n        counts.merge(\"java\", 1, Integer::sum);\n        counts.merge(\"java\", 1, Integer::sum);\n        System.out.println(counts.get(\"java\"));\n    }\n}",
+    "options": [
+      "1",
+      "2",
+      "null",
+      "Compilation error"
+    ],
+    "answer": 1,
+    "explanation": "The first merge inserts 1; the second applies Integer.sum to the existing and incoming values."
+  },
+  {
+    "id": "exp-collections-16",
+    "subtopic": "Choosing a collection",
+    "question": "Which implementation is a common choice for maintaining a sorted set using natural ordering?",
+    "options": [
+      "HashSet",
+      "TreeSet",
+      "ArrayList",
+      "LinkedList"
+    ],
+    "answer": 1,
+    "explanation": "TreeSet stores unique elements ordered by their natural ordering or a supplied Comparator."
+  },
+  {
+    "id": "chapter-exception-handling-01",
+    "subtopic": "Exception handling",
+    "question": "Which statement about Exception handling is correct?",
+    "options": [
+      "A checked exception must generally be caught or declared by the calling code.",
+      "A finally block runs only when an exception occurs.",
+      "Checked exceptions never need to be caught or declared.",
+      "catch blocks must appear before try blocks."
+    ],
+    "answer": 0,
+    "explanation": "A checked exception must generally be caught or declared by the calling code."
+  },
+  {
+    "id": "chapter-exception-handling-02",
+    "subtopic": "Exception handling",
+    "question": "Choose the accurate Java interview answer about Exception handling.",
+    "options": [
+      "A finally block runs only when an exception occurs.",
+      "An unchecked exception is a RuntimeException or one of its subclasses.",
+      "Checked exceptions never need to be caught or declared.",
+      "catch blocks must appear before try blocks."
+    ],
+    "answer": 1,
+    "explanation": "An unchecked exception is a RuntimeException or one of its subclasses."
+  },
+  {
+    "id": "chapter-exception-handling-03",
+    "subtopic": "Exception handling",
+    "question": "A developer is asked about Exception handling. Which response is correct?",
+    "options": [
+      "A finally block runs only when an exception occurs.",
+      "Checked exceptions never need to be caught or declared.",
+      "A matching catch block handles an exception and execution can continue afterward.",
+      "catch blocks must appear before try blocks."
+    ],
+    "answer": 2,
+    "explanation": "A matching catch block handles an exception and execution can continue afterward."
+  },
+  {
+    "id": "chapter-exception-handling-04",
+    "subtopic": "Exception handling",
+    "question": "Select the true statement concerning Exception handling.",
+    "options": [
+      "A finally block runs only when an exception occurs.",
+      "Checked exceptions never need to be caught or declared.",
+      "catch blocks must appear before try blocks.",
+      "A finally block generally runs whether or not the try block completes normally."
+    ],
+    "answer": 3,
+    "explanation": "A finally block generally runs whether or not the try block completes normally."
+  },
+  {
+    "id": "chapter-exception-handling-05",
+    "subtopic": "Exception handling",
+    "question": "Which statement about Exception handling is correct?",
+    "options": [
+      "The first compatible catch block handles a thrown exception.",
+      "A finally block runs only when an exception occurs.",
+      "Checked exceptions never need to be caught or declared.",
+      "catch blocks must appear before try blocks."
+    ],
+    "answer": 0,
+    "explanation": "The first compatible catch block handles a thrown exception."
+  },
+  {
+    "id": "chapter-exception-handling-06",
+    "subtopic": "Exception handling",
+    "question": "Choose the accurate Java interview answer about Exception handling.",
+    "options": [
+      "A finally block runs only when an exception occurs.",
+      "A method can declare checked exceptions with a throws clause.",
+      "Checked exceptions never need to be caught or declared.",
+      "catch blocks must appear before try blocks."
+    ],
+    "answer": 1,
+    "explanation": "A method can declare checked exceptions with a throws clause."
+  },
+  {
+    "id": "chapter-exception-handling-07",
+    "subtopic": "Exception handling",
+    "question": "A developer is asked about Exception handling. Which response is correct?",
+    "options": [
+      "A finally block runs only when an exception occurs.",
+      "Checked exceptions never need to be caught or declared.",
+      "A throw statement explicitly throws a Throwable object.",
+      "catch blocks must appear before try blocks."
+    ],
+    "answer": 2,
+    "explanation": "A throw statement explicitly throws a Throwable object."
+  },
+  {
+    "id": "chapter-exception-handling-08",
+    "subtopic": "Exception handling",
+    "question": "Select the true statement concerning Exception handling.",
+    "options": [
+      "A finally block runs only when an exception occurs.",
+      "Checked exceptions never need to be caught or declared.",
+      "catch blocks must appear before try blocks.",
+      "More specific catch types must precede broader catch types."
+    ],
+    "answer": 3,
+    "explanation": "More specific catch types must precede broader catch types."
+  },
+  {
+    "id": "chapter-custom-exceptions-01",
+    "subtopic": "Custom exceptions",
+    "question": "Which statement about Custom exceptions is correct?",
+    "options": [
+      "A custom checked exception commonly extends Exception.",
+      "A custom checked exception should extend Error.",
+      "RuntimeException is checked by the compiler.",
+      "An exception class cannot have constructors."
+    ],
+    "answer": 0,
+    "explanation": "A custom checked exception commonly extends Exception."
+  },
+  {
+    "id": "chapter-custom-exceptions-02",
+    "subtopic": "Custom exceptions",
+    "question": "Choose the accurate Java interview answer about Custom exceptions.",
+    "options": [
+      "A custom checked exception should extend Error.",
+      "A custom unchecked exception commonly extends RuntimeException.",
+      "RuntimeException is checked by the compiler.",
+      "An exception class cannot have constructors."
+    ],
+    "answer": 1,
+    "explanation": "A custom unchecked exception commonly extends RuntimeException."
+  },
+  {
+    "id": "chapter-custom-exceptions-03",
+    "subtopic": "Custom exceptions",
+    "question": "A developer is asked about Custom exceptions. Which response is correct?",
+    "options": [
+      "A custom checked exception should extend Error.",
+      "RuntimeException is checked by the compiler.",
+      "Exception classes can provide constructors with useful messages.",
+      "An exception class cannot have constructors."
+    ],
+    "answer": 2,
+    "explanation": "Exception classes can provide constructors with useful messages."
+  },
+  {
+    "id": "chapter-custom-exceptions-04",
+    "subtopic": "Custom exceptions",
+    "question": "Select the true statement concerning Custom exceptions.",
+    "options": [
+      "A custom checked exception should extend Error.",
+      "RuntimeException is checked by the compiler.",
+      "An exception class cannot have constructors.",
+      "A custom exception can retain a cause for diagnostic context."
+    ],
+    "answer": 3,
+    "explanation": "A custom exception can retain a cause for diagnostic context."
+  },
+  {
+    "id": "chapter-custom-exceptions-05",
+    "subtopic": "Custom exceptions",
+    "question": "Which statement about Custom exceptions is correct?",
+    "options": [
+      "The exception type should communicate the failure condition clearly.",
+      "A custom checked exception should extend Error.",
+      "RuntimeException is checked by the compiler.",
+      "An exception class cannot have constructors."
+    ],
+    "answer": 0,
+    "explanation": "The exception type should communicate the failure condition clearly."
+  },
+  {
+    "id": "chapter-custom-exceptions-06",
+    "subtopic": "Custom exceptions",
+    "question": "Choose the accurate Java interview answer about Custom exceptions.",
+    "options": [
+      "A custom checked exception should extend Error.",
+      "A thrown exception can be caught by code that handles its type or a supertype.",
+      "RuntimeException is checked by the compiler.",
+      "An exception class cannot have constructors."
+    ],
+    "answer": 1,
+    "explanation": "A thrown exception can be caught by code that handles its type or a supertype."
+  },
+  {
+    "id": "chapter-custom-exceptions-07",
+    "subtopic": "Custom exceptions",
+    "question": "A developer is asked about Custom exceptions. Which response is correct?",
+    "options": [
+      "A custom checked exception should extend Error.",
+      "RuntimeException is checked by the compiler.",
+      "Checked custom exceptions are subject to catch-or-declare checking.",
+      "An exception class cannot have constructors."
+    ],
+    "answer": 2,
+    "explanation": "Checked custom exceptions are subject to catch-or-declare checking."
+  },
+  {
+    "id": "chapter-custom-exceptions-08",
+    "subtopic": "Custom exceptions",
+    "question": "Select the true statement concerning Custom exceptions.",
+    "options": [
+      "A custom checked exception should extend Error.",
+      "RuntimeException is checked by the compiler.",
+      "An exception class cannot have constructors.",
+      "An exception can be rethrown after logging or adding context."
+    ],
+    "answer": 3,
+    "explanation": "An exception can be rethrown after logging or adding context."
+  },
+  {
+    "id": "deep-exception-01",
+    "subtopic": "Exception handling",
+    "question": "If both the try block and finally block return values, which return is used?",
+    "options": [
+      "The try return always wins",
+      "The finally return overrides the pending return",
+      "The program cannot compile",
+      "Both values are returned"
+    ],
+    "answer": 1,
+    "explanation": "A return from finally can replace a pending return, though returning from finally is discouraged because it can hide failures."
+  },
+  {
+    "id": "deep-exception-02",
+    "subtopic": "Exception handling",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class CatchOrder {\n    public static void main(String[] args) {\n        try { throw new java.io.IOException(); }\n        catch (java.io.IOException e) { System.out.print(\"I\"); }\n        catch (Exception e) { System.out.print(\"E\"); }\n    }\n}",
+    "options": [
+      "I",
+      "E",
+      "IE",
+      "Compilation error"
+    ],
+    "answer": 0,
+    "explanation": "The first compatible catch handles the IOException; the broader catch is not executed."
+  },
+  {
+    "id": "deep-exception-03",
+    "subtopic": "Exception handling",
+    "question": "What happens at compile time?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class MultiCatch {\n    void run() {\n        try { throw new java.io.IOException(); }\n        catch (Exception | java.io.IOException e) { }\n    }\n}",
+    "options": [
+      "Compiles",
+      "Fails because alternatives have a subtype relationship",
+      "Fails because IOException is unchecked",
+      "Runs and prints null"
+    ],
+    "answer": 1,
+    "explanation": "Multi-catch alternatives cannot be related by subclassing; IOException is already covered by Exception."
+  },
+  {
+    "id": "deep-exception-04",
+    "subtopic": "Exception handling",
+    "question": "What does try-with-resources guarantee when the block exits?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "try (var in = new java.io.StringReader(\"x\")) {\n    System.out.print((char) in.read());\n}",
+    "options": [
+      "The resource is closed automatically",
+      "The resource stays open until garbage collection",
+      "The block cannot throw IOException",
+      "The resource is closed only on normal completion"
+    ],
+    "answer": 0,
+    "explanation": "An AutoCloseable resource declared in try-with-resources is closed on normal or abrupt exit."
+  },
+  {
+    "id": "deep-custom-exception-01",
+    "subtopic": "Custom exceptions",
+    "question": "What does preserving a cause in a custom exception provide?",
+    "options": [
+      "The original failure context for diagnostics",
+      "Automatic retry",
+      "A rollback of every database",
+      "A guarantee that the error is checked"
+    ],
+    "answer": 0,
+    "explanation": "Passing the cause to a superclass constructor retains the underlying exception for diagnosis."
+  },
+  {
+    "id": "deep-collection-01",
+    "subtopic": "List mutation",
+    "question": "What is printed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "class Remove {\n    public static void main(String[] args) {\n        var values = new java.util.ArrayList<>(java.util.List.of(1, 2, 3));\n        values.remove(Integer.valueOf(2));\n        System.out.println(values);\n    }\n}",
+    "options": [
+      "[1, 3]",
+      "[1, 2]",
+      "[2, 3]",
+      "IndexOutOfBoundsException"
+    ],
+    "answer": 0,
+    "explanation": "Passing Integer.valueOf(2) selects remove(Object), removing the matching value rather than index 2."
+  },
+  {
+    "id": "deep-collection-02",
+    "subtopic": "Set and Map",
+    "question": "What does a `HashSet` use to identify duplicate elements?",
+    "options": [
+      "equals and hashCode",
+      "toString only",
+      "Object identity only",
+      "compareTo only"
+    ],
+    "answer": 0,
+    "explanation": "Hash-based collections use hashCode to locate candidates and equals to test equality."
+  },
+  {
+    "id": "deep-collection-03",
+    "subtopic": "equals and hashCode",
+    "question": "Which result is required when two objects are equal according to `equals`?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "final class Key {\n    final int id;\n    Key(int id) { this.id = id; }\n    public boolean equals(Object o) {\n        return o instanceof Key k && id == k.id;\n    }\n    // Which contract must hashCode follow?\n}",
+    "options": [
+      "Equal keys must have equal hash codes",
+      "Equal keys must have different hash codes",
+      "hashCode must return id for every class",
+      "hashCode must be unique"
+    ],
+    "answer": 0,
+    "explanation": "The equals/hashCode contract requires equal objects to have the same hash code; unequal objects may collide."
+  },
+  {
+    "id": "deep-collection-04",
+    "subtopic": "Choosing a collection",
+    "question": "Which structure is a natural choice for FIFO processing?",
+    "options": [
+      "ArrayDeque",
+      "TreeSet",
+      "HashMap",
+      "PriorityQueue"
+    ],
+    "answer": 0,
+    "explanation": "ArrayDeque supports efficient insertion at the tail and removal from the head for queue behavior."
+  },
+  {
+    "id": "deep-collection-05",
+    "subtopic": "Generics invariance",
+    "question": "If `Integer` extends `Number`, which assignment is valid?",
+    "options": [
+      "List<Number> n = new ArrayList<Integer>()",
+      "List<? extends Number> n = new ArrayList<Integer>()",
+      "List<Integer> n = new ArrayList<Number>()",
+      "List<Object> n = new ArrayList<Integer>()"
+    ],
+    "answer": 1,
+    "explanation": "Generic types are invariant, while `? extends Number` can reference a List<Integer> for reading Number values."
+  },
+  {
+    "id": "deep-collection-06",
+    "subtopic": "Wildcard bounds",
+    "question": "For a method that reads numbers from `List<? extends Number>`, why is adding an Integer generally disallowed?",
+    "options": [
+      "The list could actually be a List<Double>",
+      "Integer is not a Number",
+      "Extends wildcards are immutable lists",
+      "List has no add method"
+    ],
+    "answer": 0,
+    "explanation": "The exact subtype is unknown, so adding an Integer might violate the list's actual element type."
+  }
+]

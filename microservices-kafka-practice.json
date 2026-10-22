@@ -1,0 +1,732 @@
+[
+  {
+    "id": "distributed-01",
+    "subtopic": "Service boundaries",
+    "question": "What is a useful goal when defining a microservice boundary?",
+    "options": [
+      "Keep a cohesive business capability and its data ownership together",
+      "Split every database table into its own service",
+      "Ensure all services share one mutable database schema",
+      "Make every service use the same release cycle"
+    ],
+    "answer": 0,
+    "explanation": "Boundaries organized around cohesive business capabilities help limit coupling and clarify ownership."
+  },
+  {
+    "id": "distributed-02",
+    "subtopic": "Synchronous and asynchronous communication",
+    "question": "What is a common advantage of asynchronous messaging between services?",
+    "options": [
+      "It can reduce temporal coupling because sender and receiver need not be active at the same moment",
+      "It guarantees exactly-once business effects automatically",
+      "It removes the need to handle failures",
+      "It makes every request complete immediately"
+    ],
+    "answer": 0,
+    "explanation": "A broker can buffer messages, letting producers and consumers operate independently in time; delivery and duplicate handling still need design."
+  },
+  {
+    "id": "distributed-03",
+    "subtopic": "Kafka partition ordering",
+    "question": "For a Kafka topic, where is ordering guaranteed?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "Producer sends events with key = customerId to a topic with multiple partitions.",
+    "options": [
+      "Across every partition in the topic",
+      "Within each partition",
+      "Across all topics globally",
+      "Only after a consumer sorts records"
+    ],
+    "answer": 1,
+    "explanation": "Kafka preserves order within a partition. Using the same key typically routes related events to the same partition."
+  },
+  {
+    "id": "distributed-04",
+    "subtopic": "Kafka consumer groups",
+    "question": "Within one consumer group, how are partitions normally assigned?",
+    "options": [
+      "Every consumer receives every partition simultaneously",
+      "Each partition is assigned to at most one consumer in the group at a time",
+      "Partitions are assigned to producers",
+      "A consumer group has no effect on delivery"
+    ],
+    "answer": 1,
+    "explanation": "A group distributes partition work across its members; consumers beyond the partition count may remain idle."
+  },
+  {
+    "id": "distributed-05",
+    "subtopic": "Offsets and replay",
+    "question": "What does a Kafka consumer offset represent?",
+    "options": [
+      "A consumer's position in a partition log",
+      "The number of brokers in a cluster",
+      "A unique topic name",
+      "The producer's network port"
+    ],
+    "answer": 0,
+    "explanation": "Offsets track positions in a partition and allow consumers to resume or intentionally reread records."
+  },
+  {
+    "id": "distributed-06",
+    "subtopic": "Idempotency",
+    "question": "Why make a message consumer's operation idempotent?",
+    "options": [
+      "Retries or redelivery can then avoid applying the same business effect more than once",
+      "It prevents all network errors",
+      "It guarantees a message is never duplicated",
+      "It eliminates the need for storage"
+    ],
+    "answer": 0,
+    "explanation": "Many messaging systems can redeliver; idempotent processing safely tolerates repeated delivery."
+  },
+  {
+    "id": "distributed-07",
+    "subtopic": "Retry-safe consumer",
+    "question": "Which check helps prevent applying the same event twice?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "if (processedEventIds.add(event.id())) {\n    accountService.apply(event);\n}",
+    "options": [
+      "Use a durable unique-event record and apply only when the event ID is new",
+      "Ignore all event IDs",
+      "Retry forever without recording progress",
+      "Process the event concurrently without coordination"
+    ],
+    "answer": 0,
+    "explanation": "A durable deduplication record can make repeated event deliveries safe, provided recording and the business effect are coordinated."
+  },
+  {
+    "id": "distributed-08",
+    "subtopic": "Saga pattern",
+    "question": "What is the purpose of a compensating action in a saga?",
+    "options": [
+      "To undo or counteract a completed step when a later distributed step fails",
+      "To roll back all services with one local database transaction",
+      "To increase Kafka partition count",
+      "To replace service authentication"
+    ],
+    "answer": 0,
+    "explanation": "A saga coordinates local transactions and uses compensating actions to address failures across service boundaries."
+  },
+  {
+    "id": "distributed-09",
+    "subtopic": "Outbox pattern",
+    "question": "What problem does the transactional outbox pattern address?",
+    "options": [
+      "Keeping a database state change and the record of an event to publish consistent",
+      "Encrypting every Kafka partition automatically",
+      "Replacing all consumer groups",
+      "Guaranteeing global ordering across topics"
+    ],
+    "answer": 0,
+    "explanation": "Writing the business change and outbox row in one local transaction avoids a dual-write gap; a relay publishes the event later."
+  },
+  {
+    "id": "distributed-10",
+    "subtopic": "Dead-letter handling",
+    "question": "What is a dead-letter queue commonly used for?",
+    "options": [
+      "Holding messages that cannot be processed successfully after the configured handling attempts",
+      "Storing every successfully processed message forever",
+      "Replacing the primary database",
+      "Ordering messages across all partitions"
+    ],
+    "answer": 0,
+    "explanation": "A dead-letter destination isolates repeatedly failing records for diagnosis or later reprocessing."
+  },
+  {
+    "id": "distributed-11",
+    "subtopic": "Kafka partition key",
+    "question": "If related events must remain ordered for one account, which key is a natural choice?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "producer.send(new ProducerRecord<>(\"account-events\", accountId, event));",
+    "options": [
+      "A random key for each event",
+      "The stable accountId",
+      "The current timestamp with nanosecond precision",
+      "No key, regardless of partitioning needs"
+    ],
+    "answer": 1,
+    "explanation": "Using a stable key for the account routes its events to the same partition under the partitioner, preserving that partition's order."
+  },
+  {
+    "id": "distributed-12",
+    "subtopic": "Delivery semantics",
+    "question": "Why can a consumer observe a record again after a crash?",
+    "options": [
+      "The record may be reprocessed if progress was not committed before failure",
+      "Kafka deletes all offsets on restart",
+      "Partitions reorder records on every poll",
+      "A producer automatically repeats every read"
+    ],
+    "answer": 0,
+    "explanation": "If processing occurs before the consumed offset is durably committed, a restart can cause the record to be delivered again."
+  },
+  {
+    "id": "exp-distributed-09",
+    "subtopic": "Service boundaries",
+    "question": "Why should a microservice generally own its data rather than allow other services direct database access?",
+    "options": [
+      "It preserves service autonomy and reduces schema coupling",
+      "It guarantees every transaction is globally atomic",
+      "It eliminates the need for APIs",
+      "It makes all services use the same database technology"
+    ],
+    "answer": 0,
+    "explanation": "Data ownership lets a service evolve its persistence model behind its interface."
+  },
+  {
+    "id": "exp-distributed-10",
+    "subtopic": "Synchronous and asynchronous communication",
+    "question": "Which trade-off commonly comes with synchronous service calls?",
+    "options": [
+      "Caller latency and availability become coupled to the callee response",
+      "The caller never needs timeouts",
+      "Messages are always persisted automatically",
+      "The call is guaranteed to be exactly once"
+    ],
+    "answer": 0,
+    "explanation": "A synchronous caller waits on the downstream service, so timeouts and failure handling matter."
+  },
+  {
+    "id": "exp-distributed-11",
+    "subtopic": "Kafka partition ordering",
+    "question": "How can a producer commonly keep all events for one order on the same Kafka partition?",
+    "options": [
+      "Use the same order ID as the record key",
+      "Set every record to a random key",
+      "Use a different topic for each event",
+      "Sort records in the consumer after reading"
+    ],
+    "answer": 0,
+    "explanation": "Records with the same key are commonly routed to the same partition, preserving their partition order."
+  },
+  {
+    "id": "exp-distributed-12",
+    "subtopic": "Kafka consumer groups",
+    "question": "A topic has three partitions and one consumer group has five consumers. How many consumers can be assigned a partition at the same time?",
+    "options": [
+      "At most three; two consumers may be idle",
+      "All five; each reads every partition",
+      "Exactly one",
+      "None until a second group joins"
+    ],
+    "answer": 0,
+    "explanation": "Each partition is assigned to at most one consumer within a group at a time; the other two consumers can be idle."
+  },
+  {
+    "id": "exp-distributed-13",
+    "subtopic": "Offsets and replay",
+    "question": "What is a practical effect of resetting a consumer group's offset to an earlier position?",
+    "options": [
+      "The group can replay records from that position",
+      "The broker deletes all later records",
+      "The topic changes its partition count",
+      "The producer resends every record"
+    ],
+    "answer": 0,
+    "explanation": "Offsets describe the consumer group's position; moving the position backward allows replay if the records remain retained."
+  },
+  {
+    "id": "exp-distributed-14",
+    "subtopic": "Idempotency",
+    "question": "Which design most directly makes a payment command retry-safe?",
+    "options": [
+      "Store and enforce a unique idempotency key with the payment result",
+      "Generate a new payment ID on every retry",
+      "Ignore timeouts and assume success",
+      "Retry indefinitely without recording outcomes"
+    ],
+    "answer": 0,
+    "explanation": "A durable idempotency key lets duplicate requests return or preserve the original outcome rather than charging again."
+  },
+  {
+    "id": "exp-distributed-15",
+    "subtopic": "Saga pattern",
+    "question": "How does a saga handle a later step failing after earlier local transactions committed?",
+    "options": [
+      "Runs compensating actions or recovery steps for completed work",
+      "Rolls back one global ACID transaction across all services automatically",
+      "Deletes every service database",
+      "Stops all future messages permanently"
+    ],
+    "answer": 0,
+    "explanation": "Sagas coordinate local transactions and use compensations or recovery to address distributed failures."
+  },
+  {
+    "id": "exp-distributed-16",
+    "subtopic": "Outbox pattern",
+    "question": "How does the transactional outbox pattern avoid losing an event between a database update and message publication?",
+    "options": [
+      "Store the business change and outgoing event in the same local database transaction, then publish the event asynchronously",
+      "Send the message first and then update the database without a transaction",
+      "Write only to an in-memory queue",
+      "Use two-phase commit in every case"
+    ],
+    "answer": 0,
+    "explanation": "The outbox row and business update commit atomically in one database; a relay publishes persisted events later."
+  },
+  {
+    "id": "chapter-microservices-01",
+    "subtopic": "Microservices",
+    "question": "Which statement about Microservices is correct?",
+    "options": [
+      "A microservice should align with a cohesive business capability or bounded context.",
+      "Every microservice must share one database schema.",
+      "A microservice is defined by its programming language.",
+      "Service boundaries should always follow individual database tables."
+    ],
+    "answer": 0,
+    "explanation": "A microservice should align with a cohesive business capability or bounded context."
+  },
+  {
+    "id": "chapter-microservices-02",
+    "subtopic": "Microservices",
+    "question": "Choose the accurate Java interview answer about Microservices.",
+    "options": [
+      "Every microservice must share one database schema.",
+      "Services should own their data and expose it through supported interfaces.",
+      "A microservice is defined by its programming language.",
+      "Service boundaries should always follow individual database tables."
+    ],
+    "answer": 1,
+    "explanation": "Services should own their data and expose it through supported interfaces."
+  },
+  {
+    "id": "chapter-microservices-03",
+    "subtopic": "Microservices",
+    "question": "A developer is asked about Microservices. Which response is correct?",
+    "options": [
+      "Every microservice must share one database schema.",
+      "A microservice is defined by its programming language.",
+      "Independent deployment is a common goal of microservice architecture.",
+      "Service boundaries should always follow individual database tables."
+    ],
+    "answer": 2,
+    "explanation": "Independent deployment is a common goal of microservice architecture."
+  },
+  {
+    "id": "chapter-microservices-04",
+    "subtopic": "Microservices",
+    "question": "Select the true statement concerning Microservices.",
+    "options": [
+      "Every microservice must share one database schema.",
+      "A microservice is defined by its programming language.",
+      "Service boundaries should always follow individual database tables.",
+      "Synchronous calls introduce latency and availability coupling between caller and callee."
+    ],
+    "answer": 3,
+    "explanation": "Synchronous calls introduce latency and availability coupling between caller and callee."
+  },
+  {
+    "id": "chapter-microservices-05",
+    "subtopic": "Microservices",
+    "question": "Which statement about Microservices is correct?",
+    "options": [
+      "Asynchronous messaging can reduce temporal coupling but still requires failure handling.",
+      "Every microservice must share one database schema.",
+      "A microservice is defined by its programming language.",
+      "Service boundaries should always follow individual database tables."
+    ],
+    "answer": 0,
+    "explanation": "Asynchronous messaging can reduce temporal coupling but still requires failure handling."
+  },
+  {
+    "id": "chapter-microservices-06",
+    "subtopic": "Microservices",
+    "question": "Choose the accurate Java interview answer about Microservices.",
+    "options": [
+      "Every microservice must share one database schema.",
+      "An API gateway can provide a client-facing entry point to multiple services.",
+      "A microservice is defined by its programming language.",
+      "Service boundaries should always follow individual database tables."
+    ],
+    "answer": 1,
+    "explanation": "An API gateway can provide a client-facing entry point to multiple services."
+  },
+  {
+    "id": "chapter-microservices-07",
+    "subtopic": "Microservices",
+    "question": "A developer is asked about Microservices. Which response is correct?",
+    "options": [
+      "Every microservice must share one database schema.",
+      "A microservice is defined by its programming language.",
+      "Service-to-service communication needs timeouts and resilience strategies.",
+      "Service boundaries should always follow individual database tables."
+    ],
+    "answer": 2,
+    "explanation": "Service-to-service communication needs timeouts and resilience strategies."
+  },
+  {
+    "id": "chapter-microservices-08",
+    "subtopic": "Microservices",
+    "question": "Select the true statement concerning Microservices.",
+    "options": [
+      "Every microservice must share one database schema.",
+      "A microservice is defined by its programming language.",
+      "Service boundaries should always follow individual database tables.",
+      "Distributed tracing helps follow a request across service boundaries."
+    ],
+    "answer": 3,
+    "explanation": "Distributed tracing helps follow a request across service boundaries."
+  },
+  {
+    "id": "chapter-microservices-design-patterns-01",
+    "subtopic": "Microservices design patterns",
+    "question": "Which statement about Microservices design patterns is correct?",
+    "options": [
+      "Database-per-service keeps a service's persistence data under its ownership.",
+      "Circuit breakers retry every request forever.",
+      "A saga is one global ACID transaction.",
+      "An API gateway should own all domain data."
+    ],
+    "answer": 0,
+    "explanation": "Database-per-service keeps a service's persistence data under its ownership."
+  },
+  {
+    "id": "chapter-microservices-design-patterns-02",
+    "subtopic": "Microservices design patterns",
+    "question": "Choose the accurate Java interview answer about Microservices design patterns.",
+    "options": [
+      "Circuit breakers retry every request forever.",
+      "CQRS separates command responsibilities from query responsibilities.",
+      "A saga is one global ACID transaction.",
+      "An API gateway should own all domain data."
+    ],
+    "answer": 1,
+    "explanation": "CQRS separates command responsibilities from query responsibilities."
+  },
+  {
+    "id": "chapter-microservices-design-patterns-03",
+    "subtopic": "Microservices design patterns",
+    "question": "A developer is asked about Microservices design patterns. Which response is correct?",
+    "options": [
+      "Circuit breakers retry every request forever.",
+      "A saga is one global ACID transaction.",
+      "A saga coordinates local transactions and compensating actions across services.",
+      "An API gateway should own all domain data."
+    ],
+    "answer": 2,
+    "explanation": "A saga coordinates local transactions and compensating actions across services."
+  },
+  {
+    "id": "chapter-microservices-design-patterns-04",
+    "subtopic": "Microservices design patterns",
+    "question": "Select the true statement concerning Microservices design patterns.",
+    "options": [
+      "Circuit breakers retry every request forever.",
+      "A saga is one global ACID transaction.",
+      "An API gateway should own all domain data.",
+      "The outbox pattern stores an event record with a business update in one local transaction."
+    ],
+    "answer": 3,
+    "explanation": "The outbox pattern stores an event record with a business update in one local transaction."
+  },
+  {
+    "id": "chapter-microservices-design-patterns-05",
+    "subtopic": "Microservices design patterns",
+    "question": "Which statement about Microservices design patterns is correct?",
+    "options": [
+      "A circuit breaker can stop calls to a dependency that is failing repeatedly.",
+      "Circuit breakers retry every request forever.",
+      "A saga is one global ACID transaction.",
+      "An API gateway should own all domain data."
+    ],
+    "answer": 0,
+    "explanation": "A circuit breaker can stop calls to a dependency that is failing repeatedly."
+  },
+  {
+    "id": "chapter-microservices-design-patterns-06",
+    "subtopic": "Microservices design patterns",
+    "question": "Choose the accurate Java interview answer about Microservices design patterns.",
+    "options": [
+      "Circuit breakers retry every request forever.",
+      "The strangler pattern migrates functionality gradually from a legacy system.",
+      "A saga is one global ACID transaction.",
+      "An API gateway should own all domain data."
+    ],
+    "answer": 1,
+    "explanation": "The strangler pattern migrates functionality gradually from a legacy system."
+  },
+  {
+    "id": "chapter-microservices-design-patterns-07",
+    "subtopic": "Microservices design patterns",
+    "question": "A developer is asked about Microservices design patterns. Which response is correct?",
+    "options": [
+      "Circuit breakers retry every request forever.",
+      "A saga is one global ACID transaction.",
+      "A backend-for-frontend can tailor an API composition to a particular client.",
+      "An API gateway should own all domain data."
+    ],
+    "answer": 2,
+    "explanation": "A backend-for-frontend can tailor an API composition to a particular client."
+  },
+  {
+    "id": "chapter-microservices-design-patterns-08",
+    "subtopic": "Microservices design patterns",
+    "question": "Select the true statement concerning Microservices design patterns.",
+    "options": [
+      "Circuit breakers retry every request forever.",
+      "A saga is one global ACID transaction.",
+      "An API gateway should own all domain data.",
+      "Retries should be bounded and paired with idempotent or deduplicated operations."
+    ],
+    "answer": 3,
+    "explanation": "Retries should be bounded and paired with idempotent or deduplicated operations."
+  },
+  {
+    "id": "deep-micro-01",
+    "subtopic": "Microservices",
+    "question": "What is a common trade-off of synchronous service-to-service calls?",
+    "options": [
+      "They are simple to request but couple latency and availability across services",
+      "They eliminate network failures",
+      "They guarantee exactly-once effects",
+      "They remove the need for timeouts"
+    ],
+    "answer": 0,
+    "explanation": "A caller waits on the downstream response, so downstream latency and outages can affect the caller."
+  },
+  {
+    "id": "deep-micro-02",
+    "subtopic": "Microservices",
+    "question": "Why should a service own its data rather than let all services write the same tables?",
+    "options": [
+      "It reduces schema coupling and preserves clear ownership",
+      "It guarantees no data duplication",
+      "It removes the need for backups",
+      "It makes every transaction globally atomic"
+    ],
+    "answer": 0,
+    "explanation": "Data ownership limits cross-service coupling and allows services to evolve their persistence independently."
+  },
+  {
+    "id": "deep-pattern-01",
+    "subtopic": "Microservices design patterns",
+    "question": "What is the outbox pattern mainly used to address?",
+    "options": [
+      "Atomically recording a business change and the intent to publish an event in one local transaction",
+      "Encrypting every service database",
+      "Replacing all consumers with HTTP calls",
+      "Making a distributed transaction globally serializable"
+    ],
+    "answer": 0,
+    "explanation": "A transactional outbox stores the event alongside the business update so a separate publisher can deliver it reliably."
+  },
+  {
+    "id": "deep-kafka-01",
+    "subtopic": "Apache Kafka",
+    "question": "Two events use the same key in a topic with multiple partitions. What ordering guarantee applies?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "producer.send(new ProducerRecord<>(\"orders\", orderId, event));",
+    "options": [
+      "Their order is preserved within their partition",
+      "Their order is global across every topic",
+      "The key guarantees exactly-once side effects",
+      "They are always placed in different partitions"
+    ],
+    "answer": 0,
+    "explanation": "A key normally routes records to one partition, where Kafka preserves record order."
+  },
+  {
+    "id": "deep-kafka-02",
+    "subtopic": "Apache Kafka",
+    "question": "A consumer group has more consumers than partitions. What is generally true?",
+    "options": [
+      "Some consumers may be idle because a partition is assigned to at most one group member at a time",
+      "Every consumer gets a copy of every partition",
+      "Kafka creates partitions automatically for each consumer",
+      "The group stops consuming"
+    ],
+    "answer": 0,
+    "explanation": "Within a group, partitions are distributed among consumers; extra consumers have no partition to process."
+  },
+  {
+    "id": "deep-kafka-03",
+    "subtopic": "Apache Kafka",
+    "question": "What does a committed consumer offset allow a group to do?",
+    "options": [
+      "Resume from a recorded position after restart",
+      "Guarantee that business processing happened exactly once",
+      "Change a record's key",
+      "Move a record between topics"
+    ],
+    "answer": 0,
+    "explanation": "Offsets record consumption position; application-level processing and offset commits must be coordinated for desired delivery behavior."
+  },
+  {
+    "id": "deep-kafka-04",
+    "subtopic": "Apache Kafka",
+    "question": "What happens when a topic gains partitions while keyed events are being produced?",
+    "options": [
+      "The key-to-partition mapping may change for some keys",
+      "Every old record moves to a new partition",
+      "All offsets become global",
+      "Consumer groups are deleted"
+    ],
+    "answer": 0,
+    "explanation": "Partitioning commonly hashes keys across the current partition count, so increasing that count can remap future records for a key."
+  },
+  {
+    "id": "deep-kafka-05",
+    "subtopic": "Apache Kafka",
+    "question": "Why can a consumer rebalance interrupt processing?",
+    "options": [
+      "Partitions are reassigned among group members",
+      "The topic is converted to a queue",
+      "Offsets are reset on every record",
+      "The producer takes ownership of the consumer"
+    ],
+    "answer": 0,
+    "explanation": "Membership or partition changes can trigger reassignment, so consumers should handle revoked and newly assigned partitions safely."
+  },
+  {
+    "id": "deep-kafka-06",
+    "subtopic": "Apache Kafka",
+    "question": "When is manual offset commit useful?",
+    "options": [
+      "When the application must coordinate committed progress with completed processing",
+      "When records should be sorted globally",
+      "When Kafka should delete the topic",
+      "When the producer needs a consumer group"
+    ],
+    "answer": 0,
+    "explanation": "Manual commits allow the application to choose when progress is acknowledged, which requires careful duplicate and failure handling."
+  },
+  {
+    "id": "deep-kafka-07",
+    "subtopic": "Apache Kafka",
+    "question": "What is a dead-letter topic commonly used for?",
+    "options": [
+      "Holding records that could not be processed after an agreed retry policy",
+      "Storing all successfully processed records forever",
+      "Replacing the consumer group coordinator",
+      "Ordering records across all partitions"
+    ],
+    "answer": 0,
+    "explanation": "A dead-letter topic isolates records that repeatedly fail so they can be inspected or handled separately."
+  },
+  {
+    "id": "deep-kafka-08",
+    "subtopic": "Apache Kafka",
+    "question": "Which producer record key is most useful when preserving per-account event order?",
+    "codeLanguage": "java",
+    "codeFileName": "Example.java",
+    "code": "new ProducerRecord<>(\"ledger-events\", accountId, event);",
+    "options": [
+      "A stable account identifier",
+      "A new random UUID for every event",
+      "A constant empty key for every topic in the cluster",
+      "The consumer's current offset"
+    ],
+    "answer": 0,
+    "explanation": "Using the same stable key for an account normally sends its records to the same partition, preserving their partition order."
+  },
+  {
+    "id": "deep-kafka-09",
+    "subtopic": "Apache Kafka",
+    "question": "Can a consumer group process one partition concurrently with two consumers in that same group?",
+    "options": [
+      "Normally no; one group member owns a partition at a time",
+      "Yes, every consumer reads every partition",
+      "Only when auto-commit is enabled",
+      "Only when records have no key"
+    ],
+    "answer": 0,
+    "explanation": "A partition is assigned to at most one consumer within a group at a time; separate groups can each read it independently."
+  },
+  {
+    "id": "deep-kafka-10",
+    "subtopic": "Apache Kafka",
+    "question": "What is the safest assumption when a consumer crashes after applying a side effect but before committing its offset?",
+    "options": [
+      "The record may be delivered again, so processing should tolerate duplicates",
+      "The record is deleted",
+      "The offset advances automatically past every future record",
+      "The side effect is rolled back by Kafka"
+    ],
+    "answer": 0,
+    "explanation": "Without atomic coordination between the external side effect and offset commit, redelivery is possible."
+  },
+  {
+    "id": "deep-micro-03",
+    "subtopic": "Microservices",
+    "question": "Why should clients set timeouts on remote service calls?",
+    "options": [
+      "To bound how long a slow or unavailable dependency can tie up the caller",
+      "To ensure all requests succeed",
+      "To prevent duplicate database rows",
+      "To make calls synchronous"
+    ],
+    "answer": 0,
+    "explanation": "Timeouts bound waiting and help callers release resources when downstream services do not respond promptly."
+  },
+  {
+    "id": "deep-micro-04",
+    "subtopic": "Microservices",
+    "question": "What does idempotent request handling mean?",
+    "options": [
+      "Repeating the same request has the same intended effect as applying it once",
+      "Every request creates a new resource",
+      "Requests cannot fail",
+      "The server processes requests in alphabetical order"
+    ],
+    "answer": 0,
+    "explanation": "Idempotent operations support safe retries by avoiding repeated business effects for equivalent requests."
+  },
+  {
+    "id": "deep-micro-05",
+    "subtopic": "Microservices",
+    "question": "What is a useful role for an API gateway?",
+    "options": [
+      "Provide a client-facing entry point for routing and cross-cutting edge concerns",
+      "Own every service's database tables",
+      "Replace domain logic in all services",
+      "Guarantee distributed transactions"
+    ],
+    "answer": 0,
+    "explanation": "A gateway can route and compose client traffic, but services should retain ownership of their business rules and data."
+  },
+  {
+    "id": "deep-micro-06",
+    "subtopic": "Microservices",
+    "question": "Why use distributed tracing?",
+    "options": [
+      "To correlate one request across multiple services",
+      "To serialize every database transaction",
+      "To guarantee message delivery",
+      "To replace application logs entirely"
+    ],
+    "answer": 0,
+    "explanation": "Trace and span identifiers help follow request execution across service boundaries and diagnose latency or failure."
+  },
+  {
+    "id": "deep-pattern-02",
+    "subtopic": "Microservices design patterns",
+    "question": "What does a saga use instead of one global database rollback?",
+    "options": [
+      "A sequence of local transactions with compensating actions",
+      "A single shared table for every service",
+      "A blocking lock across all services",
+      "A retry without a limit"
+    ],
+    "answer": 0,
+    "explanation": "A saga coordinates local transactions and uses compensating work when a later step cannot complete."
+  },
+  {
+    "id": "deep-pattern-03",
+    "subtopic": "Microservices design patterns",
+    "question": "Which property should a retrying command ideally have?",
+    "options": [
+      "Idempotency or deduplication",
+      "A random result on each attempt",
+      "No timeout",
+      "A shared mutable global variable"
+    ],
+    "answer": 0,
+    "explanation": "Idempotency or deduplication prevents retry attempts from repeating the same business effect."
+  }
+]
